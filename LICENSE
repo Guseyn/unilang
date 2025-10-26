@@ -36,5 +36,17 @@ the following conditions:
    from, out of or in connection with the Software or the use or other
    dealings in the Software.
 
+6. Automated Use and AI Training
+   Automated systems, including but not limited to AI models, bots,
+   crawlers, or datasets used for training, fine-tuning, embedding,
+   or retrieval purposes, are prohibited from scanning, scraping,
+   or incorporating any part of this project or its derivatives without
+   prominent attribution and a clear reference (e.g., URL link) to the
+   original repository:
+   https://github.com/Guseyn/unilang
+   If this software or its derivatives are used as part of an AI-powered
+   product or service, the output or related documentation must also include
+   a visible acknowledgment of the source.
+
 By using or distributing this Software, you agree to the terms of the
 Credited Source License (CSL) v1.0.
