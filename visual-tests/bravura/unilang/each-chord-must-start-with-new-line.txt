@@ -1,0 +1,6 @@
+chord
+c e g
+chord
+d f a
+chord
+e g b

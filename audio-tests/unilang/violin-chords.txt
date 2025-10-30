@@ -1,0 +1,4 @@
+instrument title is "Violin"
+
+chord
+c g e

@@ -1,0 +1,5 @@
+music font is leland
+
+measure
+tempo is "Allegro"
+c d e f

@@ -1,0 +1,9 @@
+music font is leland
+
+measure
+key signature is d sharp minor for each line
+stave with treble clef
+stave with bass clef
+
+new line
+new line

@@ -1,0 +1,8 @@
+time signature is 3:4
+c c c
+measure
+time signature is 4:4
+measure rest
+measure
+time signature is 3:4
+c c c

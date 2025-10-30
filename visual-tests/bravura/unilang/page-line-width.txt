@@ -1,0 +1,4 @@
+page line width is 1100
+
+stave
+stave

@@ -1,0 +1,3 @@
+a is ghost
+b ghost
+a ghost

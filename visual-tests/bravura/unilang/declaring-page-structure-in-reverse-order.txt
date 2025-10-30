@@ -1,0 +1,5 @@
+voice
+a b d e
+stave
+measure
+new line

@@ -1,0 +1,3 @@
+stave
+chord
+a, b on next stave, c on prev stave

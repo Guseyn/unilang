@@ -1,0 +1,9 @@
+measure closes with dotted barline
+stave
+stave
+
+side note: "
+  You can aslo type:
+  measure finishes with dotted barline
+  measure ends with dotted barline
+"

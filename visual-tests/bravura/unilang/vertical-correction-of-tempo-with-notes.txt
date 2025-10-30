@@ -1,0 +1,3 @@
+measure
+metronome mark is "Allegro (1/4 = 120)" 2 up
+c d e f

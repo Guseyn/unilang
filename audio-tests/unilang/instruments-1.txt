@@ -1,0 +1,5 @@
+instrument "piano"
+a b c d
+measure
+instrument "violin"
+a b c d e

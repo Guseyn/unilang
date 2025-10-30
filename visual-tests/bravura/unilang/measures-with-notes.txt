@@ -1,0 +1,4 @@
+measure
+a b c5 d5 d5 c5 b a
+measure
+d5 c5 b a a b c5 d5

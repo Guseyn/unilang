@@ -1,0 +1,14 @@
+new line
+stave
+1 a 
+1/8 chord is arpeggiated
+a sharp
+b sharp
+c flat
+new line
+stave
+1 a 
+1/8 chord is arpeggiated, is right by 2
+a sharp
+b sharp
+c flat

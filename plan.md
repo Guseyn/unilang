@@ -1,0 +1,31 @@
+- [ ] Migrate tests and make them work (rewrite in procedural style)
+  - [x] visual
+  - [ ] audio
+- [ ] Migrate to ESM
+- [ ] Refactor language parser to make it more flexible in terms of outputs
+- [ ] Make fonts as flexible addons and part of a language
+- [ ] Add a page where the music font can be generated
+- [ ] Add a command that generate music js font file
+- [ ] CLI for commands
+  - [ ] TXT -> SVG
+  - [ ] TXT -> HIGHLIGHTED HTML
+  - [ ] TXT -> MIDI
+  - [ ] TXT -> PAGE SCHEMA
+  - [ ] MIDI -> WAV
+- [ ] Add build commands for FE usage as an option
+
+- [ ] Documentation
+  - [ ] Node.js
+  - [ ] Browser
+  - [ ] Language Syntax and Sematics
+  - [ ] Generating/using/adding  Fonts for different parts
+  - [ ] Add output format into parser, and how it generally works
+  - [ ] Magenta sound fonts and how to generate them
+  - [ ] Run Tests
+  - [ ] Shoutouts
+
+- [ ] Examples/Apps
+  - [ ] Editor
+  - [ ] Widgets
+
+- [ ] 

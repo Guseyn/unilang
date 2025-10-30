@@ -1,0 +1,4 @@
+a with dot
+a
+stave
+1/8 c c c c

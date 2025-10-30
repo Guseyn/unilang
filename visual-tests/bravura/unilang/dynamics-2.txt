@@ -1,0 +1,4 @@
+a with dynamic "p" up 
+a with dynamic "mp" down
+a with dynamic "mf" above
+a with dynamic "f" below

@@ -1,0 +1,7 @@
+default instrument is guitar
+
+c d e f
+
+====next page====
+
+c d e f

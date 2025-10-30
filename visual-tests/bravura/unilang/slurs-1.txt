@@ -1,0 +1,10 @@
+a d f g
+
+slur from first unit to fourth unit
+
+comment: "
+  You can also type:
+  a d f g
+
+  slur from unit 1 to unit 4
+"

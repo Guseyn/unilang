@@ -1,0 +1,14 @@
+measure
+voice
+b
+voice
+c
+measure
+voice
+voice
+c
+measure
+voice
+a is tied before measure 2 up
+voice
+c

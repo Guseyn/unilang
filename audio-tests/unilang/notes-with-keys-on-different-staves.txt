@@ -1,0 +1,5 @@
+c with sharp key on next stave
+c
+stave
+c
+c natural on previous stave

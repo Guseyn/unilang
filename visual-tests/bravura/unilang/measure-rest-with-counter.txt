@@ -1,0 +1,10 @@
+measure with multi measure rest 4 times
+stave
+stave
+
+comment: "
+  you can omit `multi`:
+  measure with measure rest 4 times
+  stave
+  stave
+"

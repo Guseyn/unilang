@@ -1,0 +1,3 @@
+a is tied with next
+measure
+a

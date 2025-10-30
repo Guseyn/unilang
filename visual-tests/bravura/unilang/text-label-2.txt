@@ -1,0 +1,5 @@
+a with "a" below
+a with text "a" below stave
+
+a with stem down, with "a" above
+a with text "a" above stave

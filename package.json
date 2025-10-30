@@ -1,0 +1,23 @@
+{
+  "name": "unilang",
+  "version": "1.0.0",
+  "description": "Unilang",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guseyn/unilang.git"
+  },
+  "author": "guseyn",
+  "license": "Credited Source License (CSL) v1.0",
+  "bugs": {
+    "url": "https://github.com/Guseyn/unilang/issues"
+  },
+  "homepage": "https://github.com/Guseyn/unilang#readme",
+  "dependencies": {
+    "ansi-colors": "^4.1.3",
+    "jsonschema": "^1.5.0"
+  }
+}
