@@ -83,7 +83,7 @@ function normalizeUnilangText(unilangText) {
       const stringifiedComments = JSON.stringify(comments)
       const stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios = JSON.stringify(mapOfCharIndexesWithProgressionOfCommandsFromScenarios)
 
-      await Promise.all(
+      await Promise.race(
         [
           fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, constructedSvgAsString),
           fs.writeFile(`visual-tests/${visualTestDirForFont}/page-schema/actual/${testName}.json`, stringifiedPageSchema),
