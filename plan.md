@@ -1,7 +1,8 @@
 - [ ] Migrate tests and make them work (rewrite in procedural style)
   - [x] visual
-  - [ ] audio
+  - [x] audio
 - [ ] Migrate to ESM
+- [ ] Dev Server
 - [ ] Refactor language parser to make it more flexible in terms of outputs
 - [ ] Make fonts as flexible addons and part of a language
 - [ ] Add a page where the music font can be generated

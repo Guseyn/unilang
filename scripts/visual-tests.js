@@ -83,18 +83,6 @@ function normalizeUnilangText(unilangText) {
       const stringifiedComments = JSON.stringify(comments)
       const stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios = JSON.stringify(mapOfCharIndexesWithProgressionOfCommandsFromScenarios)
 
-      await Promise.race(
-        [
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, constructedSvgAsString),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/page-schema/actual/${testName}.json`, stringifiedPageSchema),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/html-highlights/actual/${testName}.html`, stringifiedHtmlHighlights),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/errors/actual/${testName}.json`, errors),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/custom-styles/actual/${testName}.json`, stringifiedCustomStyles),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/comments/actual/${testName}.json`, stringifiedComments),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/char-progressions/actual/${testName}.json`, stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios)
-        ]
-      )
-
       const [
         expectedSvgAsString,
         expectedStringifiedPageSchema,
@@ -166,6 +154,17 @@ function normalizeUnilangText(unilangText) {
           `Failed for "${testName}" test`
         )
         process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n\n`)
+        await Promise.race(
+          [
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, constructedSvgAsString),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/page-schema/actual/${testName}.json`, stringifiedPageSchema),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/html-highlights/actual/${testName}.html`, stringifiedHtmlHighlights),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/errors/actual/${testName}.json`, stringifiedErrors),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/custom-styles/actual/${testName}.json`, stringifiedCustomStyles),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/comments/actual/${testName}.json`, stringifiedComments),
+            fs.writeFile(`visual-tests/${visualTestDirForFont}/char-progressions/actual/${testName}.json`, stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios)
+          ]
+        )
         listOfPassedTests.push({
           name: testName
         })

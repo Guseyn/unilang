@@ -1,3 +1,1 @@
-command '
-is octave up
-' is not recognizable or applicable on the line 15
+["command '\nis octave up\n' is not recognizable or applicable on the line 15"]
