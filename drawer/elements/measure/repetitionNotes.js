@@ -1,9 +1,9 @@
 'use strict'
 
-const repetitionNoteText = require('./repetitionNoteText')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import repetitionNoteText from './repetitionNoteText.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, styles) {
   const drawnRepetitionNotes = []
   drawnMeasuresOnPageLine.forEach((measure) => {
     if (measure.repetitionNote && measure.repetitionNote.value) {

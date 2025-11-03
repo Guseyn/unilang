@@ -1,8 +1,8 @@
 'use strict'
 
-const calculatedCoordinatesOfElements = require('./calculatedCoordinatesOfElements')
+import calculatedCoordinatesOfElements from './calculatedCoordinatesOfElements.js'
 
-module.exports = (dataName, elements = [], wrapWithBox = false) => {
+export default function (dataName, elements = [], wrapWithBox = false) {
   const { top, right, bottom, left } = calculatedCoordinatesOfElements(elements)
   const nonEmptyElements = elements.filter(element => element && !element.isEmpty)
   if (nonEmptyElements.length === 0) {

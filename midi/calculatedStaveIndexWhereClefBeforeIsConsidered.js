@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (unitHasNotesOnDifferentStaves, note, staveIndex) => {
+export default function (unitHasNotesOnDifferentStaves, note, staveIndex) {
   let staveIndexWhereClefBeforeIsConsidered
   if (unitHasNotesOnDifferentStaves) {
     staveIndexWhereClefBeforeIsConsidered = staveIndex

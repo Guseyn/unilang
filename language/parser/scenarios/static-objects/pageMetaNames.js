@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./pageMeta'))
+import module from './pageMeta.js'
+
+export default Object.keys(module)

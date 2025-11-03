@@ -1,7 +1,7 @@
 'use strict'
 
-const tokenValuesFromTokens = require('./tokenValuesFromTokens')
+import tokenValuesFromTokens from './tokenValuesFromTokens.js'
 
-module.exports = (tokens) => {
+export default function (tokens) {
   return tokenValuesFromTokens(tokens).join(' ')
 }

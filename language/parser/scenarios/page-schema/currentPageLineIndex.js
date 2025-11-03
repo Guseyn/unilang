@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (parserState) => {
+export default function (parserState) {
   let currentPageLineIndex
   if (parserState.pageSchema.measuresParams) {
     currentPageLineIndex = parserState.numberOfPageLines - 1

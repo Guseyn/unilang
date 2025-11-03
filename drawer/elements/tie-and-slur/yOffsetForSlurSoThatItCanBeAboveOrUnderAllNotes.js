@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (intersectionPointsOfSlurWithItsSingleUnits, allSlurSingleUnits, slurDirection, styles) => {
+export default function (intersectionPointsOfSlurWithItsSingleUnits, allSlurSingleUnits, slurDirection, styles) {
   let gap = 0
   const slurDirectionSign = slurDirection === 'up' ? -1 : +1
   for (let index = 0; index < intersectionPointsOfSlurWithItsSingleUnits.length; index++) {

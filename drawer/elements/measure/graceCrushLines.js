@@ -1,9 +1,9 @@
 'use strict'
 
-const line = require('./../basic/line')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import line from './../basic/line.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const { crushGraceLineXPaddingForUnitwithFlagsAndStemUp, crushGraceLineXPaddingForUnitwithFlagsAndStemDown, crushGraceLineXPaddingForUnitWithoutWaves, crushGraceLineXPaddingForBeamedUnit, crushGraceLineStemUpHeightForUnitWithFlags, crushGraceLineStemUpHeightForUnitWithoutWaves, crushGraceLineStemUpHeightForBeamedUnit, crushGraceLineStemDownHeightForUnitWithFlags, crushGraceLineStemDownHeightForUnitWithoutWaves, crushGraceLineStemDownHeightForBeamedUnit, crushGraceYMarginForStemUp, crushGraceYMarginForStemUpWithoutFlags, crushGraceYMarginForStemDown, crushGraceYMarginForStemDownWithoutFlags, crushGraceYMarginForBeamedStemUp, crushGraceYMarginForBeamedStemDown, crushGraceLineStrokeOptions } = styles
   const drawnGraceCrashLines = []
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

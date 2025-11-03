@@ -1,8 +1,8 @@
 'use strict'
 
-const bboxForPath = require('./bboxForPath')
+import bboxForPath from './bboxForPath.js'
 
-module.exports = (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) => {
+export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   const areAnyNaNPoints = points.some(point => isNaN(point) && typeof point !== 'string')
   if (areAnyNaNPoints) {
     throw new Error(`there are NaN points in path ${points}`)

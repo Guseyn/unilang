@@ -1,26 +1,26 @@
 'use strict'
 
-const theSameScenarioButWithDifferentRequiredCommandProgression = require('./theSameScenarioButWithDifferentRequiredCommandProgression')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll = require('./page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll')
-const initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty = require('./page-schema/initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastStaveParams = require('./page-schema/lastStaveParams')
-const lastVoiceParams = require('./page-schema/lastVoiceParams')
-const lastNonSimileChordParams = require('./page-schema/lastNonSimileChordParams')
-const lastParentheses = require('./page-schema/lastParentheses')
-const regexps = require('./static-objects/regexps')
-const stavePositions = require('./static-objects/stavePositions')
-const isNoteIndex = require('./token/isNoteIndex')
-const noteIndexByTokens = require('./token/noteIndexByTokens')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const isDirection = require('./token/isDirection')
-const direction = require('./token/direction')
-const noteDurations = require('./static-objects/noteDurations')
+import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from './page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
+import initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty from './page-schema/initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastStaveParams from './page-schema/lastStaveParams.js'
+import lastVoiceParams from './page-schema/lastVoiceParams.js'
+import lastNonSimileChordParams from './page-schema/lastNonSimileChordParams.js'
+import lastParentheses from './page-schema/lastParentheses.js'
+import regexps from './static-objects/regexps.js'
+import stavePositions from './static-objects/stavePositions.js'
+import isNoteIndex from './token/isNoteIndex.js'
+import noteIndexByTokens from './token/noteIndexByTokens.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import isDirection from './token/isDirection.js'
+import direction from './token/direction.js'
+import noteDurations from './static-objects/noteDurations.js'
 
 const defaultChordDuration = 1 / 4
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['chord'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

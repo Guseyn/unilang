@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./stavePositions'))
+import module from './stavePositions.js'
+
+export default Object.keys(module)

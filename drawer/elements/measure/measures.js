@@ -1,38 +1,38 @@
 'use strict'
 
-const measure = require('./measure')
-const line = require('./../basic/line')
+import measure from './measure.js'
+import line from './../basic/line.js'
 
-const measuresInformationAboutContainingBrokenConnectionsWhileAdjustingThemWithAdditionalUsefulInformation = require('./measuresInformationAboutContainingBrokenConnectionsWhileAdjustingThemWithAdditionalUsefulInformation')
+import measuresInformationAboutContainingBrokenConnectionsWhileAdjustingThemWithAdditionalUsefulInformation from './measuresInformationAboutContainingBrokenConnectionsWhileAdjustingThemWithAdditionalUsefulInformation.js'
 
-const additionalStaveLines = require('./additionalStaveLines')
-const graceCrushLines = require('./graceCrushLines')
-const ties = require('./ties')
-const slurs = require('./slurs')
-const lyrics = require('./lyrics')
-const tuplets = require('./tuplets')
-const glissandos = require('./glissandos')
-const articulationsAttachedToSingleUnits = require('./articulationsAttachedToSingleUnits')
-const articulationsAboveOrBelowStave = require('./articulationsAboveOrBelowStave')
-const chordLetters = require('./chordLetters')
-const octaveSigns = require('./octaveSigns')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const correctTopAndBottomOfVoicesBodyAccordingToSingleUnitsTheyContain = require('./../voice/correctTopAndBottomOfVoicesBodyAccordingToSingleUnitsTheyContain')
-const correctTopAndBottomOfMeasuresAccordingToTheirVoicesBodies = require('./correctTopAndBottomOfMeasuresAccordingToTheirVoicesBodies')
-const voltas = require('./voltas')
-const repetitionNotes = require('./repetitionNotes')
-const codas = require('./codas')
-const signs = require('./signs')
-const tempoMarks = require('./tempoMarks')
-const pedals = require('./pedals')
-const dynamicChanges = require('./dynamicChanges')
-const tremoloBetweenStemlessSingleUnits = require('./tremoloBetweenStemlessSingleUnits')
-const beams = require('./beams')
-const singleTremolos = require('./singleTremolos')
-const measureFermatas = require('./measureFermatas')
+import additionalStaveLines from './additionalStaveLines.js'
+import graceCrushLines from './graceCrushLines.js'
+import ties from './ties.js'
+import slurs from './slurs.js'
+import lyrics from './lyrics.js'
+import tuplets from './tuplets.js'
+import glissandos from './glissandos.js'
+import articulationsAttachedToSingleUnits from './articulationsAttachedToSingleUnits.js'
+import articulationsAboveOrBelowStave from './articulationsAboveOrBelowStave.js'
+import chordLetters from './chordLetters.js'
+import octaveSigns from './octaveSigns.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import correctTopAndBottomOfVoicesBodyAccordingToSingleUnitsTheyContain from './../voice/correctTopAndBottomOfVoicesBodyAccordingToSingleUnitsTheyContain.js'
+import correctTopAndBottomOfMeasuresAccordingToTheirVoicesBodies from './correctTopAndBottomOfMeasuresAccordingToTheirVoicesBodies.js'
+import voltas from './voltas.js'
+import repetitionNotes from './repetitionNotes.js'
+import codas from './codas.js'
+import signs from './signs.js'
+import tempoMarks from './tempoMarks.js'
+import pedals from './pedals.js'
+import dynamicChanges from './dynamicChanges.js'
+import tremoloBetweenStemlessSingleUnits from './tremoloBetweenStemlessSingleUnits.js'
+import beams from './beams.js'
+import singleTremolos from './singleTremolos.js'
+import measureFermatas from './measureFermatas.js'
 
-module.exports = (measuresParams, pageLineMaxWidth) => {
+export default function (measuresParams, pageLineMaxWidth) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, intervalBetweenStaves, intervalBetweenPageLines, pageMaxWidthLineStrokeOptions } = styles
     const clefNamesAuraByStaveIndexes = {}

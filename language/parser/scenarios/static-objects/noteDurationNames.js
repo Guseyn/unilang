@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./noteDurations'))
+import module from './noteDurations.js'
+
+export default Object.keys(module)

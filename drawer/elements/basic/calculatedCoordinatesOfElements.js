@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (elements) => {
+export default function (elements) {
   let minTop = Number.NaN
   let maxRight = Number.NaN
   let maxBottom = Number.NaN

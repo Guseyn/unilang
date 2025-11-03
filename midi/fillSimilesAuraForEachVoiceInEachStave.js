@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (similesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) => {
+export default function (similesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) {
   if (unitParams.simileMark) {
     if (!similesAuraForEachVoiceInEachStave[staveVoiceKey]) {
       similesAuraForEachVoiceInEachStave[staveVoiceKey] = {

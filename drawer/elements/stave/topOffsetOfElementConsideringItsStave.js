@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (element, numberOfStaveLines, topOffset, styles) => {
+export default function (element, numberOfStaveLines, topOffset, styles) {
   const { intervalBetweenStaveLines, intervalBetweenStaves } = styles
   let topOffsetOfElementConsideringItsStave = topOffset
   if (element.stave === 'next') {

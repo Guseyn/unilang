@@ -1,17 +1,17 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const foundNextTokenValuesOnTheLine = require('./token/foundNextTokenValuesOnTheLine')
-const chordParamsByLastMentionedUnitPositions = require('./page-schema/chordParamsByLastMentionedUnitPositions')
-const undefineAllMentionedPositions = require('./page-schema/undefineAllMentionedPositions')
-const undefineOnlyLastMentionedUnitPosition = require('./page-schema/undefineOnlyLastMentionedUnitPosition')
-const fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded = require('./highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded')
-const addUnitPositionScenarios = require('./addUnitPositionScenarios')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import foundNextTokenValuesOnTheLine from './token/foundNextTokenValuesOnTheLine.js'
+import chordParamsByLastMentionedUnitPositions from './page-schema/chordParamsByLastMentionedUnitPositions.js'
+import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from './page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from './addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
 const updateNoteAndRestRefIdsInHighlightsHtmlBufferThatFollowAfterSimileUnit = (parserState, measureIndex, staveIndex, voiceIndex, singleChordIndex, simileCount) => {
   parserState.highlightsHtmlBuffer.forEach((html, index) => {
@@ -101,7 +101,7 @@ const addSimileUnitsToPageSchema = (parserState) => {
   }
 }
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['repeat simile'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

@@ -3,31 +3,33 @@
 // (c) 2015 Frederik De Bleser
 // opentype.js may be freely distributed under the MIT license.
 
-const inflate = require('./tiny-inflate')
-const Font = require('./font')
-const Glyph = require('./glyph')
-const { CmapEncoding, GlyphNames, addGlyphNames } = require('./encoding')
-const parse = require('./parse')
-const BoundingBox = require('./bbox')
-const Path = require('./path')
-const { nodeBufferToArrayBuffer } = require('./util')
-const cmap = require('./tables/cmap')
-const cff = require('./tables/cff')
-const fvar = require('./tables/fvar')
-const glyf = require('./tables/glyf')
-const gpos = require('./tables/gpos')
-const gsub = require('./tables/gsub')
-const head = require('./tables/head')
-const hhea = require('./tables/hhea')
-const hmtx = require('./tables/hmtx')
-const kern = require('./tables/kern')
-const ltag = require('./tables/ltag')
-const loca = require('./tables/loca')
-const maxp = require('./tables/maxp')
-const _name = require('./tables/name')
-const os2 = require('./tables/os2')
-const post = require('./tables/post')
-const meta = require('./tables/meta')
+import inflate from './tiny-inflate.js'
+import Font from './font.js'
+import Glyph from './glyph.js'
+import {  CmapEncoding, GlyphNames, addGlyphNames  } from './encoding.js'
+import { Parser, getULong, getTag, getUShort, getCard16 } from './parse.js'
+import BoundingBox from './bbox.js'
+import Path from './path.js'
+import {  nodeBufferToArrayBuffer  } from './util.js'
+import cmap from './tables/cmap.js'
+import cff from './tables/cff.js'
+import fvar from './tables/fvar.js'
+import glyf from './tables/glyf.js'
+import gpos from './tables/gpos.js'
+import gsub from './tables/gsub.js'
+import head from './tables/head.js'
+import hhea from './tables/hhea.js'
+import hmtx from './tables/hmtx.js'
+import kern from './tables/kern.js'
+import ltag from './tables/ltag.js'
+import loca from './tables/loca.js'
+import maxp from './tables/maxp.js'
+import _name from './tables/name.js'
+import os2 from './tables/os2.js'
+import post from './tables/post.js'
+import meta from './tables/meta.js'
+
+import * as parse from './parse.js' 
 
 /**
  * The opentype library.
@@ -36,44 +38,39 @@ const meta = require('./tables/meta')
 
 // File loaders /////////////////////////////////////////////////////////
 /**
- * Loads a font from a file. The callback throws an error message as the first parameter if it fails
- * and the font as an ArrayBuffer in the second parameter if it succeeds.
+ * Loads a font from a file.
  * @param  {string} path - The path of the file
- * @param  {Function} callback - The function to call when the font load completes
  */
-function loadFromFile(path, callback) {
-  const fs = require('fs')
-  fs.readFile(path, function(err, buffer) {
-    if (err) {
-      return callback(err.message)
-    }
-
-    callback(null, nodeBufferToArrayBuffer(buffer))
-  })
+async function loadFromFile(path, callback) {
+  const fs = await import('fs')
+  const buffer = await fs.promises.readFile(path)
+  return nodeBufferToArrayBuffer(buffer)
 }
+
 /**
- * Loads a font from a URL. The callback throws an error message as the first parameter if it fails
- * and the font as an ArrayBuffer in the second parameter if it succeeds.
+ * Loads a font from a URL.
  * @param  {string} url - The URL of the font file.
- * @param  {Function} callback - The function to call when the font load completes
  */
-function loadFromUrl(url, callback) {
-  const request = new XMLHttpRequest()
-  request.open('get', url, true)
-  request.responseType = 'arraybuffer'
-  request.onload = function() {
-    if (request.response) {
-      return callback(null, request.response)
-    } else {
-      return callback('Font could not be loaded: ' + request.statusText)
+export async function loadFromUrl(url) {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest()
+    request.open('get', url, true)
+    request.responseType = 'arraybuffer'
+
+    request.onload = function() {
+      if (request.status >= 200 && request.status < 300 && request.response) {
+        resolve(request.response)
+      } else {
+        reject(new Error(`Font could not be loaded: ${request.statusText}`))
+      }
     }
-  }
 
-  request.onerror = function () {
-    callback('Font could not be loaded')
-  }
+    request.onerror = function() {
+      reject(new Error('Font could not be loaded'))
+    }
 
-  request.send()
+    request.send()
+  })
 }
 
 // Table Directory Entries //////////////////////////////////////////////
@@ -87,10 +84,10 @@ function parseOpenTypeTableEntries(data, numTables) {
   const tableEntries = []
   let p = 12
   for (let i = 0; i < numTables; i += 1) {
-    const tag = parse.getTag(data, p)
-    const checksum = parse.getULong(data, p + 4)
-    const offset = parse.getULong(data, p + 8)
-    const length = parse.getULong(data, p + 12)
+    const tag = getTag(data, p)
+    const checksum = getULong(data, p + 4)
+    const offset = getULong(data, p + 8)
+    const length = getULong(data, p + 12)
     tableEntries.push({tag: tag, checksum: checksum, offset: offset, length: length, compression: false})
     p += 16
   }
@@ -108,10 +105,10 @@ function parseWOFFTableEntries(data, numTables) {
   const tableEntries = []
   let p = 44 // offset to the first table directory entry.
   for (let i = 0; i < numTables; i += 1) {
-    const tag = parse.getTag(data, p)
-    const offset = parse.getULong(data, p + 4)
-    const compLength = parse.getULong(data, p + 8)
-    const origLength = parse.getULong(data, p + 12)
+    const tag = getTag(data, p)
+    const offset = getULong(data, p + 4)
+    const compLength = getULong(data, p + 8)
+    const origLength = getULong(data, p + 12)
     let compression
     if (compLength < origLength) {
       compression = 'WOFF'
@@ -177,17 +174,17 @@ function parseBuffer(buffer) {
   const data = new DataView(buffer, 0)
   let numTables
   let tableEntries = []
-  const signature = parse.getTag(data, 0)
+  const signature = getTag(data, 0)
   if (signature === String.fromCharCode(0, 1, 0, 0) || signature === 'true' || signature === 'typ1') {
     font.outlinesFormat = 'truetype'
-    numTables = parse.getUShort(data, 4)
+    numTables = getUShort(data, 4)
     tableEntries = parseOpenTypeTableEntries(data, numTables)
   } else if (signature === 'OTTO') {
     font.outlinesFormat = 'cff'
-    numTables = parse.getUShort(data, 4)
+    numTables = getUShort(data, 4)
     tableEntries = parseOpenTypeTableEntries(data, numTables)
   } else if (signature === 'wOFF') {
-    const flavor = parse.getTag(data, 4)
+    const flavor = getTag(data, 4)
     if (flavor === String.fromCharCode(0, 1, 0, 0)) {
       font.outlinesFormat = 'truetype'
     } else if (flavor === 'OTTO') {
@@ -196,7 +193,7 @@ function parseBuffer(buffer) {
       throw new Error('Unsupported OpenType flavor ' + signature)
     }
 
-    numTables = parse.getUShort(data, 12)
+    numTables = getUShort(data, 12)
     tableEntries = parseWOFFTableEntries(data, numTables)
   } else {
     throw new Error('Unsupported OpenType signature ' + signature)
@@ -225,7 +222,7 @@ function parseBuffer(buffer) {
         break
       case 'cvt ' :
         table = uncompressTable(data, tableEntry)
-        p = new parse.Parser(table.data, table.offset)
+        p = new Parser(table.data, table.offset)
         font.tables.cvt = p.parseShortList(tableEntry.length / 2)
         break
       case 'fvar':
@@ -233,7 +230,7 @@ function parseBuffer(buffer) {
         break
       case 'fpgm' :
         table = uncompressTable(data, tableEntry)
-        p = new parse.Parser(table.data, table.offset)
+        p = new Parser(table.data, table.offset)
         font.tables.fpgm = p.parseByteList(tableEntry.length)
         break
       case 'head':
@@ -275,7 +272,7 @@ function parseBuffer(buffer) {
         break
       case 'prep' :
         table = uncompressTable(data, tableEntry)
-        p = new parse.Parser(table.data, table.offset)
+        p = new Parser(table.data, table.offset)
         font.tables.prep = p.parseByteList(tableEntry.length)
         break
       case 'glyf':
@@ -356,32 +353,21 @@ function parseBuffer(buffer) {
 }
 
 /**
- * Asynchronously load the font from a URL or a filesystem. When done, call the callback
- * with two arguments `(err, font)`. The `err` will be null on success,
- * the `font` is a Font object.
- * We use the node.js callback convention so that
- * opentype.js can integrate with frameworks like async.js.
+ * Asynchronously load the font from a URL or a filesystem.
  * @alias opentype.load
  * @param  {string} url - The URL of the font to load.
- * @param  {Function} callback - The callback.
  */
-function load(url, callback) {
+async function load(url) {
   // eslint-disable-next-line no-undef
   const isWebWorker = typeof self !== 'undefined' && self instanceof WorkerGlobalScope
   const isNode = typeof window === 'undefined' && !isWebWorker
   const loadFn = isNode ? loadFromFile : loadFromUrl
-  loadFn(url, function(err, arrayBuffer) {
-    if (err) {
-      return callback(err)
-    }
-    let font
-    try {
-      font = parseBuffer(arrayBuffer)
-    } catch (e) {
-      return callback(e, null)
-    }
-    return callback(null, font)
-  })
+  try {
+    const arrayBuffer = await loadFn(url)
+    return parseBuffer(arrayBuffer)
+  } catch (err) {
+    throw new Error(`Failed to load font: ${err}`)
+  }
 }
 
 /**
@@ -391,12 +377,12 @@ function load(url, callback) {
  * @param  {string} url - The URL of the font to load.
  * @return {opentype.Font}
  */
-function loadSyncIfOnlyItIsNodeJSEnv(path) {
+async function loadSyncIfOnlyItIsNodeJSEnv(path) {
   // eslint-disable-next-line no-undef
   const isWebWorker = typeof self !== 'undefined' && self instanceof WorkerGlobalScope
   const isNode = typeof window === 'undefined' && !isWebWorker
   if (isNode) {
-    const fs = require('fs')
+    const fs = await import('fs')
     const buffer = fs.readFileSync(path)
     return parseBuffer(nodeBufferToArrayBuffer(buffer))
   }
@@ -417,7 +403,7 @@ function accessPreloadedSourceInBrowser(path, cacheNameWithPreloadedSourcesInBro
   return null
 }
 
-module.exports = {
+export default {
   Font,
   Glyph,
   Path,

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   '2fl': 'doubleFlatKey',
   '2 flat': 'doubleFlatKey',
   'double fl': 'doubleFlatKey',

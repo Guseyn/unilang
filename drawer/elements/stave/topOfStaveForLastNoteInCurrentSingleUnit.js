@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (staveIndex, currentSingleUnit, topOffsetsForEachStave) => {
+export default function (staveIndex, currentSingleUnit, topOffsetsForEachStave) {
   let staveIndexOfLastNoteInCurrentSingleUnit = staveIndex
   if (currentSingleUnit.sortedNotes[currentSingleUnit.sortedNotes.length - 1].stave === 'prev') {
     staveIndexOfLastNoteInCurrentSingleUnit -= 1

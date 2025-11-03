@@ -2,7 +2,7 @@
 
 const MIDI_CC_FACTOR = 127
 
-module.exports = (unilangNote, midiNote, trackForNote, midiNoteShouldBeAdjustedAsStartArpeggiatedNote, midiNoteShouldBeAdjustedAsLastArpeggiatedNote) => {
+export default function (unilangNote, midiNote, trackForNote, midiNoteShouldBeAdjustedAsStartArpeggiatedNote, midiNoteShouldBeAdjustedAsLastArpeggiatedNote) {
   if (unilangNote.isFirstArpeggiatedNote && midiNoteShouldBeAdjustedAsStartArpeggiatedNote) {
     trackForNote.addCC({
       number: 65,

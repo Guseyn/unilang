@@ -1,9 +1,9 @@
 'use strict'
 
-const updateSingleUnitPartsCoordinatesInVoices = require('./updateSingleUnitPartsCoordinatesInVoices')
-const moveElement = require('./../basic/moveElement')
+import updateSingleUnitPartsCoordinatesInVoices from './updateSingleUnitPartsCoordinatesInVoices.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (voices, drawnSingleUnitsInVoices, xDistanceToMove) => {
+export default function (voices, drawnSingleUnitsInVoices, xDistanceToMove) {
   moveElement(voices, xDistanceToMove)
   updateSingleUnitPartsCoordinatesInVoices(drawnSingleUnitsInVoices, xDistanceToMove)
 }

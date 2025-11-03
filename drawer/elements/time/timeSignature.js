@@ -1,11 +1,11 @@
 'use strict'
 
-const stavePiece = require('./../stave/stavePiece')
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
+import stavePiece from './../stave/stavePiece.js'
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore) => {
+export default function (numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore) {
   return (styles, leftOffset, topOffset) => {
     const { timeSignatureLetters, fontColor, timeSignatureDigitLeftOffset, timeSignatureXPaddingAfterKeySignature, timeSignatureXPaddingAfterClef, timeSignatureXPaddingIfThereIsNoClefAndNoKeySignatureBefore, timeSignatureXPaddingAfterItself, cTimeTopOffset, croccedCTimeTopOffset, numeratorTopOffset, denominatorTopOffset } = styles
     const elementsWithCoordinates = []

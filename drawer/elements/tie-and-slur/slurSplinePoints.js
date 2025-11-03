@@ -37,7 +37,7 @@ const middleCurvePoints = (firstPoint, secondPoint, thirdPoint, fourthPoint, alp
   ]
 }
 
-module.exports = (firstPoint, secondPoint, thirdPoint, fourthPoint, alpha = 1) => {
+export default function (firstPoint, secondPoint, thirdPoint, fourthPoint, alpha = 1) {
   const epsilon = 0.0001
 
   const firstPhantomPoint = {

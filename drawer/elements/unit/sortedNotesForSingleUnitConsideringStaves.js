@@ -1,6 +1,6 @@
 'use strict'
 
-const correctedStaveIndexOfNoteOrKey = require('./correctedStaveIndexOfNoteOrKey')
+import correctedStaveIndexOfNoteOrKey from './correctedStaveIndexOfNoteOrKey.js'
 
 const compareTwoNotes = (note1, note2) => {
   const staveIndex1 = correctedStaveIndexOfNoteOrKey(note1)
@@ -14,6 +14,6 @@ const compareTwoNotes = (note1, note2) => {
   return note1.positionNumber - note2.positionNumber
 }
 
-module.exports = (notes) => {
+export default function (notes) {
   return notes.slice(0).sort((note1, note2) => compareTwoNotes(note1, note2))
 }

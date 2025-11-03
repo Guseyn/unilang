@@ -1,22 +1,22 @@
 'use strict'
 
-const moveElement = require('./../basic/moveElement')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const sortedKeysForSingleUnitConsideringStaves = require('./../unit/sortedKeysForSingleUnitConsideringStaves')
-const doubleFlatKeyShape = require('./../key/doubleFlatKeyShape')
-const doubleSharpKeyShape = require('./../key/doubleSharpKeyShape')
-const flatKeyShape = require('./../key/flatKeyShape')
-const naturalKeyShape = require('./../key/naturalKeyShape')
-const sharpKeyShape = require('./../key/sharpKeyShape')
-const demiflatKeyShape = require('./../key/demiflatKeyShape')
-const sesquiflatKeyShape = require('./../key/sesquiflatKeyShape')
-const demisharpKeyShape = require('./../key/demisharpKeyShape')
-const sesquisharpKeyShape = require('./../key/sesquisharpKeyShape')
-const noteLetterShape = require('./../key/noteLetterShape')
-const parenthesesSpline = require('./../bracket/parenthesesSpline')
+import moveElement from './../basic/moveElement.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import sortedKeysForSingleUnitConsideringStaves from './../unit/sortedKeysForSingleUnitConsideringStaves.js'
+import doubleFlatKeyShape from './../key/doubleFlatKeyShape.js'
+import doubleSharpKeyShape from './../key/doubleSharpKeyShape.js'
+import flatKeyShape from './../key/flatKeyShape.js'
+import naturalKeyShape from './../key/naturalKeyShape.js'
+import sharpKeyShape from './../key/sharpKeyShape.js'
+import demiflatKeyShape from './../key/demiflatKeyShape.js'
+import sesquiflatKeyShape from './../key/sesquiflatKeyShape.js'
+import demisharpKeyShape from './../key/demisharpKeyShape.js'
+import sesquisharpKeyShape from './../key/sesquisharpKeyShape.js'
+import noteLetterShape from './../key/noteLetterShape.js'
+import parenthesesSpline from './../bracket/parenthesesSpline.js'
 const keysTypes = {
   'doubleFlatKey': doubleFlatKeyShape,
   'doubleSharpKey': doubleSharpKeyShape,
@@ -30,7 +30,7 @@ const keysTypes = {
   'noteLetter': noteLetterShape
 }
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, measureIndexInGeneral, countersForEachVoice, numberOfStaveLines, drawnArpeggiatedWavesForCrossStaveUnits, drawnBreathMarksBeforeCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, relativePositionToArpeggiatedWave = 'after', containsDrawnCrossStaveElementsBesideCrossStaveUnits) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, measureIndexInGeneral, countersForEachVoice, numberOfStaveLines, drawnArpeggiatedWavesForCrossStaveUnits, drawnBreathMarksBeforeCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, relativePositionToArpeggiatedWave = 'after', containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { spaceAfterBreathMark, distanceBetweenKeysForSingleUnit, distanceBetweenKeysAsNoteLettersForSingleUnit, offsetForKeyParenthesesFromBothSides, keyParenthesesYPadding, spaceAfterArpeggiatedWaveAndBeforeKeysForCrossStaveUnit, graceElementsScaleFactor, graceKeyOnStaveLineCenterYCorrections, graceKeyBetweenStaveLinesCenterYCorrections } = styles
   const drawnKeysForCurrentCrossStaveUnit = []
   const allKeysParams = []

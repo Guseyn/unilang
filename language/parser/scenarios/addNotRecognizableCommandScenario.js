@@ -2,7 +2,7 @@
 
 const NEW_LINE = '\n'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['command is not recognizable'] = {
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
       return currentToken.lastOnTheLine && (tokenValues.length > 0)

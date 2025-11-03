@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'first': 'first',
   'last': 'last',
   'all': 'all',

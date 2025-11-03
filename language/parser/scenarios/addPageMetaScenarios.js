@@ -1,13 +1,13 @@
 'use strict'
 
-const pageMeta = require('./static-objects/pageMeta')
-const regexps = require('./static-objects/regexps')
+import pageMeta from './static-objects/pageMeta.js'
+import regexps from './static-objects/regexps.js'
 
 const IS = 'is'
 const EMPTY_STRING = ''
 const NEW_LINE = '\n'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['page meta'] = {
     startsOnNewLine: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

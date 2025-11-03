@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
 
-module.exports = (notePositionNumber, duration) => {
+export default function (notePositionNumber, duration) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, ghostWholeNoteBody, ghostHalfNoteBody, ghostDarkNoteBody, doubleVerticalLinesForDoubleWholeNoteBodyShape, doubleVerticalLinesForDoubleWholeNoteBodyStrokeOptions, verticalLineForQuadrupleWholeNoteShape, verticalLineForQuadrupleWholeNoteStrokeOptions, fontColor } = styles
     const topOffsetForNoteBody = topOffset + notePositionNumber * intervalBetweenStaveLines

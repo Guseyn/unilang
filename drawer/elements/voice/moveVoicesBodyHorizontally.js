@@ -1,9 +1,9 @@
 'use strict'
 
-const updateSingleUnitPartsCoordinatesInVoices = require('./updateSingleUnitPartsCoordinatesInVoices')
-const moveElement = require('./../basic/moveElement')
+import updateSingleUnitPartsCoordinatesInVoices from './updateSingleUnitPartsCoordinatesInVoices.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (voicesBody, drawnSingleUnitsInVoices, xDistanceToMove, exapandVoicesBodyToTheRight = true) => {
+export default function (voicesBody, drawnSingleUnitsInVoices, xDistanceToMove, exapandVoicesBodyToTheRight = true) {
   moveElement(voicesBody, xDistanceToMove)
   if (exapandVoicesBodyToTheRight) {
     voicesBody.right += xDistanceToMove

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (slurSplinePoints, yOffset) => {
+export default function (slurSplinePoints, yOffset) {
   const slurSplinePointsCopy = slurSplinePoints.slice()
   slurSplinePointsCopy[2] += yOffset
   slurSplinePointsCopy[5] += yOffset

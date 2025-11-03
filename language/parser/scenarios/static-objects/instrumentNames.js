@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = [
+export default [
   'acoustic grand piano',
   'grand piano',
   'piano',

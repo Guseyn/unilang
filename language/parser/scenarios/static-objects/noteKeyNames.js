@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./noteKeys'))
+import module from './noteKeys.js'
+
+export default Object.keys(module)

@@ -12,4 +12,4 @@ function argument(predicate, message) {
   }
 }
 
-module.exports = { fail, argument, assert: argument }
+export default { fail, argument, assert: argument }

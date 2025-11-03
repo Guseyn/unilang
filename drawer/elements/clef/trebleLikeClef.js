@@ -1,11 +1,11 @@
 'use strict'
 
-const stavePiece = require('./../stave/stavePiece')
-const clefShape = require('./clefShape')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const group = require('./../basic/group')
+import stavePiece from './../stave/stavePiece.js'
+import clefShape from './clefShape.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import group from './../basic/group.js'
 
-module.exports = (trebleStyleKey) => {
+export default function (trebleStyleKey) {
   return (styles, leftOffset, topOffset) => {
     const { stavePieceWidthForClef } = styles
     const numberOfStaveLines = 5

@@ -1,6 +1,6 @@
 'use strict'
 
-const svgPath = require('./../../lib/svgpath/index.js')
+import svgPath from './../../lib/svgpath/index.js'
 
 // Precision for consider cubic polynom as quadratic one
 const CBEZIER_MINMAX_EPSILON = 0.00000001
@@ -154,4 +154,4 @@ const bboxForPath = (path) => {
   }
 }
 
-module.exports = bboxForPath
+export default bboxForPath

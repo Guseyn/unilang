@@ -1,7 +1,7 @@
 // Table metadata
 
-const check = require('./check')
-const { encode, sizeOf } = require('./types')
+import check from './check.js'
+import {  encode, sizeOf  } from './types.js'
 
 /**
  * @exports opentype.Table
@@ -186,7 +186,7 @@ LookupList.prototype.constructor = LookupList
 
 // Record = same as Table, but inlined (a Table has an offset and its data is further in the stream)
 // Don't use offsets inside Records (probable bug), only in Tables.
-module.exports = {
+export default {
   Table,
   Record: Table,
   Coverage,

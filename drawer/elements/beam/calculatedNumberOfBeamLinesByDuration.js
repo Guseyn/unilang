@@ -9,6 +9,6 @@ const numberOfBeamLinesByUnitDurations = {
   '0.00390625': 6
 }
 
-module.exports = (duration) => {
+export default function (duration) {
   return numberOfBeamLinesByUnitDurations[duration + ''] || 0
 }

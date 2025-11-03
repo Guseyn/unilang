@@ -1,13 +1,13 @@
 'use strict'
 
-const flatKey = require('./flatKey')
-const sharpKey = require('./sharpKey')
-const naturalKey = require('./naturalKey')
-const keySignaturesStructures = require('./keySignaturesStructures')
-const stavePiece = require('./../stave/stavePiece')
-const group = require('./../basic/group')
+import flatKey from './flatKey.js'
+import sharpKey from './sharpKey.js'
+import naturalKey from './naturalKey.js'
+import keySignaturesStructures from './keySignaturesStructures.js'
+import stavePiece from './../stave/stavePiece.js'
+import group from './../basic/group.js'
 
-module.exports = (numberOfStaveLines, clefName, keySignatureName) => {
+export default function (numberOfStaveLines, clefName, keySignatureName) {
   if (clefName === 'octaveEightUp' || clefName === 'octaveEightDown' || clefName === 'octaveFifteenUp' || clefName === 'octaveFifteenDown') {
     clefName = 'treble'
   }

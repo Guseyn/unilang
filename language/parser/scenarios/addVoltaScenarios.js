@@ -1,16 +1,16 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const measureParamsByLastMentionedMeasurePosition = require('./page-schema/measureParamsByLastMentionedMeasurePosition')
-const undefineAllMentionedPositions = require('./page-schema/undefineAllMentionedPositions')
-const undefineOnlyLastMentionedMeasurePosition = require('./page-schema/undefineOnlyLastMentionedMeasurePosition')
-const fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded = require('./highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import measureParamsByLastMentionedMeasurePosition from './page-schema/measureParamsByLastMentionedMeasurePosition.js'
+import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedMeasurePosition from './page-schema/undefineOnlyLastMentionedMeasurePosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['volta'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

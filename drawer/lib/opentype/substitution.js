@@ -1,8 +1,8 @@
 // The Substitution object provides utility methods to manipulate
 // the GSUB substitution table.
 
-const check = require('./check')
-const Layout = require('./layout')
+import check from './check.js'
+import Layout from './layout.js'
 
 /**
  * @exports opentype.Substitution
@@ -301,4 +301,4 @@ Substitution.prototype.add = function(feature, sub, script, language) {
   return undefined
 }
 
-module.exports = Substitution
+export default Substitution

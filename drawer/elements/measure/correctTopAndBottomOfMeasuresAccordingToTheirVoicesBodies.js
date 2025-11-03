@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (drawnMeasuresOnPageLine, voicesBodiesOnPageLine) => {
+export default function (drawnMeasuresOnPageLine, voicesBodiesOnPageLine) {
   for (let measureIndexOnPageLine = 0; measureIndexOnPageLine < drawnMeasuresOnPageLine.length; measureIndexOnPageLine++) {
     if (voicesBodiesOnPageLine[measureIndexOnPageLine] && !voicesBodiesOnPageLine[measureIndexOnPageLine].isEmpty) {
       drawnMeasuresOnPageLine[measureIndexOnPageLine].top = Math.min(drawnMeasuresOnPageLine[measureIndexOnPageLine].top, voicesBodiesOnPageLine[measureIndexOnPageLine].top)

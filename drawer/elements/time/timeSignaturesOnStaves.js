@@ -1,11 +1,11 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const timeSignature = require('./timeSignature')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import timeSignature from './timeSignature.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (numberOfStaves, numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore, isFirstMeasureOnPageLine, measureIndexInGeneral, timeSignatureForEachLineId) => {
+export default function (numberOfStaves, numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore, isFirstMeasureOnPageLine, measureIndexInGeneral, timeSignatureForEachLineId) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaves, intervalBetweenStaveLines } = styles
     const timeSignaturesOnStaves = []

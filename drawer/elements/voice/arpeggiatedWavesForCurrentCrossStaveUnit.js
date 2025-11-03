@@ -1,14 +1,14 @@
 'use strict'
 
-const sortedNotesForSingleUnitConsideringStaves = require('./../unit/sortedNotesForSingleUnitConsideringStaves')
-const path = require('./../basic/path')
-const wave = require('./../basic/wave')
-const group = require('./../basic/group')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import sortedNotesForSingleUnitConsideringStaves from './../unit/sortedNotesForSingleUnitConsideringStaves.js'
+import path from './../basic/path.js'
+import wave from './../basic/wave.js'
+import group from './../basic/group.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnOnlyNoteLettersBeforeApreggiatedWavesForCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, numberOfStaveLines, containsDrawnCrossStaveElementsBesideCrossStaveUnits) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnOnlyNoteLettersBeforeApreggiatedWavesForCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, numberOfStaveLines, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { fontColor, intervalBetweenStaveLines, arpeggioWavePeriod, arpeggioWaveWithArrowPeriod, spaceAfterBreathMark, spaceAfterOnlyLettersForArpeggiatedWaves, graceElementsScaleFactor } = styles
   const drawnWaves = []
   let currentWaveParams

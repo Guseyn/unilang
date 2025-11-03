@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (array) => {
+export default function (array) {
   return array.sort((first, second) => {
     if (!first.isMidMeasureClef) {
       return +1

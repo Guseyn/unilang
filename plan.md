@@ -1,12 +1,14 @@
 - [ ] Migrate tests and make them work (rewrite in procedural style)
   - [x] visual
   - [x] audio
-- [ ] Migrate to ESM
+- [x] Migrate to ESM
+- [ ] extract deps to directories, and get rid of all third party deps in package.json
 - [ ] Dev Server
 - [ ] Refactor language parser to make it more flexible in terms of outputs
-- [ ] Make fonts as flexible addons and part of a language
+- [x] Make fonts as flexible addons and part of a language
 - [ ] Add a page where the music font can be generated
 - [ ] Add a command that generate music js font file
+- [ ] Write a very cute api
 - [ ] CLI for commands
   - [ ] TXT -> SVG
   - [ ] TXT -> HIGHLIGHTED HTML
@@ -21,7 +23,7 @@
   - [ ] Language Syntax and Sematics
   - [ ] Generating/using/adding  Fonts for different parts
   - [ ] Add output format into parser, and how it generally works
-  - [ ] Magenta sound fonts and how to generate them
+  - [ ] Magenta sound fonts and how to generate them for midi player
   - [ ] Run Tests
   - [ ] Shoutouts
 

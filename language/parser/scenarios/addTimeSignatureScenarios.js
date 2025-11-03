@@ -1,10 +1,10 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['time signature'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

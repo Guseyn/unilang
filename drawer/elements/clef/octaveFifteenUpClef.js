@@ -1,7 +1,7 @@
 'use strict'
 
-const trebleLikeClef = require('./trebleLikeClef')
+import trebleLikeClef from './trebleLikeClef.js'
 
-module.exports = () => {
+export default function () {
   return trebleLikeClef('trebleOctaveFifteenUp')
 }

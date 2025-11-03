@@ -2,8 +2,8 @@
 // Note that some fonts use the GPOS OpenType layout table to specify kerning.
 // https://www.microsoft.com/typography/OTSPEC/kern.htm
 
-const check = require('./../check')
-const parse = require('./../parse')
+import check from './../check.js'
+import { Parser } from './../parse.js'
 
 function parseWindowsKernTable(p) {
   const pairs = {}
@@ -55,7 +55,7 @@ function parseMacKernTable(p) {
 
 // Parse the `kern` table which contains kerning pairs.
 function parseKernTable(data, start) {
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   const tableVersion = p.parseUShort()
   if (tableVersion === 0) {
     return parseWindowsKernTable(p)
@@ -66,4 +66,4 @@ function parseKernTable(data, start) {
   }
 }
 
-module.exports = { parse: parseKernTable }
+export default { parse: parseKernTable }

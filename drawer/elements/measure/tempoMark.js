@@ -1,11 +1,11 @@
 'use strict'
 
-const text = require('./../basic/text')
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import text from './../basic/text.js'
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
 const drawnTempoElementsByTheirTextValue = (tempoTextValueParts, measureIndex) => {
   return (styles, leftOffset, topOffset) => {
@@ -84,7 +84,7 @@ const drawnTempoElementsByTheirTextValue = (tempoTextValueParts, measureIndex) =
   }
 }
 
-module.exports = (measure, measureIndex, voicesBody, styles) => {
+export default function (measure, measureIndex, voicesBody, styles) {
   const { intervalBetweenStaveLines, tempoMarkYOffset } = styles
   const drawnTempoMarkElements = drawnTempoElementsByTheirTextValue(measure.tempoMark.textValueParts, measureIndex)(
     styles,

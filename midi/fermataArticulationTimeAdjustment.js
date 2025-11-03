@@ -2,7 +2,7 @@
 
 const FERMATA_TIME_IN_SECONDS = 2
 
-module.exports = (note, pointsOfTimeWhenFermataArticulationIsApplied, fermataDurationFromMidiSettings) => {
+export default function (note, pointsOfTimeWhenFermataArticulationIsApplied, fermataDurationFromMidiSettings) {
   let timeAdjustment = 0
   for (let timeIndex = 0; timeIndex < pointsOfTimeWhenFermataArticulationIsApplied.length; timeIndex++) {
     if ((note.time - pointsOfTimeWhenFermataArticulationIsApplied[timeIndex]) > 0.00001) {

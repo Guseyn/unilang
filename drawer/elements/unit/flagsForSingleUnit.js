@@ -1,10 +1,10 @@
 'use strict'
 
-const noteTopFlag = require('./../note/noteTopFlag')
-const noteBottomFlag = require('./../note/noteBottomFlag')
-const calculatedNumberOfFlagsBySingleUnitDuration = require('./calculatedNumberOfFlagsBySingleUnitDuration')
+import noteTopFlag from './../note/noteTopFlag.js'
+import noteBottomFlag from './../note/noteBottomFlag.js'
+import calculatedNumberOfFlagsBySingleUnitDuration from './calculatedNumberOfFlagsBySingleUnitDuration.js'
 
-module.exports = (styles, unitDuration, stemWithCoordinates, stemDirection, isGrace) => {
+export default function (styles, unitDuration, stemWithCoordinates, stemDirection, isGrace) {
   const { stemWidth, graceElementsScaleFactor } = styles
   const numberOfFlagsByNoteLength = calculatedNumberOfFlagsBySingleUnitDuration(unitDuration)
   let drawnWave

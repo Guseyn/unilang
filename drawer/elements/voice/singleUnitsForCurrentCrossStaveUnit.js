@@ -1,10 +1,10 @@
 'use strict'
 
-const sortedNotesForSingleUnitConsideringStaves = require('./../unit/sortedNotesForSingleUnitConsideringStaves')
-const singleUnit = require('./../unit/singleUnit')
-const actualDurationOfCurrentSingleUnit = require('./actualDurationOfCurrentSingleUnit')
-const numberOfSimileStrokesByNumberOfUnitsAndBeats = require('./../simile/numberOfSimileStrokesByNumberOfUnitsAndBeats')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import sortedNotesForSingleUnitConsideringStaves from './../unit/sortedNotesForSingleUnitConsideringStaves.js'
+import singleUnit from './../unit/singleUnit.js'
+import actualDurationOfCurrentSingleUnit from './actualDurationOfCurrentSingleUnit.js'
+import numberOfSimileStrokesByNumberOfUnitsAndBeats from './../simile/numberOfSimileStrokesByNumberOfUnitsAndBeats.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
 const beamKey = (staveIndex, voiceIndex, isGrace) => {
   return `${staveIndex}-${voiceIndex}-${isGrace}`
@@ -125,7 +125,7 @@ const singleUnitParams = (params) => {
   }
 }
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, numberOfStaves, numberOfStaveLines, pageLineNumber, measureIndexInGeneral, measureIndexOnPageLine, crossStaveUnitCount, drawnKeysForCrossStaveUnits, drawnSingleUnitsInVoices, beamingStatusesForEachVoiceOnPageLine, countersForEachVoice, durationsAccumulatorsForEachVoice, similesInformationByStaveAndVoiceIndexes, affectingTupletValuesByStaveAndVoiceIndexes, isOnLastMeasureOfPageLine, styles, topOffsetsForEachStave) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, numberOfStaves, numberOfStaveLines, pageLineNumber, measureIndexInGeneral, measureIndexOnPageLine, crossStaveUnitCount, drawnKeysForCrossStaveUnits, drawnSingleUnitsInVoices, beamingStatusesForEachVoiceOnPageLine, countersForEachVoice, durationsAccumulatorsForEachVoice, similesInformationByStaveAndVoiceIndexes, affectingTupletValuesByStaveAndVoiceIndexes, isOnLastMeasureOfPageLine, styles, topOffsetsForEachStave) {
   const drawnSingleUnitsForCurrentCrossStaveUnitByStaves = []
   const drawnSingleUnitsForCurrentCrossStaveUnit = []
   for (let staveIndex = 0; staveIndex < numberOfStaves; staveIndex++) {

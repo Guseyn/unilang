@@ -1,9 +1,9 @@
 // The `name` naming table.
 // https://www.microsoft.com/typography/OTSPEC/name.htm
 
-const { decode, encode } = require('./../types')
-const parse = require('./../parse')
-const table = require('./../table')
+import {  decode, encode  } from './../types.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 // NameIDs for the name table.
 const nameTableNames = [
@@ -628,7 +628,7 @@ function getEncoding(platformID, encodingID, languageID) {
 // ltag is the content of the `ltag' table, such as ['en', 'zh-Hans', 'de-CH-1904'].
 function parseNameTable(data, start, ltag) {
   const name = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   // const format = p.parseUShort()
   const count = p.parseUShort()
   const stringOffset = p.offset + p.parseUShort()
@@ -829,4 +829,4 @@ function makeNameTable(names, ltag) {
   return t
 }
 
-module.exports = { parse: parseNameTable, make: makeNameTable }
+export default { parse: parseNameTable, make: makeNameTable }

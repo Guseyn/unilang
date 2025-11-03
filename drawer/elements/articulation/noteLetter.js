@@ -1,14 +1,14 @@
 'use strict'
 
-const text = require('./../basic/text')
-const pathWithOutline = require('./../basic/pathWithOutline')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const group = require('./../basic/group')
+import text from './../basic/text.js'
+import pathWithOutline from './../basic/pathWithOutline.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import group from './../basic/group.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { noteLetterArticulationFontOptions, noteLetterArticulationOffsetY, noteLetters } = styles
   const { direction, textValue, fontColor } = currentArticulationParams
   const shouldBeAboveOrUnderStemLine = articulationShouldBeAboveOrUnderStemLine(drawnSingleUnit, direction)

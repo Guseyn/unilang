@@ -1,13 +1,12 @@
 'use strict'
 
-const opentype = require('./../../lib/opentype/opentype')
-const d = require('./../../lib/opentype/d')
-let fontSourceForErrorCase = opentype.loadSyncIfOnlyItIsNodeJSEnv('./drawer/font/text/NotoSans-Regular.ttf')
-const bboxForPath = require('./bboxForPath')
+import opentype from './../../lib/opentype/opentype.js'
+import d from './../../lib/opentype/d.js'
+import bboxForPath from './bboxForPath.js'
 
-module.exports = (text, fontOptions) => {
+export default function (text, fontOptions) {
   return (styles, leftOffset, topOffset) => {
-    fontSourceForErrorCase = opentype.accessPreloadedSourceInBrowser('NotoSans-Regular.ttf', 'fontSourcesForRenderingSVG') || fontSourceForErrorCase
+    const fontSourceForErrorCase = styles.textFontSource
     const optionsForTextPathD = {
       x: leftOffset,
       y: topOffset,

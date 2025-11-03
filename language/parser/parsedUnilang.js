@@ -1,12 +1,12 @@
 'use strict'
 
-const parserScenarios = require('./scenarios/parserScenarios')
-const mapWithScenariosAndScenariosWhereItIsRequired = require('./scenarios/mapWithScenariosAndScenariosWhereItIsRequired')
+import parserScenarios from './scenarios/parserScenarios.js'
+import mapWithScenariosAndScenariosWhereItIsRequired from './scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
 const constructedParserScenarios = parserScenarios()
 const constructedMapWithScenariosAndScenariosWhereItIsRequired = mapWithScenariosAndScenariosWhereItIsRequired(constructedParserScenarios)
-const withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem = require('./scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem')
-const tokenValuesFromTokens = require('./scenarios/token/tokenValuesFromTokens')
-const joinedTokensWithRealDelimiters = require('./scenarios/token/joinedTokensWithRealDelimiters')
+import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from './scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
+import tokenValuesFromTokens from './scenarios/token/tokenValuesFromTokens.js'
+import joinedTokensWithRealDelimiters from './scenarios/token/joinedTokensWithRealDelimiters.js'
 
 const NEW_LINE_REGEXP = /[\r\n|\r|\n]/
 const SPACE_REGEXP = /[\s]/
@@ -118,12 +118,17 @@ const runParserScenarios = (parserScenarios, typeOfScenarios, numberOfActivatedS
   }
 }
 
-module.exports = (
+export default function (
   unitext,
   progressionOfCommandsFromScenarios = [],
   applyHighlighting = true,
-  applyOnlyHighlightingWithoutRefIds = true
-) => {
+  applyOnlyHighlightingWithoutRefIds = true,
+  fonts = {
+    'chord-letters': ['gentium plus', 'gothic a1'],
+    'music': ['bravura', 'leland'],
+    'text': ['noto-sans', 'noto-serif']
+  }
+) {
   const mapOfCharIndexesWithProgressionOfCommandsFromScenarios = {}
   const numberOfActivatedScenarios = {
     value: 0
@@ -131,6 +136,7 @@ module.exports = (
   const queueOfActionsOnProgressionOfCommandsChange = []
   const parserState = {
     pageSchema: {},
+    fonts,
     highlightsHtmlBuffer: [],
     applyHighlighting,
     applyOnlyHighlightingWithoutRefIds,

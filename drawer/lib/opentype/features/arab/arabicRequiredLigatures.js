@@ -2,7 +2,9 @@
  * Apply Arabic required ligatures feature to a range of tokens
  */
 
-const { ContextParams } = require('./../../tokenizer')
+import tokenizer from './../../tokenizer.js'
+
+const {  ContextParams  } = tokenizer
 
 /**
  * Apply Arabic required ligatures to a context range
@@ -47,4 +49,4 @@ function arabicRequiredLigatures(range) {
   }
 }
 
-module.exports = { arabicRequiredLigatures }
+export default { arabicRequiredLigatures }

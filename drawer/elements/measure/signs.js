@@ -1,9 +1,9 @@
 'use strict'
 
-const sign = require('./sign')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import sign from './sign.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, styles) {
   const drawnSigns = []
   drawnMeasuresOnPageLine.forEach(measure => {
     if (measure.sign) {

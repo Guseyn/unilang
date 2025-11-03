@@ -1,7 +1,7 @@
 'use strict'
 
-const text = require('./../basic/text')
-const group = require('./../basic/group')
+import text from './../basic/text.js'
+import group from './../basic/group.js'
 // C♯♭oøΔ
 const chordLetterSigns = {
   'sharp': '♯',
@@ -48,7 +48,7 @@ const parsedChordLetter = (chordLetterTextValue) => {
   }
 }
 
-module.exports = (chordLetterTextValue) => {
+export default function (chordLetterTextValue) {
   return (styles, leftOffset, topOffset) => {
     const { chordLetterTextFontOptions, chordLetterSupTextFontOptions, chordLetterSupTextLeftOffset } = styles
     const chordLetter = parsedChordLetter(chordLetterTextValue)

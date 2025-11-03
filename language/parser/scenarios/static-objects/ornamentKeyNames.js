@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./ornamentKeys'))
+import module from './ornamentKeys.js'
+
+export default Object.keys(module)

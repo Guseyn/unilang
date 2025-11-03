@@ -1,15 +1,15 @@
 'use strict'
 
-const simile = require('./simile')
-const text = require('./../basic/text')
-const polyline = require('./../basic/polyline')
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const stavesPiece = require('./../stave/stavesPiece')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import simile from './simile.js'
+import text from './../basic/text.js'
+import polyline from './../basic/polyline.js'
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import stavesPiece from './../stave/stavesPiece.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (numberOfStaves, numberOfStaveLines, simileYCorrection, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral, previousMeasure, measureBeforePreviousMeasure) => {
+export default function (numberOfStaves, numberOfStaveLines, simileYCorrection, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral, previousMeasure, measureBeforePreviousMeasure) {
   return (styles, leftOffset, topOffset) => {
     const { fontColor, intervalBetweenStaves, intervalBetweenStaveLines, simileCountNumberFontOptions, similePreviousMeasureTextTopMarginOffset, simileTwoPreviousMeasuresStaveWidth, barLineWidth } = styles
     const components = []

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'title': 'title',
   'subtitle': 'subtitle',
   'author': 'subtitle',

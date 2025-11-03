@@ -141,4 +141,4 @@ Matrix.prototype.calc = function (x, y, isRelative) {
 }
 
 
-module.exports = Matrix
+export default Matrix

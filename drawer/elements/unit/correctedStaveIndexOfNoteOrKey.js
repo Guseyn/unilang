@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (noteOrKey) => {
+export default function (noteOrKey) {
   let staveIndex = noteOrKey.staveIndex
   if (noteOrKey.stave === 'prev') {
     staveIndex -= 1

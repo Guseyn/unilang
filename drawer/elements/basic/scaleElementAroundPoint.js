@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (element, scaleX = 1, scaleY = scaleX, customPoint) => {
+export default function (element, scaleX = 1, scaleY = scaleX, customPoint) {
   if (element) {
     const point = customPoint || {
       x: (element.right + element.left) / 2,

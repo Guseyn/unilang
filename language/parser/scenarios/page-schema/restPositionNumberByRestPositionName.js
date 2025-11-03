@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (restPositionName) => {
+export default function (restPositionName) {
   if (restPositionName === 'top') {
     return 0.5
   }

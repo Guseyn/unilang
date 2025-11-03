@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (element, point, angle, newCoordinates = null) => {
+export default function (element, point, angle, newCoordinates = null) {
   if (element) {
     element.transformations.push(
       {

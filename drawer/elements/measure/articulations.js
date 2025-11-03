@@ -1,37 +1,55 @@
 'use strict'
 
+import staccato from './../articulation/staccato.js'
+import spiccato from './../articulation/spiccato.js'
+import accent from './../articulation/accent.js'
+import tenuto from './../articulation/tenuto.js'
+import marcato from './../articulation/marcato.js'
+import fermata from './../articulation/fermata.js'
+import leftHandPizzicato from './../articulation/leftHandPizzicato.js'
+import snapPizzicato from './../articulation/snapPizzicato.js'
+import naturalHarmonic from './../articulation/naturalHarmonic.js'
+import upBow from './../articulation/upBow.js'
+import downBow from './../articulation/downBow.js'
+import turn from './../articulation/turn.js'
+import trill from './../articulation/trill.js'
+import mordent from './../articulation/mordent.js'
+import noteLetter from './../articulation/noteLetter.js'
+import dynamicMark from './../articulation/dynamicMark.js'
+import octaveSign from './../articulation/octaveSign.js'
+
 const articulations = {
-  staccato: require('./../articulation/staccato'),
-  spiccato: require('./../articulation/spiccato'),
-  accent: require('./../articulation/accent'),
-  tenuto: require('./../articulation/tenuto'),
-  marcato: require('./../articulation/marcato'),
-  fermata: require('./../articulation/fermata'),
-  leftHandPizzicato: require('./../articulation/leftHandPizzicato'),
-  snapPizzicato: require('./../articulation/snapPizzicato'),
-  naturalHarmonic: require('./../articulation/naturalHarmonic'),
-  upBow: require('./../articulation/upBow'),
-  downBow: require('./../articulation/downBow'),
-  turn: require('./../articulation/turn'),
-  trill: require('./../articulation/trill'),
-  mordent: require('./../articulation/mordent'),
-  noteLetter: require('./../articulation/noteLetter'),
-  dynamicMark: require('./../articulation/dynamicMark'),
-  octaveSign: require('./../articulation/octaveSign')
+  staccato,
+  spiccato,
+  accent,
+  tenuto,
+  marcato,
+  fermata,
+  leftHandPizzicato,
+  snapPizzicato,
+  naturalHarmonic,
+  upBow,
+  downBow,
+  turn,
+  trill,
+  mordent,
+  noteLetter,
+  dynamicMark,
+  octaveSign
 }
 
 const articulationsThatNeedOutline = [ 'staccato', 'tenuto', 'naturalHarmonic', 'snapPizzicato', 'leftHandPizzicato', 'spiccato' ]
 
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const topOfStaveForFirstNoteInCurrentSingleUnit = require('./../stave/topOfStaveForFirstNoteInCurrentSingleUnit')
-const topOfStaveForLastNoteInCurrentSingleUnit = require('./../stave/topOfStaveForLastNoteInCurrentSingleUnit')
-const articulationIsAttachedToUnit = require('./../articulation/articulationIsAttachedToUnit')
-const outlineForArticulation = require('./../articulation/outlineForArticulation')
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import topOfStaveForFirstNoteInCurrentSingleUnit from './../stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
+import topOfStaveForLastNoteInCurrentSingleUnit from './../stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
+import articulationIsAttachedToUnit from './../articulation/articulationIsAttachedToUnit.js'
+import outlineForArticulation from './../articulation/outlineForArticulation.js'
 
-module.exports = (drawnVoicesOnPageLine, drawOnlyArticulationsAttachedToUnit, drawnOnlyArticulationsBelowOrAboveStave, dontDrawDynamics, drawOnlyDynamics, styles) => {
+export default function (drawnVoicesOnPageLine, drawOnlyArticulationsAttachedToUnit, drawnOnlyArticulationsBelowOrAboveStave, dontDrawDynamics, drawOnlyDynamics, styles) {
   const { intervalBetweenStaveLines, graceElementsScaleFactor } = styles
   const drawnArticulations = []
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

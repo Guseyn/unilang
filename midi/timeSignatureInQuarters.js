@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (timeSignatureParams) => {
+export default function (timeSignatureParams) {
   if (timeSignatureParams) {
     const numerator = timeSignatureParams.numerator * 1 || 4
     const denominator = timeSignatureParams.denominator * 1 || 4

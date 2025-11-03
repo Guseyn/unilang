@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'background color': 'backgroundColor',
   'background colour': 'backgroundColor',
   'bg color': 'backgroundColor',

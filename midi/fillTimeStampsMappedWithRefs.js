@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (note, startTime, endTime, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) => {
+export default function (note, startTime, endTime, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) {
   const noteTimeOn = startTime.toFixed(4) * 1
   let noteRefId
   if (note.isRepetition) {

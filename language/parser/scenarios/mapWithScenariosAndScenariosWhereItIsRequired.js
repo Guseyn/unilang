@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (parserScenarios) => {
+export default function (parserScenarios) {
   const resultMap = {
     common: []
   }

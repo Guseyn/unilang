@@ -1,12 +1,12 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll = require('./page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastStaveParams = require('./page-schema/lastStaveParams')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from './page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastStaveParams from './page-schema/lastStaveParams.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['voice'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

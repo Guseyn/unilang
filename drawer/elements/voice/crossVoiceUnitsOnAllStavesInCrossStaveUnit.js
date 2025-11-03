@@ -1,12 +1,12 @@
 'use strict'
 
-const group = require('./../basic/group')
-const placeSingleUnitsInCrossStaveUnitAmongVirtualVerticalsThatDontCollide = require('./placeSingleUnitsInCrossStaveUnitAmongVirtualVerticalsThatDontCollide')
-const moveSingleUnitsInCrossStaveUnitAccordingToVerticalsTheyBelongSoTheyDontCollideAndAlsoCentralizeAllSingleUnitsByTheirUnitBodiesInEachVerticalIfThereAreNoKeysBefore = require('./moveSingleUnitsInCrossStaveUnitAccordingToVerticalsTheyBelongSoTheyDontCollideAndAlsoCentralizeAllSingleUnitsByTheirUnitBodiesInEachVerticalIfThereAreNoKeysBefore')
-const moveElement = require('./../basic/moveElement')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
+import group from './../basic/group.js'
+import placeSingleUnitsInCrossStaveUnitAmongVirtualVerticalsThatDontCollide from './placeSingleUnitsInCrossStaveUnitAmongVirtualVerticalsThatDontCollide.js'
+import moveSingleUnitsInCrossStaveUnitAccordingToVerticalsTheyBelongSoTheyDontCollideAndAlsoCentralizeAllSingleUnitsByTheirUnitBodiesInEachVerticalIfThereAreNoKeysBefore from './moveSingleUnitsInCrossStaveUnitAccordingToVerticalsTheyBelongSoTheyDontCollideAndAlsoCentralizeAllSingleUnitsByTheirUnitBodiesInEachVerticalIfThereAreNoKeysBefore.js'
+import moveElement from './../basic/moveElement.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
 
-module.exports = (drawnSingleUnitsForCurrentCrossStaveUnit, stavesParams, containsCollidedVoices, drawnKeysForCurrentCrossStaveUnit, drawnArpeggiatedWavesForCurrentCrossStaveUnit, isCurrentCrossStaveUnitGrace, topOffsetsForEachStave, numberOfStaveLines, styles) => {
+export default function (drawnSingleUnitsForCurrentCrossStaveUnit, stavesParams, containsCollidedVoices, drawnKeysForCurrentCrossStaveUnit, drawnArpeggiatedWavesForCurrentCrossStaveUnit, isCurrentCrossStaveUnitGrace, topOffsetsForEachStave, numberOfStaveLines, styles) {
   const drawnCrossVoiceUnitsOnAllStaves = []
   const verticalsInCrossStaveUnit = []
   const areasWithAdditionalStaveLinesForNotesInTheFirstVertical = []

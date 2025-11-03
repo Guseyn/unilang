@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = [
+export default [
   'g major to c major|g major to a minor|e minor to c major|e minor to a minor',
   'd major to c major|d major to a minor|b minor to c major|b minor to a minor',
   'a major to c major|a major to a minor|f sharp minor to c major|f sharp minor to a minor',

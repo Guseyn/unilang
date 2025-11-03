@@ -2,7 +2,7 @@
 
 const MIDI_CC_FACTOR = 127
 
-module.exports = (unilangNote, midiNote, trackForNote, slurMarksMappedWithTracks, midiNoteShouldBeAdjustedWithStartSlur, midiNoteShouldBeAdjustedWithFinishSlur) => {
+export default function (unilangNote, midiNote, trackForNote, slurMarksMappedWithTracks, midiNoteShouldBeAdjustedWithStartSlur, midiNoteShouldBeAdjustedWithFinishSlur) {
   if (unilangNote.noteIndex !== 0) {
     return
   }

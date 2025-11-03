@@ -1,6 +1,6 @@
 'use strict'
 
-const actualDurationConsideringDotsAndTremolos = require('./actualDurationConsideringDotsAndTremolos')
+import actualDurationConsideringDotsAndTremolos from './actualDurationConsideringDotsAndTremolos.js'
 
 const defaultTupletRatios = {
   '1': 1,
@@ -13,7 +13,7 @@ const defaultTupletRatios = {
   '12': 8
 }
 
-module.exports = (duration, numberOfDots, tupletValues, tremoloDurationFactor) => {
+export default function (duration, numberOfDots, tupletValues, tremoloDurationFactor) {
   let tupletRatio = 1 / 1
   for (let index = 0; index < tupletValues.length; index++) {
     const tupletValue = tupletValues[index]

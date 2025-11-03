@@ -1,9 +1,9 @@
 'use strict'
 
-const instrumentForCurrentStaveInMidiFormat = require('./instrumentForCurrentStaveInMidiFormat')
-const instrumentTitleInMidiFormatByInstrumentOriginalName = require('./instrumentTitleInMidiFormatByInstrumentOriginalName')
-const isChannelOccupied = require('./isChannelOccupied')
-const noteHasSomeArticulations = require('./noteHasSomeArticulations')
+import instrumentForCurrentStaveInMidiFormat from './instrumentForCurrentStaveInMidiFormat.js'
+import instrumentTitleInMidiFormatByInstrumentOriginalName from './instrumentTitleInMidiFormatByInstrumentOriginalName.js'
+import isChannelOccupied from './isChannelOccupied.js'
+import noteHasSomeArticulations from './noteHasSomeArticulations.js'
 
 const PIZZICATO_ARTICULATIONS = [ 'leftHandPizzicato', 'snapPizzicato', 'naturalHarmonic' ]
 
@@ -11,7 +11,7 @@ const instrumentCanBeReassigned = (note) => {
   return !noteHasSomeArticulations(note, PIZZICATO_ARTICULATIONS) && !note.isGhost
 }
 
-module.exports = (midi, note, midiSettings, instrumentTitleParamsForCurrentMeasure, tracksForEachInstrumentOnEachStaveInEachVoice, instrumentsMappedWithChannels, currentInstrumentsForEachStaveOnEachVoice) => {
+export default function (midi, note, midiSettings, instrumentTitleParamsForCurrentMeasure, tracksForEachInstrumentOnEachStaveInEachVoice, instrumentsMappedWithChannels, currentInstrumentsForEachStaveOnEachVoice) {
   const staveVoiceKey = `${note.staveIndexConsideringStavePosition}-${note.voiceIndex}`
   const defaultInstrumentInMidiFormat = 0
   const instrumentMidiNumberByParams = instrumentForCurrentStaveInMidiFormat(instrumentTitleParamsForCurrentMeasure, note)

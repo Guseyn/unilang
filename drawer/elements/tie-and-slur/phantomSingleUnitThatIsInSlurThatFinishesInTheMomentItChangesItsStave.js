@@ -1,8 +1,8 @@
 'use strict'
 
-const moveSingleUnit = require('./../unit/moveSingleUnit')
+import moveSingleUnit from './../unit/moveSingleUnit.js'
 
-module.exports = (singleUnit, slurMarkKey, fromStaveIndex, toStaveIndex, styles) => {
+export default function (singleUnit, slurMarkKey, fromStaveIndex, toStaveIndex, styles) {
   const singleUnitClone = JSON.parse(JSON.stringify(singleUnit))
   singleUnitClone.phantom = true
   const isSlurGoesStaveUp = toStaveIndex < fromStaveIndex

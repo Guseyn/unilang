@@ -1,9 +1,9 @@
 'use strict'
 
-const actualDurationConsideringDotsAndTremolos = require('./actualDurationConsideringDotsAndTremolos')
-const actualDurationConsideringDotsAndTupletsAndTremolos = require('./actualDurationConsideringDotsAndTupletsAndTremolos')
+import actualDurationConsideringDotsAndTremolos from './actualDurationConsideringDotsAndTremolos.js'
+import actualDurationConsideringDotsAndTupletsAndTremolos from './actualDurationConsideringDotsAndTupletsAndTremolos.js'
 
-module.exports = (selectedSingleUnitParams, affectingTupletValuesByStaveAndVoiceIndexes, similesInformationByStaveAndVoiceIndexes, generatedSimileKey, staveIndex, voiceIndex) => {
+export default function (selectedSingleUnitParams, affectingTupletValuesByStaveAndVoiceIndexes, similesInformationByStaveAndVoiceIndexes, generatedSimileKey, staveIndex, voiceIndex) {
   if (selectedSingleUnitParams.isGrace) {
     if (selectedSingleUnitParams.simileCountDown === 1) {
       delete similesInformationByStaveAndVoiceIndexes[generatedSimileKey]

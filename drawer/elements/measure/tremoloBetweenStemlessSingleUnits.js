@@ -1,8 +1,8 @@
 'use strict'
 
-const path = require('./../basic/path')
+import path from './../basic/path.js'
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const { yDistanceBetweenSingleTremoloStrokes, tremoloStrokeOptions, beamWidth, noteSquareStemStrokeOptions, negativeXOffsetOfTremoloBeams, negativeXOffsetOfTremoloBeamsForUnitWithNotesOnAdditionalStaveLines } = styles
   const drawnTremolos = []
   const stemWidth = noteSquareStemStrokeOptions.width

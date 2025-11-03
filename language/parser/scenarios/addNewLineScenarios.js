@@ -1,10 +1,10 @@
 'use strict'
 
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const regexps = require('./static-objects/regexps')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import regexps from './static-objects/regexps.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['new'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

@@ -1,10 +1,10 @@
 'use strict'
 
-const staveIndexByTokens = require('./token/staveIndexByTokens')
-const isStaveIndex = require('./token/isStaveIndex')
-const regexps = require('./static-objects/regexps')
+import staveIndexByTokens from './token/staveIndexByTokens.js'
+import isStaveIndex from './token/isStaveIndex.js'
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['lyrics position'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

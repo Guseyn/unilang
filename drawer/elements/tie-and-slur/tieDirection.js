@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (leftTieJunctionPoint, rightTieJunctionPoint) => {
+export default function (leftTieJunctionPoint, rightTieJunctionPoint) {
   if (leftTieJunctionPoint && rightTieJunctionPoint) {
     const customDirection = leftTieJunctionPoint.customDirection
     const leftNumberOfNotesPositions = leftTieJunctionPoint.singleUnit.sortedNotes.length

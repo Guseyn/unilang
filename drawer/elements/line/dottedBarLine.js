@@ -1,11 +1,11 @@
 'use strict'
 
-const stavesPiece = require('./../stave/stavesPiece')
-const polyline = require('./../basic/polyline')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
+import stavesPiece from './../stave/stavesPiece.js'
+import polyline from './../basic/polyline.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
 
-module.exports = (numberOfStaves, maxNumberOfStavesInThisAndNextMeasures, numberOfStaveLines, noSpaceNeeded = false) => {
+export default function (numberOfStaves, maxNumberOfStavesInThisAndNextMeasures, numberOfStaveLines, noSpaceNeeded = false) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {
     const { fontColor, stavePieceWidthForDottedBarLine, intervalBetweenDotsInDottedBarLine, dotLengthInDottedBarLine, dottedBarLineWidth } = styles
     const stavePieceWidth = (noSpaceNeeded ? 0 : stavePieceWidthForDottedBarLine) + dottedBarLineWidth

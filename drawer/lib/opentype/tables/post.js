@@ -1,14 +1,14 @@
 // The `post` table stores additional PostScript information, such as glyph names.
 // https://www.microsoft.com/typography/OTSPEC/post.htm
 
-const { standardNames } = require('./../encoding')
-const parse = require('./../parse')
-const table = require('./../table')
+import {  standardNames  } from './../encoding.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 // Parse the PostScript `post` table
 function parsePostTable(data, start) {
   const post = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   post.version = p.parseVersion()
   post.italicAngle = p.parseFixed()
   post.underlinePosition = p.parseShort()
@@ -64,4 +64,4 @@ function makePostTable() {
   ])
 }
 
-module.exports = { parse: parsePostTable, make: makePostTable }
+export default { parse: parsePostTable, make: makePostTable }

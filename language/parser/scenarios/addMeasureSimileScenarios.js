@@ -1,11 +1,11 @@
 'use strict'
 
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const regexps = require('./static-objects/regexps')
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['simile of previous measure'] = {
     startsOnNewLine: true,
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,

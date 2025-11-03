@@ -1,27 +1,27 @@
 'use strict'
 
-const sortedNotesForSingleUnitConsideringStaves = require('./sortedNotesForSingleUnitConsideringStaves')
-const singleUnitBody = require('./singleUnitBody')
-const singleUnitDots = require('./singleUnitDots')
-const singleUnitWithParentheses = require('./singleUnitWithParentheses')
-const areAnyWholeTonesInSingleUnit = require('./areAnyWholeTonesInSingleUnit')
-const areAnyNotesOnAdditionalStaveLinesInSingleUnit = require('./areAnyNotesOnAdditionalStaveLinesInSingleUnit')
-const calculatedNotesForIndentedPartOfSingleUnit = require('./calculatedNotesForIndentedPartOfSingleUnit')
-const additionalOffsetForIndentedPartOfUnit = require('./additionalOffsetForIndentedPartOfUnit')
-const stemForSingleUnit = require('./stemForSingleUnit')
-const flagsForSingleUnit = require('./flagsForSingleUnit')
-const noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines = require('./noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines')
-const noteOnEdgeInSingleUnitWithFlagsIsOnStaveLine = require('./noteOnEdgeInSingleUnitWithFlagsIsOnStaveLine')
-const rest = require('./../rest/rest')
-const topOffsetOfElementConsideringItsStave = require('./../stave/topOffsetOfElementConsideringItsStave')
-const simile = require('./../simile/simile')
-const calculatedNumberOfTremoloStrokes = require('./calculatedNumberOfTremoloStrokes')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const group = require('./../basic/group')
+import sortedNotesForSingleUnitConsideringStaves from './sortedNotesForSingleUnitConsideringStaves.js'
+import singleUnitBody from './singleUnitBody.js'
+import singleUnitDots from './singleUnitDots.js'
+import singleUnitWithParentheses from './singleUnitWithParentheses.js'
+import areAnyWholeTonesInSingleUnit from './areAnyWholeTonesInSingleUnit.js'
+import areAnyNotesOnAdditionalStaveLinesInSingleUnit from './areAnyNotesOnAdditionalStaveLinesInSingleUnit.js'
+import calculatedNotesForIndentedPartOfSingleUnit from './calculatedNotesForIndentedPartOfSingleUnit.js'
+import additionalOffsetForIndentedPartOfUnit from './additionalOffsetForIndentedPartOfUnit.js'
+import stemForSingleUnit from './stemForSingleUnit.js'
+import flagsForSingleUnit from './flagsForSingleUnit.js'
+import noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines from './noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines.js'
+import noteOnEdgeInSingleUnitWithFlagsIsOnStaveLine from './noteOnEdgeInSingleUnitWithFlagsIsOnStaveLine.js'
+import rest from './../rest/rest.js'
+import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
+import simile from './../simile/simile.js'
+import calculatedNumberOfTremoloStrokes from './calculatedNumberOfTremoloStrokes.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import group from './../basic/group.js'
 
-module.exports = ({
+export default function ({
   pageLineNumber,
   numberOfStaveLines,
   measureIndexOnPageLine,
@@ -75,7 +75,7 @@ module.exports = ({
   isLastSingleUnitInVoiceOnPageLine,
   thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsMoreThanMaxNotePositionNumberInCurrentSingleUnitOnTheSameStave,
   thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsLessThanMinNotePositionNumberInCurrentSingleUnitOnTheSameStave
-}) => {
+}) {
   return (styles, leftOffset, topOffset) => {
     const { graceElementsScaleFactor } = styles
 

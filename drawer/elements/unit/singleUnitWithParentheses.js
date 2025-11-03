@@ -1,13 +1,13 @@
 'use strict'
 
-const topOffsetOfElementConsideringItsStave = require('./../stave/topOffsetOfElementConsideringItsStave')
-const parenthesesSpline = require('./../bracket/parenthesesSpline')
-const moveSingleUnit = require('./../unit/moveSingleUnit')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
+import parenthesesSpline from './../bracket/parenthesesSpline.js'
+import moveSingleUnit from './../unit/moveSingleUnit.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (singleUnit, additionalInformation, numberOfStaveLines, parentheses, topOffset, styles) => {
+export default function (singleUnit, additionalInformation, numberOfStaveLines, parentheses, topOffset, styles) {
   const { intervalBetweenStaveLines, offsetForNoteParenthesesFromBothSides, offsetForNoteParenthesesFromRightSideOfWave, offsetForNoteParenthesesThatAreOnAdditionalLinesFromBothSides, parenthesesYCorrection } = styles
   const drawnParentheses = []
   const drawnOpenBrackets = []

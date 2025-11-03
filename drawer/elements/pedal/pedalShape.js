@@ -1,19 +1,19 @@
 'use strict'
 
-const text = require('./../basic/text')
-const releasePedalShape = require('./../pedal/releasePedalShape')
-const path = require('./../basic/path')
-const line = require('./../basic/line')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementBeforePointWithInterval = require('./../basic/moveElementBeforePointWithInterval')
-const moveElementAfterPointWithInterval = require('./../basic/moveElementAfterPointWithInterval')
-const moveElementInTheCenterBetweenPointsAboveAndBelow = require('./../basic/moveElementInTheCenterBetweenPointsAboveAndBelow')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import text from './../basic/text.js'
+import releasePedalShape from './../pedal/releasePedalShape.js'
+import path from './../basic/path.js'
+import line from './../basic/line.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementBeforePointWithInterval from './../basic/moveElementBeforePointWithInterval.js'
+import moveElementAfterPointWithInterval from './../basic/moveElementAfterPointWithInterval.js'
+import moveElementInTheCenterBetweenPointsAboveAndBelow from './../basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (pedalStructure, styles) => {
+export default function (pedalStructure, styles) {
   const { intervalBetweenStaveLines, fontColor, pedalLetters, pedalStandAloneTextFontOptions, pedalTextOnVariablePeakFontOptions, pedalBracketStrokeOptions, variablePeakPathPoints, pedalBracketLineXOffset, pedalBracketLineYOffset, pedalMarksYOffsetInCaseIfThereAreTextValuesOnVariablePeaks, wholePedalStructureSrartYOffset, pedalVerticalPartOfBracketHeight, textOnVariablePeakYCorrection, pedalStandAloneTextAfterUnitXOffset, pedalStandAloneTextBeforeUnitXOffset, variablePeakAfterUnitXOffset, variablePeakBeforeUnitXOffset, releasePedalAfterUnitXOffset, releasePedalBeforeUnitXOffset, releasePedalRightOffsetAtEndOfMeasure, emptyPointAsPedalMarkXCorrection, emptyPointAsPedalMarkYCorrection, pedalEmptyPointAfterUnitXOffset, pedalEmptyPointBeforeUnitXOffset, releasePedalYCorrection } = styles
   const standAloneTextsAndPeaksAndReleases = []
   const onlyStandAloneTextsAndEmptyPoints = []

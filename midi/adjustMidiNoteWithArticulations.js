@@ -73,7 +73,7 @@ const articulationAdjustments = {
   }
 }
 
-module.exports = (unilangNote, midiNote, trackForNote) => {
+export default function (unilangNote, midiNote, trackForNote) {
   const isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit = unilangNote.noteIndex === 0
   if (unilangNote.articulationParams && isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit) {
     for (let articulationIndex = 0; articulationIndex < unilangNote.articulationParams.length; articulationIndex++) {

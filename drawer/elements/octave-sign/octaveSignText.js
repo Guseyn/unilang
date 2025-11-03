@@ -1,8 +1,8 @@
 'use strict'
 
-const path = require('./../basic/path')
+import path from './../basic/path.js'
 
-module.exports = (octaveSignNumber, octaveSignPostfix, direction) => {
+export default function (octaveSignNumber, octaveSignPostfix, direction) {
   return (styles, leftOffset, topOffset) => {
     const { fontColor, octaveSignLetters } = styles
     return path(

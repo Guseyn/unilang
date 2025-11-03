@@ -1,17 +1,17 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const isDirection = require('./token/isDirection')
-const direction = require('./token/direction')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const chordParamsByLastMentionedUnitPositions = require('./page-schema/chordParamsByLastMentionedUnitPositions')
-const undefineAllMentionedPositions = require('./page-schema/undefineAllMentionedPositions')
-const undefineOnlyLastMentionedUnitPosition = require('./page-schema/undefineOnlyLastMentionedUnitPosition')
-const fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded = require('./highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded')
-const addUnitPositionScenarios = require('./addUnitPositionScenarios')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import isDirection from './token/isDirection.js'
+import direction from './token/direction.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import chordParamsByLastMentionedUnitPositions from './page-schema/chordParamsByLastMentionedUnitPositions.js'
+import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from './page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from './addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['glissando'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

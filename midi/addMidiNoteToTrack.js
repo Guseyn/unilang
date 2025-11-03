@@ -1,10 +1,10 @@
 'use strict'
 
-const adjustMidiNoteWithArticulations = require('./adjustMidiNoteWithArticulations')
-const adjustMidiNoteWithSlur = require('./adjustMidiNoteWithSlur')
-const adjustMidiNoteWithPedals = require('./adjustMidiNoteWithPedals')
-const adjustArpeggiatedNotes = require('./adjustArpeggiatedNotes')
-const fillTimeStampsMappedWithRefs = require('./fillTimeStampsMappedWithRefs')
+import adjustMidiNoteWithArticulations from './adjustMidiNoteWithArticulations.js'
+import adjustMidiNoteWithSlur from './adjustMidiNoteWithSlur.js'
+import adjustMidiNoteWithPedals from './adjustMidiNoteWithPedals.js'
+import adjustArpeggiatedNotes from './adjustArpeggiatedNotes.js'
+import fillTimeStampsMappedWithRefs from './fillTimeStampsMappedWithRefs.js'
 
 const addMidiNoteToTrackInCommonCase = (note, duration, time, slurMarksMappedWithTracks, tracksForEachInstrumentOnEachStaveInEachVoice, midNoteIsAtTheStartOfOrnament, midNoteIsAtTheEndOfOrnament, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) => {
   const midiNote = {
@@ -66,7 +66,7 @@ const MIDI_CC_FACTOR = 127
 
 const TURN_DURATION_FACTOR_FOR_TRILL_NOTES = 2 / 3
 
-module.exports = (note, noteWithTremoloWithNextOnEachStaveInEachVoice, slurMarksMappedWithTracks, tracksForEachInstrumentOnEachStaveInEachVoice, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) => {
+export default function (note, noteWithTremoloWithNextOnEachStaveInEachVoice, slurMarksMappedWithTracks, tracksForEachInstrumentOnEachStaveInEachVoice, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) {
   const time = note.time + note.allTimeAdjustments
   note.timeWithAdjustments = time
 

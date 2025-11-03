@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'whole': 'whole',
   'half': 'half',
   'quarter': 'quarter',

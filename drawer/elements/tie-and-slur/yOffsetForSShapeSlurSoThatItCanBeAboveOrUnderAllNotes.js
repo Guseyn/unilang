@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (intersectionPointsOfSlurWithItsSingleUnits, allSlurSingleUnits, extendedFromLeftSide, extendedToRightSide, slurDirection, isSlurFirstPart, isSlurLastPart) => {
+export default function (intersectionPointsOfSlurWithItsSingleUnits, allSlurSingleUnits, extendedFromLeftSide, extendedToRightSide, slurDirection, isSlurFirstPart, isSlurLastPart) {
   let gap = 0
   const slurDirectionSign = slurDirection === 'up' ? -1 : +1
   const startIndex = extendedFromLeftSide

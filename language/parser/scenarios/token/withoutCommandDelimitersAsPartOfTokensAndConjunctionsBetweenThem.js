@@ -1,5 +1,5 @@
 'use strict'
 
-const regexps = require('./../static-objects/regexps')
+import regexps from './../static-objects/regexps.js'
 
-module.exports = tokens => regexps.globalCommandDelimiter.replaceAllWithEmptyString(tokens)
+export default function (tokens) { return regexps.globalCommandDelimiter.replaceAllWithEmptyString(tokens) }

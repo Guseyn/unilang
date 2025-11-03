@@ -1,8 +1,8 @@
 'use strict'
 
-const splitNoteInTremoloNotes = require('./splitNoteInTremoloNotes')
+import splitNoteInTremoloNotes from './splitNoteInTremoloNotes.js'
 
-module.exports = (unitParams, notesSplittedInTimeFrames, unitActualDuration, unitDurationInSeconds, calculatedOctaveAdjustmentForUnitParams, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveVoiceKey) => {
+export default function (unitParams, notesSplittedInTimeFrames, unitActualDuration, unitDurationInSeconds, calculatedOctaveAdjustmentForUnitParams, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveVoiceKey) {
   if (unitParams.notes) {
     for (let noteIndex = 0; noteIndex < unitParams.notes.length; noteIndex++) {
       const note = unitParams.notes[noteIndex]

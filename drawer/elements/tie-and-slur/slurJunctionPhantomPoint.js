@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (point, slurSide, slurDirection, styles, epsilon = 0.0001) => {
+export default function (point, slurSide, slurDirection, styles, epsilon = 0.0001) {
   const slurDirectionSign = slurDirection === 'up' ? -1 : +1
   const slurSideSign = slurSide === 'left' ? +1 : -1
   return {

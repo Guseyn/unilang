@@ -1,8 +1,8 @@
 'use strict'
 
-const moveElement = require('./moveElement')
+import moveElement from './moveElement.js'
 
-module.exports = (element, xPoint, interval) => {
+export default function (element, xPoint, interval) {
   moveElement(
     element,
     (xPoint - element.left) + interval

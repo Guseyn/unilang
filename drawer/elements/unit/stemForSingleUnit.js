@@ -1,6 +1,6 @@
 'use strict'
 
-const line = require('./../basic/line')
+import line from './../basic/line.js'
 
 const additionalStemHeightForUnitWithFlags = (numberOfStaveLines, stemDirection, unitDuration, numberOfTremoloStrokes, firstTwoNotesWithFlagsInWholeToneAndFirstOneIsIndented, firstTwoNoteswithFlagsInWholeToneAndFirstOneIsNotIndented, lastTwoNoteswithFlagsInWholeToneAndLastOneIsIndented, lastTwoNoteswithFlagsInWholeToneAndLastOneIsNotIndented, noteOnEdgeInSingleUnitwithFlagsIsOnStaveLine, noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines, thereAreDrawnStaveLinesIncludingAdditionalOnesAboveFirstNote, thereAreDrawnStaveLinesIncludingAdditionalOnesBelowLastNote, isGrace, styles) => {
   let result = 0
@@ -147,7 +147,7 @@ const additionalStemHeightForSingleUnitWithConnectedTremoloAndUnitDurationIsQuar
   return 0
 }
 
-module.exports = (numberOfStaveLines, styles, sortedNotes, withFlags, numberOfTremoloStrokes, hasConnectedTremolo, nonIndentedPartOfSingleUnitWithCoordinates, indentedPartOfSingleUnitWithCoordinates, notesForNonIndentedPartOfUnit, notesForIndentedPartOfUnit, unitDuration, anyWholeTones, stemDirection, beamed, noteOnEdgeInSingleUnitwithFlagsIsOnStaveLine, noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines, thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsMoreThanMaxNotePositionNumberInCurrentSingleUnitOnTheSameStave, thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsLessThanMinNotePositionNumberInCurrentSingleUnitOnTheSameStave, isGrace) => {
+export default function (numberOfStaveLines, styles, sortedNotes, withFlags, numberOfTremoloStrokes, hasConnectedTremolo, nonIndentedPartOfSingleUnitWithCoordinates, indentedPartOfSingleUnitWithCoordinates, notesForNonIndentedPartOfUnit, notesForIndentedPartOfUnit, unitDuration, anyWholeTones, stemDirection, beamed, noteOnEdgeInSingleUnitwithFlagsIsOnStaveLine, noteOnEdgeInSingleUnitWithFlagsIsBetweenStaveLines, thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsMoreThanMaxNotePositionNumberInCurrentSingleUnitOnTheSameStave, thereAreNotesInTheSameCrossStaveUnitThatTheirPositionNumberIsLessThanMinNotePositionNumberInCurrentSingleUnitOnTheSameStave, isGrace) {
   const { noteStemStrokeOptions, defaultStemHeightForSingleUnit, defaultStemHeightForHalfSingleUnit, defaultStemHeightForQuadrupleSingleUnit, yDistanceFromNoteBodyForStem, verticalStemCorrectionForGhostHalfNoteAtEdgeOfUnitBody, verticalStemCorrectionForGhostNoteAtEdgeOfUnitBody, graceElementsScaleFactor } = styles
   const tunedNoteStemStrokeOptions = Object.assign({}, noteStemStrokeOptions)
   if (isGrace) {

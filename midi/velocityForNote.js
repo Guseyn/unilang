@@ -1,11 +1,11 @@
 'use strict'
 
-const sortByGraceCount = require('./sortByGraceCount')
+import sortByGraceCount from './sortByGraceCount.js'
 
 const VELOCITY_FACTOR = 127
 const DEFAULT_VELOCITY = 100 / VELOCITY_FACTOR
 
-module.exports = (note, dynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, orderedTimeFramesFromDynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveIndex, staveVoiceKey) => {
+export default function (note, dynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, orderedTimeFramesFromDynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveIndex, staveVoiceKey) {
   if (note.isRest) {
     return 1 / 127
   }

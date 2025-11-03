@@ -1,18 +1,18 @@
 'use strict'
 
-const slurSplinePoints = require('./slurSplinePoints')
-const slurJunctionPhantomPoint = require('./slurJunctionPhantomPoint')
-const slurRoundCoefficientByXRangeOfSlur = require('./slurRoundCoefficientByXRangeOfSlur')
-const intersectionPointsOfSlurWithItsSingleUnits = require('./intersectionPointsOfSlurWithItsSingleUnits')
-const twoIntersectionPointsInFirstAndSecondHalfsOfSlurWhereSlurCreatesBiggestGapsWithSingleUnitTopOrBottomPositionsInEachHalfRespectivelyDependingOnSlurDirection = require('./twoIntersectionPointsInFirstAndSecondHalfsOfSlurWhereSlurCreatesBiggestGapsWithSingleUnitTopOrBottomPositionsInEachHalfRespectivelyDependingOnSlurDirection')
-const stretchedSlurSplineSoItCannotIntersectItsSingleUnitsExceptMaybeSomeUnitAtTheStartAndAtTheEndToAvoidBigStretching = require('./stretchedSlurSplineSoItCannotIntersectItsSingleUnitsExceptMaybeSomeUnitAtTheStartAndAtTheEndToAvoidBigStretching')
-const additionalPathPointsForSlurToMakeItBulk = require('./additionalPathPointsForSlurToMakeItBulk')
-const yOffsetForSlurSoThatItCanBeAboveOrUnderAllNotes = require('./yOffsetForSlurSoThatItCanBeAboveOrUnderAllNotes')
-const slurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits = require('./slurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits')
+import slurSplinePoints from './slurSplinePoints.js'
+import slurJunctionPhantomPoint from './slurJunctionPhantomPoint.js'
+import slurRoundCoefficientByXRangeOfSlur from './slurRoundCoefficientByXRangeOfSlur.js'
+import intersectionPointsOfSlurWithItsSingleUnits from './intersectionPointsOfSlurWithItsSingleUnits.js'
+import twoIntersectionPointsInFirstAndSecondHalfsOfSlurWhereSlurCreatesBiggestGapsWithSingleUnitTopOrBottomPositionsInEachHalfRespectivelyDependingOnSlurDirection from './twoIntersectionPointsInFirstAndSecondHalfsOfSlurWhereSlurCreatesBiggestGapsWithSingleUnitTopOrBottomPositionsInEachHalfRespectivelyDependingOnSlurDirection.js'
+import stretchedSlurSplineSoItCannotIntersectItsSingleUnitsExceptMaybeSomeUnitAtTheStartAndAtTheEndToAvoidBigStretching from './stretchedSlurSplineSoItCannotIntersectItsSingleUnitsExceptMaybeSomeUnitAtTheStartAndAtTheEndToAvoidBigStretching.js'
+import additionalPathPointsForSlurToMakeItBulk from './additionalPathPointsForSlurToMakeItBulk.js'
+import yOffsetForSlurSoThatItCanBeAboveOrUnderAllNotes from './yOffsetForSlurSoThatItCanBeAboveOrUnderAllNotes.js'
+import slurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from './slurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
 
 // const circle = require('./../basic/circle')
 
-module.exports = (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) => {
+export default function (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const { intervalBetweenStaveLines, leftMarginForConnectionsThatStartBefore } = styles
 
   const slurDirectionSign = slurDirection === 'up' ? -1 : +1

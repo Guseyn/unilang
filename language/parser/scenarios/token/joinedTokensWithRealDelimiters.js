@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (tokens, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken) => {
+export default function (tokens, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken) {
   const resultBuffer = []
   if (tokens && tokens[0] && tokens[0].firstOnTheLine) {
     resultBuffer.push(...delimitersBeforeFirstTokenOnTheLine)

@@ -1,32 +1,39 @@
 'use strict'
 
-const clefsOnStaves = require('./../clef/clefsOnStaves')
-const keySignaturesOnStaves = require('./../key/keySignaturesOnStaves')
-const timeSignaturesOnStaves = require('./../time/timeSignaturesOnStaves')
-const voicesOnMultipleStavesWithStavesPiece = require('./../voice/voicesOnMultipleStavesWithStavesPiece')
-const multiMeasureRest = require('./../rest/multiMeasureRest')
-const similePreviousMeasure = require('./../simile/similePreviousMeasure')
-const simileTwoPreviousMeasure = require('./../simile/simileTwoPreviousMeasure')
+import clefsOnStaves from './../clef/clefsOnStaves.js'
+import keySignaturesOnStaves from './../key/keySignaturesOnStaves.js'
+import timeSignaturesOnStaves from './../time/timeSignaturesOnStaves.js'
+import voicesOnMultipleStavesWithStavesPiece from './../voice/voicesOnMultipleStavesWithStavesPiece.js'
+import multiMeasureRest from './../rest/multiMeasureRest.js'
+import similePreviousMeasure from './../simile/similePreviousMeasure.js'
+import simileTwoPreviousMeasure from './../simile/simileTwoPreviousMeasure.js'
+import barLine from './../line/barLine.js'
+import boldDoubleBarLine from './../line/boldDoubleBarLine.js'
+import dottedBarLine from './../line/dottedBarLine.js'
+import doubleBarLine from './../line/doubleBarLine.js'
+import startBarLine from './../line/startBarLine.js'
+import startBoldDoubleBarLine from './../line/startBoldDoubleBarLine.js'
+import measureNumber from './measureNumber.js'
+import repeatDots from './repeatDots.js'
+import combinedConnections from './../connection/combinedConnections.js'
+import combinedInstrumentTitles from './../connection/combinedInstrumentTitles.js'
+import moveElement from './../basic/moveElement.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+
 const barLines = {
-  'barLine': require('./../line/barLine'),
-  'boldDoubleBarLine': require('./../line/boldDoubleBarLine'),
-  'dottedBarLine': require('./../line/dottedBarLine'),
-  'doubleBarLine': require('./../line/doubleBarLine'),
-  'startBarLine': require('./../line/startBarLine'),
-  'startBoldDoubleBarLine': require('./../line/startBoldDoubleBarLine')
+  barLine,
+  boldDoubleBarLine,
+  dottedBarLine,
+  doubleBarLine,
+  startBarLine,
+  startBoldDoubleBarLine
 }
-const measureNumber = require('./measureNumber')
-const repeatDots = require('./repeatDots')
-const combinedConnections = require('./../connection/combinedConnections')
-const combinedInstrumentTitles = require('./../connection/combinedInstrumentTitles')
-const moveElement = require('./../basic/moveElement')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
 
 const KEY_SIGNATURE_WITHOUT_KEYS = 'c major|a minor'
 
-module.exports = ({
+export default function ({
   pageLineNumber,
   pageLineMaxWidth,
   measureIndexOnPageLine,
@@ -80,7 +87,7 @@ module.exports = ({
   simileYCorrection,
   lyricsWordsElementsWithMaxWidthAmongAllLyricsWordsForEachCrossStaveUnitOnPageLineToPrepareSpaceBeforeDrawingThem,
   chordLetterElementsOnPageLineToPrepareSpaceBeforeDrawingThem
-}) => {
+}) {
   return (styles, leftOffset, topOffset) => {
     const measureStartXPosition = leftOffset
     let nextLeftOffset = leftOffset

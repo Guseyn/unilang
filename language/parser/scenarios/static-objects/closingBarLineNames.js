@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./closingBarLines'))
+import module from './closingBarLines.js'
+
+export default Object.keys(module)

@@ -1,11 +1,11 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
 
-module.exports = (measure, styles) => {
+export default function (measure, styles) {
   const { intervalBetweenStaveLines, coda, fontColor } = styles
   measure.coda.measurePosition = measure.coda.measurePosition || 'start'
   const xCenterOfCoda = measure.coda.measurePosition === 'start'

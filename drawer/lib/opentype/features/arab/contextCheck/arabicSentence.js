@@ -2,7 +2,9 @@
  * Arabic sentence context checkers
  */
 
-const { isArabicChar, isWhiteSpace, isTashkeelArabicChar } = require('./../../../char')
+import char from './../../../char.js'
+
+const {  isArabicChar, isWhiteSpace, isTashkeelArabicChar  }  = char
 
 function arabicSentenceStartCheck(contextParams) {
   const char = contextParams.current
@@ -37,4 +39,4 @@ function arabicSentenceEndCheck(contextParams) {
   }
 }
 
-module.exports = { arabicSentenceStartCheck, arabicSentenceEndCheck }
+export default { arabicSentenceStartCheck, arabicSentenceEndCheck }

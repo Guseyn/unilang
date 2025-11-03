@@ -1,27 +1,27 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const countersForEachVoiceLessThanTheirMaxValues = require('./countersForEachVoiceLessThanTheirMaxValues')
-const minDurationAmongAccumulatorsForEachVoice = require('./minDurationAmongAccumulatorsForEachVoice')
-const releaseDurationsAccumulatorsForEachVoiceWithMinDurationAmongThem = require('./releaseDurationsAccumulatorsForEachVoiceWithMinDurationAmongThem')
-const midMeasureClefsForCurrentCrossStaveUnit = require('./midMeasureClefsForCurrentCrossStaveUnit')
-const midMeasureKeySignaturesForCurrentCrossStaveUnit = require('./midMeasureKeySignaturesForCurrentCrossStaveUnit')
-const breathMarkBeforeCurrentCrossStaveUnit = require('./breathMarkBeforeCurrentCrossStaveUnit')
-const arpeggiatedWavesForCurrentCrossStaveUnit = require('./arpeggiatedWavesForCurrentCrossStaveUnit')
-const keysForCurrentCrossStaveUnit = require('./keysForCurrentCrossStaveUnit')
-const singleUnitsForCurrentCrossStaveUnit = require('./singleUnitsForCurrentCrossStaveUnit')
-const crossVoiceUnitsOnAllStavesInCrossStaveUnit = require('./crossVoiceUnitsOnAllStavesInCrossStaveUnit')
-const moveVoicesBodyHorizontally = require('./moveVoicesBodyHorizontally')
-const singleUnitsParamsToBeIncludedInNextCrossStaveUnit = require('./singleUnitsParamsToBeIncludedInNextCrossStaveUnit')
-const chordLetterValueForCurrentCrossStaveUnit = require('./chordLetterValueForCurrentCrossStaveUnit')
-const lyricsValueForCurrentCrossStaveUnit = require('./lyricsValueForCurrentCrossStaveUnit')
-const xCorrectionValueForCurrentCrossStaveUnit = require('./xCorrectionValueForCurrentCrossStaveUnit')
-const adjustNotesPositionNumbersInSelectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnitByTheirNoteNamesAndOctaveNumbersAndClefNamesByStaveIndexIfNoteNamesArePresentedInNotes = require('./adjustNotesPositionNumbersInSelectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnitByTheirNoteNamesAndOctaveNumbersAndClefNamesByStaveIndexIfNoteNamesArePresentedInNotes')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const moveCrossStaveElementsThatAttachedToCrossStaveUnit = require('./moveCrossStaveElementsThatAttachedToCrossStaveUnit')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import countersForEachVoiceLessThanTheirMaxValues from './countersForEachVoiceLessThanTheirMaxValues.js'
+import minDurationAmongAccumulatorsForEachVoice from './minDurationAmongAccumulatorsForEachVoice.js'
+import releaseDurationsAccumulatorsForEachVoiceWithMinDurationAmongThem from './releaseDurationsAccumulatorsForEachVoiceWithMinDurationAmongThem.js'
+import midMeasureClefsForCurrentCrossStaveUnit from './midMeasureClefsForCurrentCrossStaveUnit.js'
+import midMeasureKeySignaturesForCurrentCrossStaveUnit from './midMeasureKeySignaturesForCurrentCrossStaveUnit.js'
+import breathMarkBeforeCurrentCrossStaveUnit from './breathMarkBeforeCurrentCrossStaveUnit.js'
+import arpeggiatedWavesForCurrentCrossStaveUnit from './arpeggiatedWavesForCurrentCrossStaveUnit.js'
+import keysForCurrentCrossStaveUnit from './keysForCurrentCrossStaveUnit.js'
+import singleUnitsForCurrentCrossStaveUnit from './singleUnitsForCurrentCrossStaveUnit.js'
+import crossVoiceUnitsOnAllStavesInCrossStaveUnit from './crossVoiceUnitsOnAllStavesInCrossStaveUnit.js'
+import moveVoicesBodyHorizontally from './moveVoicesBodyHorizontally.js'
+import singleUnitsParamsToBeIncludedInNextCrossStaveUnit from './singleUnitsParamsToBeIncludedInNextCrossStaveUnit.js'
+import chordLetterValueForCurrentCrossStaveUnit from './chordLetterValueForCurrentCrossStaveUnit.js'
+import lyricsValueForCurrentCrossStaveUnit from './lyricsValueForCurrentCrossStaveUnit.js'
+import xCorrectionValueForCurrentCrossStaveUnit from './xCorrectionValueForCurrentCrossStaveUnit.js'
+import adjustNotesPositionNumbersInSelectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnitByTheirNoteNamesAndOctaveNumbersAndClefNamesByStaveIndexIfNoteNamesArePresentedInNotes from './adjustNotesPositionNumbersInSelectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnitByTheirNoteNamesAndOctaveNumbersAndClefNamesByStaveIndexIfNoteNamesArePresentedInNotes.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from './moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
 
-module.exports = ({
+export default function ({
   pageLineNumber,
   measureIndexInGeneral,
   measureIndexOnPageLine,
@@ -41,7 +41,7 @@ module.exports = ({
   currentMeasureContainsBreakingConnectionsThatStartBefore,
   currentMeasureContainsBreakingConnectionsThatFinishAfter,
   prevMeasureContainsFermataOverBarline
-}) => {
+}) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, intervalBetweenStaves, spaceForBreakingConnectionsThatStartBefore, additionalSpaceForBreakingConnectionsThatStartBeforeCrossStaveUnitWithCrossStaveElementsBefore, spaceForMeasureFermata, minSpaceReservedAfterCrossStaveChordAndBeforeOtherCrossStaveElements, minSpaceReservedAfterCrossStaveChordAndBeforeCrossStaveMidMeasureClefsAndBreathMarks, minSpaceReservedAfterCrossStaveChordAndBeforeOtherCrossStaveElementsForGraceCrossStaveUnit, minSpaceReservedAfterCrossStaveChordAndBeforeArpeggiatedWaves, minSpaceReservedAfterCrossStaveChordAndBeforeArpeggiatedWavesForGraceCrossStaveUnit } = styles
     const numberOfStaves = voicesParamsForAllStaves.length

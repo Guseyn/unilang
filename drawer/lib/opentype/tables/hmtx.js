@@ -1,15 +1,15 @@
 // The `hmtx` table contains the horizontal metrics for all glyphs.
 // https://www.microsoft.com/typography/OTSPEC/hmtx.htm
 
-const parse = require('./../parse')
-const table = require('./../table')
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 // Parse the `hmtx` table, which contains the horizontal metrics for all glyphs.
 // This function augments the glyph array, adding the advanceWidth and leftSideBearing to each glyph.
 function parseHmtxTable(data, start, numMetrics, numGlyphs, glyphs) {
   let advanceWidth
   let leftSideBearing
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   for (let i = 0; i < numGlyphs; i += 1) {
     // If the font is monospaced, only one entry is needed. This last entry applies to all subsequent glyphs.
     if (i < numMetrics) {
@@ -36,4 +36,4 @@ function makeHmtxTable(glyphs) {
   return t
 }
 
-module.exports = { parse: parseHmtxTable, make: makeHmtxTable }
+export default { parse: parseHmtxTable, make: makeHmtxTable }

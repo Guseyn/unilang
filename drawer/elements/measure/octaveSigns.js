@@ -1,13 +1,13 @@
 'use strict'
 
-const octaveSignShape = require('./../octave-sign/octaveSignShape')
-const minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex = require('./minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex')
+import octaveSignShape from './../octave-sign/octaveSignShape.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
 const keyForOctaveSign = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
 }
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const drawnOctaveSigns = []
   const octaveSignsStack = {}
   if (drawnVoicesOnPageLine) {

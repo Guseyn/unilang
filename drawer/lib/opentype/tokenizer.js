@@ -511,4 +511,4 @@ Tokenizer.prototype.tokenize = function (text) {
   return this.tokens
 }
 
-module.exports = { Tokenizer, Token, Event, ContextRange, ContextParams }
+export default { Tokenizer, Token, Event, ContextRange, ContextParams }

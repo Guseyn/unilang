@@ -1,9 +1,9 @@
 'use strict'
 
-const pedalShape = require('./../pedal/pedalShape')
-const minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex = require('./minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex')
+import pedalShape from './../pedal/pedalShape.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
-module.exports = (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, styles) {
   const drawnPedals = []
   const pedalsStack = {}
   const { pedalBracketRightOffsetFinishesBeforeEndOfMeasure, pedalBracketVerticalLineFinishesBeforeOrAfterUnitXOffset } = styles

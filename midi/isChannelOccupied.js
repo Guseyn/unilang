@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (instrumentsMappedWithChannels, channelNumber) => {
+export default function (instrumentsMappedWithChannels, channelNumber) {
   for (const instrumentMidiNumber in instrumentsMappedWithChannels) {
     if (instrumentsMappedWithChannels[instrumentMidiNumber] === channelNumber) {
       return true

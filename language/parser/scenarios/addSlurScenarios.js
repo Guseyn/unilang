@@ -1,28 +1,28 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const isDirection = require('./token/isDirection')
-const direction = require('./token/direction')
-const isRoundness = require('./token/isRoundness')
-const roundness = require('./token/roundness')
-const isAboveBelowOverUnder = require('./token/isAboveBelowOverUnder')
-const directionByAboveBelowOverUnder = require('./token/directionByAboveBelowOverUnder')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
-const chordParamsByLastMentionedUnitPositions = require('./page-schema/chordParamsByLastMentionedUnitPositions')
-const removeSlurMarksThatFinishFromChordsParamsByKeyAndSlurMarksFromCurrentChordParamsThatDontFinishByKey = require('./page-schema/removeSlurMarksThatFinishFromChordsParamsByKeyAndSlurMarksFromCurrentChordParamsThatDontFinishByKey')
-const addDirectionToSlurMarkByKey = require('./page-schema/addDirectionToSlurMarkByKey')
-const addRoundnessToSlurMarkByKey = require('./page-schema/addRoundnessToSlurMarkByKey')
-const addSShapeToSlurMarkByKey = require('./page-schema/addSShapeToSlurMarkByKey')
-const addLeftYCorrectionToSlurMarkByKey = require('./page-schema/addLeftYCorrectionToSlurMarkByKey')
-const addRightYCorrectionToSlurMarkByKey = require('./page-schema/addRightYCorrectionToSlurMarkByKey')
-const addRightPointPlacementToSlurMarkByKey = require('./page-schema/addRightPointPlacementToSlurMarkByKey')
-const undefineAllMentionedPositions = require('./page-schema/undefineAllMentionedPositions')
-const undefineOnlyLastMentionedUnitPosition = require('./page-schema/undefineOnlyLastMentionedUnitPosition')
-const fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded = require('./highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded')
-const addUnitPositionScenarios = require('./addUnitPositionScenarios')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import isDirection from './token/isDirection.js'
+import direction from './token/direction.js'
+import isRoundness from './token/isRoundness.js'
+import roundness from './token/roundness.js'
+import isAboveBelowOverUnder from './token/isAboveBelowOverUnder.js'
+import directionByAboveBelowOverUnder from './token/directionByAboveBelowOverUnder.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
+import chordParamsByLastMentionedUnitPositions from './page-schema/chordParamsByLastMentionedUnitPositions.js'
+import removeSlurMarksThatFinishFromChordsParamsByKeyAndSlurMarksFromCurrentChordParamsThatDontFinishByKey from './page-schema/removeSlurMarksThatFinishFromChordsParamsByKeyAndSlurMarksFromCurrentChordParamsThatDontFinishByKey.js'
+import addDirectionToSlurMarkByKey from './page-schema/addDirectionToSlurMarkByKey.js'
+import addRoundnessToSlurMarkByKey from './page-schema/addRoundnessToSlurMarkByKey.js'
+import addSShapeToSlurMarkByKey from './page-schema/addSShapeToSlurMarkByKey.js'
+import addLeftYCorrectionToSlurMarkByKey from './page-schema/addLeftYCorrectionToSlurMarkByKey.js'
+import addRightYCorrectionToSlurMarkByKey from './page-schema/addRightYCorrectionToSlurMarkByKey.js'
+import addRightPointPlacementToSlurMarkByKey from './page-schema/addRightPointPlacementToSlurMarkByKey.js'
+import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from './page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from './addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
 const addSlurFeaturesIfTheyAreSpecifiedBeforeItsUnitPositions = (parserState, slurMarkKey) => {
   if (parserState.lastSlurDirection) {
@@ -51,7 +51,7 @@ const addSlurFeaturesIfTheyAreSpecifiedBeforeItsUnitPositions = (parserState, sl
   }
 }
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['slur'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

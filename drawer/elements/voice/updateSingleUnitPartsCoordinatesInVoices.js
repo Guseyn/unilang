@@ -1,8 +1,8 @@
 'use strict'
 
-const updateSingleUnitPartsCoordinates = require('./../unit/updateSingleUnitPartsCoordinates')
+import updateSingleUnitPartsCoordinates from './../unit/updateSingleUnitPartsCoordinates.js'
 
-module.exports = (drawnSingleUnitsInVoices, xDistanceToMove = 0, yDistanceToMove = 0) => {
+export default function (drawnSingleUnitsInVoices, xDistanceToMove = 0, yDistanceToMove = 0) {
   for (let staveIndex = 0; staveIndex < drawnSingleUnitsInVoices.length; staveIndex++) {
     if (drawnSingleUnitsInVoices[staveIndex]) {
       for (let voiceIndex = 0; voiceIndex < drawnSingleUnitsInVoices[staveIndex].length; voiceIndex++) {

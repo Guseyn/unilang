@@ -1,43 +1,6 @@
 'use strict'
 
-const opentype = require('./lib/opentype/opentype')
-
-const musicFonts = {
-  bravura: require('./font/music-js/bravura'),
-  leland: require('./font/music-js/leland')
-}
-
-const textFontFilePaths = {
-  'noto-serif': './drawer/font/text/NotoSerif-Regular.ttf',
-  'noto-sans': './drawer/font/text/NotoSans-Regular.ttf'
-}
-
-const textBoldFontFilePaths = {
-  'noto-serif': './drawer/font/text/NotoSerif-Bold.ttf',
-  'noto-sans': './drawer/font/text/NotoSans-Bold.ttf'
-}
-
-const chordLettersFontFilePaths = {
-  'gentium plus': './drawer/font/chord-letters/GentiumPlus-Regular.ttf',
-  'gothic a1': './drawer/font/chord-letters/GothicA1-Regular.ttf'
-}
-
-let textFontSources = Object.keys(textFontFilePaths).reduce((sources, fontName) => {
-  sources[fontName] = opentype.loadSyncIfOnlyItIsNodeJSEnv(textFontFilePaths[fontName])
-  return sources
-}, {})
-
-let textBoldFontSources = Object.keys(textBoldFontFilePaths).reduce((sources, fontName) => {
-  sources[fontName] = opentype.loadSyncIfOnlyItIsNodeJSEnv(textBoldFontFilePaths[fontName])
-  return sources
-}, {})
-
-let chordLettersFontSources = Object.keys(chordLettersFontFilePaths).reduce((sources, fontName) => {
-  sources[fontName] = opentype.loadSyncIfOnlyItIsNodeJSEnv(chordLettersFontFilePaths[fontName])
-  return sources
-}, {})
-
-module.exports = (
+export default function (
   {
     pageFormat,
     pageHeight,
@@ -67,14 +30,78 @@ module.exports = (
     rightSubtitleFontSize,
     pageNumberFontSize,
     instrumentTitleFontSize,
-    emptyMeasureWidth
+    emptyMeasureWidth,
+    fontSources
   },
-  defaultIntervalBetweenStaveLines = 8.5
-) => {
+  defaultIntervalBetweenStaveLines = 8.5,
+) {
+  if (!fontSources) {
+    throw new Error(`
+missing font sources in custom styles to generate styles,
+expected format is: {
+  'music': {
+    fontName1: fontSource1,
+    fontName2: fontSource2,
+    ...
+  },
+  'text': {
+    'regular': {
+      fontName1: fontSource1,
+      fontName2: fontSource2,
+      ...
+    },
+    'bold': {
+      fontName1: fontSource1,
+      fontName2: fontSource2,
+      ...
+    }
+  },
+  'chord-letters': {
+    fontName1: fontSource1,
+    fontName2: fontSource2,
+    ...
+  },
+}
+    `)
+  }
+
+  if (!fontSources['music'] || !fontSources['music-js'] || !fontSources['text'] || !fontSources['text']['regular'] || !fontSources['text']['bold'] || !fontSources['chord-letters']) {
+    throw new Error(`
+invalid font sources in custom styles to generate styles,
+expected format is: {
+  'music': {
+    fontName1: 'fontSource1.otf',
+    fontName2: 'fontSource2.otf',
+    ...
+  },
+  'music-js': {
+    fontName1: 'font1.js',
+    fontName2: 'font2.js',
+  },
+  'text': {
+    'regular': {
+      fontName1: 'fontSource1.otf',
+      fontName2: 'fontSource2.otf',
+      ...
+    },
+    'bold': {
+      fontName1: 'fontSource1.otf',
+      fontName2: 'fontSource2.otf',
+      ...
+    }
+  },
+  'chord-letters': {
+    fontName1: 'fontSource1.otf',
+    fontName2: 'fontSource2.otf',
+    ...
+  },
+}
+    `)
+  }
+
   pageFormat = pageFormat || 'none'
   pageHeight = pageHeight * 1 || null
   backgroundColor = backgroundColor || '#FDF5E6'
-  musicFont = musicFont ? musicFont.toLowerCase() : 'bravura'
   fontColor = fontColor || '#121212'
   staveLinesColor = staveLinesColor || '#343434'
   pageBorderStrokeColor = pageBorderStrokeColor || 'transparent' // '#1F3659'
@@ -99,31 +126,19 @@ module.exports = (
   emptyMeasureWidth = emptyMeasureWidth * intervalBetweenStaveLines || 10 * intervalBetweenStaveLines
   instrumentTitleFontSize = instrumentTitleFontSize * intervalBetweenStaveLines || 3.4 * intervalBetweenStaveLines
 
-  textFontSources = Object.keys(textFontFilePaths).reduce((sources, fontName) => {
-    sources[fontName] = opentype.accessPreloadedSourceInBrowser(textFontFilePaths[fontName], 'fontSourcesForRenderingSVG') || sources[fontName]
-    return sources
-  }, textFontSources)
-
-  textBoldFontSources = Object.keys(textBoldFontFilePaths).reduce((sources, fontName) => {
-    sources[fontName] = opentype.accessPreloadedSourceInBrowser(textBoldFontFilePaths[fontName], 'fontSourcesForRenderingSVG') || sources[fontName]
-    return sources
-  }, textBoldFontSources)
-
-  chordLettersFontSources = Object.keys(chordLettersFontFilePaths).reduce((sources, fontName) => {
-    sources[fontName] = opentype.accessPreloadedSourceInBrowser(chordLettersFontFilePaths[fontName], 'fontSourcesForRenderingSVG') || sources[fontName]
-    return sources
-  }, chordLettersFontSources)
-
   const warningColor = '#E23D28'
-  const textFontSource = textFont ? textFontSources[textFont.toLowerCase()] : textFontSources['noto-serif']
-  const textBoldFontSource =  textFont ? textBoldFontSources[textFont.toLowerCase()] : textBoldFontSources['noto-serif']
-  const chordLettersFontSource = chordLettersFont ? chordLettersFontSources[chordLettersFont.toLowerCase()] : chordLettersFontSources['gentium plus']
-  const mainFontFamily = 'ZenKurenaido'
+  const textFontSource = textFont ? fontSources['text']['regular'][textFont.toLowerCase()] : Object.values(fontSources['text']['regular'])[0]
+  const textBoldFontSource =  textFont ? fontSources['text']['bold'][textFont.toLowerCase()] : Object.values(fontSources['text']['bold'])[0]
+  const chordLettersFontSource = chordLettersFont ? fontSources['chord-letters'][chordLettersFont.toLowerCase()] : Object.values(fontSources['chord-letters'])[0]
+  const musicFontSource = musicFont ? fontSources['music'][musicFont.toLowerCase()] : Object.values(fontSources['music'])[0]
+  const musicJSFont = musicFont ? fontSources['music-js'][musicFont.toLowerCase()] : Object.values(fontSources['music-js'])[0]
+
   const logoColor = '#ED4C67'
   const logoSize = 1.1
   const graceElementsScaleFactor = 0.65
 
-  const musicFontStyles = musicFonts[musicFont]({
+  const musicFontStyles = musicJSFont({
+    musicFontSource,
     defaultIntervalBetweenStaveLines,
     intervalBetweenStaveLines
   })
@@ -139,7 +154,6 @@ module.exports = (
     // Configurable
     pageFormat,
     pageHeight,
-    mainFontFamily,
     intervalBetweenStaveLines,
     intervalBetweenStaves,
     intervalBetweenPageLines,
@@ -164,6 +178,12 @@ module.exports = (
 
     // From music font
     ...musicFontStyles,
+
+    // Font sources
+    textFontSource,
+    textBoldFontSource,
+    chordLettersFontSource,
+    musicFontSource,
 
     // Grace
     graceElementsScaleFactor,

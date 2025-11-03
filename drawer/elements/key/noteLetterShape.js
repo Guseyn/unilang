@@ -1,11 +1,11 @@
 'use strict'
 
-const text = require('./../basic/text')
-const pathWithOutline = require('./../basic/pathWithOutline')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
+import text from './../basic/text.js'
+import pathWithOutline from './../basic/pathWithOutline.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (positionNumber, textValue = '?') => {
+export default function (positionNumber, textValue = '?') {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, noteLetterKeysFontOptions, noteLetters, fontColor } = styles
     const isOnStaveLine = Math.abs(positionNumber * 10 % 2) === 0

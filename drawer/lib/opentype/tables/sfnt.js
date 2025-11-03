@@ -4,21 +4,21 @@
 // Recommendations for creating OpenType Fonts:
 // http://www.microsoft.com/typography/otspec140/recom.htm
 
-const check = require('./../check')
-const table = require('./../table')
+import check from './../check.js'
+import table from './../table.js'
 
-const cmap = require('./cmap')
-const cff = require('./cff')
-const head = require('./head')
-const hhea = require('./hhea')
-const hmtx = require('./hmtx')
-const ltag = require('./ltag')
-const maxp = require('./maxp')
-const _name = require('./name')
-const os2 = require('./os2')
-const post = require('./post')
-const gsub = require('./gsub')
-const meta = require('./meta')
+import cmap from './cmap.js'
+import cff from './cff.js'
+import head from './head.js'
+import hhea from './hhea.js'
+import hmtx from './hmtx.js'
+import ltag from './ltag.js'
+import maxp from './maxp.js'
+import _name from './name.js'
+import os2 from './os2.js'
+import post from './post.js'
+import gsub from './gsub.js'
+import meta from './meta.js'
 
 function log2(v) {
   return Math.log(v) / Math.log(2) | 0
@@ -335,4 +335,4 @@ function fontToSfntTable(font) {
   return sfntTable
 }
 
-module.exports = { make: makeSfntTable, fontToTable: fontToSfntTable, computeCheckSum }
+export default { make: makeSfntTable, fontToTable: fontToSfntTable, computeCheckSum }

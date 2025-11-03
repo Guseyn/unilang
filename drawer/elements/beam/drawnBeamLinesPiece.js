@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
 
 const correctStemEndCoordinates = (stem, newStemEndCoordinate) => {
   if (stem.direction === 'up' && (stem.topCorrectedByBeamLines === undefined || newStemEndCoordinate < stem.topCorrectedByBeamLines)) {
@@ -34,7 +34,7 @@ const updateBeamLinesPerimeterCoordinates = (beamLinesPerimeterCoordinates, arra
   beamLinesPerimeterCoordinates[3].y = beamLinesPerimeterCoordinates[3].y ? Math.max(beamLinesPerimeterCoordinates[3].y, maxYForStem) : maxYForStem
 }
 
-module.exports = (styles, stem, nextStem, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection, isFirstBeam, isLastBeam, numberOfBeamLinesForStem, numberOfBeamLinesForNextStem, beamLineCoefficients, anyStemDirectionChangesInBeamedSingleUnits, firstStemDirection) => {
+export default function (styles, stem, nextStem, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection, isFirstBeam, isLastBeam, numberOfBeamLinesForStem, numberOfBeamLinesForNextStem, beamLineCoefficients, anyStemDirectionChangesInBeamedSingleUnits, firstStemDirection) {
   const { noteBeamStrokeOptions, noteSquareStemStrokeOptions, heightOfBeamColumn, cutBeamLength, negativeXOffsetOfTremoloBeams, graceElementsScaleFactor } = styles
 
   const tunedNoteBeamStrokeOptions = Object.assign({}, noteBeamStrokeOptions)

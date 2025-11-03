@@ -1,10 +1,10 @@
 'use strict'
 
-const allConnectedTracks = require('./allConnectedTracks')
+import allConnectedTracks from './allConnectedTracks.js'
 
 const MIDI_CC_FACTOR = 127
 
-module.exports = (unilangNote, midiNote, tracksForEachInstrumentOnEachStaveInEachVoice, midiNoteShouldBeAdjustedWithPedalSustain, midiNoteShouldBeAdjustedWithPedalRelease) => {
+export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachStaveInEachVoice, midiNoteShouldBeAdjustedWithPedalSustain, midiNoteShouldBeAdjustedWithPedalRelease) {
   if (unilangNote.noteIndex !== 0) {
     return
   }

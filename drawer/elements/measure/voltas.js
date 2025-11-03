@@ -1,9 +1,9 @@
 'use strict'
 
-const volta = require('./volta')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import volta from './volta.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { yOffsetOfVolta } = styles
   let currentVoltaStructure
   const drawnVoltas = []

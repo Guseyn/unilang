@@ -1,14 +1,14 @@
 'use strict'
 
-const text = require('./../basic/text')
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
+import text from './../basic/text.js'
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const components = []
   const { dynamicTextFontOptions, dynamicYOffset, dynamicLetters, fontColor } = styles
   const tunedDynamicTextFontOptions = Object.assign({}, dynamicTextFontOptions)

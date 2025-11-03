@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (currentBeamedSingleUnits, anyStemDirectionChangesInBeamedSingleUnits) => {
+export default function (currentBeamedSingleUnits, anyStemDirectionChangesInBeamedSingleUnits) {
   if (!anyStemDirectionChangesInBeamedSingleUnits) {
     if (currentBeamedSingleUnits.length <= 2) {
       return false

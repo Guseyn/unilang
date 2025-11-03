@@ -1,11 +1,11 @@
 'use strict'
 
-const midiSettings = require('./static-objects/midiSettings')
-const regexps = require('./static-objects/regexps')
+import midiSettings from './static-objects/midiSettings.js'
+import regexps from './static-objects/regexps.js'
 
 const NEW_LINE = '\n'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['midi setting name'] = {
     startsOnNewLine: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

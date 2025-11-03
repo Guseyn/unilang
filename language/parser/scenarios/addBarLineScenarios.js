@@ -1,12 +1,12 @@
 'use strict'
 
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const openingBarLines = require('./static-objects/openingBarLines')
-const closingBarLines = require('./static-objects/closingBarLines')
-const regexps = require('./static-objects/regexps')
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import openingBarLines from './static-objects/openingBarLines.js'
+import closingBarLines from './static-objects/closingBarLines.js'
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['no start bar line'] = {
     startsOnNewLine: true,
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,

@@ -1,9 +1,9 @@
 'use strict'
 
-const pageSchema = require('./pageSchema')
-const tunedValidator = require('./tunedValidator')
+import pageSchema from './pageSchema.js'
+import tunedValidator from './tunedValidator.js'
 
-module.exports = (schemaOnInput) => {
+export default function (schemaOnInput) {
   return tunedValidator.validate(schemaOnInput, pageSchema, { allowUnknownAttributes: false })
   // TODO:// USER READABLE MESSAGE IN JSON FORMAT
 }

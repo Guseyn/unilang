@@ -1,10 +1,10 @@
 'use strict'
 
-const stavePiece = require('./../stave/stavePiece')
-const demisharpKeyShape = require('./demisharpKeyShape')
-const group = require('./../basic/group')
+import stavePiece from './../stave/stavePiece.js'
+import demisharpKeyShape from './demisharpKeyShape.js'
+import group from './../basic/group.js'
 
-module.exports = (numberOfStaveLines, positionNumber) => {
+export default function (numberOfStaveLines, positionNumber) {
   return (styles, leftOffset, topOffset) => {
     const { stavePaddingForAccidentals } = styles
     const demisharpKeyShapeWithCoordinates = demisharpKeyShape(positionNumber)(styles, leftOffset + stavePaddingForAccidentals, topOffset)

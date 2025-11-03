@@ -1,6 +1,6 @@
-const PITCHES_BY_NOTE_NAMES = require('./pitchesByNoteNames')
+import PITCHES_BY_NOTE_NAMES from './pitchesByNoteNames.js'
 
-module.exports = {
+export default {
   'c major|a minor': [ { pitch: PITCHES_BY_NOTE_NAMES['f'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['c'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['g'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['d'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['a'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['e'], midiPitchAdjustment: 0 }, { pitch: PITCHES_BY_NOTE_NAMES['b'], midiPitchAdjustment: 0 } ],
 
   'g major|e minor': [ { pitch: PITCHES_BY_NOTE_NAMES['f'], midiPitchAdjustment: +1 } ],

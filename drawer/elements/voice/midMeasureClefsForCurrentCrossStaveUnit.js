@@ -1,17 +1,17 @@
 'use strict'
 
-const spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit = require('./spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit')
-const allNotesInSingleUnitParamsAreOnNextStave = require('./allNotesInSingleUnitParamsAreOnNextStave')
-const allNotesInSingleUnitParamsAreOnPrevStave = require('./allNotesInSingleUnitParamsAreOnPrevStave')
-const moveElement = require('./../basic/moveElement')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const clefShape = require('./../clef/clefShape')
+import spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit from './spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit.js'
+import allNotesInSingleUnitParamsAreOnNextStave from './allNotesInSingleUnitParamsAreOnNextStave.js'
+import allNotesInSingleUnitParamsAreOnPrevStave from './allNotesInSingleUnitParamsAreOnPrevStave.js'
+import moveElement from './../basic/moveElement.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import clefShape from './../clef/clefShape.js'
 
 const MID_MEASURE_CLEF_SCALE = 2 / 3
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, numberOfStaves, clefNamesAuraByStaveIndexes, drawnCrossStaveUnits, minUnitDurationOnPageLine, compressUnitsByNTimes, stretchUnitsByNTimes, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, numberOfStaves, clefNamesAuraByStaveIndexes, drawnCrossStaveUnits, minUnitDurationOnPageLine, compressUnitsByNTimes, stretchUnitsByNTimes, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { clefShapeNameByClefName, yCorrectionsForMidMeasureClefs, leftOffsetOfFirstCrossStaveUnit } = styles
   const clefNames = []
   const drawnClefs = []

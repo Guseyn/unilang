@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./breathMarks'))
+import module from './breathMarks.js'
+
+export default Object.keys(module)

@@ -1,9 +1,9 @@
 'use strict'
 
-const tempoMark = require('./tempoMark')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import tempoMark from './tempoMark.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const drawnTempoMarks = []
   drawnMeasuresOnPageLine.forEach((measure) => {
     if (measure.tempoMark) {

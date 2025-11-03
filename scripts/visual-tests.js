@@ -1,15 +1,17 @@
-const fs = require('fs/promises')
-const path = require('path')
-const assert = require('assert')
+import fs from 'fs/promises'
+import path from 'path'
+import assert from 'assert'
 
-const colors = require('ansi-colors')
+import colors from 'ansi-colors'
 
-const parsedUnilang = require(`./../language/parser/parsedUnilang`)
-const validatedPageSchema = require(`./../language/schema/validatedPageSchema`)
-const svgAsString = require(`./../drawer/elements/basic/svgAsString`)
-const generatedStyles = require(`./../drawer/generatedStyles`)
-const svg = require(`./../drawer/elements/basic/svg`)
-const page = require(`./../drawer/elements/page/page`)
+import parsedUnilang from './../language/parser/parsedUnilang.js'
+import validatedPageSchema from './../language/schema/validatedPageSchema.js'
+import svgAsString from './../drawer/elements/basic/svgAsString.js'
+import generatedStyles from './../drawer/generatedStyles.js'
+import svg from './../drawer/elements/basic/svg.js'
+import page from './../drawer/elements/page/page.js'
+
+import opentype from './../drawer/lib/opentype/opentype.js'
 
 const NEW_LINE = '\n'
 
@@ -20,7 +22,10 @@ function normalizeUnilangText(unilangText) {
   return unilangText
 }
 
-(async function() {
+import bravuraJS from './../drawer/font/music-js/bravura.js'
+import lelandJS from './../drawer/font/music-js/leland.js'
+
+;(async function() {
   const visualTestsForEachFont = (
     await fs.readdir(
       'visual-tests',
@@ -39,6 +44,58 @@ function normalizeUnilangText(unilangText) {
     const listOfFailedTests = []
     const listOfPassedTests = []
     console.time(`Total time spent for ${visualTestDirForFont}`)
+
+    const supportedFonts = {
+      'chord-letters': ['gentium plus', 'gothic a1'],
+      'music': ['bravura', 'leland'],
+      'text': ['noto-sans', 'noto-serif']
+    }
+
+    const [
+      bravura,
+      leland,
+      gentiumPlus,
+      gothicA1,
+      notoSansRegular,
+      notoSansBold,
+      notoSerifRegular,
+      notoSerifBold
+    ] = await Promise.all([
+      opentype.load('./drawer/font/music/Bravura.otf'),
+      opentype.load('./drawer/font/music/Leland.otf'),
+      opentype.load('./drawer/font/chord-letters/GentiumPlus-Regular.ttf'),
+      opentype.load('./drawer/font/chord-letters/GothicA1-Regular.ttf'),
+      opentype.load('./drawer/font/text/NotoSans-Regular.ttf'),
+      opentype.load('./drawer/font/text/NotoSans-Bold.ttf'),
+      opentype.load('./drawer/font/text/NotoSerif-Regular.ttf'),
+      opentype.load('./drawer/font/text/NotoSerif-Bold.ttf')
+    ])
+
+    const supportedFontsSources = {
+      'chord-letters': {
+        'gentium plus': gentiumPlus,
+        'gothic a1': gothicA1
+      },
+      'music': {
+        'bravura': bravura,
+        'leland': leland
+      },
+      'music-js': {
+        'bravura': bravuraJS,
+        'leland': lelandJS
+      },
+      'text': {
+        'regular': {
+          'noto-serif': notoSerifRegular,
+          'noto-sans': notoSansRegular
+        },
+        'bold': {
+          'noto-serif': notoSerifBold,
+          'noto-sans': notoSansBold
+        }
+      }
+    }
+
     for (const unilangInputFile of listOfUnilangInputFiles) {
       const testName = path.basename(unilangInputFile).split('.')[0]
       const unilangInputFileFullPath = `visual-tests/${visualTestDirForFont}/unilang/${unilangInputFile}`
@@ -56,7 +113,8 @@ function normalizeUnilangText(unilangText) {
         unilangText,
         [],
         true,
-        false
+        false,
+        supportedFonts
       )
       try {
         assert.ok(
@@ -71,7 +129,10 @@ function normalizeUnilangText(unilangText) {
         svg(
           page(pageSchema)(
             generatedStyles(
-              customStyles
+              {
+                ...customStyles,
+                fontSources: supportedFontsSources
+              }
             ), 0, 0
           )
         )
@@ -154,6 +215,15 @@ function normalizeUnilangText(unilangText) {
           `Failed for "${testName}" test`
         )
         process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n\n`)
+        listOfPassedTests.push({
+          name: testName
+        })
+      } catch (error) {
+        process.stdout.write(`"${testName}" ${colors.red('failed')} for ${testType} in ${visualTestDirForFont}\n\n`)
+        listOfFailedTests.push({
+          name: testName
+        })
+      } finally {
         await Promise.race(
           [
             fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, constructedSvgAsString),
@@ -165,14 +235,6 @@ function normalizeUnilangText(unilangText) {
             fs.writeFile(`visual-tests/${visualTestDirForFont}/char-progressions/actual/${testName}.json`, stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios)
           ]
         )
-        listOfPassedTests.push({
-          name: testName
-        })
-      } catch (error) {
-        process.stdout.write(`"${testName}" ${colors.red('failed')} for ${testType} in ${visualTestDirForFont}\n\n`)
-        listOfFailedTests.push({
-          name: testName
-        })
       }
     }
     console.timeEnd(`Total time spent for ${visualTestDirForFont}`)

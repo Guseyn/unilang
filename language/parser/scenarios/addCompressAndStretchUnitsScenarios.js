@@ -1,9 +1,9 @@
 'use strict'
 
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const regexps = require('./static-objects/regexps')
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['compress units by n times'] = {
     startsOnNewLine: true,
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,

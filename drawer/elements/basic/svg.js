@@ -1,8 +1,8 @@
 'use strict'
 
-const calculatedCoordinatesOfElements = require('./calculatedCoordinatesOfElements')
+import calculatedCoordinatesOfElements from './calculatedCoordinatesOfElements.js'
 
-module.exports = (...elements) => {
+export default function (...elements) {
   const { top, right, bottom, left } = calculatedCoordinatesOfElements(elements)
   return {
     name: 'svg',

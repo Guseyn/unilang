@@ -1,11 +1,11 @@
 'use strict'
 
-const stavePiece = require('./../stave/stavePiece')
-const clefShape = require('./clefShape')
-const moveElement = require('./../basic/moveElement')
-const group = require('./../basic/group')
+import stavePiece from './../stave/stavePiece.js'
+import clefShape from './clefShape.js'
+import moveElement from './../basic/moveElement.js'
+import group from './../basic/group.js'
 
-module.exports = () => {
+export default function () {
   return (styles, leftOffset, topOffset) => {
     const { stavePieceWidthForClef, topOffsetMarginForTenorClef } = styles
     const numberOfStaveLines = 5

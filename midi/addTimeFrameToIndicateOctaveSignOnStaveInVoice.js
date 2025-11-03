@@ -1,8 +1,8 @@
 'use strict'
 
-const octaveAdjustmentForUnitParamsByOctaveSignMark = require('./octaveAdjustmentForUnitParamsByOctaveSignMark')
+import octaveAdjustmentForUnitParamsByOctaveSignMark from './octaveAdjustmentForUnitParamsByOctaveSignMark.js'
 
-module.exports = (octaveSignMark, octaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, indicatorsOfOctaveSignEndingsByStaveAndVoice, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveIndexesOccupiedByUnit, voiceIndex, staveVoiceKey) => {
+export default function (octaveSignMark, octaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, indicatorsOfOctaveSignEndingsByStaveAndVoice, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveIndexesOccupiedByUnit, voiceIndex, staveVoiceKey) {
   if (octaveSignMark && !octaveSignMark.finish) {
     const octaveSignAdjustment = octaveAdjustmentForUnitParamsByOctaveSignMark(octaveSignMark)
     if (octaveSignAdjustment !== 0) {

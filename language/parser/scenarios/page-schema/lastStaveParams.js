@@ -1,3 +1,3 @@
 'use strict'
 
-module.exports = lastMeasuresParams => lastMeasuresParams.stavesParams[lastMeasuresParams.stavesParams.length - 1]
+export default function (lastMeasuresParams) { return lastMeasuresParams.stavesParams[lastMeasuresParams.stavesParams.length - 1] }

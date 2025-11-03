@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (tremoloParams) => {
+export default function (tremoloParams) {
   const isTremolo = typeof tremoloParams === 'object' && tremoloParams !== null
   let isTremoloSingle = false
   if (isTremolo) {

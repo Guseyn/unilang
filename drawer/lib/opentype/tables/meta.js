@@ -1,15 +1,15 @@
 // The `GPOS` table contains kerning pairs, among other things.
 // https://www.microsoft.com/typography/OTSPEC/gpos.htm
 
-const check = require('./../check')
-const { decode } = require('./../types')
-const parse = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import {  decode  } from './../types.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 // Parse the metadata `meta` table.
 // https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6meta.html
 function parseMetaTable(data, start) {
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   const tableVersion = p.parseULong()
   check.argument(tableVersion === 1, 'Unsupported META table version.')
   p.parseULong() // flags - currently unused and set to 0
@@ -54,4 +54,4 @@ function makeMetaTable(tags) {
   return result
 }
 
-module.exports = { parse: parseMetaTable, make: makeMetaTable }
+export default { parse: parseMetaTable, make: makeMetaTable }

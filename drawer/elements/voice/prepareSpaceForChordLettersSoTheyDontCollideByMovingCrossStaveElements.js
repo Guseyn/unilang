@@ -1,14 +1,14 @@
 'use strict'
 
-const chordLetterText = require('./../chord-letter/chordLetterText')
-const moveElement = require('./../basic/moveElement')
-const moveCrossStaveElementsThatAttachedToCrossStaveUnit = require('./moveCrossStaveElementsThatAttachedToCrossStaveUnit')
+import chordLetterText from './../chord-letter/chordLetterText.js'
+import moveElement from './../basic/moveElement.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from './moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
 
-module.exports = (
+export default function (
   chordLetterElementsOnPageLineToPrepareSpaceBeforeDrawingThem,
   drawnVoices,
   styles
-) => {
+) {
   const { minXDistanceBetweenChordLetters } = styles
   const {
     drawnMidMeasureClefsForCrossStaveUnits,

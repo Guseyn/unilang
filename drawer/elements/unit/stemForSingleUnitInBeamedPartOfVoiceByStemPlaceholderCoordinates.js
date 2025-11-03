@@ -1,9 +1,9 @@
 'use strict'
 
-const line = require('./../basic/line')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
+import line from './../basic/line.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
 
-module.exports = (styles, stemPlaceholderLeft, stemPlaceholderYStart, stemPlaceholderYEnd, isGrace) => {
+export default function (styles, stemPlaceholderLeft, stemPlaceholderYStart, stemPlaceholderYEnd, isGrace) {
   const { noteSquareStemStrokeOptions, graceElementsScaleFactor } = styles
   const tunedNoteSquareStemStrokeOptions = Object.assign({}, noteSquareStemStrokeOptions)
   if (isGrace) {

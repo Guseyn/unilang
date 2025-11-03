@@ -1,8 +1,8 @@
 'use strict'
 
-const lastMeasureParams = require('./lastMeasureParams')
+import lastMeasureParams from './lastMeasureParams.js'
 
-module.exports = (pageSchema, componentName, parserState) => {
+export default function (pageSchema, componentName, parserState) {
   pageSchema.measuresParams = pageSchema.measuresParams || []
   if (parserState.numberOfPageLines === 0) {
     parserState.numberOfPageLines += 1

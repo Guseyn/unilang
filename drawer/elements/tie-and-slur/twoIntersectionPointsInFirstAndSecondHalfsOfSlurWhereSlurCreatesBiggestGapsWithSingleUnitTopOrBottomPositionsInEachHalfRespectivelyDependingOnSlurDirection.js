@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (slurSplinePoints, intersectionPointsOfSlurWithItsSingleUnits, extendedFromLeftSide, extendedToRightSide, slurDirection) => {
+export default function (slurSplinePoints, intersectionPointsOfSlurWithItsSingleUnits, extendedFromLeftSide, extendedToRightSide, slurDirection) {
   const startIntersectionIndex = extendedFromLeftSide ? 0 : 1
   const endIntersectionIndex = extendedToRightSide ? intersectionPointsOfSlurWithItsSingleUnits.length : intersectionPointsOfSlurWithItsSingleUnits.length - 1
   const slurStartX = slurSplinePoints[1]

@@ -1,9 +1,9 @@
 'use strict'
 
-const slurSplinePoints = require('./slurSplinePoints')
-const path = require('./../basic/path')
-const slurRoundCoefficientByXRangeOfSlur = require('./slurRoundCoefficientByXRangeOfSlur')
-const timeInSlurSplinePointsBySomeXPointThere = require('./timeInSlurSplinePointsBySomeXPointThere')
+import slurSplinePoints from './slurSplinePoints.js'
+import path from './../basic/path.js'
+import slurRoundCoefficientByXRangeOfSlur from './slurRoundCoefficientByXRangeOfSlur.js'
+import timeInSlurSplinePointsBySomeXPointThere from './timeInSlurSplinePointsBySomeXPointThere.js'
 
 const tieJunctionPhantomPoint = (point, sideSign, tieDirectionSign, epsilon = 0.0001) => {
   return {
@@ -41,7 +41,7 @@ const extremePointOfTie = (tieSplinePoints) => {
   }
 }
 
-module.exports = (startX, startY, endX, endY, tieDirection, leftSingleUnit, rightSingleUnit, roundCoefficientFactor, styles) => {
+export default function (startX, startY, endX, endY, tieDirection, leftSingleUnit, rightSingleUnit, roundCoefficientFactor, styles) {
   const { tieStrokeOptions } = styles
   const tieDirectionSign = tieDirection === 'up' ? -1 : 1
   const xLengthOfTie = endX - startX

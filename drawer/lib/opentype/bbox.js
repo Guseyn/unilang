@@ -155,4 +155,4 @@ BoundingBox.prototype.addQuad = function(x0, y0, x1, y1, x, y) {
   this.addBezier(x0, y0, cp1x, cp1y, cp2x, cp2y, x, y)
 }
 
-module.exports = BoundingBox
+export default BoundingBox

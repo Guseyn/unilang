@@ -1,12 +1,12 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const theSameScenarioButWithDifferentRequiredCommandProgression = require('./theSameScenarioButWithDifferentRequiredCommandProgression')
+import regexps from './static-objects/regexps.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
 const lastComment = parserState => parserState.comments[parserState.comments.length - 1]
 const NEW_LINE = '\n'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['comment starts and ends with text'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

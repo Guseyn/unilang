@@ -1,12 +1,12 @@
 'use strict'
 
-const beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave = require('./../beam/beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave')
+import beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave from './../beam/beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave.js'
 
 const keyForBeam = (staveIndex, voiceIndex, isGrace) => {
   return `${staveIndex}-${voiceIndex}-${isGrace}`
 }
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const drawnBeams = []
   const beamsStack = {}
   if (drawnVoicesOnPageLine) {

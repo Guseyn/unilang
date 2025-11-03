@@ -1,8 +1,8 @@
 'use strict'
 
-const slurMarkWithSpecifiedKey = require('./slurMarkWithSpecifiedKey')
+import slurMarkWithSpecifiedKey from './slurMarkWithSpecifiedKey.js'
 
-module.exports = (parserState, slurMarkKey, roundness) => {
+export default function (parserState, slurMarkKey, roundness) {
   const foundSlurMarkWithSpecifiedKey = slurMarkWithSpecifiedKey(parserState, slurMarkKey)
   if (foundSlurMarkWithSpecifiedKey) {
     foundSlurMarkWithSpecifiedKey.roundCoefficientFactor = roundness

@@ -1,14 +1,14 @@
 'use strict'
 
-const instrumentTitleInMidiFormatByInstrumentOriginalName = require('./instrumentTitleInMidiFormatByInstrumentOriginalName')
-const noteHasSomeArticulations = require('./noteHasSomeArticulations')
+import instrumentTitleInMidiFormatByInstrumentOriginalName from './instrumentTitleInMidiFormatByInstrumentOriginalName.js'
+import noteHasSomeArticulations from './noteHasSomeArticulations.js'
 
 const PIZZICATO_STRINGS_MIDI_INSTRUMENT_NUMBER = 45
 const GHOST_SOUND_INSTRUMENT_NUMBER = 113
 const NATURAL_HARMONIC_MIDI_INSTRUMENT_NUMBER = 32
 const PIZZICATO_ARTICULATIONS = [ 'leftHandPizzicato', 'snapPizzicato' ]
 
-module.exports = (instrumentTitlesParams, note) => {
+export default function (instrumentTitlesParams, note) {
   if (noteHasSomeArticulations(note, PIZZICATO_ARTICULATIONS)) {
     return PIZZICATO_STRINGS_MIDI_INSTRUMENT_NUMBER
   }

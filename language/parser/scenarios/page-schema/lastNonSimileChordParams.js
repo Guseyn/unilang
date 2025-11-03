@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = lastVoiceParams => {
+export default function (lastVoiceParams) {
   for (let chordIndex = lastVoiceParams.length - 1; chordIndex >= 0; chordIndex--) {
     if (!lastVoiceParams[chordIndex].isSimile) {
       return lastVoiceParams[chordIndex]

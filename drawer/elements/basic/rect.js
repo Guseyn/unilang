@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (width, height, strokeOptions = {}, fill = 'none', leftOffset = 0, topOffset = 0) => {
+export default function (width, height, strokeOptions = {}, fill = 'none', leftOffset = 0, topOffset = 0) {
   return {
     name: 'rect',
     properties: {

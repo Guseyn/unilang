@@ -1,14 +1,14 @@
 'use strict'
 
-const path = require('./../basic/path')
-const text = require('./../basic/text')
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const stavesPiece = require('./../stave/stavesPiece')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import path from './../basic/path.js'
+import text from './../basic/text.js'
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import stavesPiece from './../stave/stavesPiece.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (numberOfStaves, numberOfStaveLines, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral) => {
+export default function (numberOfStaves, numberOfStaveLines, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaves, intervalBetweenStaveLines, measureRest, fontColor, multiMeasureRestNumberFontOptions, multiMeasureRestTextTopMarginOffset } = styles
     const components = []

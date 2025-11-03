@@ -36,7 +36,7 @@ const mapOfWordsAndNumbers = {
   'ten': '10'
 }
 
-module.exports = (tokenValues, joinedTokenValues) => {
+export default function (tokenValues, joinedTokenValues) {
   return tokenValues.map(tokenValue => {
     const tokenValueLength = tokenValue.length
     if (NUMBERS_WITH_POSTFIX.indexOf(`${tokenValue[tokenValueLength - 3]}${tokenValue[tokenValueLength - 2]}${tokenValue[tokenValueLength - 1]}`) !== -1) {

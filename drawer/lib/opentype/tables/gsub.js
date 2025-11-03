@@ -1,9 +1,9 @@
 // The `GSUB` table contains ligatures, among other things.
 // https://www.microsoft.com/typography/OTSPEC/gsub.htm
 
-const check = require('./../check')
-const { Parser } = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 const subtableParsers = new Array(9)         // subtableParsers[0] is unused
 
@@ -264,4 +264,4 @@ function makeGsubTable(gsub) {
   ])
 }
 
-module.exports = { parse: parseGsubTable, make: makeGsubTable }
+export default { parse: parseGsubTable, make: makeGsubTable }

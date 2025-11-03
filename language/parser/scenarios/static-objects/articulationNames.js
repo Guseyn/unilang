@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./articulations'))
+import module from './articulations.js'
+
+export default Object.keys(module)

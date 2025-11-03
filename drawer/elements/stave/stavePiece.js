@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
 
-module.exports = (numberOfLines, width) => {
+export default function (numberOfLines, width) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, staveLinesColor, staveLineHeight } = styles
     const pathPoints = []

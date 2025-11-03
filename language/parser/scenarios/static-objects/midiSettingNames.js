@@ -1,5 +1,5 @@
 'use strict'
 
-const midiSettings = require('./midiSettings')
+import midiSettings from './midiSettings.js'
 
-module.exports = Object.keys(midiSettings)
+export default Object.keys(midiSettings)

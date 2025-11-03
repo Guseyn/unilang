@@ -1,18 +1,18 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const foundNextTokenValuesOnTheLine = require('./token/foundNextTokenValuesOnTheLine')
-const chordParamsByLastMentionedUnitPositions = require('./page-schema/chordParamsByLastMentionedUnitPositions')
-const undefineAllMentionedPositions = require('./page-schema/undefineAllMentionedPositions')
-const undefineOnlyLastMentionedUnitPosition = require('./page-schema/undefineOnlyLastMentionedUnitPosition')
-const fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded = require('./highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded')
-const addUnitPositionScenarios = require('./addUnitPositionScenarios')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import foundNextTokenValuesOnTheLine from './token/foundNextTokenValuesOnTheLine.js'
+import chordParamsByLastMentionedUnitPositions from './page-schema/chordParamsByLastMentionedUnitPositions.js'
+import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from './page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from './addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['octave sign'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     startsOnNewLine: true,

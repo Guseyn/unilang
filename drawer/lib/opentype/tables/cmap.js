@@ -1,9 +1,9 @@
 // The `cmap` table stores the mappings from characters to glyphs.
 // https://www.microsoft.com/typography/OTSPEC/cmap.htm
 
-const check = require('./../check')
-const parse = require('./../parse')
-const table = require('../table')
+import check from './../check.js'
+import { Parser, getUShort, getULong } from './../parse.js'
+import table from '../table.js'
 
 function parseCmapTableFormat12(cmap, p) {
   //Skip reserved.
@@ -43,10 +43,10 @@ function parseCmapTableFormat4(cmap, p, data, start, offset) {
 
   // The "unrolled" mapping from character codes to glyph indices.
   cmap.glyphIndexMap = {}
-  const endCountParser = new parse.Parser(data, start + offset + 14)
-  const startCountParser = new parse.Parser(data, start + offset + 16 + segCount * 2)
-  const idDeltaParser = new parse.Parser(data, start + offset + 16 + segCount * 4)
-  const idRangeOffsetParser = new parse.Parser(data, start + offset + 16 + segCount * 6)
+  const endCountParser = new Parser(data, start + offset + 14)
+  const startCountParser = new Parser(data, start + offset + 16 + segCount * 2)
+  const idDeltaParser = new Parser(data, start + offset + 16 + segCount * 4)
+  const idRangeOffsetParser = new Parser(data, start + offset + 16 + segCount * 6)
   let glyphIndexOffset = start + offset + 16 + segCount * 8
   for (let i = 0; i < segCount - 1; i += 1) {
     let glyphIndex
@@ -65,7 +65,7 @@ function parseCmapTableFormat4(cmap, p, data, start, offset) {
 
         // Then add the character index of the current segment, multiplied by 2 for USHORTs.
         glyphIndexOffset += (c - startCount) * 2
-        glyphIndex = parse.getUShort(data, glyphIndexOffset)
+        glyphIndex = getUShort(data, glyphIndexOffset)
         if (glyphIndex !== 0) {
           glyphIndex = (glyphIndex + idDelta) & 0xFFFF
         }
@@ -83,19 +83,19 @@ function parseCmapTableFormat4(cmap, p, data, start, offset) {
 // This function returns a `CmapEncoding` object or null if no supported format could be found.
 function parseCmapTable(data, start) {
   const cmap = {}
-  cmap.version = parse.getUShort(data, start)
+  cmap.version = getUShort(data, start)
   check.argument(cmap.version === 0, 'cmap table version should be 0.')
 
   // The cmap table can contain many sub-tables, each with their own format.
   // We're only interested in a "platform 0" (Unicode format) and "platform 3" (Windows format) table.
-  cmap.numTables = parse.getUShort(data, start + 2)
+  cmap.numTables = getUShort(data, start + 2)
   let offset = -1
   for (let i = cmap.numTables - 1; i >= 0; i -= 1) {
-    const platformId = parse.getUShort(data, start + 4 + (i * 8))
-    const encodingId = parse.getUShort(data, start + 4 + (i * 8) + 2)
+    const platformId = getUShort(data, start + 4 + (i * 8))
+    const encodingId = getUShort(data, start + 4 + (i * 8) + 2)
     if ((platformId === 3 && (encodingId === 0 || encodingId === 1 || encodingId === 10)) ||
             (platformId === 0 && (encodingId === 0 || encodingId === 1 || encodingId === 2 || encodingId === 3 || encodingId === 4))) {
-      offset = parse.getULong(data, start + 4 + (i * 8) + 4)
+      offset = getULong(data, start + 4 + (i * 8) + 4)
       break
     }
   }
@@ -105,7 +105,7 @@ function parseCmapTable(data, start) {
     throw new Error('No valid cmap sub-tables found.')
   }
 
-  const p = new parse.Parser(data, start + offset)
+  const p = new Parser(data, start + offset)
   cmap.format = p.parseUShort()
 
   if (cmap.format === 12) {
@@ -284,4 +284,4 @@ function makeCmapTable(glyphs) {
   return t
 }
 
-module.exports = { parse: parseCmapTable, make: makeCmapTable }
+export default { parse: parseCmapTable, make: makeCmapTable }

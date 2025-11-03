@@ -1,11 +1,11 @@
 'use strict'
 
-const regexps = require('./../static-objects/regexps')
-const tempoDurationParts = require('./../static-objects/tempoDurationParts')
+import regexps from './../static-objects/regexps.js'
+import tempoDurationParts from './../static-objects/tempoDurationParts.js'
 
 const numericDurations = [ '1', '1/2', '1/4', '1/8', '1/16', '1/32', '1/64' ]
 
-module.exports = (tempoValue) => {
+export default function (tempoValue) {
   const rowTempoValueParts = tempoValue.split(regexps.tempoDurationPart)
   const tempoValueParts = []
   for (let index = 0; index < rowTempoValueParts.length; index++) {

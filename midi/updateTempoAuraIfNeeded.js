@@ -1,12 +1,12 @@
 'use strict'
 
-const durationsValuesInTempoExpressedInQuarters = require('./durationsValuesInTempoExpressedInQuarters')
-const tempoNamesMappedWitTempoAuraUpdaters = require('./tempoNamesMappedWitTempoAuraUpdaters')
+import durationsValuesInTempoExpressedInQuarters from './durationsValuesInTempoExpressedInQuarters.js'
+import tempoNamesMappedWitTempoAuraUpdaters from './tempoNamesMappedWitTempoAuraUpdaters.js'
 
 const REGEXPS_WITH_GROUPED_LIST_OF_TEMPO_NAMES = new RegExp(`(${Object.keys(tempoNamesMappedWitTempoAuraUpdaters).join('|')})`)
 const REGXEPS_WITH_TEMPO_NUMBER = /= {0,}(\d+)/
 
-module.exports = (tempoMark, tempoAura, unitDurationInQuarters, thisIsFirstUnitInMeasure, label) => {
+export default function (tempoMark, tempoAura, unitDurationInQuarters, thisIsFirstUnitInMeasure, label) {
   if (tempoMark) {
     let tempoName = 'default'
     let tempoDuration

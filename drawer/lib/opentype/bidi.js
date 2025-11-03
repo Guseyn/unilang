@@ -3,11 +3,13 @@
  * the corresponding layout rules.
  */
 
-const { Tokenizer } = require('./tokenizer')
-const arabicWordCheck = require('./features/arab/contextCheck/arabicWord')
-const arabicSentenceCheck = require('./features/arab/contextCheck/arabicSentence')
-const arabicPresentationForms = require('./features/arab/arabicPresentationForms')
-const arabicRequiredLigatures = require('./features/arab/arabicRequiredLigatures')
+import tokenizer from './tokenizer.js'
+import arabicWordCheck from './features/arab/contextCheck/arabicWord.js'
+import arabicSentenceCheck from './features/arab/contextCheck/arabicSentence.js'
+import arabicPresentationForms from './features/arab/arabicPresentationForms.js'
+import arabicRequiredLigatures from './features/arab/arabicRequiredLigatures.js'
+
+const {  Tokenizer  } = tokenizer
 
 /**
  * Create Bidi. features
@@ -207,4 +209,4 @@ Bidi.prototype.getTextGlyphs = function (text) {
   return indexes
 }
 
-module.exports = Bidi
+export default Bidi

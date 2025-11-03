@@ -2,7 +2,7 @@
 
 const NEW_LINE = '\n'
 
-module.exports = (textareaValue) => {
+export default (textareaValue) => {
   if (textareaValue[textareaValue.length - 1] === NEW_LINE) {
     textareaValue += NEW_LINE
   }

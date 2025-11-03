@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'treble': 'treble',
   'g': 'treble',
   'bass': 'bass',

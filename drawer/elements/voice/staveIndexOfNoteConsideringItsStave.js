@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (note) => {
+export default function (note) {
   let staveIndex = note.staveIndex
   if (note.stave === 'next') {
     staveIndex += 1

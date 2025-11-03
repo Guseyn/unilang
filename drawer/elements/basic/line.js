@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (x1, y1, x2, y2, strokeOptions, leftOffset = 0, topOffset = 0, dataName = 'just line') => {
+export default function (x1, y1, x2, y2, strokeOptions, leftOffset = 0, topOffset = 0, dataName = 'just line') {
   const x1WithOffset = x1 + leftOffset
   const y1WithOffset = y1 + topOffset
   const x2WithOffset = x2 + leftOffset

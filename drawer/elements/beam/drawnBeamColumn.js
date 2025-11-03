@@ -1,8 +1,8 @@
 'use strict'
 
-const line = require('./../basic/line')
+import line from './../basic/line.js'
 
-module.exports = (styles, stem, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection) => {
+export default function (styles, stem, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection) {
   const { noteStemStrokeOptions, noteBeamColumnStrokeOptions, graceElementsScaleFactor } = styles
   const tunedNoteStemStrokeOptions = Object.assign({}, noteStemStrokeOptions)
   const tunedNoteBeamColumnStrokeOptions = Object.assign({}, noteBeamColumnStrokeOptions)

@@ -1,13 +1,13 @@
 'use strict'
 
-const isDirection = require('./token/isDirection')
-const direction = require('./token/direction')
-const isAboveBelowOverUnder = require('./token/isAboveBelowOverUnder')
-const directionByAboveBelowOverUnder = require('./token/directionByAboveBelowOverUnder')
-const regexps = require('./static-objects/regexps')
-const applicationOfMeasureNumbers = require('./static-objects/applicationOfMeasureNumbers')
+import isDirection from './token/isDirection.js'
+import direction from './token/direction.js'
+import isAboveBelowOverUnder from './token/isAboveBelowOverUnder.js'
+import directionByAboveBelowOverUnder from './token/directionByAboveBelowOverUnder.js'
+import regexps from './static-objects/regexps.js'
+import applicationOfMeasureNumbers from './static-objects/applicationOfMeasureNumbers.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['measure numbers'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

@@ -1,9 +1,9 @@
 'use strict'
 
-const withNumbersInsteadOfWords = require('./withNumbersInsteadOfWords')
-const regexps = require('./../static-objects/regexps')
+import withNumbersInsteadOfWords from './withNumbersInsteadOfWords.js'
+import regexps from './../static-objects/regexps.js'
 
-module.exports = (tokenValues, startsFromZero) => {
+export default function (tokenValues, startsFromZero) {
   const tokensWithNumbersInsteadOfWords = withNumbersInsteadOfWords(tokenValues)
   const noteIndexMatches = regexps.noteIndex.match(tokensWithNumbersInsteadOfWords)
   if (noteIndexMatches && noteIndexMatches[0]) {

@@ -1,6 +1,6 @@
 'use strict'
 
-const jsonschema = require('jsonschema')
+import jsonschema from 'jsonschema'
 const validator = new jsonschema.Validator()
 
 validator.attributes.possibleValues = (instance, schema, options, ctx) => {
@@ -141,4 +141,4 @@ validator.attributes.matches = (instance, schema, options, ctx) => {
   }
 }
 
-module.exports = validator
+export default validator

@@ -1,26 +1,26 @@
 'use strict'
 
-const configurableStyleNames = require('./configurableStyleNames')
-const musicFonts = require('./musicFonts')
-const textFonts = require('./textFonts')
-const chordLettersFonts = require('./chordLettersFonts')
-const pageMetaNames = require('./pageMetaNames')
-const openingBarLineNames = require('./openingBarLineNames')
-const closingBarLineNames = require('./closingBarLineNames')
-const applicationOfMeasureNumbersNames = require('./applicationOfMeasureNumbersNames')
-const keySignatureNames = require('./keySignatureNames')
-const tempoDurationPartNames = require('./tempoDurationPartNames')
-const clefNames = require('./clefNames')
-const noteDurationNames = require('./noteDurationNames')
-const noteNames = require('./noteNames')
-const stavePositionNames = require('./stavePositionNames')
-const noteKeyNames = require('./noteKeyNames')
-const breathMarkNames = require('./breathMarkNames')
-const articulationNames = require('./articulationNames')
-const ornamentKeyNames = require('./ornamentKeyNames')
-const midiSettingNames = require('./midiSettingNames')
-const instrumentNames = require('./instrumentNames')
-const withoutDoubleSpacesAndTrimmed = require('./../token/withoutDoubleSpacesAndTrimmed')
+import configurableStyleNames from './configurableStyleNames.js'
+// import musicFonts from './musicFonts.js'
+// import textFonts from './textFonts.js'
+// import chordLettersFonts from './chordLettersFonts.js'
+import pageMetaNames from './pageMetaNames.js'
+import openingBarLineNames from './openingBarLineNames.js'
+import closingBarLineNames from './closingBarLineNames.js'
+import applicationOfMeasureNumbersNames from './applicationOfMeasureNumbersNames.js'
+import keySignatureNames from './keySignatureNames.js'
+import tempoDurationPartNames from './tempoDurationPartNames.js'
+import clefNames from './clefNames.js'
+import noteDurationNames from './noteDurationNames.js'
+import noteNames from './noteNames.js'
+import stavePositionNames from './stavePositionNames.js'
+import noteKeyNames from './noteKeyNames.js'
+import breathMarkNames from './breathMarkNames.js'
+import articulationNames from './articulationNames.js'
+import ornamentKeyNames from './ornamentKeyNames.js'
+import midiSettingNames from './midiSettingNames.js'
+import instrumentNames from './instrumentNames.js'
+import withoutDoubleSpacesAndTrimmed from './../token/withoutDoubleSpacesAndTrimmed.js'
 
 const VERTICAL_LINE = '|'
 const SLASH = '/'
@@ -474,7 +474,7 @@ const breathMarkNamesAsTokens = [
 const articulationNamesAsTokens = articulationNames.map(name => name.split(SPACE))
 const ornamentKeyNamesAsTokens = ornamentKeyNames.map(name => name.split(SPACE))
 
-const cssColors = require('./cssColors')
+import cssColors from './cssColors.js'
 
 const isColor = (tokenValues) => {
   const joinedTokenValues = tokenValues.join(SPACE)
@@ -484,16 +484,16 @@ const isColor = (tokenValues) => {
     (cssColors.indexOf(joinedTokenValues) !== -1)
 }
 
-const isSupportedMusicFont = (tokenValues) => {
-  return musicFonts.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
+const isSupportedMusicFont = (tokenValues, customMusicFonts) => {
+  return customMusicFonts.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
 }
 
-const isSupportedTextFont = (tokenValues) => {
-  return textFonts.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
+const isSupportedTextFont = (tokenValues, customTextFonts) => {
+  return customTextFonts.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
 }
 
-const isSupportedChordLettersFont = (tokenValues) => {
-  return chordLettersFonts.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
+const isSupportedChordLettersFont = (tokenValues, customChordLettersFont) => {
+  return customChordLettersFont.indexOf(tokenValues.join(SPACE).toLowerCase()) !== -1
 }
 
 const pageFormats = [
@@ -511,14 +511,14 @@ const styleValueTests = {
   backgroundColor: (tokenValues) => {
     return isColor(tokenValues)
   },
-  musicFont: (tokenValues) => {
-    return isSupportedMusicFont(tokenValues)
+  musicFont: (tokenValues, customMusicFonts) => {
+    return isSupportedMusicFont(tokenValues, customMusicFonts)
   },
-  textFont: (tokenValues) => {
-    return isSupportedTextFont(tokenValues)
+  textFont: (tokenValues, customTextFonts) => {
+    return isSupportedTextFont(tokenValues, customTextFonts)
   },
-  chordLettersFont: (tokenValues) => {
-    return isSupportedChordLettersFont(tokenValues)
+  chordLettersFont: (tokenValues, customChordLettersFont) => {
+    return isSupportedChordLettersFont(tokenValues, customChordLettersFont)
   },
   fontColor: (tokenValues) => {
     return isColor(tokenValues)
@@ -718,7 +718,7 @@ const isUpHigherDownLower = (string) => {
     (string === HIGHER)
 }
 
-module.exports = {
+export default {
   punctuation: {
     test: (tokenValues) => {
       return (tokenValues.length === 1) &&
@@ -823,9 +823,12 @@ module.exports = {
     }
   },
   styleValue: {
-    test: (tokenValues, styleKey) => {
+    test: (tokenValues, styleKey, customFonts) => {
       if (!styleValueTests[styleKey]) {
         return false
+      }
+      if (['musicFont', 'chordLettersFont', 'textFont'].indexOf(styleKey) !== -1) {
+        return styleValueTests[styleKey](tokenValues, customFonts) 
       }
       return styleValueTests[styleKey](tokenValues)
     },

@@ -1,7 +1,7 @@
 'use strict'
 
-const articulations = require('./articulations')
+import articulations from './articulations.js'
 
-module.exports = (drawnVoicesOnPageLine, dontDrawDynamics, drawOnlyDynamics, styles) => {
+export default function (drawnVoicesOnPageLine, dontDrawDynamics, drawOnlyDynamics, styles) {
   return articulations(drawnVoicesOnPageLine, true, false, dontDrawDynamics, drawOnlyDynamics, styles)
 }

@@ -373,4 +373,4 @@ tinf_build_bits_base(dist_bits, dist_base, 2, 1)
 length_bits[28] = 0
 length_base[28] = 258
 
-module.exports = tinf_uncompress
+export default tinf_uncompress

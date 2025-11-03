@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./configurableStyles'))
+import module from './configurableStyles.js'
+
+export default Object.keys(module)

@@ -1,9 +1,9 @@
 // The `fvar` table stores font variation axes and instances.
 // https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6fvar.html
 
-const check = require('./../check')
-const parse = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 function addName(name, names) {
   const nameString = JSON.stringify(name)
@@ -41,7 +41,7 @@ function makeFvarAxis(n, axis, names) {
 
 function parseFvarAxis(data, start, names) {
   const axis = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   axis.tag = p.parseTag()
   axis.minValue = p.parseFixed()
   axis.defaultValue = p.parseFixed()
@@ -72,7 +72,7 @@ function makeFvarInstance(n, inst, axes, names) {
 
 function parseFvarInstance(data, start, axes, names) {
   const inst = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   inst.name = names[p.parseUShort()] || {}
   p.skip('uShort', 1)  // reserved for flags; no values defined
 
@@ -108,7 +108,7 @@ function makeFvarTable(fvar, names) {
 }
 
 function parseFvarTable(data, start, names) {
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   const tableVersion = p.parseULong()
   check.argument(tableVersion === 0x00010000, 'Unsupported fvar table version.')
   const offsetToData = p.parseOffset16()
@@ -133,4 +133,4 @@ function parseFvarTable(data, start, names) {
   return {axes: axes, instances: instances}
 }
 
-module.exports = { make: makeFvarTable, parse: parseFvarTable }
+export default { make: makeFvarTable, parse: parseFvarTable }

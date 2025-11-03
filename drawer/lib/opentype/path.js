@@ -1,6 +1,6 @@
 // Geometric objects
 
-const BoundingBox = require('./bbox')
+import BoundingBox from './bbox.js'
 
 /**
  * A bézier path containing a set of path commands similar to a SVG path.
@@ -316,4 +316,4 @@ Path.prototype.toDOMElement = function(decimalPlaces) {
   return newPath
 }
 
-module.exports = Path
+export default Path

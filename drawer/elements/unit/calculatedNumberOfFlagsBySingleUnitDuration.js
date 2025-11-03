@@ -9,6 +9,6 @@ const numberOfFlagsByUnitDurations = {
   '0.00390625': 6
 }
 
-module.exports = (unitDuration) => {
+export default function (unitDuration) {
   return numberOfFlagsByUnitDurations[unitDuration + ''] || 0
 }

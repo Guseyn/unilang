@@ -1,25 +1,37 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const stavePiece = require('./../stave/stavePiece')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import stavePiece from './../stave/stavePiece.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+
+import treble from './trebleClef.js'
+import bass from './bassClef.js'
+import alto from './altoClef.js'
+import baritone from './baritoneClef.js'
+import mezzoSoprano from './mezzoSopranoClef.js'
+import octaveEightUp from './octaveEightUpClef.js'
+import octaveEightDown from './octaveEightDownClef.js'
+import octaveFifteenUp from './octaveFifteenUpClef.js'
+import octaveFifteenDown from './octaveFifteenDownClef.js'
+import soprano from './sopranoClef.js'
+import tenor from './tenorClef.js'
 
 const clefs = {
-  treble: require('./trebleClef'),
-  bass: require('./bassClef'),
-  alto: require('./altoClef'),
-  baritone: require('./baritoneClef'),
-  mezzoSoprano: require('./mezzoSopranoClef'),
-  octaveEightUp: require('./octaveEightUpClef'),
-  octaveEightDown: require('./octaveEightDownClef'),
-  octaveFifteenUp: require('./octaveFifteenUpClef'),
-  octaveFifteenDown: require('./octaveFifteenDownClef'),
-  soprano: require('./sopranoClef'),
-  tenor: require('./tenorClef')
+  treble,
+  bass,
+  alto,
+  baritone,
+  mezzoSoprano,
+  octaveEightUp,
+  octaveEightDown,
+  octaveFifteenUp,
+  octaveFifteenDown,
+  soprano,
+  tenor,
 }
 
-module.exports = (numberOfStaves, numberOfStaveLines, clefNames, measureIndexInGeneral) => {
+export default function (numberOfStaves, numberOfStaveLines, clefNames, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaves, intervalBetweenStaveLines, stavePieceWidthForClef } = styles
     const clefsOnStaves = []

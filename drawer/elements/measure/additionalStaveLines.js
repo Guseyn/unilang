@@ -1,8 +1,8 @@
 'use strict'
 
-const line = require('./../basic/line')
+import line from './../basic/line.js'
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const { intervalBetweenStaveLines, additionalStaveLinesStrokeOptions, additionalStaveLinesRadiusFromNoteBody, graceElementsScaleFactor } = styles
   const drawnAdditionalStaveLines = []
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

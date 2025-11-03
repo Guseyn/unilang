@@ -1,14 +1,14 @@
 'use strict'
 
-const text = require('./../basic/text')
-const moveElement = require('./../basic/moveElement')
-const moveCrossStaveElementsThatAttachedToCrossStaveUnit = require('./moveCrossStaveElementsThatAttachedToCrossStaveUnit')
+import text from './../basic/text.js'
+import moveElement from './../basic/moveElement.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from './moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
 
-module.exports = (
+export default function (
   lyricsWordsElementsWithMaxWidthAmongAllLyricsWordsForEachCrossStaveUnitOnPageLineToPrepareSpaceBeforeDrawingThem,
   drawnVoices,
   styles
-) => {
+) {
   const { minXDistanceBetweenLyricsWords, minXDistanceBetweenLyricsWordsWithDashOrUnderscoreBetweenThem, lyricsFontOptions } = styles
   const {
     drawnMidMeasureClefsForCrossStaveUnits,

@@ -2,8 +2,12 @@
  * Apply Arabic presentation forms to a range of tokens
  */
 
-const { ContextParams } = require('./../../tokenizer')
-const { isIsolatedArabicChar, isTashkeelArabicChar } = require('./../../char')
+import tokenizer from './../../tokenizer.js'
+import char from './../../char.js'
+
+const { ContextParams } = tokenizer
+const {  isIsolatedArabicChar, isTashkeelArabicChar  } = char
+
 /**
  * Check if a char can be connected to it's preceding char
  * @param {ContextParams} charContextParams context params of a char
@@ -80,4 +84,4 @@ function arabicPresentationForms(range) {
   })
 }
 
-module.exports = { arabicPresentationForms }
+export default { arabicPresentationForms }

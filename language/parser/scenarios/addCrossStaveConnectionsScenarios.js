@@ -1,15 +1,15 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastCrossStaveConnectionParam = require('./page-schema/lastCrossStaveConnectionParam')
-const staveIndexByTokens = require('./token/staveIndexByTokens')
-const isStaveIndex = require('./token/isStaveIndex')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const theSameScenarioButWithDifferentRequiredCommandProgression = require('./theSameScenarioButWithDifferentRequiredCommandProgression')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastCrossStaveConnectionParam from './page-schema/lastCrossStaveConnectionParam.js'
+import staveIndexByTokens from './token/staveIndexByTokens.js'
+import isStaveIndex from './token/isStaveIndex.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['bracket or brace'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

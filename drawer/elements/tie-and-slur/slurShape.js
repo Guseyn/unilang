@@ -1,13 +1,13 @@
 'use strict'
 
-const slurPoints = require('./slurPoints')
-const sShapeSlurPoints = require('./sShapeSlurPoints')
-const slurJunctionPointForSingleUnit = require('./slurJunctionPointForSingleUnit')
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import slurPoints from './slurPoints.js'
+import sShapeSlurPoints from './sShapeSlurPoints.js'
+import slurJunctionPointForSingleUnit from './slurJunctionPointForSingleUnit.js'
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (markedSlur, slurMarkKey, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) => {
+export default function (markedSlur, slurMarkKey, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const defaultSlurDirection = markedSlur.defaultSlurDirection
   const customSlurDirection = markedSlur.customSlurDirection
   const slurDirection = customSlurDirection || defaultSlurDirection

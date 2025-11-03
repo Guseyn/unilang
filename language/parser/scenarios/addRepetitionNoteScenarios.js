@@ -1,12 +1,12 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['repetition note'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

@@ -5,7 +5,7 @@ const isInt = (value) => {
   return !isNaN(value) && (parsedValue | 0) === parsedValue
 }
 
-module.exports = (currentSingleUnit, topOffsetsForEachStave, staveIndex, positionIndex, numberOfStaveLines, tieSide, correspondingLeftTieJunctionPoint, styles) => {
+export default function (currentSingleUnit, topOffsetsForEachStave, staveIndex, positionIndex, numberOfStaveLines, tieSide, correspondingLeftTieJunctionPoint, styles) {
   const { intervalBetweenStaveLines, tieJunctionPointXOffset, tieJunctionPointXOffsetFromStem, tieJunctionPointXOffsetFromStemForNotesOnAdditionalStaveLines, tieJunctionPointForAdditionalLinesXOffset, tieJunctionPointYOffset, tieJunctionPointOfTieWithUpDirectionThatIsOnTopFirstNoteInSingleUnitYOffset, tieJunctionPointOfTieWithDownDirectionThatIsOnBottomOfLastNoteInSingleUnitYOffset, additionalStaveLinesStrokeOptions } = styles
   const diapasonThatCanBeConsideredAsSurroundingsForNote = 1
   const currentNote = currentSingleUnit.sortedNotes[positionIndex]

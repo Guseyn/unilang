@@ -1,6 +1,6 @@
 'use strict'
 
-const polyline = require('./polyline')
+import polyline from './polyline.js'
 
 const debugMode = true
 
@@ -83,4 +83,4 @@ const svgAsString = (element, boxesAsBuffers = [], isFirstCall = true) => {
   return buffer.join('')
 }
 
-module.exports = svgAsString
+export default svgAsString

@@ -1,11 +1,11 @@
 'use strict'
 
-const path = require('./../basic/path')
-const stavesPiece = require('./../stave/stavesPiece')
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import stavesPiece from './../stave/stavesPiece.js'
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import group from './../basic/group.js'
 
-module.exports = (numberOfStaves, numberOfStaveLines) => {
+export default function (numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaves, intervalBetweenStaveLines, repeatDots, repeatDotsPadding, fontColor } = styles
     const allDrawnRepeatDotsOnAllStaves = []

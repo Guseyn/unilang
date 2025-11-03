@@ -1,17 +1,17 @@
 'use strict'
 
-const text = require('./../basic/text')
-const path = require('./../basic/path')
-const articulationShouldBeAboveOrUnderStemLine = require('./../articulation/articulationShouldBeAboveOrUnderStemLine')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import text from './../basic/text.js'
+import path from './../basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from './../articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (dynamicChangeParams, styles) => {
+export default function (dynamicChangeParams, styles) {
   const components = []
   const { intervalBetweenStaveLines, dynamicTextFontOptions, dynamicChangeYOffset, dynamicChangeSignOffsetFromDynamicText, dynamicChangeSignDefaultHeight, dynamicChangeLinesStrokeOptions, dynamicLetters, fontColor } = styles
   const tunedDynamicTextFontOptions = Object.assign({}, dynamicTextFontOptions)

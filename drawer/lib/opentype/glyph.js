@@ -1,9 +1,9 @@
 // The Glyph object
 
-const check = require('./check')
-const draw = require('./draw')
-const Path = require('./path')
-// import glyf from './tables/glyf' Can't be imported here, because it's a circular dependency
+import check from './check.js'
+import draw from './draw.js'
+import Path from './path.js'
+// import glyf from './tables/glyf.js' Can't be imported here, because it's a circular dependency
 
 function getPathDefinition(glyph, path) {
   let _path = path || new Path()
@@ -359,4 +359,4 @@ Glyph.prototype.drawMetrics = function(ctx, x, y, fontSize) {
   draw.line(ctx, x + (advanceWidth * scale), -10000, x + (advanceWidth * scale), 10000)
 }
 
-module.exports = Glyph
+export default Glyph

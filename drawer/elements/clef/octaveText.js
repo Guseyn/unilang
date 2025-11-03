@@ -1,9 +1,9 @@
 'use strict'
 
-const text = require('./../basic/text')
-const group = require('./../basic/group')
+import text from './../basic/text.js'
+import group from './../basic/group.js'
 
-module.exports = (octaveNumber, direction) => {
+export default function (octaveNumber, direction) {
   return (styles, leftOffset, topOffset) => {
     const { octaveTextFontOptions, leftOffsetMarginForOctaveText, topOffsetMarginForDownOctaveText, topOffsetMarginForUpOctaveText } = styles
     return group(

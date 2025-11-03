@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = lastChordParams => {
+export default function (lastChordParams) {
   return lastChordParams.parentheses[lastChordParams.parentheses.length - 1]
 }

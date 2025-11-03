@@ -1,11 +1,11 @@
 'use strict'
 
-const moveCrossStaveElementsThatAttachedToCrossStaveUnit = require('./moveCrossStaveElementsThatAttachedToCrossStaveUnit')
-const updateSingleUnitPartsCoordinates = require('./../unit/updateSingleUnitPartsCoordinates')
-const moveElement = require('./../basic/moveElement')
-const moveVoicesBodyHorizontally = require('./moveVoicesBodyHorizontally')
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from './moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
+import updateSingleUnitPartsCoordinates from './../unit/updateSingleUnitPartsCoordinates.js'
+import moveElement from './../basic/moveElement.js'
+import moveVoicesBodyHorizontally from './moveVoicesBodyHorizontally.js'
 
-module.exports = (drawnVoices, drawnStavesPiece, containsAtLeastOneVoiceWithMoreThanOneUnit) => {
+export default function (drawnVoices, drawnStavesPiece, containsAtLeastOneVoiceWithMoreThanOneUnit) {
   const {
     voicesBody,
     drawnSingleUnitsInVoices,

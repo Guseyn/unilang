@@ -1,8 +1,8 @@
 'use strict'
 
-const staveIndexOfNoteConsideringItsStave = require('./staveIndexOfNoteConsideringItsStave')
+import staveIndexOfNoteConsideringItsStave from './staveIndexOfNoteConsideringItsStave.js'
 
-module.exports = (singleUnit) => {
+export default function (singleUnit) {
   const wholeToneDelta = 0.5
   const firstSortedNote = singleUnit.sortedNotes[0]
   const secondSortedNote = singleUnit.sortedNotes[1]

@@ -1,10 +1,10 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (numberOfSimileStrokes, simileYCorrection) => {
+export default function (numberOfSimileStrokes, simileYCorrection) {
   return (styles, leftOffset, topOffset) => {
     const drawnElements = []
     const { intervalBetweenStaveLines, fontColor, singleMixedSimile, mixedSimile, simile, xDistanceBetweenSimileStrokes } = styles

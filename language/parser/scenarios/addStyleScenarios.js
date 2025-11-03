@@ -1,7 +1,7 @@
 'use strict'
 
-const configurableStyles = require('./static-objects/configurableStyles')
-const regexps = require('./static-objects/regexps')
+import configurableStyles from './static-objects/configurableStyles.js'
+import regexps from './static-objects/regexps.js'
 
 const NEW_LINE = '\n'
 
@@ -65,7 +65,7 @@ const styleValueActionOnlyForHighlightingWithoutRefIds = (parserState, joinedTok
   }
 }
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['color style name'] = {
     startsOnNewLine: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
@@ -119,7 +119,7 @@ module.exports = (scenarios) => {
     onTheSameLineAsPrevScenario: true,
     requiredCommandProgression: 'music font style name is',
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
-      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey) && currentToken.lastOnTheLine
+      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey, parserState.fonts['music']) && currentToken.lastOnTheLine
     },
     action: styleValueAction,
     actionOnlyForHighlightingWithoutRefIds: styleValueActionOnlyForHighlightingWithoutRefIds,
@@ -149,7 +149,7 @@ module.exports = (scenarios) => {
     onTheSameLineAsPrevScenario: true,
     requiredCommandProgression: 'text font style name is',
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
-      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey) && currentToken.lastOnTheLine
+      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey, parserState.fonts['text']) && currentToken.lastOnTheLine
     },
     action: styleValueAction,
     actionOnlyForHighlightingWithoutRefIds: styleValueActionOnlyForHighlightingWithoutRefIds,
@@ -179,7 +179,7 @@ module.exports = (scenarios) => {
     onTheSameLineAsPrevScenario: true,
     requiredCommandProgression: 'chord letters font style name is',
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
-      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey) && currentToken.lastOnTheLine
+      return regexps.styleValue.test(tokenValues, parserState.lastMentionedStyleKey, parserState.fonts['chord-letters']) && currentToken.lastOnTheLine
     },
     action: styleValueAction,
     actionOnlyForHighlightingWithoutRefIds: styleValueActionOnlyForHighlightingWithoutRefIds,

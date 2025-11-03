@@ -1,12 +1,12 @@
 'use strict'
 
-const polyline = require('./../basic/polyline')
-const text = require('./../basic/text')
-const moveElement = require('./../basic/moveElement')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import polyline from './../basic/polyline.js'
+import text from './../basic/text.js'
+import moveElement from './../basic/moveElement.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (voltaStructure, styles) => {
+export default function (voltaStructure, styles) {
   const { voltaColumnHeight, voltaStrokeOptions, voltaValueFontOptions, voltaValueLeftOffset, voltaValueTopOffset, intervalBetweenStaveLines } = styles
   const voltaComponents = []
   const voltaShapePoints = []

@@ -87,7 +87,7 @@ const simileKey = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
 }
 
-module.exports = (measureIndexInGeneral, stavesParams, durationsAccumulatorsForEachVoice, countersForEachVoice, finishedVoices, numberOfUnfinishedVoices, graceUnitsAccumulatorForEachStaveAndVoice, similesInformationByStaveAndVoiceIndexes) => {
+export default function (measureIndexInGeneral, stavesParams, durationsAccumulatorsForEachVoice, countersForEachVoice, finishedVoices, numberOfUnfinishedVoices, graceUnitsAccumulatorForEachStaveAndVoice, similesInformationByStaveAndVoiceIndexes) {
   let allDurationsAccumulatorsForEachNonFinishedVoiceAreNotEqualToZero = true
   for (let staveIndex = 0; staveIndex < stavesParams.length; staveIndex++) {
     const voicesOnCurrentStave = stavesParams[staveIndex]

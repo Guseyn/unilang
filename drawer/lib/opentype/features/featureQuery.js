@@ -2,8 +2,11 @@
  * Query a feature by some of it's properties to lookup a glyph substitution.
  */
 
-const { ContextParams } = require('./../tokenizer')
-const { isTashkeelArabicChar } = require('./../char')
+import tokenizer from './../tokenizer.js'
+import char from './../char.js'
+
+const {  ContextParams  } = tokenizer
+const {  isTashkeelArabicChar  } = char
 
 // DEFAULT TEXT BASE DIRECTION
 let BASE_DIR = 'ltr'
@@ -412,4 +415,4 @@ FeatureQuery.prototype.getFeature = function (query) {
   return this.features[query.script].tags[query.tag] || null
 }
 
-module.exports = { FeatureQuery, Feature }
+export { FeatureQuery, Feature }

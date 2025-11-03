@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (keysParams, pitchesByNoteNames, pitchAdjustmentsByKeyType, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, measureIndex, staveIndex, staveVoiceKey) => {
+export default function (keysParams, pitchesByNoteNames, pitchAdjustmentsByKeyType, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, measureIndex, staveIndex, staveVoiceKey) {
   if (keysParams) {
     const keysParamsOnCurrentStave = keysParams.filter(keyParams => !keyParams.stave || keyParams.stave === 'current')
     const keysParamsOnPreviousStave = keysParams.filter(keyParams => keyParams.stave === 'prev')

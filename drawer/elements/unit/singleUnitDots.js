@@ -1,9 +1,9 @@
 'use strict'
 
-const topOffsetOfElementConsideringItsStave = require('./../stave/topOffsetOfElementConsideringItsStave')
-const path = require('./../basic/path')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const group = require('./../basic/group')
+import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
+import path from './../basic/path.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import group from './../basic/group.js'
 
 const noteInWholeToneWithNoteAbove = (note, noteIndex, sortedNotes) => {
   const wholeToneDelta = 0.5
@@ -28,7 +28,7 @@ const noteInWholeToneWithNotesAboveAndBelow = (note, noteIndex, sortedNotes) => 
     noteInWholeToneWithNoteBelow(note, noteIndex, sortedNotes)
 }
 
-module.exports = (numberOfStaveLines, sortedNotes, numberOfDots, unitDuration, stemDirection, anyWholeTonesInSingleUnit, anyNotesOnAdditionalStaveLines, withFlags, isRest, isGrace) => {
+export default function (numberOfStaveLines, sortedNotes, numberOfDots, unitDuration, stemDirection, anyWholeTonesInSingleUnit, anyNotesOnAdditionalStaveLines, withFlags, isRest, isGrace) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, fontColor, noteDot, distanceBetweenDots, leftOffsetForDotsInSingleUnitWithNotesOnStaveLinesAndStemDirectionIsUpAndUnitDurationIsEqualToEighth, leftOffsetForDotsInSingleUnitWithNotesOnStaveLinesAndStemDirectionIsUpAndUnitDurationIsLessThanEighth, leftOffsetForDotsInSingleUnit, graceElementsScaleFactor } = styles
     const singleUnitsDotsWithCoordinates = []

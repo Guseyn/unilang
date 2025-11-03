@@ -1,8 +1,8 @@
 'use strict'
 
-const tupletShape = require('./../tuplet/tupletShape')
-const topOfStaveForFirstNoteInCurrentSingleUnit = require('./../stave/topOfStaveForFirstNoteInCurrentSingleUnit')
-const topOfStaveForLastNoteInCurrentSingleUnit = require('./../stave/topOfStaveForLastNoteInCurrentSingleUnit')
+import tupletShape from './../tuplet/tupletShape.js'
+import topOfStaveForFirstNoteInCurrentSingleUnit from './../stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
+import topOfStaveForLastNoteInCurrentSingleUnit from './../stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
 
 const keyForTupletStack = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
@@ -12,7 +12,7 @@ const allLeftPointsWithTupletDirectionOfTupletsWithLevelLowerThanOrEqualToSpecif
   .filter(leftTupletPoint => (leftTupletPoint.tupletDirection === tupletDirection) && ((leftTupletPoint.level <= tupletLevel) || leftTupletPoint.finished))
   .every(leftTupletPoint => leftTupletPoint.finished)
 
-module.exports = (drawnVoicesOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, voicesBodiesOnPageLine, styles) {
   const { intervalBetweenStaveLines, tupletNestedVerticalGradient, topOffsetOfTupletWithLevelZero } = styles
   const drawnTuplets = []
   const tupletsStack = {}

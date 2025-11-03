@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'staccato': 'staccato',
   'spiccato': 'spiccato',
   'accent': 'accent',

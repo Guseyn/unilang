@@ -1,8 +1,8 @@
 'use strict'
 
-const notePositionNumber = require('./../note/notePositionNumber')
+import notePositionNumber from './../note/notePositionNumber.js'
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, clefNamesAuraByStaveIndexes) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, clefNamesAuraByStaveIndexes) {
   for (let singleUnitParamsIndex = 0; singleUnitParamsIndex < selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit.length; singleUnitParamsIndex++) {
     const currentSingleUnitParams = selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit[singleUnitParamsIndex]
     for (let noteIndex = 0; noteIndex < currentSingleUnitParams.notes.length; noteIndex++) {

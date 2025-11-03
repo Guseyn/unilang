@@ -1,8 +1,8 @@
 'use strict'
 
-const durationsValuesInTempoExpressedInQuarters = require('./durationsValuesInTempoExpressedInQuarters')
+import durationsValuesInTempoExpressedInQuarters from './durationsValuesInTempoExpressedInQuarters.js'
 
-module.exports = {
+export default {
   'default': (tempoValuePartWhereCertaintTempoDurationIsSpecified, tempoValuePartWhereCertainTempoNumberIsSpecified, tempoAura, unitDurationInQuarters, thisIsFirstUnitInMeasure) => {
     if (thisIsFirstUnitInMeasure) {
       if (tempoValuePartWhereCertaintTempoDurationIsSpecified && tempoValuePartWhereCertainTempoNumberIsSpecified) {

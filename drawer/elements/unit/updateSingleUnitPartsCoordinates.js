@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (drawnSingleUnit, xDistanceToMove = 0, yDistanceToMove = 0) => {
+export default function (drawnSingleUnit, xDistanceToMove = 0, yDistanceToMove = 0) {
   drawnSingleUnit.bodyLeft += xDistanceToMove
   drawnSingleUnit.bodyRight += xDistanceToMove
   drawnSingleUnit.bodyTop += yDistanceToMove

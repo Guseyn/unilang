@@ -35,7 +35,7 @@ function isWhiteSpace(c) {
   return /\s/.test(c)
 }
 
-module.exports = {
+export default {
   isArabicChar,
   isIsolatedArabicChar,
   isTashkeelArabicChar,

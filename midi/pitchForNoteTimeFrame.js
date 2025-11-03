@@ -1,6 +1,6 @@
 'use strict'
 
-const pitchAdjustmentForNoteTimeFrame = require('./pitchAdjustmentForNoteTimeFrame')
+import pitchAdjustmentForNoteTimeFrame from './pitchAdjustmentForNoteTimeFrame.js'
 
 const PITCHES_BY_NOTE_NAMES = {
   'c': 0,
@@ -12,7 +12,7 @@ const PITCHES_BY_NOTE_NAMES = {
   'b': 11
 }
 
-module.exports = (note, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) => {
+export default function (note, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   if (note.isRest) {
     return 0
   }

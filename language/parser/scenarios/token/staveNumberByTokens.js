@@ -1,9 +1,9 @@
 'use strict'
 
-const withNumbersInsteadOfWords = require('./withNumbersInsteadOfWords')
-const regexps = require('./../static-objects/regexps')
+import withNumbersInsteadOfWords from './withNumbersInsteadOfWords.js'
+import regexps from './../static-objects/regexps.js'
 
-module.exports = (joinedTokens, startsFromZero) => {
+export default function (joinedTokens, startsFromZero) {
   const strigifiedTokens = withNumbersInsteadOfWords(joinedTokens)
   const staveIndexMatches = regexps.numbers.match(strigifiedTokens)
   if (staveIndexMatches && staveIndexMatches[0]) {

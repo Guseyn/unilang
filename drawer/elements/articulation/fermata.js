@@ -1,12 +1,12 @@
 'use strict'
 
-const path = require('./../basic/path')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
+import path from './../basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { fermata, fontColor } = styles
   const { direction } = currentArticulationParams
   const shouldBeAboveOrUnderStemLine = articulationShouldBeAboveOrUnderStemLine(drawnSingleUnit, direction)

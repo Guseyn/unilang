@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (keySignatureName, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, pitchAdjustmentsByKeySignatures, staveVoiceKey) => {
+export default function (keySignatureName, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, pitchAdjustmentsByKeySignatures, staveVoiceKey) {
   if (keySignatureName) {
     pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames[time] = pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames[time] || []
     pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames[time].push({

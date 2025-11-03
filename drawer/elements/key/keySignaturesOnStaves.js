@@ -1,12 +1,12 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const stavePiece = require('./../stave/stavePiece')
-const keySignature = require('./keySignature')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import stavePiece from './../stave/stavePiece.js'
+import keySignature from './keySignature.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (numberOfStaveLines, clefsNames, keySignatureName, keySignatureNameForEachLineId, measureIndexInGeneralOfRefId, staveIndexOfRefId, voiceIndexOfRefId, singleUnitIndexOfRefId) => {
+export default function (numberOfStaveLines, clefsNames, keySignatureName, keySignatureNameForEachLineId, measureIndexInGeneralOfRefId, staveIndexOfRefId, voiceIndexOfRefId, singleUnitIndexOfRefId) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaves, intervalBetweenStaveLines } = styles
     const keySignaturesOnStaves = []

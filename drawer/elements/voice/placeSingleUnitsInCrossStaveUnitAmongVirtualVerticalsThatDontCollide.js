@@ -1,8 +1,8 @@
 'use strict'
 
-const singleUnitFitsInVertical = require('./singleUnitFitsInVertical')
+import singleUnitFitsInVertical from './singleUnitFitsInVertical.js'
 
-module.exports = (stavesParams, drawnSingleUnitsForCurrentCrossStaveUnit, verticalsInCrossStaveUnit, containsCollidedVoices, styles) => {
+export default function (stavesParams, drawnSingleUnitsForCurrentCrossStaveUnit, verticalsInCrossStaveUnit, containsCollidedVoices, styles) {
   for (let staveIndex = 0; staveIndex < stavesParams.length; staveIndex++) {
     if (drawnSingleUnitsForCurrentCrossStaveUnit[staveIndex].length > 0) {
       const drawnSingleUnitsForCurrentCrossStaveUnitOnCurrentStaveSortedByNumberOfDots = drawnSingleUnitsForCurrentCrossStaveUnit[staveIndex].sort((firstSingleUnit, secondSingleUnit) => {

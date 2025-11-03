@@ -1,9 +1,9 @@
 'use strict'
 
-const chordLetterText = require('./../chord-letter/chordLetterText')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import chordLetterText from './../chord-letter/chordLetterText.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { intervalBetweenStaveLines } = styles
   const minTopOfMeasuresOnPageLineForChordLetters = Math.min(...drawnMeasuresOnPageLine.map(measure => measure.top))
   const maxBottomOfMeasuresOnPageLineForChordLetters = Math.max(...drawnMeasuresOnPageLine.map(measure => measure.bottom))

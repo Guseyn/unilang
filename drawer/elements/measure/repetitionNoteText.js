@@ -1,9 +1,9 @@
 'use strict'
 
-const text = require('./../basic/text')
-const moveElement = require('./../basic/moveElement')
+import text from './../basic/text.js'
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (measure, styles) => {
+export default function (measure, styles) {
   const repetitionNote = measure.repetitionNote
   measure.repetitionNote.measurePosition = measure.repetitionNote.measurePosition || 'start'
   const startXPoint = (measure.repetitionNote.measurePosition === 'start')

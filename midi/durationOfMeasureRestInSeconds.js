@@ -2,9 +2,9 @@
 
 const DEFAULT_DURATION_IN_QUARTERS_FOR_MEASURE_REST = 4
 
-const durationInSeconds = require('./durationInSeconds')
+import durationInSeconds from './durationInSeconds.js'
 
-module.exports = (timeSignatureDurationInSeconds, tempoAura, fullDurationOfLastMeasure) => {
+export default function (timeSignatureDurationInSeconds, tempoAura, fullDurationOfLastMeasure) {
   return timeSignatureDurationInSeconds
     ? durationInSeconds(timeSignatureDurationInSeconds, tempoAura.quartersPerMinute)
     : fullDurationOfLastMeasure

@@ -2,7 +2,7 @@
 
 // const lastMeasureParams = require('./lastMeasureParams')
 
-module.exports = (pageSchema, parserState) => {
+export default function (pageSchema, parserState) {
   pageSchema.measuresParams = pageSchema.measuresParams || []
   if (parserState.numberOfPageLines === 0) {
     parserState.numberOfPageLines += 1

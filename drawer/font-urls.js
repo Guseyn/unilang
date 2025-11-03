@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   '/font/music/Bravura.otf',
   '/font/music/Leland.otf',
   '/font/text/NotoSans-Bold.ttf',

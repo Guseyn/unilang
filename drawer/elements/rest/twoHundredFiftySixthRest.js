@@ -1,10 +1,10 @@
 'use strict'
 
-const path = require('./../basic/path')
-const ellipse = require('./../basic/ellipse')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import ellipse from './../basic/ellipse.js'
+import group from './../basic/group.js'
 
-module.exports = (restPositionNumber) => {
+export default function (restPositionNumber) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, twoHundredFiftySixthRest, fontColor, backgroundColor } = styles
     const restBody = group(

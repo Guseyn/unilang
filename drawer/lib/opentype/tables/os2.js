@@ -1,8 +1,8 @@
 // The `OS/2` table contains metrics required in OpenType fonts.
 // https://www.microsoft.com/typography/OTSPEC/os2.htm
 
-const parse = require('./../parse')
-const table = require('./../table')
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 const unicodeRanges = [
   {begin: 0x0000, end: 0x007F}, // Basic Latin
@@ -144,7 +144,7 @@ function getUnicodeRange(unicode) {
 // Parse the OS/2 and Windows metrics `OS/2` table
 function parseOS2Table(data, start) {
   const os2 = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   os2.version = p.parseUShort()
   os2.xAvgCharWidth = p.parseShort()
   os2.usWeightClass = p.parseUShort()
@@ -246,4 +246,4 @@ function makeOS2Table(options) {
   ], options)
 }
 
-module.exports = { parse: parseOS2Table, make: makeOS2Table, unicodeRanges, getUnicodeRange }
+export default { parse: parseOS2Table, make: makeOS2Table, unicodeRanges, getUnicodeRange }

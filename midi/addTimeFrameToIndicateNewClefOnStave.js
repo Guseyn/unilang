@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (clef, clefAurasForEachStaveSplittedInTimeFrames, time, staveIndex) => {
+export default function (clef, clefAurasForEachStaveSplittedInTimeFrames, time, staveIndex) {
   if (clef) {
     clefAurasForEachStaveSplittedInTimeFrames[time] = clefAurasForEachStaveSplittedInTimeFrames[time] || {}
     clefAurasForEachStaveSplittedInTimeFrames[time][staveIndex] = clefAurasForEachStaveSplittedInTimeFrames[time][staveIndex] || []

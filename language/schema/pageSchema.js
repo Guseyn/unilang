@@ -530,4 +530,4 @@ const pageSchema = {
   }
 }
 
-module.exports = pageSchema
+export default pageSchema

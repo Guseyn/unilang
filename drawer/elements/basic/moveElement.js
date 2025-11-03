@@ -14,7 +14,7 @@ const updateCoordinatesOfElementWithItsChildElementsRecursively = (element, dx =
   }
 }
 
-module.exports = (element, dx = 0, dy = 0) => {
+export default function (element, dx = 0, dy = 0) {
   if (!element || element.isEmpty) {
     return
   }

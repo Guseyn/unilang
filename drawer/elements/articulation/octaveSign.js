@@ -1,13 +1,13 @@
 'use strict'
 
-const octaveSignText = require('./../octave-sign/octaveSignText')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
+import octaveSignText from './../octave-sign/octaveSignText.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { octaveSignYOffset, octaveSignXCorrection, twoOctavesSignXCorrection } = styles
   const xCorrectionForOctaveSign = {
     '8': octaveSignXCorrection,

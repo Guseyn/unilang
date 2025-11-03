@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = [
+export default [
   'noto-sans',
   'noto-serif'
 ]

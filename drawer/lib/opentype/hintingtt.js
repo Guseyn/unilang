@@ -27,7 +27,7 @@
 */
 'use strict'
 
-const glyf = require('./tables/glyf')
+import glyf from './tables/glyf.js'
 
 let instructionTable
 let exec
@@ -2826,7 +2826,7 @@ instructionTable = [
   /* 0xFF */ MDRP_MIRP.bind(undefined, 1, 1, 1, 1, 3)
 ]
 
-module.exports = Hinting
+export default Hinting
 
 /*****************************
   Mathematical Considerations

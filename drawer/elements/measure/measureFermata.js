@@ -1,11 +1,11 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
 
-module.exports = (drawnBarLine, isLastMeasureOnPageLine, styles) => {
+export default function (drawnBarLine, isLastMeasureOnPageLine, styles) {
   const { fermata, measureFermataOffsetY, fontColor } = styles
   const startYPosition = drawnBarLine.top
   const fermataSymbol = group(

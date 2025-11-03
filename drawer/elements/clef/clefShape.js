@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
 
-module.exports = (clefName) => {
+export default function (clefName) {
   return (styles, leftOffset, topOffset) => {
     const { fontColor } = styles
     const drawnClefShape = path(

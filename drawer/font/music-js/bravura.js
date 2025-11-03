@@ -1,17 +1,13 @@
 'use strict'
 
-const opentype = require('./../../lib/opentype/opentype')
-
-let musicFontSource = opentype.loadSyncIfOnlyItIsNodeJSEnv('./drawer/font/music/Bravura.otf')
-
 // font size(for font file) is 4.0 * intervalBetweenStaveLines
 const MUSCIC_FONT_SOURCE_SIZE = 4.0 
 
-module.exports = ({
+export default function ({
   defaultIntervalBetweenStaveLines,
-  intervalBetweenStaveLines
-}) => {
-  musicFontSource = opentype.accessPreloadedSourceInBrowser('Bravura.otf', 'fontSourcesForRenderingSVG') || musicFontSource
+  intervalBetweenStaveLines,
+  musicFontSource
+}) {
   return {
     musicFontSource,
     musicFontSourceSize: 4.0,
@@ -1423,6 +1419,7 @@ module.exports = ({
       yCorrection: -2.57 * intervalBetweenStaveLines
     },
     alto: {
+      unicode: '',
       points: [
         'M',
         0.75 * intervalBetweenStaveLines, 5.98 * intervalBetweenStaveLines,

@@ -1,12 +1,12 @@
 'use strict'
 
-const text = require('./../basic/text')
-const stavesPiece = require('./../stave/stavesPiece')
-const moveElement = require('./../basic/moveElement')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import text from './../basic/text.js'
+import stavesPiece from './../stave/stavesPiece.js'
+import moveElement from './../basic/moveElement.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (measureIndex, directionOfMeasureNumber, numberOfStaves, numberOfStaveLines) => {
+export default function (measureIndex, directionOfMeasureNumber, numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {
     const { fontOptionsForMeasureNumberText, measureNumberTextPadding, measureNumberTextVerticalOffset, intervalBetweenStaveLines } = styles
     const topOffsetOfFirstStaveTop = topOffsetOfFirstStaveLine

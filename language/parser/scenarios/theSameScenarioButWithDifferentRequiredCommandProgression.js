@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (scenario, requiredCommandProgression) => {
+export default function (scenario, requiredCommandProgression) {
   if (!scenario) {
     throw new Error('scenario does not exist')
   }

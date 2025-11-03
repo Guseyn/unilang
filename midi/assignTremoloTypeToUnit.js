@@ -1,8 +1,8 @@
 'use strict'
 
-const untieUnitWithNotes = require('./untieUnitWithNotes')
+import untieUnitWithNotes from './untieUnitWithNotes.js'
 
-module.exports = (unitParams, measuresParams, measureParams, measureIndex, staveIndex, voiceIndex, unitIndex) => {
+export default function (unitParams, measuresParams, measureParams, measureIndex, staveIndex, voiceIndex, unitIndex) {
   if (unitParams.tremoloParams) {
     if (unitParams.tremoloParams.type === 'withNext') {
       const nextUnitInThisMeasure = measureParams.stavesParams[staveIndex].voicesParams[voiceIndex][unitIndex + 1]

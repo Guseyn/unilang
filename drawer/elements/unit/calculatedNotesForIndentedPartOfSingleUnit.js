@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (sortedNotes, stemDirection) => {
+export default function (sortedNotes, stemDirection) {
   const notesForIndentedPartOfUnit = []
   let lastWholeToneIsMet = false
   if (stemDirection === 'up') {

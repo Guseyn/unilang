@@ -1,15 +1,15 @@
 'use strict'
 
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const tieShape = require('./../tie-and-slur/tieShape')
-const tieDirection = require('./../tie-and-slur/tieDirection')
-const tieJunctionPoint = require('./../tie-and-slur/tieJunctionPoint')
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import tieShape from './../tie-and-slur/tieShape.js'
+import tieDirection from './../tie-and-slur/tieDirection.js'
+import tieJunctionPoint from './../tie-and-slur/tieJunctionPoint.js'
 const keyForTie = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
 }
-const moveElement = require('./../basic/moveElement')
+import moveElement from './../basic/moveElement.js'
 
-module.exports = (drawnVoicesOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, voicesBodiesOnPageLine, styles) {
   const drawndTies = []
   const tiesStack = {}
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

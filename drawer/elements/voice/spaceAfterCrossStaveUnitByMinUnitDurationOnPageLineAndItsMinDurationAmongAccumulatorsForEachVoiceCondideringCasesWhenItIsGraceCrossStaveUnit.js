@@ -12,7 +12,7 @@ const compressedRange = (range, compressUnitsByNTimes, stretchUnitsByNTimes, sty
   return +result.toFixed(2)
 }
 
-module.exports = (drawnCrossStaveUnit, minUnitDurationOnPageLine, compressUnitsByNTimes, stretchUnitsByNTimes, styles) => {
+export default function (drawnCrossStaveUnit, minUnitDurationOnPageLine, compressUnitsByNTimes, stretchUnitsByNTimes, styles) {
   const { spaceRangesAfterCrossStaveUnitsAccordingMinUnitDurationOnPageLineTheyBelongTo } = styles
   if (minUnitDurationOnPageLine <= 1 / 32) {
     const spaceRangesAfterCrossStaveUnit = spaceRangesAfterCrossStaveUnitsAccordingMinUnitDurationOnPageLineTheyBelongTo['min <= 1 / 32']

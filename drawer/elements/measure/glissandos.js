@@ -1,8 +1,8 @@
 'use strict'
 
-const glissandoShape = require('./../glissando/glissandoShape')
+import glissandoShape from './../glissando/glissandoShape.js'
 
-module.exports = (drawnVoicesOnPageLine, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, styles) {
   const drawnGlissandos = []
   const glissandosStack = {}
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (unitDuration, tremoloParams) => {
+export default function (unitDuration, tremoloParams) {
   if (!tremoloParams || unitDuration < 1 / 16) {
     return 0
   }

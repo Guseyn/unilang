@@ -1,13 +1,13 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const text = require('./../basic/text')
-const rect = require('./../basic/rect')
-const moveElement = require('./../basic/moveElement')
-const moveElementInTheCenterBetweenPointsAboveAndBelow = require('./../basic/moveElementInTheCenterBetweenPointsAboveAndBelow')
-const group = require('./../basic/group')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import text from './../basic/text.js'
+import rect from './../basic/rect.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementInTheCenterBetweenPointsAboveAndBelow from './../basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
+import group from './../basic/group.js'
 
-module.exports = (staveStartNumber, staveEndNumber, numberOfAllStaves, numberOfStaveLines) => {
+export default function (staveStartNumber, staveEndNumber, numberOfAllStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {
     const { musicFontSource, musicFontSourceSize, intervalBetweenStaveLines, intervalBetweenStaves, fontColor, curlySmallBrace, curlyLargeBrace, curlyLargerBrace, curlyFlatBrace, spaceAfterBrace } = styles
     const topOffsetForStartStave = topOffsetForCurrentStave(topOffset, staveStartNumber, intervalBetweenStaves, intervalBetweenStaveLines, numberOfStaveLines)

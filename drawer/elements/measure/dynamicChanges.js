@@ -1,13 +1,13 @@
 'use strict'
 
-const dynamicChange = require('./dynamicChange')
-const minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex = require('./minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex')
+import dynamicChange from './dynamicChange.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
 const staveVoiceKey = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
 }
 
-module.exports = (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, styles) {
   const drawnDynamicChanges = []
   const dynamicChangesStack = {}
   if (drawnVoicesOnPageLine) {

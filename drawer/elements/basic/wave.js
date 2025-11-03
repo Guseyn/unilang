@@ -1,11 +1,11 @@
 'use strict'
 
-const path = require('./path')
-const group = require('./group')
-const rotateElementAroundPoint = require('./rotateElementAroundPoint')
-const scaleElementAroundPoint = require('./scaleElementAroundPoint')
+import path from './path.js'
+import group from './group.js'
+import rotateElementAroundPoint from './rotateElementAroundPoint.js'
+import scaleElementAroundPoint from './scaleElementAroundPoint.js'
 
-module.exports = (startPoint, endPoint, wavePeriodSymbol, fontColor, graceElementsScaleFactor, isGrace, minNumberOfWavePeriods = 2, lastWavePeriodSymbol = null) => {
+export default function (startPoint, endPoint, wavePeriodSymbol, fontColor, graceElementsScaleFactor, isGrace, minNumberOfWavePeriods = 2, lastWavePeriodSymbol = null) {
   const waveXLength = endPoint.x - startPoint.x
   const waveYLength = endPoint.y - startPoint.y
   const waveLength = Math.sqrt(Math.pow(waveXLength, 2) + Math.pow(waveYLength, 2))

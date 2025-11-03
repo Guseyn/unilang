@@ -1,8 +1,8 @@
 'use strict'
 
-const moveElement = require('./moveElement')
+import moveElement from './moveElement.js'
 
-module.exports = (element, topPoint, bottomPoint) => {
+export default function (element, topPoint, bottomPoint) {
   const elementCenter = (element.bottom + element.top) / 2
   const centerPointBetweenTopAndBottomPoints = (topPoint + bottomPoint) / 2
   moveElement(

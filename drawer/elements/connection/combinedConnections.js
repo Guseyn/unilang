@@ -1,14 +1,17 @@
 'use strict'
 
-const connections = {
-  brace: require('./braceConnection'),
-  bracket: require('./bracketConnection')
-}
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import brace from './braceConnection.js'
+import bracket from './bracketConnection.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (connectionsParams, numberOfStaves, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) => {
+const connections = {
+  brace,
+  bracket
+}
+
+export default function (connectionsParams, numberOfStaves, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {
     const combinedAllConnections = []
     for (let connectionIndex = 0; connectionIndex < connectionsParams.length; connectionIndex++) {

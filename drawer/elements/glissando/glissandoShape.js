@@ -1,11 +1,11 @@
 'use strict'
 
-const wave = require('./../basic/wave')
-const group = require('./../basic/group')
-const line = require('./../basic/line')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import wave from './../basic/wave.js'
+import group from './../basic/group.js'
+import line from './../basic/line.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (markedGlissando, glissandoMarkKey, voicesBody, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, extendedFromLeftSide, extendedToRightSide, numberOfStaveLines, styles) => {
+export default function (markedGlissando, glissandoMarkKey, voicesBody, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, extendedFromLeftSide, extendedToRightSide, numberOfStaveLines, styles) {
   const glissandoShapeComponents = []
   const { intervalBetweenStaveLines, glissandoWavePeriod, glissandoStrokeWidth, glissandoOffsetFromNoteBody, glissandoOffsetFromNoteBodyOnAdditionalLines, fontColor, graceElementsScaleFactor, leftMarginForConnectionsThatStartBefore, leftMarginForConnectionsThatStartBeforeMeasureWithEmptyVoicesBody, rightMarginForConnectionsThatFinishAfterMeasureWithEmptyVoicesBody } = styles
   const isGrace = (markedGlissando.leftSingleUnit && markedGlissando.leftSingleUnit.isGrace) || (markedGlissando.rightSingleUnit && markedGlissando.rightSingleUnit.isGrace)

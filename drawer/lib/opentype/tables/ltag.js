@@ -4,9 +4,9 @@
 // http://www.w3.org/International/articles/language-tags/
 // http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
 
-const check = require('./../check')
-const parse = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 function makeLtagTable(tags) {
   const result = new table.Table('ltag', [
@@ -33,7 +33,7 @@ function makeLtagTable(tags) {
 }
 
 function parseLtagTable(data, start) {
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   const tableVersion = p.parseULong()
   check.argument(tableVersion === 1, 'Unsupported ltag table version.')
   // The 'ltag' specification does not define any flags; skip the field.
@@ -55,4 +55,4 @@ function parseLtagTable(data, start) {
   return tags
 }
 
-module.exports = { make: makeLtagTable, parse: parseLtagTable }
+export default { make: makeLtagTable, parse: parseLtagTable }

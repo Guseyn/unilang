@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = [
+export default [
   'c', 'd', 'e', 'f', 'g', 'a', 'b'
 ]

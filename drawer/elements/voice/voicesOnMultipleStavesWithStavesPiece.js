@@ -1,15 +1,15 @@
 'use strict'
 
-const voicesOnMultipleStaves = require('./voicesOnMultipleStaves')
-const spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit = require('./spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit')
-const stavesPiece = require('./../stave/stavesPiece')
-const group = require('./../basic/group')
-const prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements = require('./prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements')
-const prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements = require('./prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements')
-const centralizeSingleUnitsInVoices = require('./centralizeSingleUnitsInVoices')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
+import voicesOnMultipleStaves from './voicesOnMultipleStaves.js'
+import spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit from './spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit.js'
+import stavesPiece from './../stave/stavesPiece.js'
+import group from './../basic/group.js'
+import prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements from './prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements.js'
+import prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements from './prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements.js'
+import centralizeSingleUnitsInVoices from './centralizeSingleUnitsInVoices.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
 
-module.exports = ({
+export default function ({
   pageLineNumber,
   measureIndexInGeneral,
   measureIndexOnPageLine,
@@ -33,7 +33,7 @@ module.exports = ({
   currentMeasureContainsBreakingConnectionsThatFinishAfter,
   lyricsWordsElementsWithMaxWidthAmongAllLyricsWordsForEachCrossStaveUnitOnPageLineToPrepareSpaceBeforeDrawingThem,
   chordLetterElementsOnPageLineToPrepareSpaceBeforeDrawingThem
-}) => {
+}) {
   return (styles, leftOffset, topOffset) => {
     const { emptyMeasureWidth } = styles
     const numberOfStaves = voicesParamsForAllStaves.length

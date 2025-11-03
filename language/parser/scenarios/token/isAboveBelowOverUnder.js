@@ -1,7 +1,7 @@
 'use strict'
 
-const regexps = require('./../static-objects/regexps')
+import regexps from './../static-objects/regexps.js'
 
-module.exports = (tokenValues, joinedTokenValues) => {
+export default function (tokenValues, joinedTokenValues) {
   return regexps.aboveBelowOverUnder.test(tokenValues)
 }

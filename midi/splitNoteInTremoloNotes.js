@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (note) => {
+export default function (note) {
   const tremoloParams = note.tremoloParams
   let numberOfStrokes = 0
   if (tremoloParams) {

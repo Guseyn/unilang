@@ -1,10 +1,10 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const addLineMeasureStaveVoicePositionScenarios = require('./addLineMeasureStaveVoicePositionScenarios')
+import regexps from './static-objects/regexps.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
 
-module.exports = (scenarios, requiredCommandProgression, commandProgressionLevel = 2, allowedCoordinates) => {
+export default function (scenarios, requiredCommandProgression, commandProgressionLevel = 2, allowedCoordinates) {
   scenarios[`unit position (${requiredCommandProgression})`] = {
     requiredCommandProgression,
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,

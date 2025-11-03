@@ -1,12 +1,12 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
 const sharpKeyShape = () => {
   return (styles, leftOffset, topOffset) => {
@@ -64,7 +64,7 @@ const naturalKeyShape = () => {
 
 const keys = { 'sharp': sharpKeyShape, 'flat': flatKeyShape, 'natural': naturalKeyShape }
 
-module.exports = (drawnSingleUnit, articulationIndex, keyName, articulation, position, styles) => {
+export default function (drawnSingleUnit, articulationIndex, keyName, articulation, position, styles) {
   const { yDistanceBetweenArticulationKeysInVerticalLine, scaleFactorForArticulationKeys } = styles
   const drawnKeys = []
   const key = keys[keyName]

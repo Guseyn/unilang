@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (crossStaveUnitCount, isCurrentCrossStaveUnitGrace, measureIndexInGeneral, voicesParamsForAllStaves, durationsAccumulatorsForEachVoice, countersForEachVoice, minDurationAmongAccumulatorsForEachVoice, finishedVoices, numberOfUnfinishedVoices) => {
+export default function (crossStaveUnitCount, isCurrentCrossStaveUnitGrace, measureIndexInGeneral, voicesParamsForAllStaves, durationsAccumulatorsForEachVoice, countersForEachVoice, minDurationAmongAccumulatorsForEachVoice, finishedVoices, numberOfUnfinishedVoices) {
   for (let staveIndex = 0; staveIndex < voicesParamsForAllStaves.length; staveIndex++) {
     for (let voiceIndex = 0; voiceIndex < voicesParamsForAllStaves[staveIndex].length; voiceIndex++) {
       const itIsAnyCaseExceptTheOneWhenWeGotGraceCrossStaveUnitSinceMinDurationAmongAccumulatorsForEachVoiceDoesNotConsiderWhetherCurrentCrossStaveUnitIsGraceWeCannotReleaseAnyDurationsFromAccumulatorsForEachVoice = !isNaN(minDurationAmongAccumulatorsForEachVoice) &&

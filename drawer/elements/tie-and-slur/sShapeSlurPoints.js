@@ -1,16 +1,16 @@
 'use strict'
 
-const nextSlurDirectionBySingleUnit = require('./nextSlurDirectionBySingleUnit')
-const slurJunctionPointForSingleUnit = require('./slurJunctionPointForSingleUnit')
-const slurJunctionPhantomPoint = require('./slurJunctionPhantomPoint')
-const slurSplinePoints = require('./slurSplinePoints')
-const intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits = require('./intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits')
-const yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes = require('./yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes')
-const sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits = require('./sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits')
-const gluedSlurParts = require('./gluedSlurParts')
-const slurRoundCoefficientByXRangeOfSShapeSlur = require('./slurRoundCoefficientByXRangeOfSShapeSlur')
+import nextSlurDirectionBySingleUnit from './nextSlurDirectionBySingleUnit.js'
+import slurJunctionPointForSingleUnit from './slurJunctionPointForSingleUnit.js'
+import slurJunctionPhantomPoint from './slurJunctionPhantomPoint.js'
+import slurSplinePoints from './slurSplinePoints.js'
+import intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits from './intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits.js'
+import yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes from './yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes.js'
+import sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from './sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
+import gluedSlurParts from './gluedSlurParts.js'
+import slurRoundCoefficientByXRangeOfSShapeSlur from './slurRoundCoefficientByXRangeOfSShapeSlur.js'
 
-module.exports = (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) => {
+export default function (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const { leftMarginForConnectionsThatStartBefore, sShapeSlurYOffsetForItsSidesWhenItBreakingForNextLine, sShapeSlurPartMiddleJunctionPointXOffset, sShapeSlurPartMiddleJunctionPointYOffset } = styles
   const allSlurSingleUnitsOfSlur = markedSlur.allSingleUnitsOnTheWay
   const slurMarkKey = markedSlur.slurMarkKey

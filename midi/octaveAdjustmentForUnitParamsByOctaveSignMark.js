@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (octaveSignMark) => {
+export default function (octaveSignMark) {
   let octaveSignAdjustment = 0
   if (octaveSignMark.direction === 'up') {
     if (octaveSignMark.octaveNumber === '8') {

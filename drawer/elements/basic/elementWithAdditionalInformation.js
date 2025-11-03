@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = (group, additionalInformation) => {
+export default function (group, additionalInformation) {
   return { ...group, ...additionalInformation }
 }

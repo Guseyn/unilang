@@ -1,6 +1,6 @@
 'use strict'
 
-const tremoloDurationFactor = require('./tremoloDurationFactor')
+import tremoloDurationFactor from './tremoloDurationFactor.js'
 
 const DEFAULT_TUPLET_RATIOS = {
   '1': 1,
@@ -13,7 +13,7 @@ const DEFAULT_TUPLET_RATIOS = {
   '12': 8
 }
 
-module.exports = (tupletValuesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) => {
+export default function (tupletValuesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) {
   let tupletRatio = 1 / 1
   if (tupletValuesAuraForEachVoiceInEachStave && tupletValuesAuraForEachVoiceInEachStave[staveVoiceKey]) {
     for (let tupletIndex = 0; tupletIndex < tupletValuesAuraForEachVoiceInEachStave[staveVoiceKey].length; tupletIndex++) {

@@ -1,7 +1,7 @@
 'use strict'
 
-const { parseSync, stringify } = require('svgson')
-const SvgPathProperties = require('svg-path-properties').svgPathProperties
+import {  parseSync, stringify  } from 'svgson.js'
+import SvgPathProperties from 'svg-path-properties.js'.svgPathProperties
 
 const IGNORE_CHILDREN_ELEMENTS_OF_ELEMENTS_WITH_DATA_NAME = [ 'stavePiece', 'stavesPiece', 'startBarLine', 'startBoldDoubleBarLine', 'barLine', 'boldDoubleBarLine', 'dottedBarLine', 'doubleBarLine' ]
 
@@ -84,7 +84,7 @@ const addAnimationToElement = (element, options, styles) => {
   }
 }
 
-module.exports = (svgAsString, options = {}, styles) => {
+export default function (svgAsString, options = {}, styles) {
   options.iteration = options.iteration || '1'
   options.direction = options.direction || 'forwards'
   options.timing = options.timing || 'linear'

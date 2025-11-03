@@ -1,8 +1,8 @@
 'use strict'
 
-const lastStaveParams = require('./lastStaveParams')
+import lastStaveParams from './lastStaveParams.js'
 
-module.exports = (lastMeasureParams, componentName, parserState) => {
+export default function (lastMeasureParams, componentName, parserState) {
   if (!lastMeasureParams.stavesParams) {
     lastMeasureParams.stavesParams = []
   }

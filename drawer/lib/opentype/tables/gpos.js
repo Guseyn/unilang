@@ -1,9 +1,9 @@
 // The `GPOS` table contains kerning pairs, among other things.
 // https://docs.microsoft.com/en-us/typography/opentype/spec/gpos
 
-const check = require('./../check')
-const { Parser } = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 const subtableParsers = new Array(10)         // subtableParsers[0] is unused
 
@@ -123,4 +123,4 @@ function makeGposTable(gpos) {
   ])
 }
 
-module.exports = { parse: parseGposTable, make: makeGposTable }
+export default { parse: parseGposTable, make: makeGposTable }

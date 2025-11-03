@@ -1,9 +1,9 @@
 'use strict'
 
-const slurJunctionPointForSingleUnit = require('./slurJunctionPointForSingleUnit')
-const timeInSlurSplinePointsBySomeXPointThere = require('./timeInSlurSplinePointsBySomeXPointThere')
+import slurJunctionPointForSingleUnit from './slurJunctionPointForSingleUnit.js'
+import timeInSlurSplinePointsBySomeXPointThere from './timeInSlurSplinePointsBySomeXPointThere.js'
 
-module.exports = (singleUnit, slurSplinePoints, slurDirection, styles) => {
+export default function (singleUnit, slurSplinePoints, slurDirection, styles) {
   const slurFirstCurveXRange = {
     start: slurSplinePoints[1],
     end: slurSplinePoints[8]

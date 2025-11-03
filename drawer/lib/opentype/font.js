@@ -1,15 +1,15 @@
 // The Font object
 
-const Path = require('./path')
-const sfnt = require('./tables/sfnt')
-const { DefaultEncoding } = require('./encoding')
-const glyphset = require('./glyphset')
-const Position = require('./position')
-const Substitution = require('./substitution')
-const { isBrowser, checkArgument, arrayBufferToNodeBuffer } = require('./util')
-const HintingTrueType = require('./hintingtt')
-const Bidi = require('./bidi')
-const { FeatureQuery } = require('./features/featureQuery')
+import Path from './path.js'
+import sfnt from './tables/sfnt.js'
+import {  DefaultEncoding  } from './encoding.js'
+import glyphset from './glyphset.js'
+import Position from './position.js'
+import Substitution from './substitution.js'
+import {  isBrowser, checkArgument, arrayBufferToNodeBuffer  } from './util.js'
+import HintingTrueType from './hintingtt.js'
+import Bidi from './bidi.js'
+import {  FeatureQuery  } from './features/featureQuery.js'
 
 /**
  * @typedef FontOptions
@@ -506,7 +506,7 @@ Font.prototype.toArrayBuffer = function() {
 /**
  * Initiate a download of the OpenType font.
  */
-Font.prototype.download = function(fileName) {
+Font.prototype.download = async function(fileName) {
   const familyName = this.getEnglishName('fontFamily')
   const styleName = this.getEnglishName('fontSubfamily')
   fileName = fileName || familyName.replace(/\s/g, '') + '-' + styleName + '.otf'
@@ -530,7 +530,7 @@ Font.prototype.download = function(fileName) {
       console.warn('Font file could not be downloaded. Try using a different browser.')
     }
   } else {
-    const fs = require('fs')
+    const fs = await import('fs')
     const buffer = arrayBufferToNodeBuffer(arrayBuffer)
     fs.writeFileSync(fileName, buffer)
   }
@@ -581,4 +581,4 @@ Font.prototype.usWeightClasses = {
   BLACK:    900
 }
 
-module.exports = Font
+export default Font

@@ -1,8 +1,8 @@
 'use strict'
 
-const moveElement = require('./moveElement')
+import moveElement from './moveElement.js'
 
-module.exports = (elements, dx = 0, dy = 0) => {
+export default function (elements, dx = 0, dy = 0) {
   if (dx !== 0 || dy !== 0) {
     if (elements) {
       elements.forEach(element => {

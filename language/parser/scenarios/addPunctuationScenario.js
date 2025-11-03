@@ -1,8 +1,8 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['punctuation'] = {
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
       return currentToken.lastOnTheLine && regexps.punctuation.test(tokenValues) && joinedTokenValuesWithRealDelimiters.length > 0

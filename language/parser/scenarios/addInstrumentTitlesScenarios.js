@@ -1,16 +1,16 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastInstrumentTitleParam = require('./page-schema/lastInstrumentTitleParam')
-const staveIndexByTokens = require('./token/staveIndexByTokens')
-const isStaveIndex = require('./token/isStaveIndex')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const foundNextTokenValuesOnTheLine = require('./token/foundNextTokenValuesOnTheLine')
-const theSameScenarioButWithDifferentRequiredCommandProgression = require('./theSameScenarioButWithDifferentRequiredCommandProgression')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastInstrumentTitleParam from './page-schema/lastInstrumentTitleParam.js'
+import staveIndexByTokens from './token/staveIndexByTokens.js'
+import isStaveIndex from './token/isStaveIndex.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import foundNextTokenValuesOnTheLine from './token/foundNextTokenValuesOnTheLine.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['instrument title'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

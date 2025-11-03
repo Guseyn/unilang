@@ -1,6 +1,6 @@
 // Parsing utility functions
 
-const check = require('./check')
+import check from './check.js'
 
 // Retrieve an unsigned byte from the DataView.
 function getByte(dataView, offset) {
@@ -610,11 +610,11 @@ Parser.prototype.parseFeatureVariationsList = function() {
   }) || []
 }
 
-module.exports = {
+export {
   getByte,
-  getCard8: getByte,
+  getByte as getCard8,
   getUShort,
-  getCard16: getUShort,
+  getUShort as getCard16,
   getShort,
   getULong,
   getFixed,

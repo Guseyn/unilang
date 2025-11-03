@@ -273,7 +273,7 @@ function addGlyphNames(font) {
   }
 }
 
-module.exports = {
+export {
   cffStandardStrings,
   cffStandardEncoding,
   cffExpertEncoding,

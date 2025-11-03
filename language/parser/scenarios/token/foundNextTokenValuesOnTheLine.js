@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (unitext, startCharIndex, numberOfTokens) => {
+export default function (unitext, startCharIndex, numberOfTokens) {
   const nextTokenChars = []
   const nextTokens = []
   if (startCharIndex !== undefined) {

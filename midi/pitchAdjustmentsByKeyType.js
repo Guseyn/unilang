@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'doubleFlatKey': -2,
   'doubleSharpKey': +2,
   'flatKey': -1,

@@ -1,8 +1,8 @@
 'use strict'
 
-const regexps = require('./../static-objects/regexps')
+import regexps from './../static-objects/regexps.js'
 
-module.exports = (tokenValues, joinedTokenValues) => {
+export default function (tokenValues, joinedTokenValues) {
   const match = regexps.direction.match(tokenValues)
   const direction = match[0]
   return direction

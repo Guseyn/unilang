@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = (parserState, currentLineNumber) => {
+export default function (parserState, currentLineNumber) {
   return parserState.emptyLineNumbers.indexOf(currentLineNumber - 1) !== -1
 }

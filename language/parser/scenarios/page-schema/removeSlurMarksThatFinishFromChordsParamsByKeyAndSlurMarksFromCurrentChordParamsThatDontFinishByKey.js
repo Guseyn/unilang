@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (parserState, slurMarkKey, lastChordParamsInSlur) => {
+export default function (parserState, slurMarkKey, lastChordParamsInSlur) {
   if (parserState.slurMarkChords[slurMarkKey]) {
     parserState.slurMarkChords[slurMarkKey].forEach((chordParams, chordParamsIndex) => {
       const slurMarkThatFinishesIndex = chordParams.slurMarks.findIndex(slurMark => {

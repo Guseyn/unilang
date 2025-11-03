@@ -1,8 +1,8 @@
 'use strict'
 
-const line = require('./../basic/line')
+import line from './../basic/line.js'
 
-module.exports = (styles, stem) => {
+export default function (styles, stem) {
   const { noteBeamColumnStrokeOptions, graceElementsScaleFactor } = styles
   const tunedNoteBeamColumnStrokeOptions = Object.assign({}, noteBeamColumnStrokeOptions)
   if (stem.isGrace) {

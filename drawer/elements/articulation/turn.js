@@ -1,14 +1,14 @@
 'use strict'
 
-const path = require('./../basic/path')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const articulationKeysInVerticalLine = require('./articulationKeysInVerticalLine')
+import path from './../basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import articulationKeysInVerticalLine from './articulationKeysInVerticalLine.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const components = []
   const { turn, turnInverted, fontColor } = styles
   const { keyAbove, keyBelow, followedAfter, inverted } = currentArticulationParams

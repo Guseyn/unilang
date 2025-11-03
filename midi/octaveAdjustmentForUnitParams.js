@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (unitParams) => {
+export default function (unitParams) {
   let octaveAdjustmentForUnitParams = 0
   if (unitParams.articulationParams) {
     const singleOctaveSignForUnitParams = unitParams.articulationParams.find(articulationParam => {

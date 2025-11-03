@@ -1,16 +1,16 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
+import regexps from './static-objects/regexps.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
 
-module.exports = (
+export default function (
   scenarios,
   requiredCommandProgression,
   prohibitedCommandProgressions = [],
   commandProgressionLevel = 2,
   forConnection = false,
   allowedCoordinates = { line: true, measure: true, stave: true, voice: true }
-) => {
+) {
   if (allowedCoordinates.line) {
     scenarios[`line position (${requiredCommandProgression})`] = {
       requiredCommandProgression,

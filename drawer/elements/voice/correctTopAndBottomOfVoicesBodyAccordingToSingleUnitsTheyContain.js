@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (voicesBody, drawnSingleUnitsInVoices) => {
+export default function (voicesBody, drawnSingleUnitsInVoices) {
   if (voicesBody && !voicesBody.isEmpty) {
     for (let staveIndex = 0; staveIndex < drawnSingleUnitsInVoices.length; staveIndex++) {
       if (drawnSingleUnitsInVoices[staveIndex]) {

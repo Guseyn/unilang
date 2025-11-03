@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (currentSlurDirection, slurMarkKey, firstSingleUnitInSlurPart, lastSingleUnitInSlurPart) => {
+export default function (currentSlurDirection, slurMarkKey, firstSingleUnitInSlurPart, lastSingleUnitInSlurPart) {
   if (lastSingleUnitInSlurPart && lastSingleUnitInSlurPart.slurMarks) {
     if (lastSingleUnitInSlurPart.slurMarks.some(slurMark => (slurMark.key === slurMarkKey) && (slurMark.direction === 'up'))) {
       return 'up'

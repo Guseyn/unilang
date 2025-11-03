@@ -1,6 +1,6 @@
 // The GlyphSet object
 
-const Glyph = require('./glyph')
+import Glyph from './glyph.js'
 
 // Define a property on the glyph that depends on the path being loaded.
 function defineDependentProperty(glyph, externalName, internalName) {
@@ -124,4 +124,4 @@ function cffGlyphLoader(font, index, parseCFFCharstring, charstring) {
   }
 }
 
-module.exports = { GlyphSet, glyphLoader, ttfGlyphLoader, cffGlyphLoader }
+export default { GlyphSet, glyphLoader, ttfGlyphLoader, cffGlyphLoader }

@@ -1,6 +1,6 @@
 'use sttrict'
 
-module.exports = (unitDuration, isGrace, allNotesInNonIndentedUnitBodyAreGhosts, styles) => {
+export default function (unitDuration, isGrace, allNotesInNonIndentedUnitBodyAreGhosts, styles) {
   const { additionalOffsetForIndentedPartOfUnitWithWholeDuration, additionalOffsetForIndentedPartOfUnitWithQuadrupleDuration, additionalOffsetForIndentedPartOfUnitWithDoubleDuration, additionalOffsetForIndentedPartOfUnitWithAllGhostNotes, noteStemStrokeOptions, graceElementsScaleFactor } = styles
   const graceFactor = isGrace ? graceElementsScaleFactor : 1
   if (unitDuration === 1) {

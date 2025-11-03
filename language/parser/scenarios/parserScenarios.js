@@ -1,44 +1,44 @@
 'use strict'
 
-const addNotRecognizableCommandScenario = require('./addNotRecognizableCommandScenario')
+import addNotRecognizableCommandScenario from './addNotRecognizableCommandScenario.js'
 
-const addCommentScenario = require('./addCommentScenario')
-const addStyleScenarios = require('./addStyleScenarios')
-const addMidiSettingsScenarios = require('./addMidiSettingsScenarios')
-const addCompressAndStretchUnitsScenarios = require('./addCompressAndStretchUnitsScenarios')
-const addHideLastMeasureScenario = require('./addHideLastMeasureScenario')
-const addPageMetaScenarios = require('./addPageMetaScenarios')
-const addMeasureNumbersScenarios = require('./addMeasureNumbersScenarios')
-const addLyricsPositionScenarios = require('./addLyricsPositionScenarios')
-const addMeasureSetupScenarios = require('./addMeasureSetupScenarios')
-const addBarLineScenarios = require('./addBarLineScenarios')
-const addRepeatSignScenarios = require('./addRepeatSignScenarios')
-const addMeasureRestScenarios = require('./addMeasureRestScenarios')
-const addMeasureSimileScenarios = require('./addMeasureSimileScenarios')
-const addMeasureFermataScenarios = require('./addMeasureFermataScenarios')
-const addNewLineScenarios = require('./addNewLineScenarios')
-const addCrossStaveConnectionsScenarios = require('./addCrossStaveConnectionsScenarios')
-const addInstrumentTitlesScenarios = require('./addInstrumentTitlesScenarios')
-const addKeySignatureScenarios = require('./addKeySignatureScenarios')
-const addTimeSignatureScenarios = require('./addTimeSignatureScenarios')
-const addRepetitionNoteScenarios = require('./addRepetitionNoteScenarios')
-const addCodaScenarios = require('./addCodaScenarios')
-const addSignScenarios = require('./addSignScenarios')
-const addTempoMarkScenario = require('./addTempoMarkScenario')
-const addStaveSetupScenarios = require('./addStaveSetupScenarios')
-const addClefScenarios = require('./addClefScenarios')
-const addVoiceSetupScenarios = require('./addVoiceSetupScenarios')
-const addNoteSetupScenarios = require('./addNoteSetupScenarios')
-const addChordSetupScenarios = require('./addChordSetupScenarios')
-const addSlurScenarios = require('./addSlurScenarios')
-const addGlissandoScenarios = require('./addGlissandoScenarios')
-const addTupletScenarios = require('./addTupletScenarios')
-const addOctaveSignScenarios = require('./addOctaveSignScenarios')
-const addCrescendoAndDiminuendoScenarios = require('./addCrescendoAndDiminuendoScenarios')
-const addRepeatSimileScenarios = require('./addRepeatSimileScenarios')
-const addVoltaScenarios = require('./addVoltaScenarios')
-const addPunctuationScenario = require('./addPunctuationScenario')
-const addGeneralEmptyLineScenario = require('./addGeneralEmptyLineScenario')
+import addCommentScenario from './addCommentScenario.js'
+import addStyleScenarios from './addStyleScenarios.js'
+import addMidiSettingsScenarios from './addMidiSettingsScenarios.js'
+import addCompressAndStretchUnitsScenarios from './addCompressAndStretchUnitsScenarios.js'
+import addHideLastMeasureScenario from './addHideLastMeasureScenario.js'
+import addPageMetaScenarios from './addPageMetaScenarios.js'
+import addMeasureNumbersScenarios from './addMeasureNumbersScenarios.js'
+import addLyricsPositionScenarios from './addLyricsPositionScenarios.js'
+import addMeasureSetupScenarios from './addMeasureSetupScenarios.js'
+import addBarLineScenarios from './addBarLineScenarios.js'
+import addRepeatSignScenarios from './addRepeatSignScenarios.js'
+import addMeasureRestScenarios from './addMeasureRestScenarios.js'
+import addMeasureSimileScenarios from './addMeasureSimileScenarios.js'
+import addMeasureFermataScenarios from './addMeasureFermataScenarios.js'
+import addNewLineScenarios from './addNewLineScenarios.js'
+import addCrossStaveConnectionsScenarios from './addCrossStaveConnectionsScenarios.js'
+import addInstrumentTitlesScenarios from './addInstrumentTitlesScenarios.js'
+import addKeySignatureScenarios from './addKeySignatureScenarios.js'
+import addTimeSignatureScenarios from './addTimeSignatureScenarios.js'
+import addRepetitionNoteScenarios from './addRepetitionNoteScenarios.js'
+import addCodaScenarios from './addCodaScenarios.js'
+import addSignScenarios from './addSignScenarios.js'
+import addTempoMarkScenario from './addTempoMarkScenario.js'
+import addStaveSetupScenarios from './addStaveSetupScenarios.js'
+import addClefScenarios from './addClefScenarios.js'
+import addVoiceSetupScenarios from './addVoiceSetupScenarios.js'
+import addNoteSetupScenarios from './addNoteSetupScenarios.js'
+import addChordSetupScenarios from './addChordSetupScenarios.js'
+import addSlurScenarios from './addSlurScenarios.js'
+import addGlissandoScenarios from './addGlissandoScenarios.js'
+import addTupletScenarios from './addTupletScenarios.js'
+import addOctaveSignScenarios from './addOctaveSignScenarios.js'
+import addCrescendoAndDiminuendoScenarios from './addCrescendoAndDiminuendoScenarios.js'
+import addRepeatSimileScenarios from './addRepeatSimileScenarios.js'
+import addVoltaScenarios from './addVoltaScenarios.js'
+import addPunctuationScenario from './addPunctuationScenario.js'
+import addGeneralEmptyLineScenario from './addGeneralEmptyLineScenario.js'
 
 const addMainScenarious = (scenarios) => {
   addCommentScenario(scenarios)
@@ -80,7 +80,7 @@ const addMainScenarious = (scenarios) => {
   addGeneralEmptyLineScenario(scenarios)
 }
 
-module.exports = () => {
+export default function () {
   const scenarios = {}
   addMainScenarious(scenarios)
   addNotRecognizableCommandScenario(scenarios)

@@ -1,8 +1,8 @@
 'use strict'
 
-const slurMarkWithSpecifiedKey = require('./slurMarkWithSpecifiedKey')
+import slurMarkWithSpecifiedKey from './slurMarkWithSpecifiedKey.js'
 
-module.exports = (parserState, slurMarkKey, placement) => {
+export default function (parserState, slurMarkKey, placement) {
   const foundSlurMarkWithSpecifiedKey = slurMarkWithSpecifiedKey(parserState, slurMarkKey)
   if (foundSlurMarkWithSpecifiedKey) {
     foundSlurMarkWithSpecifiedKey.rightPlacement = placement

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (unitParams) => {
+export default function (unitParams) {
   unitParams.tiedWithNext = undefined
   unitParams.tiedAfter = undefined
   unitParams.tiedAfterMeasure = undefined

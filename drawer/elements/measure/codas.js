@@ -1,9 +1,9 @@
 'use strict'
 
-const coda = require('./coda')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import coda from './coda.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, styles) {
   const drawnCodas = []
   drawnMeasuresOnPageLine.forEach(measure => {
     if (measure.coda) {

@@ -1,16 +1,16 @@
 'use strict'
 
-const octaveSignText = require('./../octave-sign/octaveSignText')
-const line = require('./../basic/line')
-const articulationShouldBeAboveOrUnderStemLine = require('./../articulation/articulationShouldBeAboveOrUnderStemLine')
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import octaveSignText from './../octave-sign/octaveSignText.js'
+import line from './../basic/line.js'
+import articulationShouldBeAboveOrUnderStemLine from './../articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (octaveSignParams, styles) => {
+export default function (octaveSignParams, styles) {
   const { intervalBetweenStaveLines, octaveSignYOffset, octaveSignXCorrection, twoOctavesSignXCorrection, octaveSignHorizontalLineStrokeOptions, octaveSignVerticalLineStrokeOptions, octaveSignHorizontalLineLeftOffset, octaveSignHorizontalLineRightOffset } = styles
   const components = []
   const shouldBeAboveOrUnderStemLine = articulationShouldBeAboveOrUnderStemLine(octaveSignParams.leftSingleUnit, octaveSignParams.direction)

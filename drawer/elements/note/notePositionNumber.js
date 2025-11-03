@@ -50,7 +50,7 @@ const noteNameWithOctaveNumberForZeroPositionNumberByClefs = {
   }
 }
 
-module.exports = (noteParams, clefNamesAuraByStaveIndexes) => {
+export default function (noteParams, clefNamesAuraByStaveIndexes) {
   if (noteParams.positionNumber) {
     return noteParams.positionNumber
   }

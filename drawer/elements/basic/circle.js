@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (radius, fill, leftOffset = 0, topOffset = 0) => {
+export default function (radius, fill, leftOffset = 0, topOffset = 0) {
   const centerX = leftOffset + radius
   const centerY = topOffset + radius
   return {

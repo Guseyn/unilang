@@ -1,8 +1,8 @@
 'use strict'
 
-const lastNonSimileChordParams = require('./lastNonSimileChordParams')
+import lastNonSimileChordParams from './lastNonSimileChordParams.js'
 
-module.exports = (lastStaveParams, componentName, parserState) => {
+export default function (lastStaveParams, componentName, parserState) {
   if (!lastStaveParams.voicesParams) {
     lastStaveParams.voicesParams = []
   }

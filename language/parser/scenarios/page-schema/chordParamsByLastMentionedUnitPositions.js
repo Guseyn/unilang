@@ -1,8 +1,8 @@
 'use strict'
 
-const currentPageLineIndex = require('./currentPageLineIndex')
+import currentPageLineIndex from './currentPageLineIndex.js'
 
-module.exports = (parserState) => {
+export default function (parserState) {
   const pageSchema = parserState.pageSchema
   const unitPosition = parserState.lastMentionedUnitPosition
   let unitPageLinePosition = parserState.lastMentionedPageLinePosition

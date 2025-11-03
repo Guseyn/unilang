@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (element, properties) => {
+export default function (element, properties) {
   for (const propertyName in properties) {
     const propertyValue = properties[propertyName]
     element.properties = element.properties || {}

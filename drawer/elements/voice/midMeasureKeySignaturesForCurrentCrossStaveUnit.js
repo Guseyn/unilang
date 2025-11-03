@@ -1,10 +1,10 @@
 'use strict'
 
-const allNotesInSingleUnitParamsAreOnNextStave = require('./allNotesInSingleUnitParamsAreOnNextStave')
-const allNotesInSingleUnitParamsAreOnPrevStave = require('./allNotesInSingleUnitParamsAreOnPrevStave')
-const keySignaturesOnStaves = require('./../key/keySignaturesOnStaves')
+import allNotesInSingleUnitParamsAreOnNextStave from './allNotesInSingleUnitParamsAreOnNextStave.js'
+import allNotesInSingleUnitParamsAreOnPrevStave from './allNotesInSingleUnitParamsAreOnPrevStave.js'
+import keySignaturesOnStaves from './../key/keySignaturesOnStaves.js'
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, numberOfStaves, numberOfStaveLines, clefNamesAuraByStaveIndexes, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, numberOfStaves, numberOfStaveLines, clefNamesAuraByStaveIndexes, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { spaceAfterMidMeasureClefsForMidMeasureKeySignatures } = styles
   const clefNames = []
   let keySignatureName

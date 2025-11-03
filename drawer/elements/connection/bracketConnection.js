@@ -1,12 +1,12 @@
 'use strict'
 
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const path = require('./../basic/path')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const group = require('./../basic/group')
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import path from './../basic/path.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import group from './../basic/group.js'
 
-module.exports = (staveStartNumber, staveEndNumber, numberOfAllStaves, numberOfStaveLines) => {
+export default function (staveStartNumber, staveEndNumber, numberOfAllStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, intervalBetweenStaves, bracketLineWidth, bracketTop, bracketBottom, bracketXCorrection, fontColor, staveLineHeight } = styles
     const topOffsetForStartStave = topOffsetForCurrentStave(topOffset, staveStartNumber, intervalBetweenStaves, intervalBetweenStaveLines, numberOfStaveLines)

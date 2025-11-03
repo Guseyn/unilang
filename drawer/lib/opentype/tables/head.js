@@ -1,14 +1,14 @@
 // The `head` table contains global information about the font.
 // https://www.microsoft.com/typography/OTSPEC/head.htm
 
-const check = require('./../check')
-const parse = require('./../parse')
-const table = require('./../table')
+import check from './../check.js'
+import { Parser } from './../parse.js'
+import table from './../table.js'
 
 // Parse the header `head` table
 function parseHeadTable(data, start) {
   const head = {}
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   head.version = p.parseVersion()
   head.fontRevision = Math.round(p.parseFixed() * 1000) / 1000
   head.checkSumAdjustment = p.parseULong()
@@ -60,4 +60,4 @@ function makeHeadTable(options) {
   ], options)
 }
 
-module.exports = { parse: parseHeadTable, make: makeHeadTable }
+export default { parse: parseHeadTable, make: makeHeadTable }

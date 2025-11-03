@@ -1,9 +1,9 @@
 'use strict'
 
-const path = require('./../basic/path')
-const group = require('./../basic/group')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
 
-module.exports = (restPositionNumber) => {
+export default function (restPositionNumber) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, wholeRest, fontColor } = styles
     return group(

@@ -1,3 +1,3 @@
 'use strict'
 
-module.exports = tokens => tokens.map(token => token.value)
+export default function (tokens) { return tokens.map(token => token.value) }

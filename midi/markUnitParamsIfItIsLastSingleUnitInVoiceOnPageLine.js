@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (measuresParams, measureParams, voiceParams, unitParams, measureIndex, staveIndex, voiceIndex, unitIndex) => {
+export default function (measuresParams, measureParams, voiceParams, unitParams, measureIndex, staveIndex, voiceIndex, unitIndex) {
   if (!voiceParams[unitIndex + 1]) {
     if ((measureIndex === measuresParams.length - 1) || (measuresParams[measureIndex + 1] && measuresParams[measureIndex + 1].isHidden)) {
       unitParams.isLastSingleUnitInVoiceOnPageLine = true

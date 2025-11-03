@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (singleUnitParams, measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatStartBefore, measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatFinishAfter) => {
+export default function (singleUnitParams, measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatStartBefore, measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatFinishAfter) {
   if (singleUnitParams.tiedBeforeMeasure) {
     const newMeasureIndex = (singleUnitParams.tiedBeforeMeasure.index || 1) - 1
     if (measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatStartBefore.indexOf(newMeasureIndex) === -1) {

@@ -1,8 +1,8 @@
 'use strict'
 
-const intersectionPointForOnePartOfSShapeSlurWithItsSingleUnit = require('./intersectionPointForOnePartOfSShapeSlurWithItsSingleUnit')
+import intersectionPointForOnePartOfSShapeSlurWithItsSingleUnit from './intersectionPointForOnePartOfSShapeSlurWithItsSingleUnit.js'
 
-module.exports = (singleUnits, slurSplinePoints, slurDirection, styles) => {
+export default function (singleUnits, slurSplinePoints, slurDirection, styles) {
   return singleUnits.map(
     singleUnit => intersectionPointForOnePartOfSShapeSlurWithItsSingleUnit(
       singleUnit,

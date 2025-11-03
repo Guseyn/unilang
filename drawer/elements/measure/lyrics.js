@@ -1,16 +1,16 @@
 'use strict'
 
-const minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex = require('./minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex')
-const text = require('./../basic/text')
-const line = require('./../basic/line')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
+import text from './../basic/text.js'
+import line from './../basic/line.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
 const lyricsUnderscoreLine = (width, xStartPosition, yPosition, strokeOptions) => {
   return line(xStartPosition, yPosition, xStartPosition + width, yPosition, strokeOptions, 0, 0, 'lyricUnderscore')
 }
 
-module.exports = (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { intervalBetweenStaveLines, lyricsFirstYOffset, lyricsYOffset, lyricsFontOptions, lyricsUnderscoreStrokeOptions, lyricsUnderscoreDefaultLength, lyricsEmptyTextHeight, lastDashOfLyricsXOffset, underscoreOfLyricsXOffset, lyricsLastDashFontOptions } = styles
   const drawnLyrics = []
   const lyricsState = []

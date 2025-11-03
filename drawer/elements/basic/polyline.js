@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) => {
+export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   let minTop
   let maxRight
   let maxBottom

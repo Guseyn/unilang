@@ -1,5 +1,5 @@
 'use strict'
 
-module.exports = (topOffset, staveIndex, intervalBetweenStaves, intervalBetweenStaveLines, numberOfStaveLines) => {
+export default function (topOffset, staveIndex, intervalBetweenStaves, intervalBetweenStaveLines, numberOfStaveLines) {
   return topOffset + staveIndex * (intervalBetweenStaves + intervalBetweenStaveLines * (numberOfStaveLines - 1))
 }

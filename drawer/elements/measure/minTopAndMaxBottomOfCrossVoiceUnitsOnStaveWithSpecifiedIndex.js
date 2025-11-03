@@ -32,4 +32,4 @@ const minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex = (drawnSingl
   }
 }
 
-module.exports = minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex
+export default minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex

@@ -1,7 +1,7 @@
 // The Layout object is the prototype of Substitution objects, and provides
 // utility methods to manipulate common layout tables (GPOS, GSUB, GDEF...)
 
-const check = require('./check')
+import check from './check.js'
 
 function searchTag(arr, tag) {
   /* jshint bitwise: false */
@@ -338,4 +338,4 @@ Layout.prototype = {
 
 }
 
-module.exports = Layout
+export default Layout

@@ -1,13 +1,13 @@
 'use strict'
 
-const group = require('./../basic/group')
-const moveElement = require('./../basic/moveElement')
-const moveElementInTheCenterBetweenPoints = require('./../basic/moveElementInTheCenterBetweenPoints')
-const moveElementInTheCenterBetweenPointsAboveAndBelow = require('./../basic/moveElementInTheCenterBetweenPointsAboveAndBelow')
-const path = require('./../basic/path')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import group from './../basic/group.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementInTheCenterBetweenPointsAboveAndBelow from './../basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
+import path from './../basic/path.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (lastLeftTupletPoint, voicesBody, belongsToComplexTuplet, extendedFromLeftSide, extendedToRightSide, styles) => {
+export default function (lastLeftTupletPoint, voicesBody, belongsToComplexTuplet, extendedFromLeftSide, extendedToRightSide, styles) {
   const tupletElements = []
   const tupletDirectionSign = lastLeftTupletPoint.tupletDirection === 'up' ? +1 : -1
   const leftSingeUnitOfTuplet = lastLeftTupletPoint.singleUnits[0]

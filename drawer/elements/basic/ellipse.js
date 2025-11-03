@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (radiusX, radiusY, strokeOptions, fill, angle = 0, leftOffset = 0, topOffset = 0) => {
+export default function (radiusX, radiusY, strokeOptions, fill, angle = 0, leftOffset = 0, topOffset = 0) {
   const centerX = leftOffset + radiusX
   const centerY = topOffset + radiusY
   const radians = angle * (Math.PI / 180)

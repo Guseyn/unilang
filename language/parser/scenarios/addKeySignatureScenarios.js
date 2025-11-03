@@ -1,12 +1,12 @@
 'use strict'
 
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const keySignatureThatUserMeant = require('./page-schema/keySignatureThatUserMeant')
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import keySignatureThatUserMeant from './page-schema/keySignatureThatUserMeant.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['key signature'] = {
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {
       return regexps.keySignature.test(tokenValues)

@@ -1,13 +1,13 @@
 'use strict'
 
-const group = require('./../basic/group')
-const rect = require('./../basic/rect')
-const text = require('./../basic/text')
-const moveElement = require('./../basic/moveElement')
-const moveElementAbovePointWithInterval = require('./../basic/moveElementAbovePointWithInterval')
-const moveElementBelowPointWithInterval = require('./../basic/moveElementBelowPointWithInterval')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
-const measures = require('./../measure/measures')
+import group from './../basic/group.js'
+import rect from './../basic/rect.js'
+import text from './../basic/text.js'
+import moveElement from './../basic/moveElement.js'
+import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import measures from './../measure/measures.js'
 
 const pageFormats = {
   'c4': [ 9, 12.8 ],
@@ -18,7 +18,7 @@ const pageFormats = {
 
 const CSS_INCH_IN_PIXELS = 96
 
-module.exports = (pageParamsOnInput) => {
+export default function (pageParamsOnInput) {
   return (styles, leftOffset, topOffset) => {
     const pageParams = JSON.parse(JSON.stringify(pageParamsOnInput))
     const { pageFormat, pageHeight, intervalBetweenStaveLines, fontColor, pageLeftAndRightPadding, pageColumnStrokeOptions, pageTopPadding, pageBottomPadding, pageLinesTopOffset, titleFontOptions, subtitleFontOptions, leftSubtitleFontOptions, rightSubtitleFontOptions, titleTopOffset, subtitleTopOffset, leftAndRightSubtitlesTopOffset, pageLineMaxWidth, backgroundColor, pageBorderStrokeColor, pageBorderStrokeWidth, emptyMeasuresHeight, pageNumberFontOptions, pageNumberOffsetFromBottomOfThePage } = styles

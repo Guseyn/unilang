@@ -1,11 +1,11 @@
 'use strict'
 
 const supportedBreathMarkTypes = ['comma', 'double slash']
-const path = require('./../basic/path')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import path from './../basic/path.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, drawnMidMeasureKeySignaturesForCrossStaveUnits, numberOfStaves, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) => {
+export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, drawnMidMeasureKeySignaturesForCrossStaveUnits, numberOfStaves, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { intervalBetweenStaveLines, spaceAfterMidMeasureClefs, spaceAfterMidMeasureKeySignaturesForBreathMark, breathMarkAsComma, breathMarkAsDoubleSlash, fontColor } = styles
   const breathMarkTypes = {
     'comma': breathMarkAsComma,

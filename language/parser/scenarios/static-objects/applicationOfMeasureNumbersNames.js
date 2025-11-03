@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./applicationOfMeasureNumbers'))
+import module from './applicationOfMeasureNumbers.js'
+
+export default Object.keys(module)

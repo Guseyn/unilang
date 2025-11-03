@@ -1,9 +1,9 @@
 'use strict'
 
-const regexps = require('./../static-objects/regexps')
-const withNumbersInsteadOfWords = require('./withNumbersInsteadOfWords')
+import regexps from './../static-objects/regexps.js'
+import withNumbersInsteadOfWords from './withNumbersInsteadOfWords.js'
 
-module.exports = (tokenValues, joinedTokenValues) => {
+export default function (tokenValues, joinedTokenValues) {
   const tokensWithNumbersInsteadOfWords = withNumbersInsteadOfWords(tokenValues)
   let match
   if (regexps.measureNumber.test(tokensWithNumbersInsteadOfWords)) {

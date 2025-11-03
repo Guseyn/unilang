@@ -1,8 +1,8 @@
 'use strict'
 
-const firstArticulationWithName = require('./firstArticulationWithName')
+import firstArticulationWithName from './firstArticulationWithName.js'
 
-module.exports = (note, notesSplittedInTimeFrames, orderedTimeFramesFromNotesSplittedInTimeFrames, timeIndex, noteTimeIndex) => {
+export default function (note, notesSplittedInTimeFrames, orderedTimeFramesFromNotesSplittedInTimeFrames, timeIndex, noteTimeIndex) {
   note.shouldStartWithTrillPrincipalNote = true
   if (
     note.isGrace ||

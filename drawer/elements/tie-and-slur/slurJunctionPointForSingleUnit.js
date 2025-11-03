@@ -1,8 +1,8 @@
 'use strict'
 
-const articulationIsAttachedToUnit = require('./../articulation/articulationIsAttachedToUnit')
+import articulationIsAttachedToUnit from './../articulation/articulationIsAttachedToUnit.js'
 
-module.exports = (singleUnit, slurDirection, slurSide, rightPointPlacement, styles) => {
+export default function (singleUnit, slurDirection, slurSide, rightPointPlacement, styles) {
   let hasAttributesAbove = false
   let hasAttributesBelow = false
   if (singleUnit.articulationParams) {

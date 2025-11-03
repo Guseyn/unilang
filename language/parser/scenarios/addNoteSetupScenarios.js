@@ -1,51 +1,51 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const foundNextTokenValuesOnTheLine = require('./token/foundNextTokenValuesOnTheLine')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const isVerticalCorrection = require('./token/isVerticalCorrection')
-const verticalCorrection = require('./token/verticalCorrection')
-const isHorizontalCorrection = require('./token/isHorizontalCorrection')
-const horizontalCorrection = require('./token/horizontalCorrection')
-const isDirection = require('./token/isDirection')
-const isStaveIndex = require('./token/isStaveIndex')
-const direction = require('./token/direction')
-const staveIndexByTokens = require('./token/staveIndexByTokens')
-const isRoundness = require('./token/isRoundness')
-const roundness = require('./token/roundness')
-const isAboveBelowOverUnderStaveLines = require('./token/isAboveBelowOverUnderStaveLines')
-const isAboveBelowOverUnder = require('./token/isAboveBelowOverUnder')
-const directionByAboveBelowOverUnderStaveLines = require('./token/directionByAboveBelowOverUnderStaveLines')
-const directionByAboveBelowOverUnder = require('./token/directionByAboveBelowOverUnder')
-const isMeasureNumber = require('./token/isMeasureNumber')
-const measureNumber = require('./token/measureNumber')
-const isNumberOfStrokes = require('./token/isNumberOfStrokes')
-const numberOfStrokes = require('./token/numberOfStrokes')
-const isNumberOfTimes = require('./token/isNumberOfTimes')
-const numberOfTimes = require('./token/numberOfTimes')
-const restPositionNumberByRestPositionName = require('./page-schema/restPositionNumberByRestPositionName')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll = require('./page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll')
-const initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty = require('./page-schema/initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastStaveParams = require('./page-schema/lastStaveParams')
-const lastVoiceParams = require('./page-schema/lastVoiceParams')
-const lastNonSimileChordParams = require('./page-schema/lastNonSimileChordParams')
-const lastNoteParams = require('./page-schema/lastNoteParams')
-const lastKeyParams = require('./page-schema/lastKeyParams')
-const lastArticulationParams = require('./page-schema/lastArticulationParams')
-const lastGlissandoMark = require('./page-schema/lastGlissandoMark')
-const lastLyric = require('./page-schema/lastLyric')
-const keySignatureThatUserMeant = require('./page-schema/keySignatureThatUserMeant')
-const noteDurations = require('./static-objects/noteDurations')
-const stavePositions = require('./static-objects/stavePositions')
-const noteKeys = require('./static-objects/noteKeys')
-const breathMarks = require('./static-objects/breathMarks')
-const clefs = require('./static-objects/clefs')
-const articulations = require('./static-objects/articulations')
-const ornamentKeys = require('./static-objects/ornamentKeys')
-const theSameScenarioButWithDifferentRequiredCommandProgression = require('./theSameScenarioButWithDifferentRequiredCommandProgression')
+import regexps from './static-objects/regexps.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import foundNextTokenValuesOnTheLine from './token/foundNextTokenValuesOnTheLine.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import isVerticalCorrection from './token/isVerticalCorrection.js'
+import verticalCorrection from './token/verticalCorrection.js'
+import isHorizontalCorrection from './token/isHorizontalCorrection.js'
+import horizontalCorrection from './token/horizontalCorrection.js'
+import isDirection from './token/isDirection.js'
+import isStaveIndex from './token/isStaveIndex.js'
+import direction from './token/direction.js'
+import staveIndexByTokens from './token/staveIndexByTokens.js'
+import isRoundness from './token/isRoundness.js'
+import roundness from './token/roundness.js'
+import isAboveBelowOverUnderStaveLines from './token/isAboveBelowOverUnderStaveLines.js'
+import isAboveBelowOverUnder from './token/isAboveBelowOverUnder.js'
+import directionByAboveBelowOverUnderStaveLines from './token/directionByAboveBelowOverUnderStaveLines.js'
+import directionByAboveBelowOverUnder from './token/directionByAboveBelowOverUnder.js'
+import isMeasureNumber from './token/isMeasureNumber.js'
+import measureNumber from './token/measureNumber.js'
+import isNumberOfStrokes from './token/isNumberOfStrokes.js'
+import numberOfStrokes from './token/numberOfStrokes.js'
+import isNumberOfTimes from './token/isNumberOfTimes.js'
+import numberOfTimes from './token/numberOfTimes.js'
+import restPositionNumberByRestPositionName from './page-schema/restPositionNumberByRestPositionName.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from './page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
+import initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty from './page-schema/initNewVoiceParamsIfThereIsNoVoicesAtAllAndInitNewChordParamsIfThereIsAlreadySuchChordProperty.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastStaveParams from './page-schema/lastStaveParams.js'
+import lastVoiceParams from './page-schema/lastVoiceParams.js'
+import lastNonSimileChordParams from './page-schema/lastNonSimileChordParams.js'
+import lastNoteParams from './page-schema/lastNoteParams.js'
+import lastKeyParams from './page-schema/lastKeyParams.js'
+import lastArticulationParams from './page-schema/lastArticulationParams.js'
+import lastGlissandoMark from './page-schema/lastGlissandoMark.js'
+import lastLyric from './page-schema/lastLyric.js'
+import keySignatureThatUserMeant from './page-schema/keySignatureThatUserMeant.js'
+import noteDurations from './static-objects/noteDurations.js'
+import stavePositions from './static-objects/stavePositions.js'
+import noteKeys from './static-objects/noteKeys.js'
+import breathMarks from './static-objects/breathMarks.js'
+import clefs from './static-objects/clefs.js'
+import articulations from './static-objects/articulations.js'
+import ornamentKeys from './static-objects/ornamentKeys.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
 const defaultChordDuration = 1 / 4
 
@@ -61,7 +61,7 @@ const addSimileUnitsToPageSchema = (parserState, simileMark, currentNumberOfMeas
 const CLEF = 'clef'
 const NOTE = 'note'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['note'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

@@ -1,3 +1,3 @@
 'use strict'
 
-module.exports = lastMeasureParams => lastMeasureParams.instrumentTitlesParams[lastMeasureParams.instrumentTitlesParams.length - 1]
+export default function (lastMeasureParams) { return lastMeasureParams.instrumentTitlesParams[lastMeasureParams.instrumentTitlesParams.length - 1] }

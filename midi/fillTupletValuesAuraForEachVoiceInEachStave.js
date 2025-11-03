@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (tupletValuesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) => {
+export default function (tupletValuesAuraForEachVoiceInEachStave, unitParams, staveVoiceKey) {
   if (unitParams.tupletMarks) {
     for (let tupletMarkIndex = 0; tupletMarkIndex < unitParams.tupletMarks.length; tupletMarkIndex++) {
       if (!unitParams.tupletMarks[tupletMarkIndex].finish) {

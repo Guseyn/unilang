@@ -1,21 +1,13 @@
 'use strict'
 
-const opentype = require('./../../lib/opentype/opentype')
-
-let musicFontSource = opentype.loadSyncIfOnlyItIsNodeJSEnv('./drawer/font/music/Leland.otf')
-
 // font size(for font file) is 4.0 * intervalBetweenStaveLines
 const MUSCIC_FONT_SOURCE_SIZE = 4.0 
 
-module.exports = ({
+export default function ({
   defaultIntervalBetweenStaveLines,
   intervalBetweenStaveLines,
-  intervalBetweenStaves,
-  fontColor,
-  backgroundColor,
-  textFont
-}) => {
-  musicFontSource = opentype.accessPreloadedSourceInBrowser('Leland.otf', 'fontSourcesForRenderingSVG') || musicFontSource
+  musicFontSource
+}) {
   return {
     musicFontSource,
     musicFontSourceSize: 4.0,

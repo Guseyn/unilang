@@ -1,6 +1,6 @@
 'use strict'
 
-const pitchAdjustmentForNoteTimeFrame = require('./pitchAdjustmentForNoteTimeFrame')
+import pitchAdjustmentForNoteTimeFrame from './pitchAdjustmentForNoteTimeFrame.js'
 
 const MIDI_PITCHES_MAPPED_WITH_TRILL_BOTTOM_ALTERNATE_PITCH_ADJUSTMENTS = {
   'C': -1,
@@ -32,10 +32,10 @@ const MIDI_PITCHES_MAPPED_WITH_TRILL_BOTTOM_ALTERNATE_PITCH = {
   'B': 'A'
 }
 
-const NORMALIZED_PITCHES = require('./normalizedPitches')
-const PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME = require('./pitchAdjustmentsBySimpleKeyName')
+import NORMALIZED_PITCHES from './normalizedPitches.js'
+import PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME from './pitchAdjustmentsBySimpleKeyName.js'
 
-module.exports = (note, trillOfNote, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) => {
+export default function (note, trillOfNote, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   const trillBottomAlternateNote = Object.assign({}, note)  
   trillBottomAlternateNote.noteName = MIDI_PITCHES_MAPPED_WITH_TRILL_BOTTOM_ALTERNATE_PITCH[note.midiPitch].toLowerCase()
   

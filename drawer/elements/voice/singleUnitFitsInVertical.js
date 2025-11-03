@@ -1,8 +1,8 @@
 'use strict'
 
-const staveIndexOfNoteConsideringItsStave = require('./staveIndexOfNoteConsideringItsStave')
-const firstTwoSortedNotesInSingleUnitAreInWholeTone = require('./firstTwoSortedNotesInSingleUnitAreInWholeTone')
-const lastTwoSortedNotesInSingleUnitAreInWholeTone = require('./lastTwoSortedNotesInSingleUnitAreInWholeTone')
+import staveIndexOfNoteConsideringItsStave from './staveIndexOfNoteConsideringItsStave.js'
+import firstTwoSortedNotesInSingleUnitAreInWholeTone from './firstTwoSortedNotesInSingleUnitAreInWholeTone.js'
+import lastTwoSortedNotesInSingleUnitAreInWholeTone from './lastTwoSortedNotesInSingleUnitAreInWholeTone.js'
 
 const twoUnitsHaveSuchDurationsThatTheyCanPotentiallyBeOverlapped = (firstSingleUnit, secondSingleUnit) => {
   if (
@@ -15,7 +15,7 @@ const twoUnitsHaveSuchDurationsThatTheyCanPotentiallyBeOverlapped = (firstSingle
   return false
 }
 
-module.exports = (staveIndex, currentSingleUnit, singleUnitsBefore, styles) => {
+export default function (staveIndex, currentSingleUnit, singleUnitsBefore, styles) {
   const { defaultStemHeightForSingleUnit, graceElementsScaleFactor } = styles
   for (let singleUnitBeforeIndex = 0; singleUnitBeforeIndex < singleUnitsBefore.length; singleUnitBeforeIndex++) {
     let consideredTopPointOfCurrentSingleUnit = currentSingleUnit.top

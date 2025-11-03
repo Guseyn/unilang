@@ -1,9 +1,9 @@
 'use strict'
 
-const group = require('./../basic/group')
-const moveSingleUnit = require('./../unit/moveSingleUnit')
+import group from './../basic/group.js'
+import moveSingleUnit from './../unit/moveSingleUnit.js'
 
-module.exports = (verticalsInCrossStaveUnit, weNeedToMoveSingleUnitsInCrossStaveUnitSoTheyDontCollideWithKeysBeforeBecauseOfAdditionalStaveLines, weNeedToMoveSingleUnitsInCrossStaveUnitSoTheyDontCollideWithArrpegiatedWavesAndNotKeysBeforeBecauseOfAdditionalStaveLines, thereAreKeysBefore, thereAreArpeggiatedWavesBefore, isCurrentCrossStaveUnitGrace, styles) => {
+export default function (verticalsInCrossStaveUnit, weNeedToMoveSingleUnitsInCrossStaveUnitSoTheyDontCollideWithKeysBeforeBecauseOfAdditionalStaveLines, weNeedToMoveSingleUnitsInCrossStaveUnitSoTheyDontCollideWithArrpegiatedWavesAndNotKeysBeforeBecauseOfAdditionalStaveLines, thereAreKeysBefore, thereAreArpeggiatedWavesBefore, isCurrentCrossStaveUnitGrace, styles) {
   const { xDistanceBetweenVerticalsInCrossStaveUnitsSoTheyDontCollide, additionalXDistanceBetweenVerticalsInCrossStaveUnitsSoTheyDontCollideForVerticalsWithDots, spaceAfterKeysForSingleUnitsBeforeCrossStaveUnitThatContainsNotesOnAdditionalStaveLines, spaceAfterKeysForSingleUnits, spaceAfterArpeggiatedWaveForCrossStaveUnit, spaceAfterArpeggiatedWaveForCrossStaveUnitWithNotesOnAdditionalStaveLines, additionalStaveLinesRadiusFromNoteBody, graceElementsScaleFactor } = styles
   const diffBetweenAdditionalStaveLinesRadiusFromNoteBodyForNormalAndGraceUnitsInCaseIfCurrentCrossStaveUnitIsGrace = isCurrentCrossStaveUnitGrace ? (additionalStaveLinesRadiusFromNoteBody - additionalStaveLinesRadiusFromNoteBody * graceElementsScaleFactor) : 0
   for (let verticalIndex = 0; verticalIndex < verticalsInCrossStaveUnit.length; verticalIndex++) {

@@ -1,9 +1,9 @@
 'use strict'
 
-const slurShape = require('./../tie-and-slur/slurShape')
-const phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave = require('./../tie-and-slur/phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave')
+import slurShape from './../tie-and-slur/slurShape.js'
+import phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave from './../tie-and-slur/phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave.js'
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const drawnSlurs = []
   const slursStack = {}
   for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

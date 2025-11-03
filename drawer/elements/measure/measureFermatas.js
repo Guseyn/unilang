@@ -1,9 +1,9 @@
 'use strict'
 
-const measureFermata = require('./measureFermata')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import measureFermata from './measureFermata.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnMeasuresOnPageLine, styles) => {
+export default function (drawnMeasuresOnPageLine, styles) {
   const drawnMeasureFermatas = []
   drawnMeasuresOnPageLine.forEach((measure) => {
     if (measure.measureContainsFermataOverBarline && measure.drawnFinishBarline) {

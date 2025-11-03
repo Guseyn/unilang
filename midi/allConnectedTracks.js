@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (note, tracksForEachInstrumentOnEachStaveInEachVoice) => {
+export default function (note, tracksForEachInstrumentOnEachStaveInEachVoice) {
   const connectedTracks = [ note.track ]
   const instrumentNumber = note.track.instrument.number
   for (let index = 0; index < note.staveIndexesUnitedByConnection.length; index++) {

@@ -32,4 +32,4 @@ function checkArgument(expression, message) {
   }
 }
 
-module.exports = { isBrowser, isNode, nodeBufferToArrayBuffer, arrayBufferToNodeBuffer, checkArgument }
+export { isBrowser, isNode, nodeBufferToArrayBuffer, arrayBufferToNodeBuffer, checkArgument }

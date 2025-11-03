@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./tempoDurationParts'))
+import module from './tempoDurationParts.js'
+
+export default Object.keys(module)

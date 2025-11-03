@@ -8,4 +8,4 @@ function line(ctx, x1, y1, x2, y2) {
   ctx.stroke()
 }
 
-module.exports = { line }
+export default { line }

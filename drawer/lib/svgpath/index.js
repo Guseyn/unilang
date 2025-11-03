@@ -13,11 +13,11 @@
 'use strict'
 
 
-var pathParse      = require('./path_parse')
-var transformParse = require('./transform_parse')
-var matrix         = require('./matrix')
-var a2c            = require('./a2c')
-var ellipse        = require('./ellipse')
+import pathParse      from './path_parse.js'
+import transformParse from './transform_parse.js'
+import matrix         from './matrix.js'
+import a2c            from './a2c.js'
+import ellipse        from './ellipse.js'
 
 
 // Class constructor
@@ -647,4 +647,4 @@ SvgPath.prototype.unshort = function () {
 }
 
 
-module.exports = SvgPath
+export default SvgPath

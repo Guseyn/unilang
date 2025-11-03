@@ -1,6 +1,6 @@
 'use strict'
 
-const sortByGraceCount = require('./sortByGraceCount')
+import sortByGraceCount from './sortByGraceCount.js'
 
 const PITCHES_BY_NOTE_NAMES = {
   'c': 0,
@@ -12,7 +12,7 @@ const PITCHES_BY_NOTE_NAMES = {
   'b': 11
 }
 
-module.exports = (note, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) => {
+export default function (note, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   let pitchAdjustmentForNote = 0
 
   let pitchAdjustmentByKeySignatureForNoteIsFound = false

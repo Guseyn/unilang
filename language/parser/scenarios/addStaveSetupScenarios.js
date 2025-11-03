@@ -1,13 +1,13 @@
 'use strict'
 
-const regexps = require('./static-objects/regexps')
-const initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll = require('./page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const lastStaveParams = require('./page-schema/lastStaveParams')
-const clefs = require('./static-objects/clefs')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
+import regexps from './static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import lastStaveParams from './page-schema/lastStaveParams.js'
+import clefs from './static-objects/clefs.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['stave'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

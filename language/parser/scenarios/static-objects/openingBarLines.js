@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = {
+export default {
   'bold double barline': 'startBoldDoubleBarLine',
   'double bold barline': 'startBoldDoubleBarLine',
   'barline': 'startBarLine'

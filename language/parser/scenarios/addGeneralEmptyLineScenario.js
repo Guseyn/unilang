@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['empty line in general'] = {
     prohibitedCommandProgressions: [
       'comment starts and ends with text',

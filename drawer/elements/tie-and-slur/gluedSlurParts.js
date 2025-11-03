@@ -2,7 +2,7 @@
 
 // inspired by https://www.math.ucla.edu/~baker/149.1.02w/handouts/dd_splines.pdf
 
-module.exports = (slurParts, slurPartsDirections, styles) => {
+export default function (slurParts, slurPartsDirections, styles) {
   const gluedSlurPartsAsResult = slurParts.map(slurPart => slurPart.slice())
   for (let partIndex = 0; partIndex < gluedSlurPartsAsResult.length - 1; partIndex++) {
     const lastCurveOfCurrentSlurPart = gluedSlurPartsAsResult[partIndex].slice(15, 24)

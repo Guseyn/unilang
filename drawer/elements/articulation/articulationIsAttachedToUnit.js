@@ -7,7 +7,7 @@ const notAttachedArticulations = [
   'trill'
 ]
 
-module.exports = (articulationParams) => {
+export default function (articulationParams) {
   if (notAttachedArticulations.indexOf(articulationParams.name) !== -1) {
     return false
   }

@@ -1,10 +1,10 @@
 'use strict'
 
-const singleUnitParamsContainBrokenConnectionsThatStartBefore = require('./../unit/singleUnitParamsContainBrokenConnectionsThatStartBefore')
-const singleUnitParamsContainBrokenConnectionsThatFinishAfter = require('./../unit/singleUnitParamsContainBrokenConnectionsThatFinishAfter')
-const pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter = require('./../unit/pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter')
-const tremoloDurationFactor = require('./../voice/tremoloDurationFactor')
-const actualDurationConsideringDotsAndTupletsAndTremolos = require('./../voice/actualDurationConsideringDotsAndTupletsAndTremolos')
+import singleUnitParamsContainBrokenConnectionsThatStartBefore from './../unit/singleUnitParamsContainBrokenConnectionsThatStartBefore.js'
+import singleUnitParamsContainBrokenConnectionsThatFinishAfter from './../unit/singleUnitParamsContainBrokenConnectionsThatFinishAfter.js'
+import pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter from './../unit/pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter.js'
+import tremoloDurationFactor from './../voice/tremoloDurationFactor.js'
+import actualDurationConsideringDotsAndTupletsAndTremolos from './../voice/actualDurationConsideringDotsAndTupletsAndTremolos.js'
 
 const noDuplicateNotes = (notes) => {
   return notes.filter((note, index) => {
@@ -57,7 +57,7 @@ const measureContainsOnlyOneUnitOnSpecifiedStaveAndDoesNotContainMidMeasureEleme
     !measureParams.stavesParams[staveIndex].voicesParams[0][0].simileMark
 }
 
-module.exports = (measuresParams) => {
+export default function (measuresParams) {
   const informationAboutBrokenConnectionsInMeasures = []
   const measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatStartBefore = []
   const measuresThatAlsoShouldReserveSpaceForBrokenConnectionsThatFinishAfter = []

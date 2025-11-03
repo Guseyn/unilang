@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (sortedNotes) => {
+export default function (sortedNotes) {
   const deltaInPositionForWholeTone = 0.5
   return sortedNotes.some((note, index) => {
     if (sortedNotes[index + 1]) {

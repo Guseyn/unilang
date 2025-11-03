@@ -1,9 +1,9 @@
 'use strict'
 
-const singleTremolo = require('./../tremolo/singleTremolo')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import singleTremolo from './../tremolo/singleTremolo.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnVoicesOnPageLine, styles) => {
+export default function (drawnVoicesOnPageLine, styles) {
   const drawnSingleTremolos = []
   if (drawnVoicesOnPageLine) {
     for (let measureIndex = 0; measureIndex < drawnVoicesOnPageLine.length; measureIndex++) {

@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (similesAuraForEachVoiceInEachStave, voiceParams, staveVoiceKey, unitParams, unitIndex) => {
+export default function (similesAuraForEachVoiceInEachStave, voiceParams, staveVoiceKey, unitParams, unitIndex) {
   for (let simileAuraUnitIndex = 0; simileAuraUnitIndex < similesAuraForEachVoiceInEachStave[staveVoiceKey].units.length; simileAuraUnitIndex++) {
     const copyOfUnitToRepeat = JSON.parse(JSON.stringify(similesAuraForEachVoiceInEachStave[staveVoiceKey].units[simileAuraUnitIndex]))
     copyOfUnitToRepeat.isRepetition = true

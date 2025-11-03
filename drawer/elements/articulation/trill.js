@@ -1,14 +1,14 @@
 'use strict'
 
-const path = require('./../basic/path')
-const wave = require('./../basic/wave')
-const group = require('./../basic/group')
-const articulationShouldBeAboveOrUnderStemLine = require('./articulationShouldBeAboveOrUnderStemLine')
-const articulationKeysInVerticalLine = require('./articulationKeysInVerticalLine')
-const moveElement = require('./../basic/moveElement')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import path from './../basic/path.js'
+import wave from './../basic/wave.js'
+import group from './../basic/group.js'
+import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
+import articulationKeysInVerticalLine from './articulationKeysInVerticalLine.js'
+import moveElement from './../basic/moveElement.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (drawnSingleUnit, articulationIndex, nextDrawnSingleUnit, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) => {
+export default function (drawnSingleUnit, articulationIndex, nextDrawnSingleUnit, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const components = []
   const { fontColor, trill, trillWavePeriod, trillWaveOffsetFromText, trillMinWaveLength, trillWaveOffsetFromNextSingleUnit } = styles
   const { direction, keyAbove, keyBelow, withWave } = currentArticulationParams

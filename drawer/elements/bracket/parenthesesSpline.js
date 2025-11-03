@@ -1,7 +1,7 @@
 'use strict'
 
-const slurSplinePoints = require('./../tie-and-slur/slurSplinePoints')
-const path = require('./../basic/path')
+import slurSplinePoints from './../tie-and-slur/slurSplinePoints.js'
+import path from './../basic/path.js'
 
 const parenthesesJunctionPhantomPoint = (point, xSideSign, ySideSign, epsilon = 0.0001) => {
   return {
@@ -28,7 +28,7 @@ const additionalPathPointsForParenthesesToMakeItBulk = (slurSplinePoints, xSideS
   ]
 }
 
-module.exports = (topPoint, bottomPoint, side, styles) => {
+export default function (topPoint, bottomPoint, side, styles) {
   const { parenthesesStrokeOptions } = styles
   const yLengthOfBracket = bottomPoint.y - topPoint.y
   const xSideSign = side === 'left' ? -1 : +1

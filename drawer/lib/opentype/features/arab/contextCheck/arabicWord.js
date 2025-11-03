@@ -2,7 +2,9 @@
  * Arabic word context checkers
  */
 
-const { isArabicChar } = require('./../../../char')
+import char from './../../../char.js'
+
+const {  isArabicChar  } = char
 
 function arabicWordStartCheck(contextParams) {
   const char = contextParams.current
@@ -25,4 +27,4 @@ function arabicWordEndCheck(contextParams) {
   )
 }
 
-module.exports = { arabicWordStartCheck, arabicWordEndCheck }
+export default { arabicWordStartCheck, arabicWordEndCheck }

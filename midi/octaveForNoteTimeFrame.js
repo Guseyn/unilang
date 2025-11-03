@@ -1,7 +1,7 @@
 'use strict'
 
-const sortByGraceCount = require('./sortByGraceCount')
-const sortByGraceCountAndMidMeasureClef = require('./sortByGraceCountAndMidMeasureClef')
+import sortByGraceCount from './sortByGraceCount.js'
+import sortByGraceCountAndMidMeasureClef from './sortByGraceCountAndMidMeasureClef.js'
 
 const DEFAULT_OCTAVE_NUMBER_BY_CLEFS = {
   'treble': 4,
@@ -19,7 +19,7 @@ const DEFAULT_OCTAVE_NUMBER_BY_CLEFS = {
 
 const NUMBER_OF_NORMALIZED_PITCHES = 12
 
-module.exports = (note, pitchForNote, clefAurasForEachStaveSplittedInTimeFrames, orderedTimeFramesFromClefAurasForEachStaveSplittedInTimeFrames, octaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, orderedTimeFramesFromOctaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) => {
+export default function (note, pitchForNote, clefAurasForEachStaveSplittedInTimeFrames, orderedTimeFramesFromClefAurasForEachStaveSplittedInTimeFrames, octaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, orderedTimeFramesFromOctaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   let clefForNote = 'treble'
 
   let clefForNoteIsFound = false

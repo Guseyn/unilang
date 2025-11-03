@@ -1,7 +1,7 @@
 // The Position object provides utility methods to manipulate
 // the GPOS position table.
 
-const Layout = require('./layout')
+import Layout from './layout.js'
 
 /**
  * @exports opentype.Position
@@ -74,4 +74,4 @@ Position.prototype.getKerningTables = function(script, language) {
   }
 }
 
-module.exports = Position
+export default Position

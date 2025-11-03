@@ -15,10 +15,10 @@ const MIDI_PITCHES_MAPPED_WITH_HIGHER_GLISSANDO_NOTE = {
   'B': 'C'
 }
 
-const NORMALIZED_PITCHES = require('./normalizedPitches')
+import NORMALIZED_PITCHES from './normalizedPitches.js'
 const NUMBER_OF_NORMALIZED_PITCHES = NORMALIZED_PITCHES.length
 
-module.exports = (note) => {
+export default function (note) {
   const nextHigherGlissandoNote = Object.assign({}, note)  
   nextHigherGlissandoNote.noteName = MIDI_PITCHES_MAPPED_WITH_HIGHER_GLISSANDO_NOTE[note.midiPitch].toLowerCase()
   

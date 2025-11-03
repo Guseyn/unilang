@@ -1,10 +1,10 @@
 'use strict'
 
-const calculatedNumberOfBeamLinesByDuration = require('./../beam/calculatedNumberOfBeamLinesByDuration')
-const path = require('./../basic/path')
-const group = require('./../basic/group')
+import calculatedNumberOfBeamLinesByDuration from './../beam/calculatedNumberOfBeamLinesByDuration.js'
+import path from './../basic/path.js'
+import group from './../basic/group.js'
 
-module.exports = (singleUnit, styles) => {
+export default function (singleUnit, styles) {
   const pointsOfTremoloStrokes = []
   const { yDistanceBetweenSingleTremoloStrokes, singleTremoloStrokeNormalWidth, singleTremoloStrokeWithFlagsNormalWidth, tremoloStrokeLineAngleHeight, tremoloStrokeOptions, singleTremoloStrokesYStartOffsetFromStemEdgeInBeamedSingleUnits, singleTremoloStrokesStartOffsetFromBody, singleTremoloStrokesYStartOffsetFromSingleUnitBodyWithTopFlags, singleTremoloStrokesYStartOffsetFromSingleUnitBodyWithOneTopFlag, singleTremoloStrokesYStartOffsetFromSingleUnitBodyWithBottomFlags, singleTremoloStrokesYStartOffsetFromSingleUnitBodyWithOneBottomFlag, intervalBetweenBarLines, singleTremoloStrokeNormalVerticalWidth, noteSquareStemStrokeOptions, noteBeamStrokeOptions, graceElementsScaleFactor } = styles
   const graceFactor = singleUnit.isGrace ? graceElementsScaleFactor : 1

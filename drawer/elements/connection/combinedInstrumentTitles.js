@@ -1,12 +1,12 @@
 'use strict'
 
-const text = require('./../basic/text')
-const moveElement = require('./../basic/moveElement')
-const topOffsetForCurrentStave = require('./../stave/topOffsetForCurrentStave')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import text from './../basic/text.js'
+import moveElement from './../basic/moveElement.js'
+import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (instrumentTitlesParams, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) => {
+export default function (instrumentTitlesParams, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {
     const { intervalBetweenStaveLines, intervalBetweenStaves } = styles
     const combinedInstrumentTitles = []

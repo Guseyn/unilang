@@ -53,4 +53,4 @@ const base64FromUint8 = (uint8) => {
   return parts.join('')
 }
 
-module.exports = base64FromUint8
+export default base64FromUint8

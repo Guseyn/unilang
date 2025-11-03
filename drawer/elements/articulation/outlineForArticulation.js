@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (drawnArticulation, styles) => {
+export default function (drawnArticulation, styles) {
   const { backgroundColor, articulationOutlinePadding, articulationOutlineRadius } = styles
   const outline = {
     name: 'rect',

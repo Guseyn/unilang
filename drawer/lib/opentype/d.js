@@ -95,7 +95,7 @@ const metrics = (font, text, options) => {
   }
 }
 
-module.exports = (font, text, options = {}) => {
+export default function (font, text, options = {}) {
   const fontSize = options.fontSize || 72
   const kerning = options.kerning || true
   const letterSpacing = options.letterSpacing || false

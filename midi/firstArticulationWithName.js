@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (note, articulationName) => {
+export default function (note, articulationName) {
   if (!note.articulationParams) {
     return undefined
   }

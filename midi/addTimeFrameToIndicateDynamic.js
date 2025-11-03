@@ -51,7 +51,7 @@ const calculatedEndingVelocityInDiminuendoIfItIsNotSpeicified = (startVelocity) 
 
 const DEFAULT_MIN_DYNAMIC_LETTER = 'p'
 
-module.exports = (articulationParams, dynamicChangeMark, dynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, currentDynamicsAuraObjectsForEachVoiceOnEachStave, lastMentionedDynamicsForEachVoiceOnEachStave, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveVoiceKey, isLastSingleUnitInVoiceOnPageLine) => {
+export default function (articulationParams, dynamicChangeMark, dynamicsAuraForEachVoiceOnEachStaveSplittedInTimeFrames, currentDynamicsAuraObjectsForEachVoiceOnEachStave, lastMentionedDynamicsForEachVoiceOnEachStave, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveVoiceKey, isLastSingleUnitInVoiceOnPageLine) {
   if (dynamicChangeMark) {
     const thisIsStartDynamicChangeMark = !dynamicChangeMark.finish
     if (thisIsStartDynamicChangeMark) {

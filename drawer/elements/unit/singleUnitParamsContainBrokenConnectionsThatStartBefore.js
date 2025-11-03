@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (singleUnitParams) => {
+export default function (singleUnitParams) {
   if (singleUnitParams.tiedBefore) {
     return true
   }

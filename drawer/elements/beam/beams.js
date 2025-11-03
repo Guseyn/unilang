@@ -1,11 +1,11 @@
 'use strict'
 
-const calculatedNumberOfBeamLinesByDuration = require('./calculatedNumberOfBeamLinesByDuration')
-const drawnBeamColumn = require('./drawnBeamColumn')
-const drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections = require('./drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections')
-const drawnBeamLinesPiece = require('./drawnBeamLinesPiece')
+import calculatedNumberOfBeamLinesByDuration from './calculatedNumberOfBeamLinesByDuration.js'
+import drawnBeamColumn from './drawnBeamColumn.js'
+import drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections from './drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections.js'
+import drawnBeamLinesPiece from './drawnBeamLinesPiece.js'
 
-module.exports = (styles, drawnStems, minNumberOfBeamLines, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection, beamLineCoefficients, anyStemDirectionChangesInBeamedSingleUnits) => {
+export default function (styles, drawnStems, minNumberOfBeamLines, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection, beamLineCoefficients, anyStemDirectionChangesInBeamedSingleUnits) {
   const beamColumns = []
   const beamLinesPieces = []
   const firstStemDirection = drawnStems[0].direction

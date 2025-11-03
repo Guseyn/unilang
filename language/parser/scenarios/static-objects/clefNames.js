@@ -1,3 +1,5 @@
 'use strict'
 
-module.exports = Object.keys(require('./clefs'))
+import module from './clefs.js'
+
+export default Object.keys(module)

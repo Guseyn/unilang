@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Unilang",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test:visual:all": "node scripts/visual-tests.js",
     "test:audio:all": "node scripts/audio-tests.js"

@@ -1,19 +1,19 @@
 'use strict'
 
-const darkNoteBody = require('./../note/darkNoteBody')
-const halfNoteBody = require('./../note/halfNoteBody')
-const wholeNoteBody = require('./../note/wholeNoteBody')
-const doubleWholeNoteBody = require('./../note/doubleWholeNoteBody')
-const quadrupleWholeNoteBody = require('./../note/quadrupleWholeNoteBody')
-const ghostNoteBody = require('./../note/ghostNoteBody')
-const topOffsetOfElementConsideringItsStave = require('./../stave/topOffsetOfElementConsideringItsStave')
-const scaleElementAroundPoint = require('./../basic/scaleElementAroundPoint')
-const moveElement = require('./../basic/moveElement')
-const group = require('./../basic/group')
-const elementWithAdditionalInformation = require('./../basic/elementWithAdditionalInformation')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import darkNoteBody from './../note/darkNoteBody.js'
+import halfNoteBody from './../note/halfNoteBody.js'
+import wholeNoteBody from './../note/wholeNoteBody.js'
+import doubleWholeNoteBody from './../note/doubleWholeNoteBody.js'
+import quadrupleWholeNoteBody from './../note/quadrupleWholeNoteBody.js'
+import ghostNoteBody from './../note/ghostNoteBody.js'
+import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
+import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
+import moveElement from './../basic/moveElement.js'
+import group from './../basic/group.js'
+import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (measureIndexInGeneral, staveIndex, voiceIndex, singleUnitIndex, numberOfStaveLines, notes, unitDuration, anyWholeTones, stemDirection, isIndented, isGrace) => {
+export default function (measureIndexInGeneral, staveIndex, voiceIndex, singleUnitIndex, numberOfStaveLines, notes, unitDuration, anyWholeTones, stemDirection, isIndented, isGrace) {
   return (styles, leftOffset, topOffset) => {
     const { graceElementsScaleFactor } = styles
     const noteBodiesWithCoordinates = []

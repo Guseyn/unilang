@@ -3,11 +3,11 @@
 // http://download.microsoft.com/download/8/0/1/801a191c-029d-4af3-9642-555f6fe514ee/cff.pdf
 // http://download.microsoft.com/download/8/0/1/801a191c-029d-4af3-9642-555f6fe514ee/type2.pdf
 
-const { CffEncoding, cffStandardEncoding, cffExpertEncoding, cffStandardStrings } = require('../encoding')
-const glyphset = require('./../glyphset')
-const parse = require('./../parse')
-const Path = require('./../path')
-const table = require('./../table')
+import {  CffEncoding, cffStandardEncoding, cffExpertEncoding, cffStandardStrings  } from './../encoding.js'
+import glyphset from './../glyphset.js'
+import { getByte, getBytes, getOffset, getCard8, Parser, bytesToString, getCard16 } from './../parse.js'
+import Path from './../path.js'
+import table from './../table.js'
 
 // Custom equals function that can also check lists.
 function equals(a, b) {
@@ -50,15 +50,15 @@ function calcCFFSubroutineBias(subrs) {
 function parseCFFIndex(data, start, conversionFn) {
   const offsets = []
   const objects = []
-  const count = parse.getCard16(data, start)
+  const count = getCard16(data, start)
   let objectOffset
   let endOffset
   if (count !== 0) {
-    const offsetSize = parse.getByte(data, start + 2)
+    const offsetSize = getByte(data, start + 2)
     objectOffset = start + ((count + 1) * offsetSize) + 2
     let pos = start + 3
     for (let i = 0; i < count + 1; i += 1) {
-      offsets.push(parse.getOffset(data, pos, offsetSize))
+      offsets.push(getOffset(data, pos, offsetSize))
       pos += offsetSize
     }
 
@@ -69,7 +69,7 @@ function parseCFFIndex(data, start, conversionFn) {
   }
 
   for (let i = 0; i < offsets.length - 1; i += 1) {
-    let value = parse.getBytes(data, objectOffset + offsets[i], objectOffset + offsets[i + 1])
+    let value = getBytes(data, objectOffset + offsets[i], objectOffset + offsets[i + 1])
     if (conversionFn) {
       value = conversionFn(value)
     }
@@ -176,7 +176,7 @@ function entriesToObject(entries) {
 // A dictionary contains key-value pairs in a compact tokenized format.
 function parseCFFDict(data, start, size) {
   start = start !== undefined ? start : 0
-  const parser = new parse.Parser(data, start)
+  const parser = new Parser(data, start)
   const entries = []
   let operands = []
   size = size !== undefined ? size : data.length
@@ -260,10 +260,10 @@ function interpretDict(dict, meta, strings) {
 // Parse the CFF header.
 function parseCFFHeader(data, start) {
   const header = {}
-  header.formatMajor = parse.getCard8(data, start)
-  header.formatMinor = parse.getCard8(data, start + 1)
-  header.size = parse.getCard8(data, start + 2)
-  header.offsetSize = parse.getCard8(data, start + 3)
+  header.formatMajor = getCard8(data, start)
+  header.formatMinor = getCard8(data, start + 1)
+  header.size = getCard8(data, start + 2)
+  header.offsetSize = getCard8(data, start + 3)
   header.startOffset = start
   header.endOffset = start + 4
   return header
@@ -373,7 +373,7 @@ function gatherCFFTopDicts(data, start, cffIndex, strings) {
 function parseCFFCharset(data, start, nGlyphs, strings) {
   let sid
   let count
-  const parser = new parse.Parser(data, start)
+  const parser = new Parser(data, start)
 
   // The .notdef glyph is not included, so subtract 1.
   nGlyphs -= 1
@@ -415,7 +415,7 @@ function parseCFFCharset(data, start, nGlyphs, strings) {
 function parseCFFEncoding(data, start, charset) {
   let code
   const enc = {}
-  const parser = new parse.Parser(data, start)
+  const parser = new Parser(data, start)
   const format = parser.parseCard8()
   if (format === 0) {
     const nCodes = parser.parseCard8()
@@ -867,7 +867,7 @@ function parseCFFCharstring(font, glyph, code) {
 function parseCFFFDSelect(data, start, nGlyphs, fdArrayCount) {
   const fdSelect = []
   let fdIndex
-  const parser = new parse.Parser(data, start)
+  const parser = new Parser(data, start)
   const format = parser.parseCard8()
   if (format === 0) {
     // Simple list of nGlyphs elements
@@ -913,9 +913,9 @@ function parseCFFFDSelect(data, start, nGlyphs, fdArrayCount) {
 function parseCFFTable(data, start, font) {
   font.tables.cff = {}
   const header = parseCFFHeader(data, start)
-  const nameIndex = parseCFFIndex(data, header.endOffset, parse.bytesToString)
+  const nameIndex = parseCFFIndex(data, header.endOffset, bytesToString)
   const topDictIndex = parseCFFIndex(data, nameIndex.endOffset)
-  const stringIndex = parseCFFIndex(data, topDictIndex.endOffset, parse.bytesToString)
+  const stringIndex = parseCFFIndex(data, topDictIndex.endOffset, bytesToString)
   const globalSubrIndex = parseCFFIndex(data, stringIndex.endOffset)
   font.gsubrs = globalSubrIndex.objects
   font.gsubrsBias = calcCFFSubroutineBias(font.gsubrs)
@@ -1265,4 +1265,4 @@ function makeCFFTable(glyphs, options) {
   return t
 }
 
-module.exports = { parse: parseCFFTable, make: makeCFFTable }
+export default { parse: parseCFFTable, make: makeCFFTable }

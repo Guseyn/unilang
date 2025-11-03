@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (parserState) => {
+export default function (parserState) {
   parserState.lastMentionedPageLinePosition = undefined
   parserState.lastMentionedMeasurePosition = undefined
   parserState.lastMentionedStavePosition = undefined

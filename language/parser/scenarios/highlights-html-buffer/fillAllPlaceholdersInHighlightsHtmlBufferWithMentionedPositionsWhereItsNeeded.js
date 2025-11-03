@@ -1,8 +1,8 @@
 'use strict'
 
-const currentPageLineIndex = require('./../page-schema/currentPageLineIndex')
+import currentPageLineIndex from './../page-schema/currentPageLineIndex.js'
 
-module.exports = (parserState, forConnection) => {
+export default function (parserState, forConnection) {
   const indexesInHighlightsHtmlBufferWhereWeShouldFillPositionPlaceholders = forConnection
     ? parserState.indexesInHighlightsHtmlBufferWhereWeShouldFillPositionPlaceholdersForConnection
     : parserState.indexesInHighlightsHtmlBufferWhereWeShouldFillPositionPlaceholders

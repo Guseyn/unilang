@@ -1,14 +1,14 @@
 'use strict'
 
-const initMeasureParams = require('./page-schema/initMeasureParams')
-const lastMeasureParams = require('./page-schema/lastMeasureParams')
-const openingBarLines = require('./static-objects/openingBarLines')
-const closingBarLines = require('./static-objects/closingBarLines')
-const withNumbersInsteadOfWords = require('./token/withNumbersInsteadOfWords')
-const foundNextTokenValueOnTheLine = require('./token/foundNextTokenValueOnTheLine')
-const regexps = require('./static-objects/regexps')
+import initMeasureParams from './page-schema/initMeasureParams.js'
+import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import openingBarLines from './static-objects/openingBarLines.js'
+import closingBarLines from './static-objects/closingBarLines.js'
+import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
+import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
+import regexps from './static-objects/regexps.js'
 
-module.exports = (scenarios) => {
+export default function (scenarios) {
   scenarios['measure'] = {
     considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem: true,
     condition: (unitext, lineNumber, currentToken, tokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState) => {

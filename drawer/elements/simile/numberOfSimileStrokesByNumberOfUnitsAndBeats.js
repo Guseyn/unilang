@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = (numberOfUnits, numberOfBeats) => {
+export default function (numberOfUnits, numberOfBeats) {
   if (numberOfUnits === 1) {
     return 1
   }

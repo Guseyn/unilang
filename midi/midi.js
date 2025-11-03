@@ -3,60 +3,62 @@
 // eslint-disable-next-line  no-undef
 const itIsBrowserEnv = typeof window !== 'undefined' || typeof process === 'undefined'
 
-const Midi = require('@tonejs/midi').Midi
+import midi from '@tonejs/midi'
 
-const tempoValueParts = require('./../language/parser/scenarios/token/tempoValueParts')
+const Midi = midi.Midi
 
-const durationInSeconds = require('./durationInSeconds')
-const updateTempoAuraIfNeeded = require('./updateTempoAuraIfNeeded')
-const octaveForNoteTimeFrame = require('./octaveForNoteTimeFrame')
-const octaveAdjustmentForUnitParams = require('./octaveAdjustmentForUnitParams')
-const firstArticulationWithName = require('./firstArticulationWithName')
-const deleteArticulationsWithName = require('./deleteArticulationsWithName')
-const ornamentTopAlternateNote = require('./ornamentTopAlternateNote')
-const ornamentBottomAlternateNote = require('./ornamentBottomAlternateNote')
-const nextHigherGlissandoNote = require('./nextHigherGlissandoNote')
-const nextLowerGlissandoNote = require('./nextLowerGlissandoNote')
-const noteWithTrillShouldEndWithTurn = require('./noteWithTrillShouldEndWithTurn')
-const clearUpPitchAdjustmentsForNewMeasureByAddingNewTimeFrame = require('./clearUpPitchAdjustmentsForNewMeasureByAddingNewTimeFrame')
-const pitchForNoteTimeFrame = require('./pitchForNoteTimeFrame')
-const velocityForNote = require('./velocityForNote')
-const attachTrackToNote = require('./attachTrackToNote')
-const orderedTimeFrames = require('./orderedTimeFrames')
-const insertUnitsThatNeedsToBeRepeatedIntoVoiceInsteadOfSimileUnitWhichRelatedToThoseUnits = require('./insertUnitsThatNeedsToBeRepeatedIntoVoiceInsteadOfSimileUnitWhichRelatedToThoseUnits')
-const markUnitParamsIfItIsLastSingleUnitInVoiceOnPageLine = require('./markUnitParamsIfItIsLastSingleUnitInVoiceOnPageLine')
-const fillTupletValuesAuraForEachVoiceInEachStave = require('./fillTupletValuesAuraForEachVoiceInEachStave')
-const assignTremoloTypeToUnit = require('./assignTremoloTypeToUnit')
-const actualDurationOfUnit = require('./actualDurationOfUnit')
-const fillSimilesAuraForEachVoiceInEachStave = require('./fillSimilesAuraForEachVoiceInEachStave')
-const releaseTupletValuesAuraForEachVoiceInEachStave = require('./releaseTupletValuesAuraForEachVoiceInEachStave')
-const attachStaveIndexToNoteConsideringItsStavePosition = require('./attachStaveIndexToNoteConsideringItsStavePosition')
-const graceNoteTimeAdjustment = require('./graceNoteTimeAdjustment')
-const breathMarksTimeAdjustment = require('./breathMarksTimeAdjustment')
-const fermataArticulationTimeAdjustment = require('./fermataArticulationTimeAdjustment')
-const calculatedStaveIndexWhereClefBeforeIsConsidered = require('./calculatedStaveIndexWhereClefBeforeIsConsidered')
-const staveIndexesOccupiedByUnit = require('./staveIndexesOccupiedByUnit')
-const timeSignatureInQuarters = require('./timeSignatureInQuarters')
-const durationOfMeasureRestInSeconds = require('./durationOfMeasureRestInSeconds')
-const minTimeAmongTimeProgressionsForEachVoiceInEachStave = require('./minTimeAmongTimeProgressionsForEachVoiceInEachStave')
+import tempoValueParts from './../language/parser/scenarios/token/tempoValueParts.js'
 
-const addTimeFrameToIndicateNewClefOnStave = require('./addTimeFrameToIndicateNewClefOnStave')
-const addTimeFrameToIndicateNewClefOnStaveBeforeUnit = require('./addTimeFrameToIndicateNewClefOnStaveBeforeUnit')
-const addTimeFrameToIndicateNewKeySignatureOnStave = require('./addTimeFrameToIndicateNewKeySignatureOnStave')
-const addTimeFrameToIndicateNewKeySignatureOnStaveBeforeUnit = require('./addTimeFrameToIndicateNewKeySignatureOnStaveBeforeUnit')
-const addTimeFrameToIndicateOctaveSignOnStaveInVoice = require('./addTimeFrameToIndicateOctaveSignOnStaveInVoice')
-const addTimeFrameToIndicateKeysThatLastOneMeasure = require('./addTimeFrameToIndicateKeysThatLastOneMeasure')
-const addTimeFrameToIndicateDynamic = require('./addTimeFrameToIndicateDynamic')
-const addTimeFramesToIndicateNotes = require('./addTimeFramesToIndicateNotes')
+import durationInSeconds from './durationInSeconds.js'
+import updateTempoAuraIfNeeded from './updateTempoAuraIfNeeded.js'
+import octaveForNoteTimeFrame from './octaveForNoteTimeFrame.js'
+import octaveAdjustmentForUnitParams from './octaveAdjustmentForUnitParams.js'
+import firstArticulationWithName from './firstArticulationWithName.js'
+import deleteArticulationsWithName from './deleteArticulationsWithName.js'
+import ornamentTopAlternateNote from './ornamentTopAlternateNote.js'
+import ornamentBottomAlternateNote from './ornamentBottomAlternateNote.js'
+import nextHigherGlissandoNote from './nextHigherGlissandoNote.js'
+import nextLowerGlissandoNote from './nextLowerGlissandoNote.js'
+import noteWithTrillShouldEndWithTurn from './noteWithTrillShouldEndWithTurn.js'
+import clearUpPitchAdjustmentsForNewMeasureByAddingNewTimeFrame from './clearUpPitchAdjustmentsForNewMeasureByAddingNewTimeFrame.js'
+import pitchForNoteTimeFrame from './pitchForNoteTimeFrame.js'
+import velocityForNote from './velocityForNote.js'
+import attachTrackToNote from './attachTrackToNote.js'
+import orderedTimeFrames from './orderedTimeFrames.js'
+import insertUnitsThatNeedsToBeRepeatedIntoVoiceInsteadOfSimileUnitWhichRelatedToThoseUnits from './insertUnitsThatNeedsToBeRepeatedIntoVoiceInsteadOfSimileUnitWhichRelatedToThoseUnits.js'
+import markUnitParamsIfItIsLastSingleUnitInVoiceOnPageLine from './markUnitParamsIfItIsLastSingleUnitInVoiceOnPageLine.js'
+import fillTupletValuesAuraForEachVoiceInEachStave from './fillTupletValuesAuraForEachVoiceInEachStave.js'
+import assignTremoloTypeToUnit from './assignTremoloTypeToUnit.js'
+import actualDurationOfUnit from './actualDurationOfUnit.js'
+import fillSimilesAuraForEachVoiceInEachStave from './fillSimilesAuraForEachVoiceInEachStave.js'
+import releaseTupletValuesAuraForEachVoiceInEachStave from './releaseTupletValuesAuraForEachVoiceInEachStave.js'
+import attachStaveIndexToNoteConsideringItsStavePosition from './attachStaveIndexToNoteConsideringItsStavePosition.js'
+import graceNoteTimeAdjustment from './graceNoteTimeAdjustment.js'
+import breathMarksTimeAdjustment from './breathMarksTimeAdjustment.js'
+import fermataArticulationTimeAdjustment from './fermataArticulationTimeAdjustment.js'
+import calculatedStaveIndexWhereClefBeforeIsConsidered from './calculatedStaveIndexWhereClefBeforeIsConsidered.js'
+import staveIndexesOccupiedByUnit from './staveIndexesOccupiedByUnit.js'
+import timeSignatureInQuarters from './timeSignatureInQuarters.js'
+import durationOfMeasureRestInSeconds from './durationOfMeasureRestInSeconds.js'
+import minTimeAmongTimeProgressionsForEachVoiceInEachStave from './minTimeAmongTimeProgressionsForEachVoiceInEachStave.js'
 
-const addMidiNoteToTrack = require('./addMidiNoteToTrack')
+import addTimeFrameToIndicateNewClefOnStave from './addTimeFrameToIndicateNewClefOnStave.js'
+import addTimeFrameToIndicateNewClefOnStaveBeforeUnit from './addTimeFrameToIndicateNewClefOnStaveBeforeUnit.js'
+import addTimeFrameToIndicateNewKeySignatureOnStave from './addTimeFrameToIndicateNewKeySignatureOnStave.js'
+import addTimeFrameToIndicateNewKeySignatureOnStaveBeforeUnit from './addTimeFrameToIndicateNewKeySignatureOnStaveBeforeUnit.js'
+import addTimeFrameToIndicateOctaveSignOnStaveInVoice from './addTimeFrameToIndicateOctaveSignOnStaveInVoice.js'
+import addTimeFrameToIndicateKeysThatLastOneMeasure from './addTimeFrameToIndicateKeysThatLastOneMeasure.js'
+import addTimeFrameToIndicateDynamic from './addTimeFrameToIndicateDynamic.js'
+import addTimeFramesToIndicateNotes from './addTimeFramesToIndicateNotes.js'
 
-const NORMALIZED_PITCHES = require('./normalizedPitches')
-const PITCHES_BY_NOTE_NAMES = require('./pitchesByNoteNames')
-const PITCH_ADJUSTEMENTS_BY_KEY_SIGNATURES = require('./pitchAdjustmentsByKeySignatures')
-const PITCH_ADJUSTEMENTS_BY_KEY_TYPE = require('./pitchAdjustmentsByKeyType')
+import addMidiNoteToTrack from './addMidiNoteToTrack.js'
 
-const { clone } = require('./toolbox')
+import NORMALIZED_PITCHES from './normalizedPitches.js'
+import PITCHES_BY_NOTE_NAMES from './pitchesByNoteNames.js'
+import PITCH_ADJUSTEMENTS_BY_KEY_SIGNATURES from './pitchAdjustmentsByKeySignatures.js'
+import PITCH_ADJUSTEMENTS_BY_KEY_TYPE from './pitchAdjustmentsByKeyType.js'
+
+import {  clone  } from './toolbox.js'
 
 const VERY_SMALL_TIME_TO_SEPARATE_MEASURES_IN_DIFFERENT_TIME_FRAMES_FOR_SURE = 0.000001
 
@@ -66,7 +68,7 @@ const GLISSANDO_DEFAULT_FACTOR = 1 / 64
 
 const REGEXP_WITH_QUOTES = /^"|"$/g
 
-module.exports = (pageSchema, midiSettingsForEachPage = []) => {
+export default function (pageSchema, midiSettingsForEachPage = []) {
   if (!pageSchema.measuresParams) {
     return Buffer.alloc(0)
   }

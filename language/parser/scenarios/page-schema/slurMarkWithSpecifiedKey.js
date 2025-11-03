@@ -4,7 +4,7 @@
   We are interested only in first chord(with index 0) by slurMarkKey,
   because only first chord contains slurMark that controls behaviour and features of slur
 **/
-module.exports = (parserState, slurMarkKey) => {
+export default function (parserState, slurMarkKey) {
   if (
     parserState.slurMarkChords[slurMarkKey] &&
     parserState.slurMarkChords[slurMarkKey][0] &&

@@ -1,10 +1,10 @@
 'use strict'
 
-const stavePiece = require('./stavePiece')
-const group = require('./../basic/group')
-const addPropertiesToElement = require('./../basic/addPropertiesToElement')
+import stavePiece from './stavePiece.js'
+import group from './../basic/group.js'
+import addPropertiesToElement from './../basic/addPropertiesToElement.js'
 
-module.exports = (numberOfStaves, numberOfStaveLines, stavePieceWidth, numberOfStavesWithWidthIsNotZero, refParams) => {
+export default function (numberOfStaves, numberOfStaveLines, stavePieceWidth, numberOfStavesWithWidthIsNotZero, refParams) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {
     const { intervalBetweenStaves, staveLineHeight } = styles
     const stavesPieceWithCoordinates = []

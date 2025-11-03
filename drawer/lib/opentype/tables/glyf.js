@@ -1,10 +1,10 @@
 // The `glyf` table describes the glyphs in TrueType outline format.
 // http://www.microsoft.com/typography/otspec/glyf.htm
 
-const check = require('./../check')
-const glyphset = require('./../glyphset')
-const parse = require('./../parse')
-const Path = require('./../path')
+import check from './../check.js'
+import glyphset from './../glyphset.js'
+import { Parser } from './../parse.js'
+import Path from './../path.js'
 
 // Parse the coordinate data for a glyph.
 function parseGlyphCoordinate(p, flag, previousValue, shortVectorBitMask, sameBitMask) {
@@ -34,7 +34,7 @@ function parseGlyphCoordinate(p, flag, previousValue, shortVectorBitMask, sameBi
 
 // Parse a TrueType glyph.
 function parseGlyph(glyph, data, start) {
-  const p = new parse.Parser(data, start)
+  const p = new Parser(data, start)
   glyph.numberOfContours = p.parseShort()
   glyph._xMin = p.parseShort()
   glyph._yMin = p.parseShort()
@@ -325,4 +325,4 @@ function parseGlyfTable(data, start, loca, font) {
   return glyphs
 }
 
-module.exports = { getPath, parse: parseGlyfTable }
+export default { getPath, parse: parseGlyfTable }

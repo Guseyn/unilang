@@ -101,4 +101,4 @@ const constructedKeySignaturesStructures = () => {
   return keySignaturesStructures
 }
 
-module.exports = constructedKeySignaturesStructures()
+export default constructedKeySignaturesStructures()
