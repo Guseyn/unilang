@@ -4,9 +4,9 @@
 - [x] Migrate to ESM
 - [x] import maps
 - [ ] extract deps to directories, and get rid of all third party deps in package.json
-- [ ] Dev Server
 - [ ] Refactor language parser to make it more flexible in terms of outputs
 - [x] Make fonts as flexible addons and part of a language
+- [ ] Dev server
 - [ ] Add a page where the music font can be generated
 - [ ] Add a command that generate music js font file
 - [ ] Write a very cute api
