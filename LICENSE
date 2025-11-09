@@ -59,5 +59,19 @@ the following conditions:
    Any such derived license must preserve acknowledgment of this Software’s
    authorship and origin.
 
+   Furthermore, all forks, redistributions, or derivatives—regardless of
+   whether they introduce their own license — must uphold and enforce these
+   same attribution and acknowledgment rules with respect to the original
+   Unilang Software and its author. The requirement to credit the original
+   repository and author applies recursively to all generations of forks and
+   derivative projects.
+
+Summary for Humans
+
+You can freely use, modify, and even sell products based on Unilang — just always give visible credit to Unilang and link back to the original repository.
+If you fork it or use parts of its code, language design, or API to build something similar, you must ensure that your users and forks also credit the original project.
+You can’t pretend to be the sole creator of parts that come from Unilang, and you can’t strip away its credit line.
+In short: Build whatever you want — just don’t erase where it came from.
+
 By using or distributing this Software, you agree to the terms of the
 Credited Source License (CSL) v1.0.
