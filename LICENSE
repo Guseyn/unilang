@@ -50,5 +50,14 @@ the following conditions:
    product or service, the output or related documentation must also include
    a visible acknowledgment of the source.
 
+7. Derivative Licensing
+   If a project—whether open-source or commercial—creates its own license
+   modeled after, derived from, or functionally similar to this Credited
+   Source License, it must not claim exclusive authorship or require its
+   users, contributors, or downstream forks to credit only that project as
+   the original source of software components originating from this Software.
+   Any such derived license must preserve acknowledgment of this Software’s
+   authorship and origin.
+
 By using or distributing this Software, you agree to the terms of the
 Credited Source License (CSL) v1.0.
