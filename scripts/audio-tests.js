@@ -257,31 +257,17 @@ function normalizeUnilangText(unilangText) {
       }
     }
     console.timeEnd(`Total time spent for audio tests`)
-    if (listOfFailedTests.length > 0) {
-      fs.writeFile(
-        `audio-tests/list-of-failed-tests.json`,
-        JSON.stringify(listOfFailedTests)
-      )
-    } else {
-      fs.writeFile(
-        `audio-tests/list-of-failed-tests.json`,
-        JSON.stringify([])
-      )
-    }
-    if (listOfPassedTests.length > 0) {
-      fs.writeFile(
-        `audio-tests/list-of-passed-tests.json`,
-        JSON.stringify(listOfPassedTests)
-      )
-    } else {
-      fs.writeFile(
-        `audio-tests/list-of-passed-tests.json`,
-        JSON.stringify([])
-      )
-    }
+    await fs.writeFile(
+      `audio-tests/list-of-failed-tests.json`,
+      JSON.stringify(listOfFailedTests)
+    )
+    await fs.writeFile(
+      `audio-tests/list-of-passed-tests.json`,
+      JSON.stringify(listOfPassedTests)
+    )
     if (listOfFailedTests.length > 0) {
       throw new Error(
-        `There are some failed audio tests. Please check http://127.0.0.1:8000/audio-tests/all-audio-tests.html\n\n`
+        `There are (${listOfFailedTests.length})  failed audio tests. Please check http://127.0.0.1:8000/audio-tests/all-audio-tests.html\n\n`
       )
     } else {
       process.stdout.write(`All aduio tests passed. Please check http://127.0.0.1:8000/audio-tests/all-aduio-tests.html\n\n`)

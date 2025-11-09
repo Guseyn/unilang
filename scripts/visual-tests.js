@@ -238,31 +238,17 @@ import lelandJS from './../drawer/font/music-js/leland.js'
       }
     }
     console.timeEnd(`Total time spent for ${visualTestDirForFont}`)
-    if (listOfFailedTests.length > 0) {
-      fs.writeFile(
-        `visual-tests/${visualTestDirForFont}/list-of-failed-tests.json`,
-        JSON.stringify(listOfFailedTests)
-      )
-    } else {
-      fs.writeFile(
-        `visual-tests/${visualTestDirForFont}/list-of-failed-tests.json`,
-        JSON.stringify([])
-      )
-    }
-    if (listOfPassedTests.length > 0) {
-      fs.writeFile(
-        `visual-tests/${visualTestDirForFont}/list-of-passed-tests.json`,
-        JSON.stringify(listOfPassedTests)
-      )
-    } else {
-      fs.writeFile(
-        `visual-tests/${visualTestDirForFont}/list-of-passed-tests.json`,
-        JSON.stringify([])
-      )
-    }
+    await fs.writeFile(
+      `visual-tests/${visualTestDirForFont}/list-of-failed-tests.json`,
+      JSON.stringify(listOfFailedTests)
+    )
+    await fs.writeFile(
+      `visual-tests/${visualTestDirForFont}/list-of-passed-tests.json`,
+      JSON.stringify(listOfPassedTests)
+    )
     if (listOfFailedTests.length > 0) {
       throw new Error(
-        `There are some failed visual tests for the ${visualTestDirForFont} font. Please check http://127.0.0.1:8000/visual-tests/${visualTestDirForFont}/all-visual-tests.html\n\n`
+        `There are (${listOfFailedTests.length}) failed visual tests for the ${visualTestDirForFont} font. Please check http://127.0.0.1:8000/visual-tests/${visualTestDirForFont}/all-visual-tests.html\n\n`
       )
     } else {
       process.stdout.write(`All visual tests passed for the ${visualTestDirForFont} font. Please check http://127.0.0.1:8000/visual-tests/${visualTestDirForFont}/all-visual-tests.html\n\n`)
