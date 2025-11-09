@@ -1,6 +1,6 @@
 'use strict'
 
-import actualDurationConsideringDotsAndTremolos from './actualDurationConsideringDotsAndTremolos.js'
+import actualDurationConsideringDotsAndTremolos from '#unilang/drawer/elements/voice/actualDurationConsideringDotsAndTremolos.js'
 
 const defaultTupletRatios = {
   '1': 1,

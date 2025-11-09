@@ -1,6 +1,6 @@
 'use strict'
 
-import pitchAdjustmentForNoteTimeFrame from './pitchAdjustmentForNoteTimeFrame.js'
+import pitchAdjustmentForNoteTimeFrame from '#unilang/midi/pitchAdjustmentForNoteTimeFrame.js'
 
 const MIDI_PITCHES_MAPPED_WITH_TRILL_BOTTOM_ALTERNATE_PITCH_ADJUSTMENTS = {
   'C': -1,
@@ -32,8 +32,8 @@ const MIDI_PITCHES_MAPPED_WITH_TRILL_BOTTOM_ALTERNATE_PITCH = {
   'B': 'A'
 }
 
-import NORMALIZED_PITCHES from './normalizedPitches.js'
-import PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME from './pitchAdjustmentsBySimpleKeyName.js'
+import NORMALIZED_PITCHES from '#unilang/midi/normalizedPitches.js'
+import PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME from '#unilang/midi/pitchAdjustmentsBySimpleKeyName.js'
 
 export default function (note, trillOfNote, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   const trillBottomAlternateNote = Object.assign({}, note)  

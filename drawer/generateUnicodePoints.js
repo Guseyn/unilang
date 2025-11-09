@@ -3,9 +3,9 @@
 // font size(for font file) is 4.0 * intervalBetweenStaveLines
 const MUSCIC_FONT_SOURCE_SIZE = 4.0 
 
-import text from './elements/basic/text.js'
-import parseSvgPath from './lib/svgpath/parseSvgPath.js'
-import translateSvgPath from './lib/svgpath/translateSvgPath.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import parseSvgPath from '#unilang/drawer/lib/svgpath/parseSvgPath.js'
+import translateSvgPath from '#unilang/drawer/lib/svgpath/translateSvgPath.js'
 
 function generateUnicodePoints(unicode, musicFontSource, textFontSource, musicFontSourceSize, intervalBetweenStaveLines) {
   const fontOptions = {

@@ -1,5 +1,5 @@
 'use strict'
 
-import module from './configurableStyles.js'
+import module from '#unilang/language/parser/scenarios/static-objects/configurableStyles.js'
 
 export default Object.keys(module)

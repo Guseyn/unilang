@@ -1,8 +1,8 @@
 'use strict'
 
-import tupletShape from './../tuplet/tupletShape.js'
-import topOfStaveForFirstNoteInCurrentSingleUnit from './../stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
-import topOfStaveForLastNoteInCurrentSingleUnit from './../stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
+import tupletShape from '#unilang/drawer/elements/tuplet/tupletShape.js'
+import topOfStaveForFirstNoteInCurrentSingleUnit from '#unilang/drawer/elements/stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
+import topOfStaveForLastNoteInCurrentSingleUnit from '#unilang/drawer/elements/stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
 
 const keyForTupletStack = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`

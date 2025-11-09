@@ -1,22 +1,22 @@
 'use strict'
 
-import staccato from './../articulation/staccato.js'
-import spiccato from './../articulation/spiccato.js'
-import accent from './../articulation/accent.js'
-import tenuto from './../articulation/tenuto.js'
-import marcato from './../articulation/marcato.js'
-import fermata from './../articulation/fermata.js'
-import leftHandPizzicato from './../articulation/leftHandPizzicato.js'
-import snapPizzicato from './../articulation/snapPizzicato.js'
-import naturalHarmonic from './../articulation/naturalHarmonic.js'
-import upBow from './../articulation/upBow.js'
-import downBow from './../articulation/downBow.js'
-import turn from './../articulation/turn.js'
-import trill from './../articulation/trill.js'
-import mordent from './../articulation/mordent.js'
-import noteLetter from './../articulation/noteLetter.js'
-import dynamicMark from './../articulation/dynamicMark.js'
-import octaveSign from './../articulation/octaveSign.js'
+import staccato from '#unilang/drawer/elements/articulation/staccato.js'
+import spiccato from '#unilang/drawer/elements/articulation/spiccato.js'
+import accent from '#unilang/drawer/elements/articulation/accent.js'
+import tenuto from '#unilang/drawer/elements/articulation/tenuto.js'
+import marcato from '#unilang/drawer/elements/articulation/marcato.js'
+import fermata from '#unilang/drawer/elements/articulation/fermata.js'
+import leftHandPizzicato from '#unilang/drawer/elements/articulation/leftHandPizzicato.js'
+import snapPizzicato from '#unilang/drawer/elements/articulation/snapPizzicato.js'
+import naturalHarmonic from '#unilang/drawer/elements/articulation/naturalHarmonic.js'
+import upBow from '#unilang/drawer/elements/articulation/upBow.js'
+import downBow from '#unilang/drawer/elements/articulation/downBow.js'
+import turn from '#unilang/drawer/elements/articulation/turn.js'
+import trill from '#unilang/drawer/elements/articulation/trill.js'
+import mordent from '#unilang/drawer/elements/articulation/mordent.js'
+import noteLetter from '#unilang/drawer/elements/articulation/noteLetter.js'
+import dynamicMark from '#unilang/drawer/elements/articulation/dynamicMark.js'
+import octaveSign from '#unilang/drawer/elements/articulation/octaveSign.js'
 
 const articulations = {
   staccato,
@@ -40,14 +40,14 @@ const articulations = {
 
 const articulationsThatNeedOutline = [ 'staccato', 'tenuto', 'naturalHarmonic', 'snapPizzicato', 'leftHandPizzicato', 'spiccato' ]
 
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
-import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
-import topOfStaveForFirstNoteInCurrentSingleUnit from './../stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
-import topOfStaveForLastNoteInCurrentSingleUnit from './../stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
-import articulationIsAttachedToUnit from './../articulation/articulationIsAttachedToUnit.js'
-import outlineForArticulation from './../articulation/outlineForArticulation.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import topOfStaveForFirstNoteInCurrentSingleUnit from '#unilang/drawer/elements/stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
+import topOfStaveForLastNoteInCurrentSingleUnit from '#unilang/drawer/elements/stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
+import articulationIsAttachedToUnit from '#unilang/drawer/elements/articulation/articulationIsAttachedToUnit.js'
+import outlineForArticulation from '#unilang/drawer/elements/articulation/outlineForArticulation.js'
 
 export default function (drawnVoicesOnPageLine, drawOnlyArticulationsAttachedToUnit, drawnOnlyArticulationsBelowOrAboveStave, dontDrawDynamics, drawOnlyDynamics, styles) {
   const { intervalBetweenStaveLines, graceElementsScaleFactor } = styles

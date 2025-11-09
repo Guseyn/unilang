@@ -1,7 +1,7 @@
 'use strict'
 
-import configurableStyles from './static-objects/configurableStyles.js'
-import regexps from './static-objects/regexps.js'
+import configurableStyles from '#unilang/language/parser/scenarios/static-objects/configurableStyles.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 const NEW_LINE = '\n'
 

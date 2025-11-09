@@ -1,9 +1,9 @@
 'use strict'
 
-import slurSplinePoints from './slurSplinePoints.js'
-import path from './../basic/path.js'
-import slurRoundCoefficientByXRangeOfSlur from './slurRoundCoefficientByXRangeOfSlur.js'
-import timeInSlurSplinePointsBySomeXPointThere from './timeInSlurSplinePointsBySomeXPointThere.js'
+import slurSplinePoints from '#unilang/drawer/elements/tie-and-slur/slurSplinePoints.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import slurRoundCoefficientByXRangeOfSlur from '#unilang/drawer/elements/tie-and-slur/slurRoundCoefficientByXRangeOfSlur.js'
+import timeInSlurSplinePointsBySomeXPointThere from '#unilang/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
 
 const tieJunctionPhantomPoint = (point, sideSign, tieDirectionSign, epsilon = 0.0001) => {
   return {

@@ -1,6 +1,6 @@
 'use strict'
 
-import path from './../basic/path.js'
+import path from '#unilang/drawer/elements/basic/path.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const { yDistanceBetweenSingleTremoloStrokes, tremoloStrokeOptions, beamWidth, noteSquareStemStrokeOptions, negativeXOffsetOfTremoloBeams, negativeXOffsetOfTremoloBeamsForUnitWithNotesOnAdditionalStaveLines } = styles

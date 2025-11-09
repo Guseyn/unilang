@@ -1,7 +1,7 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import theSameScenarioButWithDifferentRequiredCommandProgression from './theSameScenarioButWithDifferentRequiredCommandProgression.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from '#unilang/language/parser/scenarios/theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
 const lastComment = parserState => parserState.comments[parserState.comments.length - 1]
 const NEW_LINE = '\n'

@@ -1,7 +1,7 @@
 'use strict'
 
-import sign from './sign.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import sign from '#unilang/drawer/elements/measure/sign.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnSigns = []

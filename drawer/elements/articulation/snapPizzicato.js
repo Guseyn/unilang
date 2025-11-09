@@ -1,10 +1,10 @@
 'use strict'
 
-import path from './../basic/path.js'
-import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
-import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from '#unilang/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
 
 export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { snapPizzicato, fontColor } = styles

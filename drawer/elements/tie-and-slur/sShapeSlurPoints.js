@@ -1,14 +1,14 @@
 'use strict'
 
-import nextSlurDirectionBySingleUnit from './nextSlurDirectionBySingleUnit.js'
-import slurJunctionPointForSingleUnit from './slurJunctionPointForSingleUnit.js'
-import slurJunctionPhantomPoint from './slurJunctionPhantomPoint.js'
-import slurSplinePoints from './slurSplinePoints.js'
-import intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits from './intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits.js'
-import yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes from './yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes.js'
-import sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from './sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
-import gluedSlurParts from './gluedSlurParts.js'
-import slurRoundCoefficientByXRangeOfSShapeSlur from './slurRoundCoefficientByXRangeOfSShapeSlur.js'
+import nextSlurDirectionBySingleUnit from '#unilang/drawer/elements/tie-and-slur/nextSlurDirectionBySingleUnit.js'
+import slurJunctionPointForSingleUnit from '#unilang/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
+import slurJunctionPhantomPoint from '#unilang/drawer/elements/tie-and-slur/slurJunctionPhantomPoint.js'
+import slurSplinePoints from '#unilang/drawer/elements/tie-and-slur/slurSplinePoints.js'
+import intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits from '#unilang/drawer/elements/tie-and-slur/intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits.js'
+import yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes from '#unilang/drawer/elements/tie-and-slur/yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes.js'
+import sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from '#unilang/drawer/elements/tie-and-slur/sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
+import gluedSlurParts from '#unilang/drawer/elements/tie-and-slur/gluedSlurParts.js'
+import slurRoundCoefficientByXRangeOfSShapeSlur from '#unilang/drawer/elements/tie-and-slur/slurRoundCoefficientByXRangeOfSShapeSlur.js'
 
 export default function (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const { leftMarginForConnectionsThatStartBefore, sShapeSlurYOffsetForItsSidesWhenItBreakingForNextLine, sShapeSlurPartMiddleJunctionPointXOffset, sShapeSlurPartMiddleJunctionPointYOffset } = styles

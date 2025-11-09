@@ -2,7 +2,7 @@
  * Apply Arabic required ligatures feature to a range of tokens
  */
 
-import tokenizer from './../../tokenizer.js'
+import tokenizer from '#unilang/drawer/lib/opentype/tokenizer.js'
 
 const {  ContextParams  } = tokenizer
 

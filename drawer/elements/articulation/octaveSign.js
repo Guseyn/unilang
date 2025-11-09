@@ -1,11 +1,11 @@
 'use strict'
 
-import octaveSignText from './../octave-sign/octaveSignText.js'
-import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
-import moveElement from './../basic/moveElement.js'
-import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
+import octaveSignText from '#unilang/drawer/elements/octave-sign/octaveSignText.js'
+import articulationShouldBeAboveOrUnderStemLine from '#unilang/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
 
 export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { octaveSignYOffset, octaveSignXCorrection, twoOctavesSignXCorrection } = styles

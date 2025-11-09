@@ -1,6 +1,6 @@
 'use strict'
 
-import glissandoShape from './../glissando/glissandoShape.js'
+import glissandoShape from '#unilang/drawer/elements/glissando/glissandoShape.js'
 
 export default function (drawnVoicesOnPageLine, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, styles) {
   const drawnGlissandos = []

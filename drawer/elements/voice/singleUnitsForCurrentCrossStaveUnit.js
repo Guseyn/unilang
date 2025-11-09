@@ -1,10 +1,10 @@
 'use strict'
 
-import sortedNotesForSingleUnitConsideringStaves from './../unit/sortedNotesForSingleUnitConsideringStaves.js'
-import singleUnit from './../unit/singleUnit.js'
-import actualDurationOfCurrentSingleUnit from './actualDurationOfCurrentSingleUnit.js'
-import numberOfSimileStrokesByNumberOfUnitsAndBeats from './../simile/numberOfSimileStrokesByNumberOfUnitsAndBeats.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import sortedNotesForSingleUnitConsideringStaves from '#unilang/drawer/elements/unit/sortedNotesForSingleUnitConsideringStaves.js'
+import singleUnit from '#unilang/drawer/elements/unit/singleUnit.js'
+import actualDurationOfCurrentSingleUnit from '#unilang/drawer/elements/voice/actualDurationOfCurrentSingleUnit.js'
+import numberOfSimileStrokesByNumberOfUnitsAndBeats from '#unilang/drawer/elements/simile/numberOfSimileStrokesByNumberOfUnitsAndBeats.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 const beamKey = (staveIndex, voiceIndex, isGrace) => {
   return `${staveIndex}-${voiceIndex}-${isGrace}`

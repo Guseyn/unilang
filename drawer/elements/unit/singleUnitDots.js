@@ -1,9 +1,9 @@
 'use strict'
 
-import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
-import path from './../basic/path.js'
-import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
-import group from './../basic/group.js'
+import topOffsetOfElementConsideringItsStave from '#unilang/drawer/elements/stave/topOffsetOfElementConsideringItsStave.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 
 const noteInWholeToneWithNoteAbove = (note, noteIndex, sortedNotes) => {
   const wholeToneDelta = 0.5

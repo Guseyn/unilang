@@ -1,10 +1,10 @@
 'use strict'
 
-import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
-import regexps from './static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import lastMeasureParams from './page-schema/lastMeasureParams.js'
-import keySignatureThatUserMeant from './page-schema/keySignatureThatUserMeant.js'
+import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#unilang/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from '#unilang/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import keySignatureThatUserMeant from '#unilang/language/parser/scenarios/page-schema/keySignatureThatUserMeant.js'
 
 export default function (scenarios) {
   scenarios['key signature'] = {

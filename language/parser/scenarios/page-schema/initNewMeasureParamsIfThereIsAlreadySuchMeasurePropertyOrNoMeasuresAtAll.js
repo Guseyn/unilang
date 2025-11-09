@@ -1,6 +1,6 @@
 'use strict'
 
-import lastMeasureParams from './lastMeasureParams.js'
+import lastMeasureParams from '#unilang/language/parser/scenarios/page-schema/lastMeasureParams.js'
 
 export default function (pageSchema, componentName, parserState) {
   pageSchema.measuresParams = pageSchema.measuresParams || []

@@ -1,5 +1,5 @@
 'use strict'
 
-import module from './noteKeys.js'
+import module from '#unilang/language/parser/scenarios/static-objects/noteKeys.js'
 
 export default Object.keys(module)

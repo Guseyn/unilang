@@ -2,6 +2,7 @@
   - [x] visual
   - [x] audio
 - [x] Migrate to ESM
+- [x] import maps
 - [ ] extract deps to directories, and get rid of all third party deps in package.json
 - [ ] Dev Server
 - [ ] Refactor language parser to make it more flexible in terms of outputs

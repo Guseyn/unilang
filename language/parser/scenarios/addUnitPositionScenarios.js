@@ -1,8 +1,8 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
-import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import withNumbersInsteadOfWords from '#unilang/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
+import addLineMeasureStaveVoicePositionScenarios from '#unilang/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios, requiredCommandProgression, commandProgressionLevel = 2, allowedCoordinates) {
   scenarios[`unit position (${requiredCommandProgression})`] = {

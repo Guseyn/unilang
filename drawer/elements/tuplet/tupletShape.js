@@ -1,11 +1,11 @@
 'use strict'
 
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
-import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
-import moveElementInTheCenterBetweenPointsAboveAndBelow from './../basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
-import path from './../basic/path.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementInTheCenterBetweenPointsAboveAndBelow from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (lastLeftTupletPoint, voicesBody, belongsToComplexTuplet, extendedFromLeftSide, extendedToRightSide, styles) {
   const tupletElements = []

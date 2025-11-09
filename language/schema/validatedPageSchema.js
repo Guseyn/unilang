@@ -1,7 +1,7 @@
 'use strict'
 
-import pageSchema from './pageSchema.js'
-import tunedValidator from './tunedValidator.js'
+import pageSchema from '#unilang/language/schema/pageSchema.js'
+import tunedValidator from '#unilang/language/schema/tunedValidator.js'
 
 export default function (schemaOnInput) {
   return tunedValidator.validate(schemaOnInput, pageSchema, { allowUnknownAttributes: false })

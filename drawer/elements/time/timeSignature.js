@@ -1,9 +1,9 @@
 'use strict'
 
-import stavePiece from './../stave/stavePiece.js'
-import path from './../basic/path.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
+import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore) {
   return (styles, leftOffset, topOffset) => {

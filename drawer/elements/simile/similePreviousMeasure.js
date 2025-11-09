@@ -1,12 +1,12 @@
 'use strict'
 
-import simile from './simile.js'
-import text from './../basic/text.js'
-import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
-import stavesPiece from './../stave/stavesPiece.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import simile from '#unilang/drawer/elements/simile/simile.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
+import stavesPiece from '#unilang/drawer/elements/stave/stavesPiece.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaves, numberOfStaveLines, simileYCorrection, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral, previousMeasure) {
   return (styles, leftOffset, topOffset) => {

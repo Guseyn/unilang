@@ -1,7 +1,7 @@
 'use strict'
 
-import slurJunctionPointForSingleUnit from './slurJunctionPointForSingleUnit.js'
-import timeInSlurSplinePointsBySomeXPointThere from './timeInSlurSplinePointsBySomeXPointThere.js'
+import slurJunctionPointForSingleUnit from '#unilang/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
+import timeInSlurSplinePointsBySomeXPointThere from '#unilang/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
 
 export default function (singleUnit, slurSplinePoints, slurDirection, styles) {
   const slurFirstCurveXRange = {

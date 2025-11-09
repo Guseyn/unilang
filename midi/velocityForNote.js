@@ -1,6 +1,6 @@
 'use strict'
 
-import sortByGraceCount from './sortByGraceCount.js'
+import sortByGraceCount from '#unilang/midi/sortByGraceCount.js'
 
 const VELOCITY_FACTOR = 127
 const DEFAULT_VELOCITY = 100 / VELOCITY_FACTOR

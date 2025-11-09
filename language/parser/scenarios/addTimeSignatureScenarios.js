@@ -1,8 +1,8 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import lastMeasureParams from './page-schema/lastMeasureParams.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#unilang/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from '#unilang/language/parser/scenarios/page-schema/lastMeasureParams.js'
 
 export default function (scenarios) {
   scenarios['time signature'] = {

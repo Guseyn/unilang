@@ -1,8 +1,8 @@
 // The `hhea` table contains information for horizontal layout.
 // https://www.microsoft.com/typography/OTSPEC/hhea.htm
 
-import { Parser } from './../parse.js'
-import table from './../table.js'
+import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
 // Parse the horizontal header `hhea` table
 function parseHheaTable(data, start) {

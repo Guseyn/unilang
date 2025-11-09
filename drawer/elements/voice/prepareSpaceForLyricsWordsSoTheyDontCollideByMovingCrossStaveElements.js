@@ -1,8 +1,8 @@
 'use strict'
 
-import text from './../basic/text.js'
-import moveElement from './../basic/moveElement.js'
-import moveCrossStaveElementsThatAttachedToCrossStaveUnit from './moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from '#unilang/drawer/elements/voice/moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
 
 export default function (
   lyricsWordsElementsWithMaxWidthAmongAllLyricsWordsForEachCrossStaveUnitOnPageLineToPrepareSpaceBeforeDrawingThem,

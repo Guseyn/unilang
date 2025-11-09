@@ -27,7 +27,7 @@
 */
 'use strict'
 
-import glyf from './tables/glyf.js'
+import glyf from '#unilang/drawer/lib/opentype/tables/glyf.js'
 
 let instructionTable
 let exec

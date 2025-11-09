@@ -1,7 +1,7 @@
 'use strict'
 
-import regexps from './../static-objects/regexps.js'
-import tempoDurationParts from './../static-objects/tempoDurationParts.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import tempoDurationParts from '#unilang/language/parser/scenarios/static-objects/tempoDurationParts.js'
 
 const numericDurations = [ '1', '1/2', '1/4', '1/8', '1/16', '1/32', '1/64' ]
 

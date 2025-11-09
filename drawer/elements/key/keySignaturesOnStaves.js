@@ -1,10 +1,10 @@
 'use strict'
 
-import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
-import stavePiece from './../stave/stavePiece.js'
-import keySignature from './keySignature.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
+import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
+import keySignature from '#unilang/drawer/elements/key/keySignature.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaveLines, clefsNames, keySignatureName, keySignatureNameForEachLineId, measureIndexInGeneralOfRefId, staveIndexOfRefId, voiceIndexOfRefId, singleUnitIndexOfRefId) {
   return (styles, leftOffset, topOffset) => {

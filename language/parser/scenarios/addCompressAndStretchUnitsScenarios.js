@@ -1,7 +1,7 @@
 'use strict'
 
-import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
-import regexps from './static-objects/regexps.js'
+import withNumbersInsteadOfWords from '#unilang/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (scenarios) {
   scenarios['compress units by n times'] = {

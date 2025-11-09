@@ -1,12 +1,12 @@
 'use strict'
 
-import initMeasureParams from './page-schema/initMeasureParams.js'
-import lastMeasureParams from './page-schema/lastMeasureParams.js'
-import openingBarLines from './static-objects/openingBarLines.js'
-import closingBarLines from './static-objects/closingBarLines.js'
-import withNumbersInsteadOfWords from './token/withNumbersInsteadOfWords.js'
-import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
-import regexps from './static-objects/regexps.js'
+import initMeasureParams from '#unilang/language/parser/scenarios/page-schema/initMeasureParams.js'
+import lastMeasureParams from '#unilang/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import openingBarLines from '#unilang/language/parser/scenarios/static-objects/openingBarLines.js'
+import closingBarLines from '#unilang/language/parser/scenarios/static-objects/closingBarLines.js'
+import withNumbersInsteadOfWords from '#unilang/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
+import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (scenarios) {
   scenarios['measure'] = {

@@ -1,6 +1,6 @@
 'use strict'
 
-import sortByGraceCount from './sortByGraceCount.js'
+import sortByGraceCount from '#unilang/midi/sortByGraceCount.js'
 
 const PITCHES_BY_NOTE_NAMES = {
   'c': 0,

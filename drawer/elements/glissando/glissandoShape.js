@@ -1,9 +1,9 @@
 'use strict'
 
-import wave from './../basic/wave.js'
-import group from './../basic/group.js'
-import line from './../basic/line.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import wave from '#unilang/drawer/elements/basic/wave.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import line from '#unilang/drawer/elements/basic/line.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (markedGlissando, glissandoMarkKey, voicesBody, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, extendedFromLeftSide, extendedToRightSide, numberOfStaveLines, styles) {
   const glissandoShapeComponents = []

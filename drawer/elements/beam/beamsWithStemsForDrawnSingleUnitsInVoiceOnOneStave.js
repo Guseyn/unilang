@@ -1,15 +1,15 @@
 'use strict'
 
-import calculatedNumberOfBeamLinesByDuration from './calculatedNumberOfBeamLinesByDuration.js'
-import stemForSingleUnitInBeamedPartOfVoiceByStemPlaceholderCoordinates from './../unit/stemForSingleUnitInBeamedPartOfVoiceByStemPlaceholderCoordinates.js'
-import beams from './beams.js'
-import calculatedBeamLineCoefficients from './calculatedBeamLineCoefficients.js'
-import calculatedStemExtremePositionForDrawnBeamedSingleUnit from './calculatedStemExtremePositionForDrawnBeamedSingleUnit.js'
-import areAnyStemDirectionChangesInBeamedSingleUnits from './areAnyStemDirectionChangesInBeamedSingleUnits.js'
-import firstAndLastBeamedSingleUnitStemsEnds from './firstAndLastBeamedSingleUnitStemsEnds.js'
-import path from './../basic/path.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import calculatedNumberOfBeamLinesByDuration from '#unilang/drawer/elements/beam/calculatedNumberOfBeamLinesByDuration.js'
+import stemForSingleUnitInBeamedPartOfVoiceByStemPlaceholderCoordinates from '#unilang/drawer/elements/unit/stemForSingleUnitInBeamedPartOfVoiceByStemPlaceholderCoordinates.js'
+import beams from '#unilang/drawer/elements/beam/beams.js'
+import calculatedBeamLineCoefficients from '#unilang/drawer/elements/beam/calculatedBeamLineCoefficients.js'
+import calculatedStemExtremePositionForDrawnBeamedSingleUnit from '#unilang/drawer/elements/beam/calculatedStemExtremePositionForDrawnBeamedSingleUnit.js'
+import areAnyStemDirectionChangesInBeamedSingleUnits from '#unilang/drawer/elements/beam/areAnyStemDirectionChangesInBeamedSingleUnits.js'
+import firstAndLastBeamedSingleUnitStemsEnds from '#unilang/drawer/elements/beam/firstAndLastBeamedSingleUnitStemsEnds.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnSingleUnitsInVoice, styles) {
   const drawnBeamsWithStems = []

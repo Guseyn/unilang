@@ -1,9 +1,9 @@
 'use strict'
 
-import path from './../basic/path.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
-import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
 
 export default function (drawnBarLine, isLastMeasureOnPageLine, styles) {
   const { fermata, measureFermataOffsetY, fontColor } = styles

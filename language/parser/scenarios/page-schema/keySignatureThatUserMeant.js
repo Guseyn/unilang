@@ -1,6 +1,6 @@
 'use strict'
 
-import keySignatureNames from './../static-objects/keySignatureNames.js'
+import keySignatureNames from '#unilang/language/parser/scenarios/static-objects/keySignatureNames.js'
 
 export default function (keySignatureNameFromUnitext) {
   return keySignatureNames.find(

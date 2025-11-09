@@ -1,11 +1,11 @@
 'use strict'
 
-import flatKey from './flatKey.js'
-import sharpKey from './sharpKey.js'
-import naturalKey from './naturalKey.js'
-import keySignaturesStructures from './keySignaturesStructures.js'
-import stavePiece from './../stave/stavePiece.js'
-import group from './../basic/group.js'
+import flatKey from '#unilang/drawer/elements/key/flatKey.js'
+import sharpKey from '#unilang/drawer/elements/key/sharpKey.js'
+import naturalKey from '#unilang/drawer/elements/key/naturalKey.js'
+import keySignaturesStructures from '#unilang/drawer/elements/key/keySignaturesStructures.js'
+import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 
 export default function (numberOfStaveLines, clefName, keySignatureName) {
   if (clefName === 'octaveEightUp' || clefName === 'octaveEightDown' || clefName === 'octaveFifteenUp' || clefName === 'octaveFifteenDown') {

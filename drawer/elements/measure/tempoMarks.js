@@ -1,7 +1,7 @@
 'use strict'
 
-import tempoMark from './tempoMark.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import tempoMark from '#unilang/drawer/elements/measure/tempoMark.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const drawnTempoMarks = []

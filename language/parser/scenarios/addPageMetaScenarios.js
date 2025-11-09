@@ -1,7 +1,7 @@
 'use strict'
 
-import pageMeta from './static-objects/pageMeta.js'
-import regexps from './static-objects/regexps.js'
+import pageMeta from '#unilang/language/parser/scenarios/static-objects/pageMeta.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 const IS = 'is'
 const EMPTY_STRING = ''

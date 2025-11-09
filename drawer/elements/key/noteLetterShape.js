@@ -1,9 +1,9 @@
 'use strict'
 
-import text from './../basic/text.js'
-import pathWithOutline from './../basic/pathWithOutline.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import pathWithOutline from '#unilang/drawer/elements/basic/pathWithOutline.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (positionNumber, textValue = '?') {
   return (styles, leftOffset, topOffset) => {

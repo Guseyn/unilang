@@ -1,12 +1,12 @@
 'use strict'
 
-import sortedNotesForSingleUnitConsideringStaves from './../unit/sortedNotesForSingleUnitConsideringStaves.js'
-import path from './../basic/path.js'
-import wave from './../basic/wave.js'
-import group from './../basic/group.js'
-import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import sortedNotesForSingleUnitConsideringStaves from '#unilang/drawer/elements/unit/sortedNotesForSingleUnitConsideringStaves.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import wave from '#unilang/drawer/elements/basic/wave.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnOnlyNoteLettersBeforeApreggiatedWavesForCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, numberOfStaveLines, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { fontColor, intervalBetweenStaveLines, arpeggioWavePeriod, arpeggioWaveWithArrowPeriod, spaceAfterBreathMark, spaceAfterOnlyLettersForArpeggiatedWaves, graceElementsScaleFactor } = styles

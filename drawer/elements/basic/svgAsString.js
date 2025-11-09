@@ -1,6 +1,6 @@
 'use strict'
 
-import polyline from './polyline.js'
+import polyline from '#unilang/drawer/elements/basic/polyline.js'
 
 const debugMode = true
 

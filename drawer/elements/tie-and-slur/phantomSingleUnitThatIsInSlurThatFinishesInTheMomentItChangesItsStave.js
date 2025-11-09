@@ -1,6 +1,6 @@
 'use strict'
 
-import moveSingleUnit from './../unit/moveSingleUnit.js'
+import moveSingleUnit from '#unilang/drawer/elements/unit/moveSingleUnit.js'
 
 export default function (singleUnit, slurMarkKey, fromStaveIndex, toStaveIndex, styles) {
   const singleUnitClone = JSON.parse(JSON.stringify(singleUnit))

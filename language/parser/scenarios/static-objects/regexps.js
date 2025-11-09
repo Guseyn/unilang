@@ -1,26 +1,23 @@
 'use strict'
 
-import configurableStyleNames from './configurableStyleNames.js'
-// import musicFonts from './musicFonts.js'
-// import textFonts from './textFonts.js'
-// import chordLettersFonts from './chordLettersFonts.js'
-import pageMetaNames from './pageMetaNames.js'
-import openingBarLineNames from './openingBarLineNames.js'
-import closingBarLineNames from './closingBarLineNames.js'
-import applicationOfMeasureNumbersNames from './applicationOfMeasureNumbersNames.js'
-import keySignatureNames from './keySignatureNames.js'
-import tempoDurationPartNames from './tempoDurationPartNames.js'
-import clefNames from './clefNames.js'
-import noteDurationNames from './noteDurationNames.js'
-import noteNames from './noteNames.js'
-import stavePositionNames from './stavePositionNames.js'
-import noteKeyNames from './noteKeyNames.js'
-import breathMarkNames from './breathMarkNames.js'
-import articulationNames from './articulationNames.js'
-import ornamentKeyNames from './ornamentKeyNames.js'
-import midiSettingNames from './midiSettingNames.js'
-import instrumentNames from './instrumentNames.js'
-import withoutDoubleSpacesAndTrimmed from './../token/withoutDoubleSpacesAndTrimmed.js'
+import configurableStyleNames from '#unilang/language/parser/scenarios/static-objects/configurableStyleNames.js'
+import pageMetaNames from '#unilang/language/parser/scenarios/static-objects/pageMetaNames.js'
+import openingBarLineNames from '#unilang/language/parser/scenarios/static-objects/openingBarLineNames.js'
+import closingBarLineNames from '#unilang/language/parser/scenarios/static-objects/closingBarLineNames.js'
+import applicationOfMeasureNumbersNames from '#unilang/language/parser/scenarios/static-objects/applicationOfMeasureNumbersNames.js'
+import keySignatureNames from '#unilang/language/parser/scenarios/static-objects/keySignatureNames.js'
+import tempoDurationPartNames from '#unilang/language/parser/scenarios/static-objects/tempoDurationPartNames.js'
+import clefNames from '#unilang/language/parser/scenarios/static-objects/clefNames.js'
+import noteDurationNames from '#unilang/language/parser/scenarios/static-objects/noteDurationNames.js'
+import noteNames from '#unilang/language/parser/scenarios/static-objects/noteNames.js'
+import stavePositionNames from '#unilang/language/parser/scenarios/static-objects/stavePositionNames.js'
+import noteKeyNames from '#unilang/language/parser/scenarios/static-objects/noteKeyNames.js'
+import breathMarkNames from '#unilang/language/parser/scenarios/static-objects/breathMarkNames.js'
+import articulationNames from '#unilang/language/parser/scenarios/static-objects/articulationNames.js'
+import ornamentKeyNames from '#unilang/language/parser/scenarios/static-objects/ornamentKeyNames.js'
+import midiSettingNames from '#unilang/language/parser/scenarios/static-objects/midiSettingNames.js'
+import instrumentNames from '#unilang/language/parser/scenarios/static-objects/instrumentNames.js'
+import withoutDoubleSpacesAndTrimmed from '#unilang/language/parser/scenarios/token/withoutDoubleSpacesAndTrimmed.js'
 
 const VERTICAL_LINE = '|'
 const SLASH = '/'
@@ -474,7 +471,7 @@ const breathMarkNamesAsTokens = [
 const articulationNamesAsTokens = articulationNames.map(name => name.split(SPACE))
 const ornamentKeyNamesAsTokens = ornamentKeyNames.map(name => name.split(SPACE))
 
-import cssColors from './cssColors.js'
+import cssColors from '#unilang/language/parser/scenarios/static-objects/cssColors.js'
 
 const isColor = (tokenValues) => {
   const joinedTokenValues = tokenValues.join(SPACE)

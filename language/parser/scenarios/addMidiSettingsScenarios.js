@@ -1,7 +1,7 @@
 'use strict'
 
-import midiSettings from './static-objects/midiSettings.js'
-import regexps from './static-objects/regexps.js'
+import midiSettings from '#unilang/language/parser/scenarios/static-objects/midiSettings.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 const NEW_LINE = '\n'
 

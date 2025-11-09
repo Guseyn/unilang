@@ -1,6 +1,6 @@
 // Parsing utility functions
 
-import check from './check.js'
+import check from '#unilang/drawer/lib/opentype/check.js'
 
 // Retrieve an unsigned byte from the DataView.
 function getByte(dataView, offset) {

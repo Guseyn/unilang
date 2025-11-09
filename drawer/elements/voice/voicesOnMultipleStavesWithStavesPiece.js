@@ -1,13 +1,13 @@
 'use strict'
 
-import voicesOnMultipleStaves from './voicesOnMultipleStaves.js'
-import spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit from './spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit.js'
-import stavesPiece from './../stave/stavesPiece.js'
-import group from './../basic/group.js'
-import prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements from './prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements.js'
-import prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements from './prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements.js'
-import centralizeSingleUnitsInVoices from './centralizeSingleUnitsInVoices.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import voicesOnMultipleStaves from '#unilang/drawer/elements/voice/voicesOnMultipleStaves.js'
+import spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit from '#unilang/drawer/elements/voice/spaceAtEndOfVoicesByByMinUnitDurationOnPageLineAndMinDurationAmongAccumulatorsForEachVoiceInLastCrossStaveUnitCondideringCasesWhenItIsGraceCrossStaveUnit.js'
+import stavesPiece from '#unilang/drawer/elements/stave/stavesPiece.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements from '#unilang/drawer/elements/voice/prepareSpaceForLyricsWordsSoTheyDontCollideByMovingCrossStaveElements.js'
+import prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements from '#unilang/drawer/elements/voice/prepareSpaceForChordLettersSoTheyDontCollideByMovingCrossStaveElements.js'
+import centralizeSingleUnitsInVoices from '#unilang/drawer/elements/voice/centralizeSingleUnitsInVoices.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 export default function ({
   pageLineNumber,

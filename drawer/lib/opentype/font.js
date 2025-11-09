@@ -1,15 +1,15 @@
 // The Font object
 
-import Path from './path.js'
-import sfnt from './tables/sfnt.js'
-import {  DefaultEncoding  } from './encoding.js'
-import glyphset from './glyphset.js'
-import Position from './position.js'
-import Substitution from './substitution.js'
-import {  isBrowser, checkArgument, arrayBufferToNodeBuffer  } from './util.js'
-import HintingTrueType from './hintingtt.js'
-import Bidi from './bidi.js'
-import {  FeatureQuery  } from './features/featureQuery.js'
+import Path from '#unilang/drawer/lib/opentype/path.js'
+import sfnt from '#unilang/drawer/lib/opentype/tables/sfnt.js'
+import {  DefaultEncoding  } from '#unilang/drawer/lib/opentype/encoding.js'
+import glyphset from '#unilang/drawer/lib/opentype/glyphset.js'
+import Position from '#unilang/drawer/lib/opentype/position.js'
+import Substitution from '#unilang/drawer/lib/opentype/substitution.js'
+import {  isBrowser, checkArgument, arrayBufferToNodeBuffer  } from '#unilang/drawer/lib/opentype/util.js'
+import HintingTrueType from '#unilang/drawer/lib/opentype/hintingtt.js'
+import Bidi from '#unilang/drawer/lib/opentype/bidi.js'
+import {  FeatureQuery  } from '#unilang/drawer/lib/opentype/features/featureQuery.js'
 
 /**
  * @typedef FontOptions

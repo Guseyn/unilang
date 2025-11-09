@@ -1,7 +1,7 @@
 'use strict'
 
-import path from './../basic/path.js'
-import group from './../basic/group.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 
 export default function (numberOfFlags) {
   return (styles, leftOffset, topOffset) => {

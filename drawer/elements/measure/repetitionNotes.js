@@ -1,7 +1,7 @@
 'use strict'
 
-import repetitionNoteText from './repetitionNoteText.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import repetitionNoteText from '#unilang/drawer/elements/measure/repetitionNoteText.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnRepetitionNotes = []

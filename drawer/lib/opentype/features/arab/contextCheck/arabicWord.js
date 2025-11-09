@@ -2,7 +2,7 @@
  * Arabic word context checkers
  */
 
-import char from './../../../char.js'
+import char from '#unilang/drawer/lib/opentype/char.js'
 
 const {  isArabicChar  } = char
 

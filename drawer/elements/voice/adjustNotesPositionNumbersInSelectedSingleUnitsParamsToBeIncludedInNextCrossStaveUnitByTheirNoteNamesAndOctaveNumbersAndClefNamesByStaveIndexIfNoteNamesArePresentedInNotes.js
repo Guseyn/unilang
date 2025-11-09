@@ -1,6 +1,6 @@
 'use strict'
 
-import notePositionNumber from './../note/notePositionNumber.js'
+import notePositionNumber from '#unilang/drawer/elements/note/notePositionNumber.js'
 
 export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, clefNamesAuraByStaveIndexes) {
   for (let singleUnitParamsIndex = 0; singleUnitParamsIndex < selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit.length; singleUnitParamsIndex++) {

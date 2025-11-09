@@ -1,6 +1,6 @@
 'use strict'
 
-import currentPageLineIndex from './currentPageLineIndex.js'
+import currentPageLineIndex from '#unilang/language/parser/scenarios/page-schema/currentPageLineIndex.js'
 
 export default function (parserState) {
   const pageSchema = parserState.pageSchema

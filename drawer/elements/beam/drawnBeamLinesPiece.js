@@ -1,9 +1,9 @@
 'use strict'
 
-import path from './../basic/path.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 const correctStemEndCoordinates = (stem, newStemEndCoordinate) => {
   if (stem.direction === 'up' && (stem.topCorrectedByBeamLines === undefined || newStemEndCoordinate < stem.topCorrectedByBeamLines)) {

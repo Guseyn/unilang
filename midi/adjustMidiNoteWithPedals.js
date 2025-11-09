@@ -1,6 +1,6 @@
 'use strict'
 
-import allConnectedTracks from './allConnectedTracks.js'
+import allConnectedTracks from '#unilang/midi/allConnectedTracks.js'
 
 const MIDI_CC_FACTOR = 127
 

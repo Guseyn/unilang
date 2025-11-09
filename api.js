@@ -1,11 +1,11 @@
-import opentype from './drawer/lib/opentype.js'
-import parsedUnilang from './language/parser/parsedUnilang.js'
-import validatedPageSchema from `./language/schema/validatedPageSchema.js`
-import svgAsString from `./drawer/elements/basic/svgAsString.js`
-import generatedStyles from `./drawer/generatedStyles.js`
-import svg from `./drawer/elements/basic/svg.js`
-import page from `./drawer/elements/page/page.js`
-import midi from `./midi/midi.js`
+import opentype from '#unilang/drawer/lib/opentype.js'
+import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
+import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
+import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
+import generatedStyles from '#unilang/drawer/generatedStyles.js'
+import svg from '#unilang/drawer/elements/basic/svg.js'
+import page from '#unilang/drawer/elements/page/page.js'
+import midi from '#unilang/midi/midi.js'
 
 // 0. Generate music-js font based on music font (optional)
 // 1. Load font object with chord-letters, music, music-js, text

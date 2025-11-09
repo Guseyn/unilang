@@ -1,8 +1,8 @@
 'use strict'
 
-import path from './../basic/path.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (numberOfSimileStrokes, simileYCorrection) {
   return (styles, leftOffset, topOffset) => {

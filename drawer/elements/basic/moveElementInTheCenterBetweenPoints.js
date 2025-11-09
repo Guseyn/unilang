@@ -1,6 +1,6 @@
 'use strict'
 
-import moveElement from './moveElement.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (element, leftPoint, rightPoint) {
   const elementCenter = (element.right + element.left) / 2

@@ -4,14 +4,14 @@ import assert from 'assert'
 
 import colors from 'ansi-colors'
 
-import parsedUnilang from './../language/parser/parsedUnilang.js'
-import validatedPageSchema from './../language/schema/validatedPageSchema.js'
-import svgAsString from './../drawer/elements/basic/svgAsString.js'
-import generatedStyles from './../drawer/generatedStyles.js'
-import svg from './../drawer/elements/basic/svg.js'
-import page from './../drawer/elements/page/page.js'
+import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
+import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
+import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
+import generatedStyles from '#unilang/drawer/generatedStyles.js'
+import svg from '#unilang/drawer/elements/basic/svg.js'
+import page from '#unilang/drawer/elements/page/page.js'
 
-import opentype from './../drawer/lib/opentype/opentype.js'
+import opentype from '#unilang/drawer/lib/opentype/opentype.js'
 
 const NEW_LINE = '\n'
 
@@ -22,8 +22,8 @@ function normalizeUnilangText(unilangText) {
   return unilangText
 }
 
-import bravuraJS from './../drawer/font/music-js/bravura.js'
-import lelandJS from './../drawer/font/music-js/leland.js'
+import bravuraJS from '#unilang/drawer/font/music-js/bravura.js'
+import lelandJS from '#unilang/drawer/font/music-js/leland.js'
 
 ;(async function() {
   const visualTestsForEachFont = (

@@ -1,8 +1,8 @@
 'use strict'
 
-import stavePiece from './stavePiece.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaves, numberOfStaveLines, stavePieceWidth, numberOfStavesWithWidthIsNotZero, refParams) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {

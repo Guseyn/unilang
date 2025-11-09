@@ -1,7 +1,7 @@
 'use strict'
 
-import octaveSignShape from './../octave-sign/octaveSignShape.js'
-import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
+import octaveSignShape from '#unilang/drawer/elements/octave-sign/octaveSignShape.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from '#unilang/drawer/elements/measure/minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
 const keyForOctaveSign = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`

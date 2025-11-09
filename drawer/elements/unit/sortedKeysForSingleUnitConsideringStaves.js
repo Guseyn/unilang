@@ -1,6 +1,6 @@
 'use strict'
 
-import correctedStaveIndexOfNoteOrKey from './correctedStaveIndexOfNoteOrKey.js'
+import correctedStaveIndexOfNoteOrKey from '#unilang/drawer/elements/unit/correctedStaveIndexOfNoteOrKey.js'
 
 const compareTwoKeys = (key1, key2) => {
   const staveIndex1 = correctedStaveIndexOfNoteOrKey(key1)

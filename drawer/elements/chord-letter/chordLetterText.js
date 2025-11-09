@@ -1,7 +1,7 @@
 'use strict'
 
-import text from './../basic/text.js'
-import group from './../basic/group.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 // C♯♭oøΔ
 const chordLetterSigns = {
   'sharp': '♯',

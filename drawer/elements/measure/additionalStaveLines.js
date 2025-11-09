@@ -1,6 +1,6 @@
 'use strict'
 
-import line from './../basic/line.js'
+import line from '#unilang/drawer/elements/basic/line.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const { intervalBetweenStaveLines, additionalStaveLinesStrokeOptions, additionalStaveLinesRadiusFromNoteBody, graceElementsScaleFactor } = styles

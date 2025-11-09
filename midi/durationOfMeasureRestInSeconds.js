@@ -2,7 +2,7 @@
 
 const DEFAULT_DURATION_IN_QUARTERS_FOR_MEASURE_REST = 4
 
-import durationInSeconds from './durationInSeconds.js'
+import durationInSeconds from '#unilang/midi/durationInSeconds.js'
 
 export default function (timeSignatureDurationInSeconds, tempoAura, fullDurationOfLastMeasure) {
   return timeSignatureDurationInSeconds

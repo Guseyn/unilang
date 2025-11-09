@@ -1,6 +1,6 @@
 'use strict'
 
-import slurMarkWithSpecifiedKey from './slurMarkWithSpecifiedKey.js'
+import slurMarkWithSpecifiedKey from '#unilang/language/parser/scenarios/page-schema/slurMarkWithSpecifiedKey.js'
 
 export default function (parserState, slurMarkKey) {
   const foundSlurMarkWithSpecifiedKey = slurMarkWithSpecifiedKey(parserState, slurMarkKey)

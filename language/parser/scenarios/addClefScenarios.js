@@ -1,11 +1,11 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from './page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from './page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
-import lastMeasureParams from './page-schema/lastMeasureParams.js'
-import lastStaveParams from './page-schema/lastStaveParams.js'
-import clefs from './static-objects/clefs.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#unilang/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from '#unilang/language/parser/scenarios/page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
+import lastMeasureParams from '#unilang/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import lastStaveParams from '#unilang/language/parser/scenarios/page-schema/lastStaveParams.js'
+import clefs from '#unilang/language/parser/scenarios/static-objects/clefs.js'
 
 export default function (scenarios) {
   scenarios['clef'] = {

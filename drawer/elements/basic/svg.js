@@ -1,6 +1,6 @@
 'use strict'
 
-import calculatedCoordinatesOfElements from './calculatedCoordinatesOfElements.js'
+import calculatedCoordinatesOfElements from '#unilang/drawer/elements/basic/calculatedCoordinatesOfElements.js'
 
 export default function (...elements) {
   const { top, right, bottom, left } = calculatedCoordinatesOfElements(elements)

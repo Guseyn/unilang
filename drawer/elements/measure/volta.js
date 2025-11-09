@@ -1,10 +1,10 @@
 'use strict'
 
-import polyline from './../basic/polyline.js'
-import text from './../basic/text.js'
-import moveElement from './../basic/moveElement.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import polyline from '#unilang/drawer/elements/basic/polyline.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (voltaStructure, styles) {
   const { voltaColumnHeight, voltaStrokeOptions, voltaValueFontOptions, voltaValueLeftOffset, voltaValueTopOffset, intervalBetweenStaveLines } = styles

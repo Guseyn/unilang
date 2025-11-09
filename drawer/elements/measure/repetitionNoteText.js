@@ -1,7 +1,7 @@
 'use strict'
 
-import text from './../basic/text.js'
-import moveElement from './../basic/moveElement.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (measure, styles) {
   const repetitionNote = measure.repetitionNote

@@ -1,12 +1,12 @@
 'use strict'
 
-import parserScenarios from './scenarios/parserScenarios.js'
-import mapWithScenariosAndScenariosWhereItIsRequired from './scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
+import parserScenarios from '#unilang/language/parser/scenarios/parserScenarios.js'
+import mapWithScenariosAndScenariosWhereItIsRequired from '#unilang/language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
 const constructedParserScenarios = parserScenarios()
 const constructedMapWithScenariosAndScenariosWhereItIsRequired = mapWithScenariosAndScenariosWhereItIsRequired(constructedParserScenarios)
-import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from './scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
-import tokenValuesFromTokens from './scenarios/token/tokenValuesFromTokens.js'
-import joinedTokensWithRealDelimiters from './scenarios/token/joinedTokensWithRealDelimiters.js'
+import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from '#unilang/language/parser/scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
+import tokenValuesFromTokens from '#unilang/language/parser/scenarios/token/tokenValuesFromTokens.js'
+import joinedTokensWithRealDelimiters from '#unilang/language/parser/scenarios/token/joinedTokensWithRealDelimiters.js'
 
 const NEW_LINE_REGEXP = /[\r\n|\r|\n]/
 const SPACE_REGEXP = /[\s]/

@@ -4,21 +4,21 @@
 // Recommendations for creating OpenType Fonts:
 // http://www.microsoft.com/typography/otspec140/recom.htm
 
-import check from './../check.js'
-import table from './../table.js'
+import check from '#unilang/drawer/lib/opentype/check.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
-import cmap from './cmap.js'
-import cff from './cff.js'
-import head from './head.js'
-import hhea from './hhea.js'
-import hmtx from './hmtx.js'
-import ltag from './ltag.js'
-import maxp from './maxp.js'
-import _name from './name.js'
-import os2 from './os2.js'
-import post from './post.js'
-import gsub from './gsub.js'
-import meta from './meta.js'
+import cmap from '#unilang/drawer/lib/opentype/tables/cmap.js'
+import cff from '#unilang/drawer/lib/opentype/tables/cff.js'
+import head from '#unilang/drawer/lib/opentype/tables/head.js'
+import hhea from '#unilang/drawer/lib/opentype/tables/hhea.js'
+import hmtx from '#unilang/drawer/lib/opentype/tables/hmtx.js'
+import ltag from '#unilang/drawer/lib/opentype/tables/ltag.js'
+import maxp from '#unilang/drawer/lib/opentype/tables/maxp.js'
+import _name from '#unilang/drawer/lib/opentype/tables/name.js'
+import os2 from '#unilang/drawer/lib/opentype/tables/os2.js'
+import post from '#unilang/drawer/lib/opentype/tables/post.js'
+import gsub from '#unilang/drawer/lib/opentype/tables/gsub.js'
+import meta from '#unilang/drawer/lib/opentype/tables/meta.js'
 
 function log2(v) {
   return Math.log(v) / Math.log(2) | 0

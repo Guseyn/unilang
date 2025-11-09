@@ -1,9 +1,9 @@
 'use strict'
 
-import path from './../basic/path.js'
-import stavesPiece from './../stave/stavesPiece.js'
-import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
-import group from './../basic/group.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import stavesPiece from '#unilang/drawer/elements/stave/stavesPiece.js'
+import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 
 export default function (numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {

@@ -1,7 +1,7 @@
 'use strict'
 
-import dynamicChange from './dynamicChange.js'
-import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
+import dynamicChange from '#unilang/drawer/elements/measure/dynamicChange.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from '#unilang/drawer/elements/measure/minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
 const staveVoiceKey = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`

@@ -1,6 +1,6 @@
 // Geometric objects
 
-import BoundingBox from './bbox.js'
+import BoundingBox from '#unilang/drawer/lib/opentype/bbox.js'
 
 /**
  * A bézier path containing a set of path commands similar to a SVG path.

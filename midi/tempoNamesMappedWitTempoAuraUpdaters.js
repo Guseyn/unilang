@@ -1,6 +1,6 @@
 'use strict'
 
-import durationsValuesInTempoExpressedInQuarters from './durationsValuesInTempoExpressedInQuarters.js'
+import durationsValuesInTempoExpressedInQuarters from '#unilang/midi/durationsValuesInTempoExpressedInQuarters.js'
 
 export default {
   'default': (tempoValuePartWhereCertaintTempoDurationIsSpecified, tempoValuePartWhereCertainTempoNumberIsSpecified, tempoAura, unitDurationInQuarters, thisIsFirstUnitInMeasure) => {

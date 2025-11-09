@@ -1,7 +1,7 @@
 'use strict'
 
-import coda from './coda.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import coda from '#unilang/drawer/elements/measure/coda.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnCodas = []

@@ -1,6 +1,6 @@
 'use strict'
 
-import singleUnitFitsInVertical from './singleUnitFitsInVertical.js'
+import singleUnitFitsInVertical from '#unilang/drawer/elements/voice/singleUnitFitsInVertical.js'
 
 export default function (stavesParams, drawnSingleUnitsForCurrentCrossStaveUnit, verticalsInCrossStaveUnit, containsCollidedVoices, styles) {
   for (let staveIndex = 0; staveIndex < stavesParams.length; staveIndex++) {

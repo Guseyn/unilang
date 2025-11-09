@@ -3,11 +3,11 @@
  * the corresponding layout rules.
  */
 
-import tokenizer from './tokenizer.js'
-import arabicWordCheck from './features/arab/contextCheck/arabicWord.js'
-import arabicSentenceCheck from './features/arab/contextCheck/arabicSentence.js'
-import arabicPresentationForms from './features/arab/arabicPresentationForms.js'
-import arabicRequiredLigatures from './features/arab/arabicRequiredLigatures.js'
+import tokenizer from '#unilang/drawer/lib/opentype/tokenizer.js'
+import arabicWordCheck from '#unilang/drawer/lib/opentype/features/arab/contextCheck/arabicWord.js'
+import arabicSentenceCheck from '#unilang/drawer/lib/opentype/features/arab/contextCheck/arabicSentence.js'
+import arabicPresentationForms from '#unilang/drawer/lib/opentype/features/arab/arabicPresentationForms.js'
+import arabicRequiredLigatures from '#unilang/drawer/lib/opentype/features/arab/arabicRequiredLigatures.js'
 
 const {  Tokenizer  } = tokenizer
 

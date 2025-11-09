@@ -1,7 +1,7 @@
 'use strict'
 
-import measureFermata from './measureFermata.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import measureFermata from '#unilang/drawer/elements/measure/measureFermata.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnMeasureFermatas = []

@@ -2,7 +2,7 @@
  * Arabic sentence context checkers
  */
 
-import char from './../../../char.js'
+import char from '#unilang/drawer/lib/opentype/char.js'
 
 const {  isArabicChar, isWhiteSpace, isTashkeelArabicChar  }  = char
 

@@ -2,8 +2,8 @@
  * Query a feature by some of it's properties to lookup a glyph substitution.
  */
 
-import tokenizer from './../tokenizer.js'
-import char from './../char.js'
+import tokenizer from '#unilang/drawer/lib/opentype/tokenizer.js'
+import char from '#unilang/drawer/lib/opentype/char.js'
 
 const {  ContextParams  } = tokenizer
 const {  isTashkeelArabicChar  } = char

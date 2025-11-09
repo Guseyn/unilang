@@ -1,8 +1,8 @@
 'use strict'
 
-import opentype from './../../lib/opentype/opentype.js'
-import d from './../../lib/opentype/d.js'
-import bboxForPath from './bboxForPath.js'
+import opentype from '#unilang/drawer/lib/opentype/opentype.js'
+import d from '#unilang/drawer/lib/opentype/d.js'
+import bboxForPath from '#unilang/drawer/elements/basic/bboxForPath.js'
 
 export default function (text, fontOptions) {
   return (styles, leftOffset, topOffset) => {

@@ -1,7 +1,7 @@
 'use strict'
 
-import instrumentTitleInMidiFormatByInstrumentOriginalName from './instrumentTitleInMidiFormatByInstrumentOriginalName.js'
-import noteHasSomeArticulations from './noteHasSomeArticulations.js'
+import instrumentTitleInMidiFormatByInstrumentOriginalName from '#unilang/midi/instrumentTitleInMidiFormatByInstrumentOriginalName.js'
+import noteHasSomeArticulations from '#unilang/midi/noteHasSomeArticulations.js'
 
 const PIZZICATO_STRINGS_MIDI_INSTRUMENT_NUMBER = 45
 const GHOST_SOUND_INSTRUMENT_NUMBER = 113

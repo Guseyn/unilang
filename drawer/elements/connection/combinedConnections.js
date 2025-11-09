@@ -1,10 +1,10 @@
 'use strict'
 
-import brace from './braceConnection.js'
-import bracket from './bracketConnection.js'
-import group from './../basic/group.js'
-import moveElement from './../basic/moveElement.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import brace from '#unilang/drawer/elements/connection/braceConnection.js'
+import bracket from '#unilang/drawer/elements/connection/bracketConnection.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 const connections = {
   brace,

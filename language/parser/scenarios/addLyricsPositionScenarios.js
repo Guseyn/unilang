@@ -1,8 +1,8 @@
 'use strict'
 
-import staveIndexByTokens from './token/staveIndexByTokens.js'
-import isStaveIndex from './token/isStaveIndex.js'
-import regexps from './static-objects/regexps.js'
+import staveIndexByTokens from '#unilang/language/parser/scenarios/token/staveIndexByTokens.js'
+import isStaveIndex from '#unilang/language/parser/scenarios/token/isStaveIndex.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (scenarios) {
   scenarios['lyrics position'] = {

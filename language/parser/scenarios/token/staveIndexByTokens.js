@@ -1,7 +1,7 @@
 'use strict'
 
-import withNumbersInsteadOfWords from './withNumbersInsteadOfWords.js'
-import regexps from './../static-objects/regexps.js'
+import withNumbersInsteadOfWords from '#unilang/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (tokenValues, startsFromZero) {
   const tokenValuesWithNumbersInsteadOfWords = withNumbersInsteadOfWords(tokenValues)

@@ -1,15 +1,15 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import isDirection from './token/isDirection.js'
-import direction from './token/direction.js'
-import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
-import chordParamsByLastMentionedUnitPositions from './page-schema/chordParamsByLastMentionedUnitPositions.js'
-import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
-import undefineOnlyLastMentionedUnitPosition from './page-schema/undefineOnlyLastMentionedUnitPosition.js'
-import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
-import addUnitPositionScenarios from './addUnitPositionScenarios.js'
-import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import isDirection from '#unilang/language/parser/scenarios/token/isDirection.js'
+import direction from '#unilang/language/parser/scenarios/token/direction.js'
+import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import chordParamsByLastMentionedUnitPositions from '#unilang/language/parser/scenarios/page-schema/chordParamsByLastMentionedUnitPositions.js'
+import undefineAllMentionedPositions from '#unilang/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from '#unilang/language/parser/scenarios/page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#unilang/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from '#unilang/language/parser/scenarios/addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from '#unilang/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios) {
   scenarios['glissando'] = {

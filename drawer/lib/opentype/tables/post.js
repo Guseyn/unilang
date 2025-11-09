@@ -1,9 +1,9 @@
 // The `post` table stores additional PostScript information, such as glyph names.
 // https://www.microsoft.com/typography/OTSPEC/post.htm
 
-import {  standardNames  } from './../encoding.js'
-import { Parser } from './../parse.js'
-import table from './../table.js'
+import {  standardNames  } from '#unilang/drawer/lib/opentype/encoding.js'
+import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
 // Parse the PostScript `post` table
 function parsePostTable(data, start) {

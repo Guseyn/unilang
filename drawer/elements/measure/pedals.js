@@ -1,7 +1,7 @@
 'use strict'
 
-import pedalShape from './../pedal/pedalShape.js'
-import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from './minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
+import pedalShape from '#unilang/drawer/elements/pedal/pedalShape.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from '#unilang/drawer/elements/measure/minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
 
 export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, styles) {
   const drawnPedals = []

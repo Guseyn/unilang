@@ -1,6 +1,6 @@
 'use strict'
 
-import firstArticulationWithName from './firstArticulationWithName.js'
+import firstArticulationWithName from '#unilang/midi/firstArticulationWithName.js'
 
 export default function (note, notesSplittedInTimeFrames, orderedTimeFramesFromNotesSplittedInTimeFrames, timeIndex, noteTimeIndex) {
   note.shouldStartWithTrillPrincipalNote = true

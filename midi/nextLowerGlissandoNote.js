@@ -15,7 +15,7 @@ const MIDI_PITCHES_MAPPED_WITH_LOWER_GLISSANDO_NOTE = {
   'B': 'A#'
 }
 
-import NORMALIZED_PITCHES from './normalizedPitches.js'
+import NORMALIZED_PITCHES from '#unilang/midi/normalizedPitches.js'
 const NUMBER_OF_NORMALIZED_PITCHES = NORMALIZED_PITCHES.length
 
 export default function (note) {

@@ -1,9 +1,9 @@
 // The `name` naming table.
 // https://www.microsoft.com/typography/OTSPEC/name.htm
 
-import {  decode, encode  } from './../types.js'
-import { Parser } from './../parse.js'
-import table from './../table.js'
+import {  decode, encode  } from '#unilang/drawer/lib/opentype/types.js'
+import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
 // NameIDs for the name table.
 const nameTableNames = [

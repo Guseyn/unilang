@@ -1,13 +1,13 @@
 'use strict'
 
-import spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit from './spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit.js'
-import allNotesInSingleUnitParamsAreOnNextStave from './allNotesInSingleUnitParamsAreOnNextStave.js'
-import allNotesInSingleUnitParamsAreOnPrevStave from './allNotesInSingleUnitParamsAreOnPrevStave.js'
-import moveElement from './../basic/moveElement.js'
-import scaleElementAroundPoint from './../basic/scaleElementAroundPoint.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
-import clefShape from './../clef/clefShape.js'
+import spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit from '#unilang/drawer/elements/voice/spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit.js'
+import allNotesInSingleUnitParamsAreOnNextStave from '#unilang/drawer/elements/voice/allNotesInSingleUnitParamsAreOnNextStave.js'
+import allNotesInSingleUnitParamsAreOnPrevStave from '#unilang/drawer/elements/voice/allNotesInSingleUnitParamsAreOnPrevStave.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import clefShape from '#unilang/drawer/elements/clef/clefShape.js'
 
 const MID_MEASURE_CLEF_SCALE = 2 / 3
 

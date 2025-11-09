@@ -1,5 +1,5 @@
 'use strict'
 
-import module from './ornamentKeys.js'
+import module from '#unilang/language/parser/scenarios/static-objects/ornamentKeys.js'
 
 export default Object.keys(module)

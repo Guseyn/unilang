@@ -1,6 +1,6 @@
 'use strict'
 
-import updateSingleUnitPartsCoordinates from './../unit/updateSingleUnitPartsCoordinates.js'
+import updateSingleUnitPartsCoordinates from '#unilang/drawer/elements/unit/updateSingleUnitPartsCoordinates.js'
 
 export default function (drawnSingleUnitsInVoices, xDistanceToMove = 0, yDistanceToMove = 0) {
   for (let staveIndex = 0; staveIndex < drawnSingleUnitsInVoices.length; staveIndex++) {

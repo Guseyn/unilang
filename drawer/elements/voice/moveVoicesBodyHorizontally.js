@@ -1,7 +1,7 @@
 'use strict'
 
-import updateSingleUnitPartsCoordinatesInVoices from './updateSingleUnitPartsCoordinatesInVoices.js'
-import moveElement from './../basic/moveElement.js'
+import updateSingleUnitPartsCoordinatesInVoices from '#unilang/drawer/elements/voice/updateSingleUnitPartsCoordinatesInVoices.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
 
 export default function (voicesBody, drawnSingleUnitsInVoices, xDistanceToMove, exapandVoicesBodyToTheRight = true) {
   moveElement(voicesBody, xDistanceToMove)

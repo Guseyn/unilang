@@ -1,12 +1,12 @@
 'use strict'
 
-import path from './../basic/path.js'
-import wave from './../basic/wave.js'
-import group from './../basic/group.js'
-import articulationShouldBeAboveOrUnderStemLine from './articulationShouldBeAboveOrUnderStemLine.js'
-import articulationKeysInVerticalLine from './articulationKeysInVerticalLine.js'
-import moveElement from './../basic/moveElement.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import wave from '#unilang/drawer/elements/basic/wave.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import articulationShouldBeAboveOrUnderStemLine from '#unilang/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import articulationKeysInVerticalLine from '#unilang/drawer/elements/articulation/articulationKeysInVerticalLine.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnSingleUnit, articulationIndex, nextDrawnSingleUnit, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const components = []

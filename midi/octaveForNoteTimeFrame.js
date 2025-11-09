@@ -1,7 +1,7 @@
 'use strict'
 
-import sortByGraceCount from './sortByGraceCount.js'
-import sortByGraceCountAndMidMeasureClef from './sortByGraceCountAndMidMeasureClef.js'
+import sortByGraceCount from '#unilang/midi/sortByGraceCount.js'
+import sortByGraceCountAndMidMeasureClef from '#unilang/midi/sortByGraceCountAndMidMeasureClef.js'
 
 const DEFAULT_OCTAVE_NUMBER_BY_CLEFS = {
   'treble': 4,

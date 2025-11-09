@@ -1,14 +1,14 @@
 'use strict'
 
-import regexps from './static-objects/regexps.js'
-import isVerticalCorrection from './token/isVerticalCorrection.js'
-import verticalCorrection from './token/verticalCorrection.js'
-import foundNextTokenValueOnTheLine from './token/foundNextTokenValueOnTheLine.js'
-import measureParamsByLastMentionedMeasurePosition from './page-schema/measureParamsByLastMentionedMeasurePosition.js'
-import undefineAllMentionedPositions from './page-schema/undefineAllMentionedPositions.js'
-import undefineOnlyLastMentionedMeasurePosition from './page-schema/undefineOnlyLastMentionedMeasurePosition.js'
-import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from './highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
-import addLineMeasureStaveVoicePositionScenarios from './addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import isVerticalCorrection from '#unilang/language/parser/scenarios/token/isVerticalCorrection.js'
+import verticalCorrection from '#unilang/language/parser/scenarios/token/verticalCorrection.js'
+import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import measureParamsByLastMentionedMeasurePosition from '#unilang/language/parser/scenarios/page-schema/measureParamsByLastMentionedMeasurePosition.js'
+import undefineAllMentionedPositions from '#unilang/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedMeasurePosition from '#unilang/language/parser/scenarios/page-schema/undefineOnlyLastMentionedMeasurePosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#unilang/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addLineMeasureStaveVoicePositionScenarios from '#unilang/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios) {
   scenarios['volta'] = {

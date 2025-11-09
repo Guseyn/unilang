@@ -1,6 +1,6 @@
 'use strict'
 
-import lastStaveParams from './lastStaveParams.js'
+import lastStaveParams from '#unilang/language/parser/scenarios/page-schema/lastStaveParams.js'
 
 export default function (lastMeasureParams, componentName, parserState) {
   if (!lastMeasureParams.stavesParams) {

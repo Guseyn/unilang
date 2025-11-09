@@ -1,8 +1,8 @@
 'use strict'
 
-import stavePiece from './../stave/stavePiece.js'
-import demisharpKeyShape from './demisharpKeyShape.js'
-import group from './../basic/group.js'
+import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
+import demisharpKeyShape from '#unilang/drawer/elements/key/demisharpKeyShape.js'
+import group from '#unilang/drawer/elements/basic/group.js'
 
 export default function (numberOfStaveLines, positionNumber) {
   return (styles, leftOffset, topOffset) => {

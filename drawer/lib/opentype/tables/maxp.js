@@ -2,8 +2,8 @@
 // We need it just to get the number of glyphs in the font.
 // https://www.microsoft.com/typography/OTSPEC/maxp.htm
 
-import { Parser } from './../parse.js'
-import table from './../table.js'
+import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
 // Parse the maximum profile `maxp` table.
 function parseMaxpTable(data, start) {

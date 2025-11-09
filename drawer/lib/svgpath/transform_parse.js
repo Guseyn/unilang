@@ -1,6 +1,6 @@
 'use strict'
 
-import Matrix from './matrix.js'
+import Matrix from '#unilang/drawer/lib/svgpath/matrix.js'
 
 var operations = {
   matrix: true,

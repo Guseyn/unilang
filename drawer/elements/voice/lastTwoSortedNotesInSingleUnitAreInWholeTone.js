@@ -1,6 +1,6 @@
 'use strict'
 
-import staveIndexOfNoteConsideringItsStave from './staveIndexOfNoteConsideringItsStave.js'
+import staveIndexOfNoteConsideringItsStave from '#unilang/drawer/elements/voice/staveIndexOfNoteConsideringItsStave.js'
 
 export default function (singleUnit) {
   const wholeToneDelta = 0.5

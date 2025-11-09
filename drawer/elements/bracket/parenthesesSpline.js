@@ -1,7 +1,7 @@
 'use strict'
 
-import slurSplinePoints from './../tie-and-slur/slurSplinePoints.js'
-import path from './../basic/path.js'
+import slurSplinePoints from '#unilang/drawer/elements/tie-and-slur/slurSplinePoints.js'
+import path from '#unilang/drawer/elements/basic/path.js'
 
 const parenthesesJunctionPhantomPoint = (point, xSideSign, ySideSign, epsilon = 0.0001) => {
   return {

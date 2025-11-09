@@ -1,7 +1,7 @@
 'use strict'
 
-import line from './../basic/line.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import line from '#unilang/drawer/elements/basic/line.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const { crushGraceLineXPaddingForUnitwithFlagsAndStemUp, crushGraceLineXPaddingForUnitwithFlagsAndStemDown, crushGraceLineXPaddingForUnitWithoutWaves, crushGraceLineXPaddingForBeamedUnit, crushGraceLineStemUpHeightForUnitWithFlags, crushGraceLineStemUpHeightForUnitWithoutWaves, crushGraceLineStemUpHeightForBeamedUnit, crushGraceLineStemDownHeightForUnitWithFlags, crushGraceLineStemDownHeightForUnitWithoutWaves, crushGraceLineStemDownHeightForBeamedUnit, crushGraceYMarginForStemUp, crushGraceYMarginForStemUpWithoutFlags, crushGraceYMarginForStemDown, crushGraceYMarginForStemDownWithoutFlags, crushGraceYMarginForBeamedStemUp, crushGraceYMarginForBeamedStemDown, crushGraceLineStrokeOptions } = styles

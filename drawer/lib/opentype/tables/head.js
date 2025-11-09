@@ -1,9 +1,9 @@
 // The `head` table contains global information about the font.
 // https://www.microsoft.com/typography/OTSPEC/head.htm
 
-import check from './../check.js'
-import { Parser } from './../parse.js'
-import table from './../table.js'
+import check from '#unilang/drawer/lib/opentype/check.js'
+import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
+import table from '#unilang/drawer/lib/opentype/table.js'
 
 // Parse the header `head` table
 function parseHeadTable(data, start) {

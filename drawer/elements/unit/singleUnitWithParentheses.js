@@ -1,11 +1,11 @@
 'use strict'
 
-import topOffsetOfElementConsideringItsStave from './../stave/topOffsetOfElementConsideringItsStave.js'
-import parenthesesSpline from './../bracket/parenthesesSpline.js'
-import moveSingleUnit from './../unit/moveSingleUnit.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import topOffsetOfElementConsideringItsStave from '#unilang/drawer/elements/stave/topOffsetOfElementConsideringItsStave.js'
+import parenthesesSpline from '#unilang/drawer/elements/bracket/parenthesesSpline.js'
+import moveSingleUnit from '#unilang/drawer/elements/unit/moveSingleUnit.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (singleUnit, additionalInformation, numberOfStaveLines, parentheses, topOffset, styles) {
   const { intervalBetweenStaveLines, offsetForNoteParenthesesFromBothSides, offsetForNoteParenthesesFromRightSideOfWave, offsetForNoteParenthesesThatAreOnAdditionalLinesFromBothSides, parenthesesYCorrection } = styles

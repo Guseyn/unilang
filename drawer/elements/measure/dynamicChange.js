@@ -1,15 +1,15 @@
 'use strict'
 
-import text from './../basic/text.js'
-import path from './../basic/path.js'
-import articulationShouldBeAboveOrUnderStemLine from './../articulation/articulationShouldBeAboveOrUnderStemLine.js'
-import moveElement from './../basic/moveElement.js'
-import moveElementAbovePointWithInterval from './../basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from './../basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from './../basic/moveElementInTheCenterBetweenPoints.js'
-import group from './../basic/group.js'
-import elementWithAdditionalInformation from './../basic/elementWithAdditionalInformation.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import path from '#unilang/drawer/elements/basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from '#unilang/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (dynamicChangeParams, styles) {
   const components = []

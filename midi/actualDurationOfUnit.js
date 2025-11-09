@@ -1,6 +1,6 @@
 'use strict'
 
-import tremoloDurationFactor from './tremoloDurationFactor.js'
+import tremoloDurationFactor from '#unilang/midi/tremoloDurationFactor.js'
 
 const DEFAULT_TUPLET_RATIOS = {
   '1': 1,

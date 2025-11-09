@@ -1,10 +1,10 @@
 'use strict'
 
-import text from './../basic/text.js'
-import moveElement from './../basic/moveElement.js'
-import topOffsetForCurrentStave from './../stave/topOffsetForCurrentStave.js'
-import group from './../basic/group.js'
-import addPropertiesToElement from './../basic/addPropertiesToElement.js'
+import text from '#unilang/drawer/elements/basic/text.js'
+import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
+import group from '#unilang/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (instrumentTitlesParams, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {

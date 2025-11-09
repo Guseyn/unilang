@@ -1,6 +1,6 @@
 'use strict'
 
-import currentPageLineIndex from './../page-schema/currentPageLineIndex.js'
+import currentPageLineIndex from '#unilang/language/parser/scenarios/page-schema/currentPageLineIndex.js'
 
 export default function (parserState, forConnection) {
   const indexesInHighlightsHtmlBufferWhereWeShouldFillPositionPlaceholders = forConnection

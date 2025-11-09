@@ -1,6 +1,6 @@
 'use strict'
 
-import pitchAdjustmentForNoteTimeFrame from './pitchAdjustmentForNoteTimeFrame.js'
+import pitchAdjustmentForNoteTimeFrame from '#unilang/midi/pitchAdjustmentForNoteTimeFrame.js'
 
 const PITCHES_BY_NOTE_NAMES = {
   'c': 0,
