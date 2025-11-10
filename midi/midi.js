@@ -3,9 +3,7 @@
 // eslint-disable-next-line  no-undef
 const itIsBrowserEnv = typeof window !== 'undefined' || typeof process === 'undefined'
 
-import midi from '@tonejs/midi'
-
-const Midi = midi.Midi
+import { Midi } from '#unilang/midi/lib/@tonejs/Midi.js'
 
 import tempoValueParts from '#unilang/language/parser/scenarios/token/tempoValueParts.js'
 

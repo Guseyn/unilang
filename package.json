@@ -22,7 +22,6 @@
     "#unilang/*": "./*"
   },
   "dependencies": {
-    "@tonejs/midi": "^2.0.28",
     "ansi-colors": "^4.1.3",
     "jsonschema": "^1.5.0"
   }

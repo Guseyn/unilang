@@ -17,6 +17,9 @@
   - [ ] TXT -> PAGE SCHEMA
   - [ ] MIDI -> WAV
 - [ ] Add build commands for FE usage as an option
+- [ ] Readme
+- [ ] Test Coverage
+- [ ] CI + NPM
 
 - [ ] Documentation
   - [ ] Node.js
