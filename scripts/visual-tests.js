@@ -2,8 +2,6 @@ import fs from 'fs/promises'
 import path from 'path'
 import assert from 'assert'
 
-import colors from 'ansi-colors'
-
 import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
 import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
 import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
@@ -172,54 +170,54 @@ import lelandJS from '#unilang/drawer/font/music-js/leland.js'
           expectedSvgAsString,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'html highlights'
         assert.strictEqual(
           stringifiedHtmlHighlights,
           expectedStringifiedHtmlHighlights,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'page schema'
         assert.strictEqual(
           stringifiedPageSchema,
           expectedStringifiedPageSchema,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'errors'
         assert.strictEqual(
           stringifiedErrors,
           expectedStringifiedErrors,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'custom styles'
         assert.strictEqual(
           stringifiedCustomStyles,
           expectedStringifiedCustomStyles,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'comments'
         assert.strictEqual(
           stringifiedComments,
           expectedStringifiedComments,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
         testType = 'map of char indexes with progression of commands from scenarios'
         assert.strictEqual(
           stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
           expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType} in ${visualTestDirForFont}\n\n`)
+        process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n\n`)
         listOfPassedTests.push({
           name: testName
         })
       } catch (error) {
-        process.stdout.write(`"${testName}" ${colors.red('failed')} for ${testType} in ${visualTestDirForFont}\n\n`)
+        process.stdout.write(`"${testName}" failed for ${testType} in ${visualTestDirForFont}\n\n`)
         listOfFailedTests.push({
           name: testName
         })

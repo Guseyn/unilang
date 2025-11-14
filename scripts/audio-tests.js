@@ -2,8 +2,6 @@ import fs from 'fs/promises'
 import path from 'path'
 import assert from 'assert'
 
-import colors from 'ansi-colors'
-
 import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
 import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
 import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
@@ -205,28 +203,28 @@ function normalizeUnilangText(unilangText) {
           expectedSvgAsString,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType}\n`)
         testType = 'html highlights'
         assert.strictEqual(
           stringifiedHtmlHighlights,
           expectedStringifiedHtmlHighlights,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType}\n`)
         testType = 'page schema'
         assert.strictEqual(
           stringifiedPageSchema,
           expectedStringifiedPageSchema,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType}\n`)
         testType = 'errors'
         assert.strictEqual(
           stringifiedErrors,
           expectedStringifiedErrors,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType}\n`)
         testType = 'midi'
         assert.strictEqual(
           Buffer.compare(
@@ -236,7 +234,7 @@ function normalizeUnilangText(unilangText) {
           0,
           `Failed for "${testName}" test`
         )
-        process.stdout.write(`"${testName}" ${colors.cyan('passed')} for ${testType}\n`)
+        process.stdout.write(`"${testName}" passed for ${testType}\n`)
         await Promise.race(
           [
             fs.writeFile(`audio-tests/svg/actual/${testName}.svg`, svgPagesAsString),
@@ -250,7 +248,7 @@ function normalizeUnilangText(unilangText) {
           name: testName
         })
       } catch (error) {
-        process.stdout.write(`"${testName}" ${colors.red('failed')} for ${testType}\n\n`)
+        process.stdout.write(`"${testName}" failed for ${testType}\n\n`)
         listOfFailedTests.push({
           name: testName
         })

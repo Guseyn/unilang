@@ -1,6 +1,6 @@
 'use strict'
 
-import jsonschema from 'jsonschema'
+import jsonschema from '#unilang/language/lib/index.js'
 const validator = new jsonschema.Validator()
 
 validator.attributes.possibleValues = (instance, schema, options, ctx) => {

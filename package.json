@@ -22,7 +22,5 @@
     "#unilang/*": "./*"
   },
   "dependencies": {
-    "ansi-colors": "^4.1.3",
-    "jsonschema": "^1.5.0"
   }
 }
