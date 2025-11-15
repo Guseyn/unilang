@@ -243,8 +243,8 @@ export default function (
     const itIsDelimeterBetweenTokens = SPACE_REGEXP.test(currentChar)
     const nextIsDelimeterBetweenTokens = nextChar && SPACE_REGEXP.test(nextChar)
     if (!itIsDelimeterBetweenTokens) {
-      const sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeForstToken = true
-      firstTokenIsBehindOnTheLine = sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeForstToken
+      const sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeFirstToken = true
+      firstTokenIsBehindOnTheLine = sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeFirstToken
       currentTokenChars.push(currentChar)
       currentLineChars.push(currentChar)
       if (!itIsLastChar) {

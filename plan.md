@@ -3,13 +3,12 @@
   - [x] audio
 - [x] Migrate to ESM
 - [x] import maps
-- [ ] extract deps to directories, and get rid of all third party deps in package.json
-- [ ] Refactor language parser to make it more flexible in terms of outputs
+- [x] extract deps to directories, and get rid of all third party deps in package.json
 - [x] Make fonts as flexible addons and part of a language
+- [ ] Refactor language parser to make it more flexible in terms of outputs
+- [ ] Write a very cute api
 - [ ] Dev server
 - [ ] Add a page where the music font can be generated
-- [ ] Add a command that generate music js font file
-- [ ] Write a very cute api
 - [ ] CLI for commands
   - [ ] TXT -> SVG
   - [ ] TXT -> HIGHLIGHTED HTML
@@ -19,7 +18,11 @@
 - [ ] Add build commands for FE usage as an option
 - [ ] Readme
 - [ ] Test Coverage
-- [ ] CI + NPM
+- [ ] CI
+- [ ] Website
+  - [ ] Email listing
+  - [ ] Write emails to target users
+- [ ] Email listing
 
 - [ ] Documentation
   - [ ] Node.js
@@ -35,4 +38,4 @@
   - [ ] Editor
   - [ ] Widgets
 
-- [ ] 
+- [ ] Update Unison
