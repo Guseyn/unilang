@@ -5,7 +5,7 @@
 - [x] import maps
 - [x] extract deps to directories, and get rid of all third party deps in package.json
 - [x] Make fonts as flexible addons and part of a language
-- [ ] Refactor language parser to make it more flexible in terms of outputs
+- [x] Refactor language parser to make it more flexible in terms of outputs
 - [ ] Write a very cute api
 - [ ] Dev server
 - [ ] Add a page where the music font can be generated

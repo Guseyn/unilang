@@ -4,6 +4,7 @@ import parserScenarios from '#unilang/language/parser/scenarios/parserScenarios.
 import mapWithScenariosAndScenariosWhereItIsRequired from '#unilang/language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
 const constructedParserScenarios = parserScenarios()
 const constructedMapWithScenariosAndScenariosWhereItIsRequired = mapWithScenariosAndScenariosWhereItIsRequired(constructedParserScenarios)
+
 import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from '#unilang/language/parser/scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
 import tokenValuesFromTokens from '#unilang/language/parser/scenarios/token/tokenValuesFromTokens.js'
 import joinedTokensWithRealDelimiters from '#unilang/language/parser/scenarios/token/joinedTokensWithRealDelimiters.js'
@@ -16,107 +17,267 @@ const ON_EMPTY_LINE = 'on empty line'
 const LAST_CHAR = 'last char'
 const LAST_LEVEL = 'last level'
 
-const runParserScenarios = (parserScenarios, typeOfScenarios, numberOfActivatedScenarios, progressionOfCommandsFromScenarios, lastScenarioLineNumber, unitext, lineNumber, itIsLastChar, currentToken, tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken, parserState, queueOfActionsOnProgressionOfCommandsChange) => {
-  const tokenValues = tokenValuesFromTokens(tokenAccumulator)
-  const tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem = withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem(tokenAccumulator)
-  const joinedTokenValuesWithRealDelimiters = joinedTokensWithRealDelimiters(tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken)
+/* ──────────────────────────────────────────────────────────────── */
+/* Helpers for scenario selection and validation                    */
+/* ──────────────────────────────────────────────────────────────── */
+
+const collectScenarioNamesThatFollowProgression = (progressionOfCommandsFromScenarios) => {
   const scenarioNamesThatFollowProgressionOfCommand = []
+
   if (progressionOfCommandsFromScenarios.length > 0) {
     for (let scenarioNameIndex = 0; scenarioNameIndex < progressionOfCommandsFromScenarios.length; scenarioNameIndex++) {
       const scenarioName = progressionOfCommandsFromScenarios[scenarioNameIndex]
-      if (constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName] && (constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName].length > 0)) {
-        scenarioNamesThatFollowProgressionOfCommand.push(...constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName])
+      const scenariosWhereRequired = constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName]
+
+      if (scenariosWhereRequired && scenariosWhereRequired.length > 0) {
+        scenarioNamesThatFollowProgressionOfCommand.push(...scenariosWhereRequired)
       }
     }
   }
-  scenarioNamesThatFollowProgressionOfCommand.push(...constructedMapWithScenariosAndScenariosWhereItIsRequired.common)
-  for (let scenarioNameIndex = 0; scenarioNameIndex < scenarioNamesThatFollowProgressionOfCommand.length; scenarioNameIndex++) {
-    const scenarioName = scenarioNamesThatFollowProgressionOfCommand[scenarioNameIndex]
-    const scenario = parserScenarios[scenarioName]
-    const isScenarioOnTheSameLineAsPreviousScenarioOrItDoesnMatter = scenario.onTheSameLineAsPrevScenario
-      ? (lineNumber === lastScenarioLineNumber.value)
-      : true
-    if (!isScenarioOnTheSameLineAsPreviousScenarioOrItDoesnMatter) {
-      continue
+
+  // Common scenarios are always considered
+  scenarioNamesThatFollowProgressionOfCommand.push(
+    ...constructedMapWithScenariosAndScenariosWhereItIsRequired.common
+  )
+
+  return scenarioNamesThatFollowProgressionOfCommand
+}
+
+const scenarioRespectsSameLineConstraint = (scenario, lineNumber, lastScenarioLineNumber) => {
+  if (!scenario.onTheSameLineAsPrevScenario) {
+    return true
+  }
+  return lineNumber === lastScenarioLineNumber.value
+}
+
+const scenarioRespectsStartOnNewLineConstraint = (scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios) => {
+  if (!scenario.startsOnNewLine) {
+    return true
+  }
+  return (lineNumber > lastScenarioLineNumber.value) || (numberOfActivatedScenarios.value === 0)
+}
+
+const scenarioHasProhibitedProgressionsInProgress = (scenario, progressionOfCommandsFromScenarios) => {
+  if (!scenario.prohibitedCommandProgressions) {
+    return false
+  }
+
+  for (let index = 0; index < scenario.prohibitedCommandProgressions.length; index++) {
+    const prohibitedProgression = scenario.prohibitedCommandProgressions[index]
+    if (progressionOfCommandsFromScenarios.indexOf(prohibitedProgression) !== -1) {
+      return true
     }
-    const isScenarioStartsOnNewLineOrItDoesntMatter = scenario.startsOnNewLine
-      ? ((lineNumber > lastScenarioLineNumber.value) || (numberOfActivatedScenarios.value === 0))
-      : true
-    if (!isScenarioStartsOnNewLineOrItDoesntMatter) {
-      continue
+  }
+
+  return false
+}
+
+const enqueueActionWhenProgressionOfCommandsChanges = ({
+  scenario,
+  scenarioName,
+  unitext,
+  lineNumber,
+  currentToken,
+  finalTokenValues,
+  joinedTokenValuesWithRealDelimiters,
+  progressionOfCommandsFromScenarios,
+  queueOfActionsOnProgressionOfCommandsChange
+}) => {
+  if (!scenario.actionWhenProgressionOfCommandsChanges) {
+    return
+  }
+
+  queueOfActionsOnProgressionOfCommandsChange.unshift({
+    scenarioName,
+    scenarioType: scenario.type,
+    levelOfCommandProgression: scenario.itIsNewCommandProgressionFromLevel,
+    action: scenario.actionWhenProgressionOfCommandsChanges,
+    activateOnLastToken: scenario.activateActionWhenProgressionOfCommandsChangesIfItIsLastTokenAndActionDidntHappenBefore,
+    argumentsFromMainAction: {
+      unitext,
+      lineNumber,
+      currentToken,
+      tokenValues: finalTokenValues,
+      joinedTokenValuesWithRealDelimiters,
+      progressionOfCommandsFromScenarios
     }
-    let areThereAnyProhibitedScenariosThatAreInProgressOrItDoesntMatter = false
-    if (scenario.prohibitedCommandProgressions) {
-      for (let index = 0; index < scenario.prohibitedCommandProgressions.length; index++) {
-        if (progressionOfCommandsFromScenarios.indexOf(scenario.prohibitedCommandProgressions[index]) !== -1) {
-          areThereAnyProhibitedScenariosThatAreInProgressOrItDoesntMatter = true
-          break
-        }
-      }
-    }
-    if (areThereAnyProhibitedScenariosThatAreInProgressOrItDoesntMatter) {
-      continue
-    }
-    const finalTokenValues = scenario.considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
-      ? tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
-      : tokenValues
-    scenario.type = scenario.type || REGULAR
-    if (currentToken) {
-      currentToken.isOnNewLine = (lineNumber > lastScenarioLineNumber.value || (numberOfActivatedScenarios.value === 0))
-    }
-    if (scenario.type === typeOfScenarios) {
-      const scenarioConditionIsMet = scenario.condition(unitext, lineNumber, currentToken, finalTokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState)
-      if (scenarioConditionIsMet) {
-        if (scenario.itIsNewCommandProgressionFromLevel !== undefined) {
-          if (scenario.itIsNewCommandProgressionFromLevel !== LAST_LEVEL) {
-            progressionOfCommandsFromScenarios.splice(scenario.itIsNewCommandProgressionFromLevel)
-          }
-          progressionOfCommandsFromScenarios.push(scenarioName)
-          if (!parserState.applyOnlyHighlightingWithoutRefIds || !parserState.applyHighlighting) {
-            for (let actionIndex = 0; actionIndex < queueOfActionsOnProgressionOfCommandsChange.length; actionIndex++) {
-              const currentActionOnProgressionOfCommandsChange = queueOfActionsOnProgressionOfCommandsChange[actionIndex]
-              if (
-                (progressionOfCommandsFromScenarios.indexOf(currentActionOnProgressionOfCommandsChange.scenarioName) === -1) ||
-                (progressionOfCommandsFromScenarios.indexOf(currentActionOnProgressionOfCommandsChange.scenarioName) === (progressionOfCommandsFromScenarios.length - 1))
-              ) {
-                const scenarioNameThatChangedCommandsProgression = scenarioName
-                currentActionOnProgressionOfCommandsChange.action(parserState, scenarioNameThatChangedCommandsProgression, lineNumber, currentActionOnProgressionOfCommandsChange.argumentsFromMainAction)
-                queueOfActionsOnProgressionOfCommandsChange.splice(actionIndex, 1)
-                actionIndex--
-              }
-            }
-            if (scenario.actionWhenProgressionOfCommandsChanges) {
-              queueOfActionsOnProgressionOfCommandsChange.unshift({
-                scenarioName,
-                scenarioType: scenario.type,
-                levelOfCommandProgression: scenario.itIsNewCommandProgressionFromLevel,
-                action: scenario.actionWhenProgressionOfCommandsChanges,
-                activateOnLastToken: scenario.activateActionWhenProgressionOfCommandsChangesIfItIsLastTokenAndActionDidntHappenBefore,
-                argumentsFromMainAction: {
-                  unitext,
-                  lineNumber,
-                  currentToken,
-                  tokenValues: finalTokenValues,
-                  joinedTokenValuesWithRealDelimiters,
-                  progressionOfCommandsFromScenarios
-                }
-              })
-            }
-          }
-        }
-        if (parserState.applyHighlighting && parserState.applyOnlyHighlightingWithoutRefIds) {
-          scenario.actionOnlyForHighlightingWithoutRefIds(parserState, joinedTokenValuesWithRealDelimiters, finalTokenValues)
-        } else {
-          scenario.action(unitext, lineNumber, currentToken, finalTokenValues, joinedTokenValuesWithRealDelimiters, progressionOfCommandsFromScenarios, parserState)
-        }
-        tokenAccumulator.length = 0
-        lastScenarioLineNumber.value = lineNumber
-        numberOfActivatedScenarios.value += 1
-        break
-      }
+  })
+}
+
+const applyQueuedActionsAffectedByProgressionChange = (
+  parserState,
+  progressionOfCommandsFromScenarios,
+  lineNumber,
+  queueOfActionsOnProgressionOfCommandsChange,
+  scenarioNameThatChangedCommandsProgression
+) => {
+  for (let actionIndex = 0; actionIndex < queueOfActionsOnProgressionOfCommandsChange.length; actionIndex++) {
+    const currentActionOnProgressionOfCommandsChange = queueOfActionsOnProgressionOfCommandsChange[actionIndex]
+    const scenarioNameInQueue = currentActionOnProgressionOfCommandsChange.scenarioName
+
+    const scenarioIsNotInProgression =
+      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) === -1
+    const scenarioIsLastInProgression =
+      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) ===
+      (progressionOfCommandsFromScenarios.length - 1)
+
+    if (scenarioIsNotInProgression || scenarioIsLastInProgression) {
+      currentActionOnProgressionOfCommandsChange.action(
+        parserState,
+        scenarioNameThatChangedCommandsProgression,
+        lineNumber,
+        currentActionOnProgressionOfCommandsChange.argumentsFromMainAction
+      )
+      queueOfActionsOnProgressionOfCommandsChange.splice(actionIndex, 1)
+      actionIndex--
     }
   }
 }
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Core: running scenarios                                         */
+/* ──────────────────────────────────────────────────────────────── */
+
+const runParserScenarios = (
+  parserScenarios,
+  typeOfScenarios,
+  numberOfActivatedScenarios,
+  progressionOfCommandsFromScenarios,
+  lastScenarioLineNumber,
+  unitext,
+  lineNumber,
+  itIsLastChar,
+  currentToken,
+  tokenAccumulator,
+  delimitersBeforeFirstTokenOnTheLine,
+  delimitersAfterEachToken,
+  parserState,
+  queueOfActionsOnProgressionOfCommandsChange
+) => {
+  const tokenValues = tokenValuesFromTokens(tokenAccumulator)
+  const tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem =
+    withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem(tokenAccumulator)
+  const joinedTokenValuesWithRealDelimiters =
+    joinedTokensWithRealDelimiters(tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimitersAfterEachToken)
+
+  const scenarioNamesThatFollowProgressionOfCommand =
+    collectScenarioNamesThatFollowProgression(progressionOfCommandsFromScenarios)
+
+  for (let scenarioNameIndex = 0; scenarioNameIndex < scenarioNamesThatFollowProgressionOfCommand.length; scenarioNameIndex++) {
+    const scenarioName = scenarioNamesThatFollowProgressionOfCommand[scenarioNameIndex]
+    const scenario = parserScenarios[scenarioName]
+
+    const respectsSameLineConstraint =
+      scenarioRespectsSameLineConstraint(scenario, lineNumber, lastScenarioLineNumber)
+    if (!respectsSameLineConstraint) {
+      continue
+    }
+
+    const respectsStartsOnNewLineConstraint =
+      scenarioRespectsStartOnNewLineConstraint(scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios)
+    if (!respectsStartsOnNewLineConstraint) {
+      continue
+    }
+
+    const hasProhibitedProgressions =
+      scenarioHasProhibitedProgressionsInProgress(scenario, progressionOfCommandsFromScenarios)
+    if (hasProhibitedProgressions) {
+      continue
+    }
+
+    const finalTokenValues = scenario.considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
+      ? tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
+      : tokenValues
+
+    scenario.type = scenario.type || REGULAR
+
+    if (currentToken) {
+      currentToken.isOnNewLine =
+        (lineNumber > lastScenarioLineNumber.value || (numberOfActivatedScenarios.value === 0))
+    }
+
+    if (scenario.type !== typeOfScenarios) {
+      continue
+    }
+
+    const scenarioConditionIsMet = scenario.condition(
+      unitext,
+      lineNumber,
+      currentToken,
+      finalTokenValues,
+      joinedTokenValuesWithRealDelimiters,
+      progressionOfCommandsFromScenarios,
+      parserState
+    )
+
+    if (!scenarioConditionIsMet) {
+      continue
+    }
+
+    // Command progression management
+    if (scenario.itIsNewCommandProgressionFromLevel !== undefined) {
+      if (scenario.itIsNewCommandProgressionFromLevel !== LAST_LEVEL) {
+        progressionOfCommandsFromScenarios.splice(scenario.itIsNewCommandProgressionFromLevel)
+      }
+
+      progressionOfCommandsFromScenarios.push(scenarioName)
+
+      if (!parserState.applyOnlyHighlightingWithoutRefIds || !parserState.applyHighlighting) {
+        const scenarioNameThatChangedCommandsProgression = scenarioName
+
+        applyQueuedActionsAffectedByProgressionChange(
+          parserState,
+          progressionOfCommandsFromScenarios,
+          lineNumber,
+          queueOfActionsOnProgressionOfCommandsChange,
+          scenarioNameThatChangedCommandsProgression
+        )
+
+        enqueueActionWhenProgressionOfCommandsChanges({
+          scenario,
+          scenarioName,
+          unitext,
+          lineNumber,
+          currentToken,
+          finalTokenValues,
+          joinedTokenValuesWithRealDelimiters,
+          progressionOfCommandsFromScenarios,
+          queueOfActionsOnProgressionOfCommandsChange
+        })
+      }
+    }
+
+    const highlightingOnlyMode =
+      parserState.applyHighlighting && parserState.applyOnlyHighlightingWithoutRefIds
+
+    if (highlightingOnlyMode) {
+      scenario.actionOnlyForHighlightingWithoutRefIds(
+        parserState,
+        joinedTokenValuesWithRealDelimiters,
+        finalTokenValues
+      )
+    } else {
+      scenario.action(
+        unitext,
+        lineNumber,
+        currentToken,
+        finalTokenValues,
+        joinedTokenValuesWithRealDelimiters,
+        progressionOfCommandsFromScenarios,
+        parserState
+      )
+    }
+
+    tokenAccumulator.length = 0
+    lastScenarioLineNumber.value = lineNumber
+    numberOfActivatedScenarios.value += 1
+    break
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Main parser                                                      */
+/* ──────────────────────────────────────────────────────────────── */
 
 export default function (
   unitext,
@@ -130,10 +291,10 @@ export default function (
   }
 ) {
   const mapOfCharIndexesWithProgressionOfCommandsFromScenarios = {}
-  const numberOfActivatedScenarios = {
-    value: 0
-  }
+
+  const numberOfActivatedScenarios = { value: 0 }
   const queueOfActionsOnProgressionOfCommandsChange = []
+
   const parserState = {
     pageSchema: {},
     fonts,
@@ -166,8 +327,8 @@ export default function (
     lastMentionedUnitsStretchingWasForAllLines: false,
     numberOfChordsBeforeFinishingDeclaringNewOne: 0,
     newlineAlreadyIntroducedNewMeasure: false,
-    customStyles: { },
-    midiSettings: { },
+    customStyles: {},
+    midiSettings: {},
     errors: [],
     comments: [],
     emptyLineNumbers: [],
@@ -222,33 +383,39 @@ export default function (
     numberOfVoltaMarks: 0,
     numberOfPedalMarks: 0
   }
+
   const currentTokenChars = []
   const currentLineChars = []
   const allPrevTokens = []
   const prevTokensOnTheLine = []
   const tokenAccumulator = []
   const delimitersBeforeFirstTokenOnTheLine = []
-  const delimetersAfterEachToken = []
+  const delimitersAfterEachToken = []
+
   let firstTokenIsBehindOnTheLine = false
   let lineNumber = 1
   let tokenNumber = 0
-  const lastScenarioLineNumber = {
-    value: lineNumber
-  }
+
+  const lastScenarioLineNumber = { value: lineNumber }
+
   for (let charIndex = 0; charIndex < unitext.length; charIndex++) {
     const currentChar = unitext[charIndex]
     const nextChar = unitext[charIndex + 1]
     const itIsLastChar = !nextChar
     const itIsNewLineChar = NEW_LINE_REGEXP.test(currentChar)
-    const itIsDelimeterBetweenTokens = SPACE_REGEXP.test(currentChar)
-    const nextIsDelimeterBetweenTokens = nextChar && SPACE_REGEXP.test(nextChar)
-    if (!itIsDelimeterBetweenTokens) {
-      const sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeFirstToken = true
-      firstTokenIsBehindOnTheLine = sinceItIsNonDelimeterCharWeCanAssumeThatWeDontNeedToCollectDelimeterCharsBeforeFirstToken
+    const itIsDelimiterBetweenTokens = SPACE_REGEXP.test(currentChar)
+    const nextIsDelimiterBetweenTokens = nextChar && SPACE_REGEXP.test(nextChar)
+
+    if (!itIsDelimiterBetweenTokens) {
+      const sinceItIsNonDelimiterCharWeCanAssumeThatWeDontNeedToCollectDelimiterCharsBeforeFirstToken = true
+      firstTokenIsBehindOnTheLine = sinceItIsNonDelimiterCharWeCanAssumeThatWeDontNeedToCollectDelimiterCharsBeforeFirstToken
+
       currentTokenChars.push(currentChar)
       currentLineChars.push(currentChar)
+
       if (!itIsLastChar) {
-        mapOfCharIndexesWithProgressionOfCommandsFromScenarios[charIndex] = progressionOfCommandsFromScenarios.slice()
+        mapOfCharIndexesWithProgressionOfCommandsFromScenarios[charIndex] =
+          progressionOfCommandsFromScenarios.slice()
         continue
       }
     } else {
@@ -256,79 +423,146 @@ export default function (
         delimitersBeforeFirstTokenOnTheLine.push(currentChar)
       }
     }
+
     if (currentTokenChars.length > 0) {
       const noProcessedTokensOnTheLine = prevTokensOnTheLine.length === 0
       const firstTokenInProcessing = tokenNumber === 0
       const prevTokenOnTheLine = prevTokensOnTheLine[prevTokensOnTheLine.length - 1]
       const prevToken = allPrevTokens[allPrevTokens.length - 1]
+
       const currentToken = (
         prevTokenOnTheLine &&
         prevTokenOnTheLine.tokenNumber === tokenNumber
-      ) ? prevTokenOnTheLine
+      )
+        ? prevTokenOnTheLine
         : {
-          value: currentTokenChars.join(EMPTY_STRING),
-          tokenNumber
-        }
+            value: currentTokenChars.join(EMPTY_STRING),
+            tokenNumber
+          }
+
       currentToken.firstOnTheLine = firstTokenInProcessing || (prevToken && prevToken.lastOnTheLine)
       currentToken.lastOnTheLine = itIsNewLineChar || itIsLastChar
-      delimetersAfterEachToken[tokenNumber] = delimetersAfterEachToken[tokenNumber] || []
-      if (itIsDelimeterBetweenTokens) {
-        delimetersAfterEachToken[tokenNumber].push(currentChar)
+
+      delimitersAfterEachToken[tokenNumber] = delimitersAfterEachToken[tokenNumber] || []
+
+      if (itIsDelimiterBetweenTokens) {
+        delimitersAfterEachToken[tokenNumber].push(currentChar)
       }
-      if (!nextIsDelimeterBetweenTokens || currentToken.lastOnTheLine) {
+
+      if (!nextIsDelimiterBetweenTokens || currentToken.lastOnTheLine) {
         currentToken.firstCharIndexOfNextToken = charIndex + 1
         tokenAccumulator.push(currentToken)
-        runParserScenarios(constructedParserScenarios, REGULAR, numberOfActivatedScenarios, progressionOfCommandsFromScenarios, lastScenarioLineNumber, unitext, lineNumber, itIsLastChar, currentToken, tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken, parserState, queueOfActionsOnProgressionOfCommandsChange)
+
+        runParserScenarios(
+          constructedParserScenarios,
+          REGULAR,
+          numberOfActivatedScenarios,
+          progressionOfCommandsFromScenarios,
+          lastScenarioLineNumber,
+          unitext,
+          lineNumber,
+          itIsLastChar,
+          currentToken,
+          tokenAccumulator,
+          delimitersBeforeFirstTokenOnTheLine,
+          delimitersAfterEachToken,
+          parserState,
+          queueOfActionsOnProgressionOfCommandsChange
+        )
+
         const tokenIsNew = noProcessedTokensOnTheLine
           ? true
           : prevTokenOnTheLine.tokenNumber !== tokenNumber
+
         if (tokenIsNew) {
           prevTokensOnTheLine.push(currentToken)
           allPrevTokens.push(currentToken)
         }
-        const nextTokenToBeConsideredOnNextIteration = itIsNewLineChar || !nextIsDelimeterBetweenTokens || itIsLastChar
+
+        const nextTokenToBeConsideredOnNextIteration =
+          itIsNewLineChar || !nextIsDelimiterBetweenTokens || itIsLastChar
+
         if (nextTokenToBeConsideredOnNextIteration) {
           tokenNumber += 1
           currentTokenChars.length = 0
         }
-        const currentTokenIsLastOnTheLineThereforeWeNeedToStartCollectingDelimeterCharsBeforeNextFirstTokenOnTheLine = currentToken.lastOnTheLine
-        if (currentTokenIsLastOnTheLineThereforeWeNeedToStartCollectingDelimeterCharsBeforeNextFirstTokenOnTheLine) {
+
+        const currentTokenIsLastOnTheLineThereforeWeNeedToStartCollectingDelimiterCharsBeforeNextFirstTokenOnTheLine =
+          currentToken.lastOnTheLine
+
+        if (currentTokenIsLastOnTheLineThereforeWeNeedToStartCollectingDelimiterCharsBeforeNextFirstTokenOnTheLine) {
           firstTokenIsBehindOnTheLine = false
           delimitersBeforeFirstTokenOnTheLine.length = 0
         }
       }
     } else {
-      if (parserState.applyHighlighting && itIsLastChar && itIsDelimeterBetweenTokens && (parserState.highlightsHtmlBuffer !== undefined)) {
+      if (
+        parserState.applyHighlighting &&
+        itIsLastChar &&
+        itIsDelimiterBetweenTokens &&
+        (parserState.highlightsHtmlBuffer !== undefined)
+      ) {
         parserState.highlightsHtmlBuffer.push(delimitersBeforeFirstTokenOnTheLine.join(EMPTY_STRING))
       }
     }
+
     if (itIsNewLineChar) {
       if (currentLineChars.join(EMPTY_STRING).length === 0 && parserState.emptyLineNumbers !== undefined) {
         parserState.emptyLineNumbers.push(lineNumber)
-        runParserScenarios(constructedParserScenarios, ON_EMPTY_LINE, numberOfActivatedScenarios, progressionOfCommandsFromScenarios, lastScenarioLineNumber, unitext, lineNumber, itIsLastChar, undefined, tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimetersAfterEachToken, parserState, queueOfActionsOnProgressionOfCommandsChange)
+
+        runParserScenarios(
+          constructedParserScenarios,
+          ON_EMPTY_LINE,
+          numberOfActivatedScenarios,
+          progressionOfCommandsFromScenarios,
+          lastScenarioLineNumber,
+          unitext,
+          lineNumber,
+          itIsLastChar,
+          undefined,
+          tokenAccumulator,
+          delimitersBeforeFirstTokenOnTheLine,
+          delimitersAfterEachToken,
+          parserState,
+          queueOfActionsOnProgressionOfCommandsChange
+        )
       }
+
       lineNumber += 1
       prevTokensOnTheLine.length = 0
       currentLineChars.length = 0
       tokenAccumulator.length = 0
     }
-    mapOfCharIndexesWithProgressionOfCommandsFromScenarios[charIndex] = progressionOfCommandsFromScenarios.slice()
+
+    mapOfCharIndexesWithProgressionOfCommandsFromScenarios[charIndex] =
+      progressionOfCommandsFromScenarios.slice()
   }
+
   if (!applyOnlyHighlightingWithoutRefIds || !applyHighlighting) {
     for (let actionIndex = 0; actionIndex < queueOfActionsOnProgressionOfCommandsChange.length; actionIndex++) {
-      const currentActionOnProgressionOfCommandsChange = queueOfActionsOnProgressionOfCommandsChange[actionIndex]
+      const currentActionOnProgressionOfCommandsChange =
+        queueOfActionsOnProgressionOfCommandsChange[actionIndex]
+
       if (currentActionOnProgressionOfCommandsChange.activateOnLastToken) {
         const scenarioNameThatChangedCommandsProgression = LAST_CHAR
-        currentActionOnProgressionOfCommandsChange.action(parserState, scenarioNameThatChangedCommandsProgression, lineNumber, currentActionOnProgressionOfCommandsChange.argumentsFromMainAction)
+        currentActionOnProgressionOfCommandsChange.action(
+          parserState,
+          scenarioNameThatChangedCommandsProgression,
+          lineNumber,
+          currentActionOnProgressionOfCommandsChange.argumentsFromMainAction
+        )
       }
     }
   }
+
   if (!parserState.applyHighlighting) {
     if (parserState.highlightsHtmlBuffer.length !== 0) {
       throw new Error('parserState.highlightsHtmlBuffer.length is 0, although !parserState.applyHighlighting')
     }
-    parserState.highlightsHtmlBuffer = [ unitext ]
+
+    parserState.highlightsHtmlBuffer = [unitext]
   }
+
   const parsedObject = {
     pageSchema: parserState.pageSchema,
     highlightsHtmlBuffer: parserState.highlightsHtmlBuffer,
@@ -338,5 +572,6 @@ export default function (
     midiSettings: parserState.midiSettings,
     mapOfCharIndexesWithProgressionOfCommandsFromScenarios
   }
+
   return parsedObject
 }
