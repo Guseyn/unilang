@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/Guseyn/unilang#readme",
   "imports": {
-    "#unilang/*": "./*"
+    "#unilang/drawer/*": "./src/drawer/*",
+    "#unilang/language/*": "./src/language/*",
+    "#unilang/midi/*": "./src/midi/*",
+    "#unilang/api.js": "./src/api.js"
   },
   "dependencies": {
   }

@@ -18,264 +18,6 @@ const LAST_CHAR = 'last char'
 const LAST_LEVEL = 'last level'
 
 /* ──────────────────────────────────────────────────────────────── */
-/* Helpers for scenario selection and validation                    */
-/* ──────────────────────────────────────────────────────────────── */
-
-const collectScenarioNamesThatFollowProgression = (progressionOfCommandsFromScenarios) => {
-  const scenarioNamesThatFollowProgressionOfCommand = []
-
-  if (progressionOfCommandsFromScenarios.length > 0) {
-    for (let scenarioNameIndex = 0; scenarioNameIndex < progressionOfCommandsFromScenarios.length; scenarioNameIndex++) {
-      const scenarioName = progressionOfCommandsFromScenarios[scenarioNameIndex]
-      const scenariosWhereRequired = constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName]
-
-      if (scenariosWhereRequired && scenariosWhereRequired.length > 0) {
-        scenarioNamesThatFollowProgressionOfCommand.push(...scenariosWhereRequired)
-      }
-    }
-  }
-
-  // Common scenarios are always considered
-  scenarioNamesThatFollowProgressionOfCommand.push(
-    ...constructedMapWithScenariosAndScenariosWhereItIsRequired.common
-  )
-
-  return scenarioNamesThatFollowProgressionOfCommand
-}
-
-const scenarioRespectsSameLineConstraint = (scenario, lineNumber, lastScenarioLineNumber) => {
-  if (!scenario.onTheSameLineAsPrevScenario) {
-    return true
-  }
-  return lineNumber === lastScenarioLineNumber.value
-}
-
-const scenarioRespectsStartOnNewLineConstraint = (scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios) => {
-  if (!scenario.startsOnNewLine) {
-    return true
-  }
-  return (lineNumber > lastScenarioLineNumber.value) || (numberOfActivatedScenarios.value === 0)
-}
-
-const scenarioHasProhibitedProgressionsInProgress = (scenario, progressionOfCommandsFromScenarios) => {
-  if (!scenario.prohibitedCommandProgressions) {
-    return false
-  }
-
-  for (let index = 0; index < scenario.prohibitedCommandProgressions.length; index++) {
-    const prohibitedProgression = scenario.prohibitedCommandProgressions[index]
-    if (progressionOfCommandsFromScenarios.indexOf(prohibitedProgression) !== -1) {
-      return true
-    }
-  }
-
-  return false
-}
-
-const enqueueActionWhenProgressionOfCommandsChanges = ({
-  scenario,
-  scenarioName,
-  unitext,
-  lineNumber,
-  currentToken,
-  finalTokenValues,
-  joinedTokenValuesWithRealDelimiters,
-  progressionOfCommandsFromScenarios,
-  queueOfActionsOnProgressionOfCommandsChange
-}) => {
-  if (!scenario.actionWhenProgressionOfCommandsChanges) {
-    return
-  }
-
-  queueOfActionsOnProgressionOfCommandsChange.unshift({
-    scenarioName,
-    scenarioType: scenario.type,
-    levelOfCommandProgression: scenario.itIsNewCommandProgressionFromLevel,
-    action: scenario.actionWhenProgressionOfCommandsChanges,
-    activateOnLastToken: scenario.activateActionWhenProgressionOfCommandsChangesIfItIsLastTokenAndActionDidntHappenBefore,
-    argumentsFromMainAction: {
-      unitext,
-      lineNumber,
-      currentToken,
-      tokenValues: finalTokenValues,
-      joinedTokenValuesWithRealDelimiters,
-      progressionOfCommandsFromScenarios
-    }
-  })
-}
-
-const applyQueuedActionsAffectedByProgressionChange = (
-  parserState,
-  progressionOfCommandsFromScenarios,
-  lineNumber,
-  queueOfActionsOnProgressionOfCommandsChange,
-  scenarioNameThatChangedCommandsProgression
-) => {
-  for (let actionIndex = 0; actionIndex < queueOfActionsOnProgressionOfCommandsChange.length; actionIndex++) {
-    const currentActionOnProgressionOfCommandsChange = queueOfActionsOnProgressionOfCommandsChange[actionIndex]
-    const scenarioNameInQueue = currentActionOnProgressionOfCommandsChange.scenarioName
-
-    const scenarioIsNotInProgression =
-      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) === -1
-    const scenarioIsLastInProgression =
-      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) ===
-      (progressionOfCommandsFromScenarios.length - 1)
-
-    if (scenarioIsNotInProgression || scenarioIsLastInProgression) {
-      currentActionOnProgressionOfCommandsChange.action(
-        parserState,
-        scenarioNameThatChangedCommandsProgression,
-        lineNumber,
-        currentActionOnProgressionOfCommandsChange.argumentsFromMainAction
-      )
-      queueOfActionsOnProgressionOfCommandsChange.splice(actionIndex, 1)
-      actionIndex--
-    }
-  }
-}
-
-/* ──────────────────────────────────────────────────────────────── */
-/* Core: running scenarios                                         */
-/* ──────────────────────────────────────────────────────────────── */
-
-const runParserScenarios = (
-  parserScenarios,
-  typeOfScenarios,
-  numberOfActivatedScenarios,
-  progressionOfCommandsFromScenarios,
-  lastScenarioLineNumber,
-  unitext,
-  lineNumber,
-  itIsLastChar,
-  currentToken,
-  tokenAccumulator,
-  delimitersBeforeFirstTokenOnTheLine,
-  delimitersAfterEachToken,
-  parserState,
-  queueOfActionsOnProgressionOfCommandsChange
-) => {
-  const tokenValues = tokenValuesFromTokens(tokenAccumulator)
-  const tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem =
-    withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem(tokenAccumulator)
-  const joinedTokenValuesWithRealDelimiters =
-    joinedTokensWithRealDelimiters(tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimitersAfterEachToken)
-
-  const scenarioNamesThatFollowProgressionOfCommand =
-    collectScenarioNamesThatFollowProgression(progressionOfCommandsFromScenarios)
-
-  for (let scenarioNameIndex = 0; scenarioNameIndex < scenarioNamesThatFollowProgressionOfCommand.length; scenarioNameIndex++) {
-    const scenarioName = scenarioNamesThatFollowProgressionOfCommand[scenarioNameIndex]
-    const scenario = parserScenarios[scenarioName]
-
-    const respectsSameLineConstraint =
-      scenarioRespectsSameLineConstraint(scenario, lineNumber, lastScenarioLineNumber)
-    if (!respectsSameLineConstraint) {
-      continue
-    }
-
-    const respectsStartsOnNewLineConstraint =
-      scenarioRespectsStartOnNewLineConstraint(scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios)
-    if (!respectsStartsOnNewLineConstraint) {
-      continue
-    }
-
-    const hasProhibitedProgressions =
-      scenarioHasProhibitedProgressionsInProgress(scenario, progressionOfCommandsFromScenarios)
-    if (hasProhibitedProgressions) {
-      continue
-    }
-
-    const finalTokenValues = scenario.considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
-      ? tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
-      : tokenValues
-
-    scenario.type = scenario.type || REGULAR
-
-    if (currentToken) {
-      currentToken.isOnNewLine =
-        (lineNumber > lastScenarioLineNumber.value || (numberOfActivatedScenarios.value === 0))
-    }
-
-    if (scenario.type !== typeOfScenarios) {
-      continue
-    }
-
-    const scenarioConditionIsMet = scenario.condition(
-      unitext,
-      lineNumber,
-      currentToken,
-      finalTokenValues,
-      joinedTokenValuesWithRealDelimiters,
-      progressionOfCommandsFromScenarios,
-      parserState
-    )
-
-    if (!scenarioConditionIsMet) {
-      continue
-    }
-
-    // Command progression management
-    if (scenario.itIsNewCommandProgressionFromLevel !== undefined) {
-      if (scenario.itIsNewCommandProgressionFromLevel !== LAST_LEVEL) {
-        progressionOfCommandsFromScenarios.splice(scenario.itIsNewCommandProgressionFromLevel)
-      }
-
-      progressionOfCommandsFromScenarios.push(scenarioName)
-
-      if (!parserState.applyOnlyHighlightingWithoutRefIds || !parserState.applyHighlighting) {
-        const scenarioNameThatChangedCommandsProgression = scenarioName
-
-        applyQueuedActionsAffectedByProgressionChange(
-          parserState,
-          progressionOfCommandsFromScenarios,
-          lineNumber,
-          queueOfActionsOnProgressionOfCommandsChange,
-          scenarioNameThatChangedCommandsProgression
-        )
-
-        enqueueActionWhenProgressionOfCommandsChanges({
-          scenario,
-          scenarioName,
-          unitext,
-          lineNumber,
-          currentToken,
-          finalTokenValues,
-          joinedTokenValuesWithRealDelimiters,
-          progressionOfCommandsFromScenarios,
-          queueOfActionsOnProgressionOfCommandsChange
-        })
-      }
-    }
-
-    const highlightingOnlyMode =
-      parserState.applyHighlighting && parserState.applyOnlyHighlightingWithoutRefIds
-
-    if (highlightingOnlyMode) {
-      scenario.actionOnlyForHighlightingWithoutRefIds(
-        parserState,
-        joinedTokenValuesWithRealDelimiters,
-        finalTokenValues
-      )
-    } else {
-      scenario.action(
-        unitext,
-        lineNumber,
-        currentToken,
-        finalTokenValues,
-        joinedTokenValuesWithRealDelimiters,
-        progressionOfCommandsFromScenarios,
-        parserState
-      )
-    }
-
-    tokenAccumulator.length = 0
-    lastScenarioLineNumber.value = lineNumber
-    numberOfActivatedScenarios.value += 1
-    break
-  }
-}
-
-/* ──────────────────────────────────────────────────────────────── */
 /* Main parser                                                      */
 /* ──────────────────────────────────────────────────────────────── */
 
@@ -575,3 +317,263 @@ export default function (
 
   return parsedObject
 }
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Helpers for scenario selection and validation                    */
+/* ──────────────────────────────────────────────────────────────── */
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Running scenarios                                         */
+/* ──────────────────────────────────────────────────────────────── */
+
+function runParserScenarios(
+  parserScenarios,
+  typeOfScenarios,
+  numberOfActivatedScenarios,
+  progressionOfCommandsFromScenarios,
+  lastScenarioLineNumber,
+  unitext,
+  lineNumber,
+  itIsLastChar,
+  currentToken,
+  tokenAccumulator,
+  delimitersBeforeFirstTokenOnTheLine,
+  delimitersAfterEachToken,
+  parserState,
+  queueOfActionsOnProgressionOfCommandsChange
+) {
+  const tokenValues = tokenValuesFromTokens(tokenAccumulator)
+  const tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem =
+    withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem(tokenAccumulator)
+  const joinedTokenValuesWithRealDelimiters =
+    joinedTokensWithRealDelimiters(tokenAccumulator, delimitersBeforeFirstTokenOnTheLine, delimitersAfterEachToken)
+
+  const scenarioNamesThatFollowProgressionOfCommand =
+    collectScenarioNamesThatFollowProgression(progressionOfCommandsFromScenarios)
+
+  for (let scenarioNameIndex = 0; scenarioNameIndex < scenarioNamesThatFollowProgressionOfCommand.length; scenarioNameIndex++) {
+    const scenarioName = scenarioNamesThatFollowProgressionOfCommand[scenarioNameIndex]
+    const scenario = parserScenarios[scenarioName]
+
+    const respectsSameLineConstraint =
+      scenarioRespectsSameLineConstraint(scenario, lineNumber, lastScenarioLineNumber)
+    if (!respectsSameLineConstraint) {
+      continue
+    }
+
+    const respectsStartsOnNewLineConstraint =
+      scenarioRespectsStartOnNewLineConstraint(scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios)
+    if (!respectsStartsOnNewLineConstraint) {
+      continue
+    }
+
+    const hasProhibitedProgressions =
+      scenarioHasProhibitedProgressionsInProgress(scenario, progressionOfCommandsFromScenarios)
+    if (hasProhibitedProgressions) {
+      continue
+    }
+
+    const finalTokenValues = scenario.considerJoinedTokenAccumulatorWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
+      ? tokenValuesWithoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem
+      : tokenValues
+
+    scenario.type = scenario.type || REGULAR
+
+    if (currentToken) {
+      currentToken.isOnNewLine =
+        (lineNumber > lastScenarioLineNumber.value || (numberOfActivatedScenarios.value === 0))
+    }
+
+    if (scenario.type !== typeOfScenarios) {
+      continue
+    }
+
+    const scenarioConditionIsMet = scenario.condition(
+      unitext,
+      lineNumber,
+      currentToken,
+      finalTokenValues,
+      joinedTokenValuesWithRealDelimiters,
+      progressionOfCommandsFromScenarios,
+      parserState
+    )
+
+    if (!scenarioConditionIsMet) {
+      continue
+    }
+
+    // Command progression management
+    if (scenario.itIsNewCommandProgressionFromLevel !== undefined) {
+      if (scenario.itIsNewCommandProgressionFromLevel !== LAST_LEVEL) {
+        progressionOfCommandsFromScenarios.splice(scenario.itIsNewCommandProgressionFromLevel)
+      }
+
+      progressionOfCommandsFromScenarios.push(scenarioName)
+
+      if (!parserState.applyOnlyHighlightingWithoutRefIds || !parserState.applyHighlighting) {
+        const scenarioNameThatChangedCommandsProgression = scenarioName
+
+        applyQueuedActionsAffectedByProgressionChange(
+          parserState,
+          progressionOfCommandsFromScenarios,
+          lineNumber,
+          queueOfActionsOnProgressionOfCommandsChange,
+          scenarioNameThatChangedCommandsProgression
+        )
+
+        enqueueActionWhenProgressionOfCommandsChanges({
+          scenario,
+          scenarioName,
+          unitext,
+          lineNumber,
+          currentToken,
+          finalTokenValues,
+          joinedTokenValuesWithRealDelimiters,
+          progressionOfCommandsFromScenarios,
+          queueOfActionsOnProgressionOfCommandsChange
+        })
+      }
+    }
+
+    const highlightingOnlyMode =
+      parserState.applyHighlighting && parserState.applyOnlyHighlightingWithoutRefIds
+
+    if (highlightingOnlyMode) {
+      scenario.actionOnlyForHighlightingWithoutRefIds(
+        parserState,
+        joinedTokenValuesWithRealDelimiters,
+        finalTokenValues
+      )
+    } else {
+      scenario.action(
+        unitext,
+        lineNumber,
+        currentToken,
+        finalTokenValues,
+        joinedTokenValuesWithRealDelimiters,
+        progressionOfCommandsFromScenarios,
+        parserState
+      )
+    }
+
+    tokenAccumulator.length = 0
+    lastScenarioLineNumber.value = lineNumber
+    numberOfActivatedScenarios.value += 1
+    break
+  }
+}
+
+function collectScenarioNamesThatFollowProgression (progressionOfCommandsFromScenarios) {
+  const scenarioNamesThatFollowProgressionOfCommand = []
+
+  if (progressionOfCommandsFromScenarios.length > 0) {
+    for (let scenarioNameIndex = 0; scenarioNameIndex < progressionOfCommandsFromScenarios.length; scenarioNameIndex++) {
+      const scenarioName = progressionOfCommandsFromScenarios[scenarioNameIndex]
+      const scenariosWhereRequired = constructedMapWithScenariosAndScenariosWhereItIsRequired[scenarioName]
+
+      if (scenariosWhereRequired && scenariosWhereRequired.length > 0) {
+        scenarioNamesThatFollowProgressionOfCommand.push(...scenariosWhereRequired)
+      }
+    }
+  }
+
+  // Common scenarios are always considered
+  scenarioNamesThatFollowProgressionOfCommand.push(
+    ...constructedMapWithScenariosAndScenariosWhereItIsRequired.common
+  )
+
+  return scenarioNamesThatFollowProgressionOfCommand
+}
+
+function scenarioRespectsSameLineConstraint (scenario, lineNumber, lastScenarioLineNumber) {
+  if (!scenario.onTheSameLineAsPrevScenario) {
+    return true
+  }
+  return lineNumber === lastScenarioLineNumber.value
+}
+
+function scenarioRespectsStartOnNewLineConstraint(scenario, lineNumber, lastScenarioLineNumber, numberOfActivatedScenarios) {
+  if (!scenario.startsOnNewLine) {
+    return true
+  }
+  return (lineNumber > lastScenarioLineNumber.value) || (numberOfActivatedScenarios.value === 0)
+}
+
+function scenarioHasProhibitedProgressionsInProgress (scenario, progressionOfCommandsFromScenarios) {
+  if (!scenario.prohibitedCommandProgressions) {
+    return false
+  }
+
+  for (let index = 0; index < scenario.prohibitedCommandProgressions.length; index++) {
+    const prohibitedProgression = scenario.prohibitedCommandProgressions[index]
+    if (progressionOfCommandsFromScenarios.indexOf(prohibitedProgression) !== -1) {
+      return true
+    }
+  }
+
+  return false
+}
+
+function enqueueActionWhenProgressionOfCommandsChanges ({
+  scenario,
+  scenarioName,
+  unitext,
+  lineNumber,
+  currentToken,
+  finalTokenValues,
+  joinedTokenValuesWithRealDelimiters,
+  progressionOfCommandsFromScenarios,
+  queueOfActionsOnProgressionOfCommandsChange
+}) {
+  if (!scenario.actionWhenProgressionOfCommandsChanges) {
+    return
+  }
+
+  queueOfActionsOnProgressionOfCommandsChange.unshift({
+    scenarioName,
+    scenarioType: scenario.type,
+    levelOfCommandProgression: scenario.itIsNewCommandProgressionFromLevel,
+    action: scenario.actionWhenProgressionOfCommandsChanges,
+    activateOnLastToken: scenario.activateActionWhenProgressionOfCommandsChangesIfItIsLastTokenAndActionDidntHappenBefore,
+    argumentsFromMainAction: {
+      unitext,
+      lineNumber,
+      currentToken,
+      tokenValues: finalTokenValues,
+      joinedTokenValuesWithRealDelimiters,
+      progressionOfCommandsFromScenarios
+    }
+  })
+}
+
+function applyQueuedActionsAffectedByProgressionChange(
+  parserState,
+  progressionOfCommandsFromScenarios,
+  lineNumber,
+  queueOfActionsOnProgressionOfCommandsChange,
+  scenarioNameThatChangedCommandsProgression
+) {
+  for (let actionIndex = 0; actionIndex < queueOfActionsOnProgressionOfCommandsChange.length; actionIndex++) {
+    const currentActionOnProgressionOfCommandsChange = queueOfActionsOnProgressionOfCommandsChange[actionIndex]
+    const scenarioNameInQueue = currentActionOnProgressionOfCommandsChange.scenarioName
+
+    const scenarioIsNotInProgression =
+      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) === -1
+    const scenarioIsLastInProgression =
+      progressionOfCommandsFromScenarios.indexOf(scenarioNameInQueue) ===
+      (progressionOfCommandsFromScenarios.length - 1)
+
+    if (scenarioIsNotInProgression || scenarioIsLastInProgression) {
+      currentActionOnProgressionOfCommandsChange.action(
+        parserState,
+        scenarioNameThatChangedCommandsProgression,
+        lineNumber,
+        currentActionOnProgressionOfCommandsChange.argumentsFromMainAction
+      )
+      queueOfActionsOnProgressionOfCommandsChange.splice(actionIndex, 1)
+      actionIndex--
+    }
+  }
+}
+
+

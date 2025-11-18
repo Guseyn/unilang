@@ -7,6 +7,13 @@
 - [x] Make fonts as flexible addons and part of a language
 - [x] Refactor language parser to make it more flexible in terms of outputs
 - [ ] Write a very cute api
+  - [ ] Node.js Usage
+  - [ ] Browser Usage
+    - [ ] Via Worker
+    - [ ] EHTML
+    - [ ] Showdown
+
+
 - [ ] Dev server
 - [ ] Add a page where the music font can be generated
 - [ ] CLI for commands
