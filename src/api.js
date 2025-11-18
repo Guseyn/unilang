@@ -451,3 +451,10 @@ function isPlainObject(o) {
 function assert(condition, message) {
   if (!condition) throw new Error(message || "Assertion failed")
 }
+
+function normalizeUnilangText(unilangText) {
+  if (unilangText[unilangText.length - 1] === NEW_LINE) {
+    unilangText += NEW_LINE
+  }
+  return unilangText
+}
