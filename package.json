@@ -23,7 +23,5 @@
     "#unilang/language/*": "./src/language/*",
     "#unilang/midi/*": "./src/midi/*",
     "#unilang/api.js": "./src/api.js"
-  },
-  "dependencies": {
   }
 }
