@@ -6,10 +6,15 @@ import svg from '#unilang/drawer/elements/basic/svg.js'
 import page from '#unilang/drawer/elements/page/page.js'
 import midi from '#unilang/midi/midi.js'
 
+const NEW_LINE = '\n'
+const EMPTY_STRING = ''
+
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  *                1. setupFonts
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ * /
+/**
  *
  * Load and initialize fonts for Unilang (music, text, and chord-letter fonts),
  * with strict differentiation between **Node.js** and **browser** environments.
@@ -432,9 +437,10 @@ Every path must be a valid URL, not a local filesystem path.
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *                            2. generatePageModels
+ *               2. generateIntermediateStructuresForSinglePage
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *
+ * /
+/**
  * High-level convenience wrapper around the low-level `parsedUnilang()` engine.
  * It prepares the Unilang text, invokes the parser with correct defaults, and
  * extracts only the per-page rendering-related intermediate structures needed
@@ -446,7 +452,7 @@ Every path must be a valid URL, not a local filesystem path.
  *
  * ---------------------------------------------------------------------------
  * @async
- * @function generatePageModels
+ * @function generateIntermediateStructuresForSinglePage
  *
  * @param {Object} params
  * @param {string} params.unilangPageText
@@ -497,7 +503,7 @@ Every path must be a valid URL, not a local filesystem path.
  *             setupFonts() → generatedStyles() → page() renderer
  *
  * ---------------------------------------------------------------------------
- * @returns {Promise<GeneratePageModelsResult>}
+ * @returns {GeneratePageModelsResult}
  *
  * Returns an object containing the **intermediate representation (IR)** for
  * a fully parsed Unilang page:
@@ -525,7 +531,7 @@ Every path must be a valid URL, not a local filesystem path.
  *
  * @property {string[]} highlightsHtmlBuffer
  *          An array of HTML-safe fragments used for editor/highlighting layers.
- *          Must usually be `.join("")` before inserting.
+ *          Must usually be `.join('')` before inserting.
  *
  * @property {Object[]} errors
  *          Structural, parsing, or semantic errors encountered while parsing.
@@ -547,7 +553,7 @@ Every path must be a valid URL, not a local filesystem path.
  * ---------------------------------------------------------------------------
  * @description
  *
- * ### What generatePageModels() actually does
+ * ### What generateIntermediateStructuresForSinglePage() actually does
  * 1. Normalizes trailing newline behavior (required by parser mechanics).
  * 2. Passes configuration flags directly into parsedUnilang().
  * 3. Returns only the subset of the parsed output needed for:
@@ -571,7 +577,7 @@ Every path must be a valid URL, not a local filesystem path.
  *
  * ---------------------------------------------------------------------------
  */
-export async function generatePageModels({
+export function generateIntermediateStructuresForSinglePage({
   unilangPageText,
   applyHighlighting,
   applyOnlyHighlightingWithoutRefIds,
@@ -608,24 +614,25 @@ export async function generatePageModels({
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *                     3. generatePageStyles — Public API
+ *                  3. generateStylesForSinglePage
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *
+ * /
+/**
  * Build the complete engraving style environment for a Unilang page.
  *
  * This function is **synchronous**.
  *
- * It takes the `customStyles` produced earlier by `generatePageModels()`  
+ * It takes the `customStyles` produced earlier by `generateIntermediateStructuresForSinglePage()`  
  * and merges them with the resolved font sources returned by `setupFonts()`.  
  *
  * The result is a deterministic, renderer-ready style configuration.
  *
  * ----------------------------------------------------------------------------
- * @function generatePageStyles
+ * @function generateStylesForSinglePage
  *
  * @param {Object} params
  * @param {Object} params.customStyles
- *        Style block generated inside `generatePageModels()`.
+ *        Style block generated inside `generateIntermediateStructuresForSinglePage()`.
  *        Typically contains:
  *        - chosen font names
  *        - page layout values
@@ -664,21 +671,21 @@ export async function generatePageModels({
  *   - the MIDI module (tempo/dynamic rules)
  *
  * ----------------------------------------------------------------------------
- * @example Node.js usage with generatePageModels()
+ * @example Node.js usage with generateIntermediateStructuresForSinglePage()
  *
  * const fonts = await setupFonts()
  *
- * const { customStyles } = await generatePageModels({
+ * const { customStyles } = await generateIntermediateStructuresForSinglePage({
  *   unilangPageText
  * })
  *
- * const pageStyles = generatePageStyles({
+ * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
  *   supportedFontsSourcesConfig: fonts
  * })
  *
  * ----------------------------------------------------------------------------
- * @example Browser usage with generatePageModels()
+ * @example Browser usage with generateIntermediateStructuresForSinglePage()
  *
  * const fonts = await setupFonts({
  *   music: {
@@ -698,11 +705,11 @@ export async function generatePageModels({
  *   }
  * })
  *
- * const { customStyles } = await generatePageModels({
+ * const { customStyles } = await generateIntermediateStructuresForSinglePage({
  *   unilangPageText
  * })
  *
- * const pageStyles = generatePageStyles({
+ * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
  *   supportedFontsSourcesConfig: fonts
  * })
@@ -710,8 +717,8 @@ export async function generatePageModels({
  * ----------------------------------------------------------------------------
  * @description
  *
- * `generatePageStyles()` is **Stage 3** of the high-level Unilang API.
- * It transforms the `customStyles` produced by `generatePageModels()`
+ * `generateStylesForSinglePage()` is **Stage 3** of the high-level Unilang API.
+ * It transforms the `customStyles` produced by `generateIntermediateStructuresForSinglePage()`
  * into the complete engraving style environment using the font sources
  * loaded by `setupFonts()`.
  *
@@ -721,7 +728,7 @@ export async function generatePageModels({
  *      Loads fonts and returns a fully resolved
  *      `supportedFontsSourcesConfig`.
  *
- *   2. **Model generation → `generatePageModels()`**  
+ *   2. **Model generation → `generateIntermediateStructuresForSinglePage()`**  
  *      Parses Unilang text and produces:
  *      - `pageSchema`
  *      - `customStyles`
@@ -729,7 +736,7 @@ export async function generatePageModels({
  *      - `highlightsHtmlBuffer`
  *      - `errors`
  *
- *   3. **Style generation → `generatePageStyles()` (this function)**  
+ *   3. **Style generation → `generateStylesForSinglePage()` (this function)**  
  *      Combines:
  *      - `customStyles` from Stage 2  
  *      - `supportedFontsSourcesConfig` from Stage 1  
@@ -745,20 +752,20 @@ export async function generatePageModels({
  *
  * In short:  
  *   `setupFonts()` prepares fonts →  
- *   `generatePageModels()` prepares content →  
- *   `generatePageStyles()` prepares engraving.
+ *   `generateIntermediateStructuresForSinglePage()` prepares content →  
+ *   `generateStylesForSinglePage()` prepares engraving.
  *
  * It does not perform rendering.  
  * It only consolidates layout, typographic, and engraving rules into one object.
  * 
  * ### Purpose
  * 
- * While `generatePageModels()` defines *what* to draw,  
- * `generatePageStyles()` defines *how* it should look.
+ * While `generateIntermediateStructuresForSinglePage()` defines *what* to draw,  
+ * `generateStylesForSinglePage()` defines *how* it should look.
  *
  * ----------------------------------------------------------------------------
  */
-export function generatePageStyles({
+export function generateStylesForSinglePage({
   customStyles,
   supportedFontsSourcesConfig
 }) {
@@ -771,15 +778,16 @@ export function generatePageStyles({
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *                            4. generateSvgPage
+ *                        4. generateSvgForSinglePage
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *
- * @function generateSvgPage
+ **/
+/**
+ * @function generateSvgForSinglePage
  *
  * @description
- * `generateSvgPage()` is **Stage 4** of the high-level Unilang API.
- * It takes the logical page structure from `generatePageModels()` (Stage 2)
- * and the engraving styles from `generatePageStyles()` (Stage 3), and
+ * `generateSvgForSinglePage()` is **Stage 4** of the high-level Unilang API.
+ * It takes the logical page structure from `generateIntermediateStructuresForSinglePage()` (Stage 2)
+ * and the engraving styles from `generateStylesForSinglePage()` (Stage 3), and
  * produces a **fully rendered SVG page**.
  *
  * This is the main entry point for turning Unilang page data
@@ -788,19 +796,19 @@ export function generatePageStyles({
  * Pipeline context:
  *
  *   1. Fonts → `setupFonts()`
- *   2. Models → `generatePageModels()`
- *   3. Styles → `generatePageStyles()`
- *   4. **SVG Rendering → `generateSvgPage()` ← this function**
+ *   2. Models → `generateIntermediateStructuresForSinglePage()`
+ *   3. Styles → `generateStylesForSinglePage()`
+ *   4. **SVG Rendering → `generateSvgForSinglePage()` ← this function**
  *   5. MIDI Rendering → see MIDI API section
  *
  *
  * @param {Object} params
  * @param {Object} params.pageSchema
- *        The structured musical layout produced by `generatePageModels()`.
+ *        The structured musical layout produced by `generateIntermediateStructuresForSinglePage()`.
  *        Contains all page lines, measures, units, symbol coordinates, etc.
  *
  * @param {Object} params.pageStyles
- *        The engraving style object returned by `generatePageStyles()`,
+ *        The engraving style object returned by `generateStylesForSinglePage()`,
  *        containing spacing rules, font sources, stroke rules, offsets,
  *        line thicknesses, and all geometry required for drawing.
  *
@@ -824,14 +832,14 @@ export function generatePageStyles({
  * const {
  *   pageSchema,
  *   customStyles
- * } = generatePageModels({ unilangPageText, supportedFontNames: fonts })
+ * } = generateIntermediateStructuresForSinglePage({ unilangPageText, supportedFontNames: fonts })
  *
- * const pageStyles = generatePageStyles({
+ * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
  *   supportedFontsSourcesConfig: fonts
  * })
  *
- * const svgPage = generateSvgPage({
+ * const svgPage = generateSvgForSinglePage({
  *   pageSchema,
  *   pageStyles,
  *   top: 0,
@@ -840,7 +848,7 @@ export function generatePageStyles({
  *
  * // svgPage now contains a full SVG of the rendered score page.
  */
-export function generateSvgPage({
+export function generateSvgForSinglePage({
   pageSchema,
   pageStyles,
   top,
@@ -850,22 +858,23 @@ export function generateSvgPage({
     svg(
       page(
         pageSchema
-      )(pageStyles, top, left)
+      )(pageStyles, top || 0, left || 0)
     )
   )
 }
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *                            5. generatePageMidi
+ *                          5. generateMidiForSinglePage
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *
- * @function generatePageMidi
+ */
+/*
+ * @function generateMidiForSinglePage
  *
  * @description
- * `generatePageMidi()` is **Stage 5** of the high-level Unilang rendering API.
+ * `generateMidiForSinglePage()` is **Stage 5** of the high-level Unilang rendering API.
  * It receives the musical structure (`pageSchema`) created by
- * `generatePageModels()` along with per-page MIDI configuration
+ * `generateIntermediateStructuresForSinglePage()` along with per-page MIDI configuration
  * (`midiSettings`) and converts them into a **MIDI playback object**.
  *
  * This is the final step in the Unilang pipeline that produces
@@ -875,10 +884,10 @@ export function generateSvgPage({
  * High-level API pipeline:
  *
  *   1. Fonts → `setupFonts()`
- *   2. Models → `generatePageModels()`
- *   3. Styles → `generatePageStyles()`
- *   4. SVG Rendering → `generateSvgPage()` (see SVG docs)
- *   5. **MIDI Rendering → `generatePageMidi()` ← this function**
+ *   2. Models → `generateIntermediateStructuresForSinglePage()`
+ *   3. Styles → `generateStylesForSinglePage()`
+ *   4. SVG Rendering → `generateSvgForSinglePage()` (see SVG docs)
+ *   5. **MIDI Rendering → `generateMidiForSinglePage()` ← this function**
  *
  *
  * @param {Object} params
@@ -886,10 +895,10 @@ export function generateSvgPage({
  * @param {Object} params.pageSchema
  *        The structured musical model for the page — measures, voices, units,
  *        durations, articulations, and all temporal information needed to
- *        compute final audio playback. Produced by `generatePageModels()`.
+ *        compute final audio playback. Produced by `generateIntermediateStructuresForSinglePage()`.
  *
  * @param {Object} params.midiSettings
- *        MIDI metadata extracted during `generatePageModels()`: tempo defaults,
+ *        MIDI metadata extracted during `generateIntermediateStructuresForSinglePage()`: tempo defaults,
  *        pedal behavior, articulation overrides, playback options, and
  *        per-page MIDI parameters.
  *
@@ -940,19 +949,19 @@ export function generateSvgPage({
  *   pageSchema,
  *   midiSettings,
  *   customStyles
- * } = generatePageModels({ unilangPageText, supportedFontNames: fonts });
+ * } = generateIntermediateStructuresForSinglePage({ unilangPageText, supportedFontNames: fonts });
  *
- * const pageStyles = generatePageStyles({
+ * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
  *   supportedFontsSourcesConfig: fonts
  * });
  *
- * const svgPage = generateSvgPage({
+ * const svgPage = generateSvgForSinglePage({
  *   pageSchema,
  *   pageStyles
  * });
  *
- * const midiPage = generatePageMidi({
+ * const midiPage = generateMidiForSinglePage({
  *   pageSchema,
  *   midiSettings
  * });
@@ -961,13 +970,554 @@ export function generateSvgPage({
  * // midiPage.timeStampsMappedWithRefsOn → audio → engraving sync
  * // midiPage.refsOnMappedWithTimeStamps → engraving → audio sync
  */
-export function generatePageMidi({
+export function generateMidiForSinglePage({
   pageSchema,
   midiSettings
 }) {
   return midi(
     pageSchema,
     [ midiSettings ]
+  )
+}
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *              6. generateIntermediateStructuresForMultiplePages
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/**
+ * High-level wrapper for **multi-page Unilang inputs**.
+ *
+ * This function iterates over already-split Unilang page texts and delegates
+ * the actual parsing work to `generateIntermediateStructuresForSinglePage()` for each page, while
+ * collecting and grouping results **per page**.
+ *
+ * It provides a stable, page-aligned API for consumers that operate on
+ * *documents* rather than individual pages:
+ *   - multi-page SVG rendering
+ *   - paginated editors / viewers
+ *   - multi-page MIDI pipelines
+ *   - snapshot-based visual & audio tests
+ *
+ * ---------------------------------------------------------------------------
+ * @async
+ * @function generateIntermediateStructuresForMultiplePages
+ *
+ * @param {Object} params
+ *
+ * @param {Array<string>} params.unilangMultiplePagesText
+ *        An array of Unilang page texts.
+ *
+ *        Important:
+ *        - Page splitting must be done **before** calling this function.
+ *        - Each array entry is treated as a fully independent page.
+ *
+ * @param {boolean} [params.applyHighlighting=true]
+ *        Enables or disables highlighting generation for **all pages**.
+ *        Passed through verbatim to `generateIntermediateStructuresForSinglePage()`.
+ *
+ * @param {boolean} [params.applyOnlyHighlightingWithoutRefIds=false]
+ *        Enables parser “highlight-only mode” for **all pages**:
+ *
+ *        - no reference IDs
+ *        - no pageSchema mutations
+ *        - no MIDI semantics
+ *        - no command progression effects
+ *
+ *        Intended for editors, inspectors, and fast preview pipelines.
+ *
+ * @param {Array<string>} [params.progressionOfCommandsFromScenarios=[]]
+ *        Optional shared scenario command progression seed.
+ *
+ *        This progression is reused across pages and allows:
+ *          - cross-page scenario continuity
+ *          - deterministic multi-page test runs
+ *
+ * @param {Object} [params.supportedFontNames]
+ *        Same meaning as in `generateIntermediateStructuresForSinglePage()`.
+ *        Applied consistently to every page.
+ *
+ * ---------------------------------------------------------------------------
+ * @returns {GenerateMultiplePagesModelsResult}
+ *
+ * Returns an object where **each field is an array**, indexed by page number:
+ *
+ *   {
+ *     pageSchemaForEachPage,
+ *     htmlHighlightsForEachPage,
+ *     errorsForEachPage,
+ *     customStylesForEachPage,
+ *     midiSettingsForEachPage
+ *   }
+ *
+ * ---------------------------------------------------------------------------
+ * @typedef {Object} GenerateMultiplePagesModelsResult
+ *
+ * @property {Object[]} pageSchemaForEachPage
+ *          One `pageSchema` per page, preserving original order.
+ *
+ * @property {string[][]} htmlHighlightsForEachPage
+ *          Highlight HTML buffers per page.
+ *          Each entry mirrors `highlightsHtmlBuffer` from
+ *          `generateIntermediateStructuresForSinglePage()`.
+ *
+ * @property {Object[][]} errorsForEachPage
+ *          Parser and semantic errors grouped by page.
+ *
+ * @property {Object[]} customStylesForEachPage
+ *          Page-level custom style overrides per page.
+ *
+ * @property {Object[]} midiSettingsForEachPage
+ *          MIDI semantics per page, suitable for:
+ *            - page-isolated MIDI export
+ *            - later cross-page MIDI stitching
+ *
+ * ---------------------------------------------------------------------------
+ * @description
+ *
+ * ### What generateIntermediateStructuresForMultiplePages() actually does
+ * 1. Iterates over pre-split Unilang page texts.
+ * 2. Normalizes each page’s text independently.
+ * 3. Calls `generateIntermediateStructuresForSinglePage()` for every page.
+ * 4. Collects results into page-aligned arrays.
+ *
+ * ### What is *not* done here
+ *  - No page splitting logic
+ *  - No SVG rendering
+ *  - No MIDI file generation
+ *  - No cross-page layout merging
+ *
+ * ### Why this exists
+ * It provides a **document-level API** while keeping
+ * `generateIntermediateStructuresForSinglePage()` clean, focused, and single-responsibility.
+ *
+ * ---------------------------------------------------------------------------
+ */
+export function generateIntermediateStructuresForMultiplePages({
+  unilangMultiplePagesText,
+  applyHighlighting,
+  applyOnlyHighlightingWithoutRefIds,
+  progressionOfCommandsFromScenarios,
+  supportedFontNames
+}) {
+  const pageSchemaForEachPage = []
+  const htmlHighlightsForEachPage = []
+  const errorsForEachPage = []
+  const customStylesForEachPage = []
+  const midiSettingsForEachPage = []
+
+  unilangMultiplePagesText.forEach((unilangTextForCurrentPage, pageIndex) => {
+    const thisIsLastPage = pageIndex === unilangTextSplittedInPages.length - 1
+    const unilangText = normalizeUnilangText(
+      unilangTextForCurrentPage
+    )
+
+    const {
+      pageSchema,
+      highlightsHtmlBuffer,
+      errors,
+      customStyles,
+      midiSettings
+    } = generateIntermediateStructuresForSinglePage({
+      unilangPageText: unilangText,
+      applyHighlighting,
+      applyOnlyHighlightingWithoutRefIds,
+      progressionOfCommandsFromScenarios,
+      supportedFontNames
+    })
+
+    pageSchemaForEachPage.push(pageSchema)
+    htmlHighlightsForEachPage.push(highlightsHtmlBuffer)
+    errorsForEachPage.push(errors)
+    customStylesForEachPage.push(customStyles)
+    midiSettingsForEachPage.push(midiSettings)
+  })
+
+  return {
+    pageSchemaForEachPage,
+    htmlHighlightsForEachPage,
+    errorsForEachPage,
+    customStylesForEachPage,
+    midiSettingsForEachPage
+  }
+}
+
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *                  7. generateStylesForMultiplePage
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/**
+ * Build the complete engraving style environments for a **multi-page Unilang document**.
+ *
+ * This function is **synchronous**.
+ *
+ * It is a thin, deterministic wrapper around `generateStylesForSinglePage()`:
+ * it applies the same font source configuration to **each page’s `customStyles`**
+ * and produces a **page-aligned array of fully resolved engraving style objects**.
+ *
+ * No cross-page mutation or merging is performed — each page remains
+ * stylistically isolated, which is critical for:
+ *   - predictable rendering
+ *   - page-by-page testing
+ *   - independent SVG/MIDI generation
+ *
+ * ----------------------------------------------------------------------------
+ * @function generateStylesForMultiplePages
+ *
+ * @param {Object} params
+ *
+ * @param {Object[]} params.customStylesForEachPage
+ *        An array of `customStyles` objects, one per page, produced by
+ *        `generateIntermediateStructuresForMultiplePages()`.
+ *
+ *        Each entry typically contains:
+ *          - font family selections
+ *          - spacing multipliers
+ *          - page-level engraving overrides
+ *          - color and layout directives
+ *
+ *        The order of this array **must match page order**.
+ *
+ * @param {SupportedFonts} params.supportedFontsSourcesConfig
+ *        Fully loaded font source tree returned by `setupFonts()`.
+ *
+ *        The same font source configuration is reused for all pages to ensure:
+ *          - visual consistency
+ *          - deterministic glyph metrics
+ *          - stable spacing calculations
+ *
+ * ----------------------------------------------------------------------------
+ * @returns {Object[]} PagesStyles
+ *
+ * An array of fully constructed engraving style dictionaries,
+ * one per page, in the same order as `customStylesForEachPage`.
+ *
+ * Each entry contains:
+ *   - resolved spacing constants
+ *   - text / chord / music font assignments
+ *   - engraving rules for beams, slurs, ties, tuplets, octave marks
+ *   - proportional distances derived from stave-line spacing
+ *   - SMuFL glyph metrics from the selected music font
+ *
+ * These objects are consumed directly by:
+ *   - multi-page SVG rendering pipelines
+ *   - per-page or stitched MIDI generation
+ *
+ * ----------------------------------------------------------------------------
+ * @example Node.js usage with multi-page pipeline
+ *
+ * const fonts = await setupFonts()
+ *
+ * const { customStylesForEachPage } =
+ *   await generateIntermediateStructuresForMultiplePages({
+ *     unilangMultiplePagesText
+ *   })
+ *
+ * const pagesStyles = generateStylesForMultiplePages({
+ *   customStylesForEachPage,
+ *   supportedFontsSourcesConfig: fonts
+ * })
+ *
+ * ----------------------------------------------------------------------------
+ * @description
+ *
+ * `generateStylesForMultiplePages()` is the **multi-page equivalent** of
+ * `generateStylesForSinglePage()`.
+ *
+ * It represents Unilang document pipeline and
+ * performs a pure transformation:
+ *
+ *   - input: page-level `customStyles`
+ *   - input: shared font source configuration
+ *   - output: renderer-ready engraving styles per page
+ *
+ * The multi-page pipeline looks like:
+ *
+ *   1. **Font setup → `setupFonts()`**
+ *   2. **Content parsing → `generateIntermediateStructuresForMultiplePages()`**
+ *   3. **Style generation → `generateStylesForMultiplePages()` (this function)**
+ *   4. **Rendering (SVG, multiple pages)**
+ *   5. **MIDI generation (for multiple pages)**
+ *
+ * This function does **not**:
+ *   - merge styles across pages
+ *   - normalize values between pages
+ *   - apply document-wide engraving heuristics
+ *
+ * Its responsibility is strictly:
+ *   **“given page styles + fonts → produce final engraving styles per page.”**
+ *
+ * ----------------------------------------------------------------------------
+ */
+export function generateStylesForMultiplePage({
+  customStylesForEachPage,
+  supportedFontsSourcesConfig
+}) {
+  return customStylesForEachPage.map(customStyles => {
+    return generatedStyles({
+      ...customStyles,
+      fontSources: supportedFontsSources
+    })
+  })
+}
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *                        8. generateSvgForMultiplePages
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/**
+ * @function generateSvgForMultiplePages
+ *
+ * @description
+ * `generateSvgForMultiplePages()` is the **multi-page counterpart** of
+ * `generateSvgForSinglePage()` in high-level Unilang document API.
+ *
+ * It takes **page-aligned schemas and styles** produced earlier in the pipeline
+ * and renders **all pages into a single SVG document**, positioning them
+ * sequentially with configurable spacing.
+ *
+ * Each page is rendered independently using the same low-level rendering
+ * primitives (`page()`, `svg()`), ensuring that:
+ *   - page geometry remains isolated
+ *   - engraving rules stay deterministic
+ *   - rendering order matches logical page order
+ *
+ * This function is the main entry point for producing **paginated SVG scores**
+ * from multi-page Unilang input.
+ *
+ * Pipeline context:
+ *
+ *   1. Fonts → `setupFonts()`
+ *   2. Models → `generateIntermediateStructuresForMultiplePages()`
+ *   3. Styles → `generateStylesForMultiplePages()`
+ *   4. **SVG Rendering → `generateSvgForMultiplePages()` ← this function**
+ *   5. MIDI Rendering → see MIDI API section
+ *
+ *
+ * @param {Object} params
+ *
+ * @param {Object[]} params.pageSchemaForEachPage
+ *        An array of page schemas produced by
+ *        `generateIntermediateStructuresForMultiplePages()`.
+ *
+ *        Each entry represents a fully laid-out logical page:
+ *          - staves and systems
+ *          - measures and symbols
+ *          - coordinates and spacing indexes
+ *
+ *        Order is significant and defines render order.
+ *
+ * @param {Object[]} params.pageStylesForEachPage
+ *        An array of engraving style objects produced by
+ *        `generateStylesForMultiplePages()`.
+ *
+ *        Each style entry corresponds **by index** to a page schema.
+ *
+ * @param {number} [params.top=0]
+ *        Initial top offset (in SVG units) for the first page.
+ *        Useful when embedding the score into a larger SVG context.
+ *
+ * @param {number} [params.left=0]
+ *        Initial left offset (in SVG units).
+ *
+ * @param {number} [params.intervalBetweenPages=15]
+ *        Vertical distance (in SVG units) inserted between consecutive pages.
+ *
+ *        This spacing:
+ *          - does NOT affect internal page layout
+ *          - only controls page-to-page separation
+ *
+ *
+ * @returns {string}
+ *          A single SVG string containing **all rendered pages**
+ *          laid out vertically in order.
+ *
+ *
+ * @example
+ * // High-level multi-page rendering pipeline:
+ *
+ * const fonts = await setupFonts()
+ *
+ * const {
+ *   pageSchemaForEachPage,
+ *   customStylesForEachPage
+ * } = generateIntermediateStructuresForMultiplePages({
+ *   unilangMultiplePagesText
+ * })
+ *
+ * const pageStylesForEachPage = generateStylesForMultiplePages({
+ *   customStylesForEachPage,
+ *   supportedFontsSourcesConfig: fonts
+ * })
+ *
+ * const svgDocument = generateSvgForMultiplePages({
+ *   pageSchemaForEachPage,
+ *   pageStylesForEachPage,
+ *   top: 0,
+ *   left: 0,
+ *   intervalBetweenPages: 20
+ * })
+ *
+ * // svgDocument now contains a single SVG with all pages stacked vertically.
+ */
+export function generateSvgForMultiplePages({
+  pageSchemaForEachPage,
+  pageStylesForEachPage,
+  top,
+  left,
+  intervalBetweenPages
+}) {
+  const allSvgPages = []
+  let currentPageTopOffset = top || 0
+  let currentPageLeftOffset = left || 0
+  intervalBetweenPages = intervalBetweenPages || 15
+
+  pageSchemaForEachPage.forEach(pageSchema => {
+    allSvgPages.push(
+      page(
+        pageSchema
+      )(pageStyles, currentPageTopOffset, currentPageLeftOffset)
+    )
+    currentPageTopOffset += intervalBetweenPages
+  })
+  return svgAsString(
+    svg(...allSvgPages)
+  )
+}
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *                       9. generateMidiForMultiplePages
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/*
+ * @function generateMidiForMultiplePages
+ *
+ * @description
+ * `generateMidiForMultiplePages()` is the **multi-page counterpart** of
+ * `generateMidiForSinglePage()` of the high-level Unilang rendering API.
+ *
+ * It converts a **multi-page musical document** into a **single, continuous MIDI
+ * playback stream**, preserving correct temporal order across page boundaries.
+ *
+ * Unlike SVG rendering (which remains page-isolated), MIDI rendering is
+ * inherently **linear in time**. This function therefore:
+ *
+ *   - flattens all page-level musical structures into one continuous sequence
+ *   - preserves original measure order
+ *   - applies page-specific MIDI settings in sequence
+ *
+ * The result is a MIDI object suitable for:
+ *   - uninterrupted playback of full scores
+ *   - exporting complete compositions
+ *   - precise audio ↔ engraving synchronization across pages
+ *
+ * High-level API pipeline:
+ *
+ *   1. Fonts → `setupFonts()`
+ *   2. Models → `generateIntermediateStructuresForMultiplePages()`
+ *   3. Styles → `generateStylesForMultiplePages()`
+ *   4. SVG Rendering → `generateSvgForMultiplePages()` (see SVG docs)
+ *   5. **MIDI Rendering → `generateMidiForMultiplePages()` ← this function**
+ *
+ *
+ * @param {Object} params
+ *
+ * @param {Object[]} params.pageSchemaForEachPage
+ *        An array of page schemas produced by
+ *        `generateIntermediateStructuresForMultiplePages()`.
+ *
+ *        Each page schema contains musical layout and timing data, including
+ *        `measureParams`, which define durations, tempo changes, articulations,
+ *        and structural playback information.
+ *
+ *        Page order defines **temporal order**.
+ *
+ * @param {Object[]} params.midiSettingsForEachPage
+ *        An array of MIDI configuration objects, one per page, extracted during
+ *        `generateIntermediateStructuresForMultiplePages()`.
+ *
+ *        Each entry may include:
+ *          - tempo changes
+ *          - articulation rules
+ *          - pedal behavior
+ *          - per-page playback modifiers
+ *
+ *        The index of each settings object **must correspond** to the index of
+ *        the page schema it applies to.
+ *
+ *
+ * @returns {Object}
+ *          A MIDI result object produced by the low-level internal `midi()` engine.
+ *
+ *          The returned object contains:
+ *
+ *          - **data**  
+ *            A `Uint8Array` (browser) or `Buffer` (Node.js) containing the raw
+ *            MIDI binary for the **entire document**.
+ *
+ *          - **timeStampsMappedWithRefsOn**  
+ *            A forward-lookup map:  
+ *            `{ [timestampInSeconds]: string[] }`  
+ *            Mapping playback timestamps to all reference IDs that become active
+ *            at that moment — across all pages.
+ *
+ *          - **refsOnMappedWithTimeStamps**  
+ *            A reverse-lookup map:  
+ *            `{ [refId: string]: timestampInSeconds }`  
+ *            Mapping any engraved element (from any page) to its exact playback
+ *            start time in the global MIDI timeline.
+ *
+ *          These mappings allow **seamless synchronization** between:
+ *            - multi-page SVG engraving
+ *            - continuous audio playback
+ *            - interactive editors and practice tools
+ *
+ *
+ * @example
+ * // High-level multi-page MIDI pipeline example
+ *
+ * const {
+ *   pageSchemaForEachPage,
+ *   midiSettingsForEachPage
+ * } = generateIntermediateStructuresForMultiplePages({
+ *   unilangMultiplePagesText
+ * })
+ *
+ * const midiDocument = generateMidiForMultiplePages({
+ *   pageSchemaForEachPage,
+ *   midiSettingsForEachPage
+ * })
+ *
+ * // midiDocument.data → raw MIDI bytes for the full document
+ * // midiDocument.timeStampsMappedWithRefsOn → audio → engraving sync (global)
+ * // midiDocument.refsOnMappedWithTimeStamps → engraving → audio sync (global)
+ *
+ *
+ * @notes
+ * - Page boundaries are ignored in the MIDI output — playback is continuous.
+ * - No silence or padding is inserted between pages unless explicitly encoded
+ *   in the Unilang input.
+ * - Visual pagination and audio sequencing are intentionally decoupled.
+ */
+export function generateMidiForMultiplePages({
+  pageSchemaForEachPage,
+  midiSettingsForEachPage
+}) {
+  const measureParamsForAllPages = []
+  pageSchemaForEachPage.forEach(pageSchema => {
+    measureParamsForAllPages.push(
+      ...pageSchema.measureParams
+    )
+  })
+  return midi(
+    {
+      measureParams: measureParamsForAllPages
+    },
+    midiSettingsForEachPage
   )
 }
 

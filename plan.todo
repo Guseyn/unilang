@@ -1,0 +1,51 @@
+
+ Migrate tests and make them work (rewrite in procedural style)
+  - [x] visual
+  - [x] audio
+- [x] Migrate to ESM
+- [x] import maps
+- [x] extract deps to directories, and get rid of all third party deps in package.json
+- [x] Make fonts as flexible addons and part of a language
+- [x] Refactor language parser to make it more flexible in terms of outputs
+- [ ] Write a very cute api
+  - [ ] Node.js
+    - [x] Single Page
+    - [x] Multi Page
+  - [ ] Browser Usage
+    - [x] Single Page
+    - [x] Multi Page
+- [ ] Rewrite tests via API
+
+- [ ] Examples
+  - [ ] CLI
+    - [ ] Interactive
+    - [ ] Non Interactive
+  - [ ] Node.js
+    - [ ] Sync version
+    - [ ] Worker
+  - [ ] Browser
+    - [ ] Sync
+    - [ ] Worker
+    - [ ] EHTML Integration
+    - [ ] Showdown MD Integration
+    - [ ] Full Page Editor
+
+- [ ] Web Page
+  - [ ] Developer Documenation
+    - [ ] JavaScript API
+    - [ ] CLI API
+    - [ ] NoBuild Concept
+    - [ ] Node.js
+      - [ ] Sync
+      - [ ] Via Worker
+    - [ ] Browser
+      - [ ] Sync
+      - [ ] Via Worker
+     - [ ] EHTML Integration
+     - [ ] Showdown MD Integration + EHTML
+    - [ ] Reference Editor App
+  - [ ] Language Documentation
+  - [ ] Mission and Goals
+  - [ ] About me
+  - [ ] Let's stay in touch
+
