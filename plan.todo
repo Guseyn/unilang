@@ -7,14 +7,16 @@
 - [x] extract deps to directories, and get rid of all third party deps in package.json
 - [x] Make fonts as flexible addons and part of a language
 - [x] Refactor language parser to make it more flexible in terms of outputs
-- [ ] Write a very cute api
-  - [ ] Node.js
+- [x] Write a very cute api
+  - [x] Node.js
     - [x] Single Page
     - [x] Multi Page
-  - [ ] Browser Usage
+  - [x] Browser Usage
     - [x] Single Page
     - [x] Multi Page
+
 - [ ] Rewrite tests via API
+- [ ] Test coverage
 
 - [ ] Examples
   - [ ] CLI
