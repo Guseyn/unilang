@@ -15,7 +15,7 @@
     - [x] Single Page
     - [x] Multi Page
 
-- [ ] Rewrite tests via API
+- [ ] Rewrite tests runners via API
 - [ ] Test coverage
 
 - [ ] Examples
@@ -46,8 +46,16 @@
      - [ ] EHTML Integration
      - [ ] Showdown MD Integration + EHTML
     - [ ] Reference Editor App
+    - [ ] Advanced
+      - [ ] SMuFL compatible font generation
+      - [ ] Font viewer with character search
   - [ ] Language Documentation
+    - [ ] Each Chapter From Unison with editor like examples
   - [ ] Mission and Goals
   - [ ] About me
   - [ ] Let's stay in touch
 
+-----
+
+  - [ ] Test Viewer
+  - [ ] Update tests

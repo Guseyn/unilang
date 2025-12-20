@@ -2,28 +2,18 @@ import fs from 'fs/promises'
 import path from 'path'
 import assert from 'assert'
 
-import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
-import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
-import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
-import generatedStyles from '#unilang/drawer/generatedStyles.js'
-import svg from '#unilang/drawer/elements/basic/svg.js'
-import page from '#unilang/drawer/elements/page/page.js'
-import midi from '#unilang/midi/midi.js'
-
-
 // API
-import { setupFonts } from '#unilang/api.js'
+import {
+  setupFonts,
+  generateIntermediateStructuresForMultiplePages,
+  areAllPageSchemasValid,
+  generateStylesForMultiplePages,
+  generateMidiForMultiplePages,
+  generateSvgForMultiplePages,
+} from '#unilang/api.js'
 
 const PAGE_DELIMITER = '====next page===='
-const NEW_LINE = '\n'
 const EMPTY_STRING = ''
-
-function normalizeUnilangText(unilangText) {
-  if (unilangText[unilangText.length - 1] === NEW_LINE) {
-    unilangText += NEW_LINE
-  }
-  return unilangText
-}
 
 const audioTests = (
   await fs.readdir(
@@ -42,97 +32,54 @@ async function runAudioTest() {
   const listOfPassedTests = []
   console.time('Total time spent for audio tests')
 
-  const supportedFonts = {
+  const supportedFontNames = {
     'chord-letters': ['gentium plus', 'gothic a1'],
     'music': ['bravura', 'leland'],
     'text': ['noto-sans', 'noto-serif']
   }
 
-  const supportedFontsSources = await setupFonts()
+  const supportedFontSources = await setupFonts()
 
   for (const unilangInputFile of listOfUnilangInputFiles) {
     const testName = path.basename(unilangInputFile).split('.')[0]
     const unilangInputFileFullPath = `audio-tests/unilang/${unilangInputFile}`
     const unilangText = (await fs.readFile(unilangInputFileFullPath, 'utf-8'))
 
-    const unilangTextSplittedInPages = unilangText.split(PAGE_DELIMITER)
+    const unilangMultiplePagesText = unilangText.split(PAGE_DELIMITER)
 
-    const measuresParamsForAllPages = []
-    const midiSettingsForEachPage = []
-    const allSvgPages = []
-    let currentPageTopOffset = 0
-    const verticalDistanceBetweenPages = 15
-    const htmlHighlightsForAllPages = []
-    const errorsForAllPages = []
-
-    unilangTextSplittedInPages.forEach((unilangTextForCurrentPage, pageIndex) => {
-      const thisIsLastPage = pageIndex === unilangTextSplittedInPages.length - 1
-      const unilangText = normalizeUnilangText(
-        unilangTextForCurrentPage
-      )
-
-      const { pageSchema, highlightsHtmlBuffer, errors, customStyles, midiSettings } = parsedUnilang(
-        unilangText,
-        [],
-        true,
-        false,
-        supportedFonts
-      )
-
-      try {
-        assert.ok(
-          validatedPageSchema(pageSchema),
-          `Failed for ${unilangInputFileFullPath} test`
-        )
-      } catch (error) {
-        process.stdout.write('\n')
-        throw new Error(`page schema for "${unilangInputFileFullPath}" is not valid`)
-      }
-
-      if (pageSchema && pageSchema.measuresParams) {
-        pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
-          measureParams.pageIndex = pageIndex
-          measureParams.measureIndexOnPage = measureIndex
-        })
-        measuresParamsForAllPages.push(...pageSchema.measuresParams)
-        midiSettingsForEachPage.push(midiSettings)
-      }
-
-      const cofiguratedStyles = generatedStyles({
-        ...customStyles,
-        fontSources: supportedFontsSources
-      })
-      const svgPage = page(
-        pageSchema
-      )(cofiguratedStyles, 0, currentPageTopOffset)
-      currentPageTopOffset = svgPage.bottom + verticalDistanceBetweenPages
-      allSvgPages.push(svgPage)
-      htmlHighlightsForAllPages.push(
-        highlightsHtmlBuffer.join(EMPTY_STRING)
-      )
-      if (!thisIsLastPage) {
-        htmlHighlightsForAllPages.push(
-          PAGE_DELIMITER
-        )
-      }
-      errorsForAllPages.push(errors)
+    const {
+      pageSchemaForEachPage,
+      htmlHighlightsForEachPage,
+      errorsForEachPage,
+      customStylesForEachPage,
+      midiSettingsForEachPage
+    } = generateIntermediateStructuresForMultiplePages({
+      unilangMultiplePagesText,
+      supportedFontNames
     })
 
-    const pageSchemaForAllPages = {
-      measuresParams: measuresParamsForAllPages
+    if (!areAllPageSchemasValid(pageSchemaForEachPage)) {
+      throw new Error('Some of the page schemas are not valid')
     }
-    const svgPagesAsString = svgAsString(
-      svg(...allSvgPages)
-    )
-    const joinedHtmlHighlightsForAllPages = htmlHighlightsForAllPages.join(EMPTY_STRING)
-    const midiForAllPages = midi(
-      pageSchemaForAllPages,
-      midiSettingsForEachPage
-    )
 
-    const stringifiedPageSchema = JSON.stringify(pageSchemaForAllPages)
-    const stringifiedHtmlHighlights = joinedHtmlHighlightsForAllPages
-    const stringifiedErrors = JSON.stringify(errorsForAllPages)
+    const pageStylesForEachPage = generateStylesForMultiplePages({
+      customStylesForEachPage,
+      supportedFontSources
+    })
+    const allSvgPages = generateSvgForMultiplePages({
+      pageSchemaForEachPage,
+      pageStylesForEachPage
+    })
+    const htmlHighlightsForAllPages = htmlHighlightsForEachPage.map(
+      htmlHighlightsForSinglePage => htmlHighlightsForSinglePage.join(EMPTY_STRING)
+    ).join(PAGE_DELIMITER)
+    const midiForAllPages = generateMidiForMultiplePages({
+      pageSchemaForEachPage,
+      midiSettingsForEachPage
+    })
+
+    const stringifiedPageSchema = JSON.stringify(pageSchemaForEachPage)
+    const stringifiedErrors = JSON.stringify(errorsForEachPage)
     const midiData = midiForAllPages.data
 
     const [
@@ -155,14 +102,14 @@ async function runAudioTest() {
     try {
       testType = 'svg'
       assert.strictEqual(
-        svgPagesAsString,
+        allSvgPages,
         expectedSvgAsString,
         `Failed for "${testName}" test`
       )
       process.stdout.write(`"${testName}" passed for ${testType}\n`)
       testType = 'html highlights'
       assert.strictEqual(
-        stringifiedHtmlHighlights,
+        htmlHighlightsForAllPages,
         expectedStringifiedHtmlHighlights,
         `Failed for "${testName}" test`
       )
@@ -202,9 +149,9 @@ async function runAudioTest() {
     } finally {
       await Promise.race(
         [
-          fs.writeFile(`audio-tests/svg/actual/${testName}.svg`, svgPagesAsString),
+          fs.writeFile(`audio-tests/svg/actual/${testName}.svg`, allSvgPages),
           fs.writeFile(`audio-tests/page-schema/actual/${testName}.json`, stringifiedPageSchema),
-          fs.writeFile(`audio-tests/html-highlights/actual/${testName}.html`, stringifiedHtmlHighlights),
+          fs.writeFile(`audio-tests/html-highlights/actual/${testName}.html`, htmlHighlightsForAllPages),
           fs.writeFile(`audio-tests/errors/actual/${testName}.json`, stringifiedErrors),
           fs.writeFile(`audio-tests/midi/actual/${testName}.mid`, midiData)
         ]

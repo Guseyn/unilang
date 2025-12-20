@@ -1,5 +1,6 @@
 import opentype from '#unilang/drawer/lib/opentype/opentype.js'
 import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
+import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
 import generatedStyles from '#unilang/drawer/generatedStyles.js'
 import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
 import svg from '#unilang/drawer/elements/basic/svg.js'
@@ -17,12 +18,12 @@ const EMPTY_STRING = ''
 /**
  *
  * Load and initialize fonts for Unilang (music, text, and chord-letter fonts),
- * with strict differentiation between **Node.js** and **browser** environments.
+ * suitable both for **Node.js** and **browser** environments.
  *
  * This function guarantees:
  * - deterministic load order
  * - reproducibility across environments
- * - consistent SVG & MIDI rendering
+ * - loads fonts for future consistent SVG & MIDI rendering
  *
  * -----------------------------------------------------------------------------------------------
  * @function setupFonts
@@ -82,6 +83,10 @@ const EMPTY_STRING = ''
  *     "bravura": {
  *       "font": "./src/drawer/font/music/Bravura.otf",
  *       "js":   "#unilang/drawer/font/music-js/bravura.js"
+ *     },
+ *     "leland": {
+ *       "font": "./src/drawer/font/music/Leland.otf",
+ *       "js":   "#unilang/drawer/font/music-js/leland.js"
  *     }
  *   }
  * }
@@ -99,6 +104,10 @@ const EMPTY_STRING = ''
  *     }
  *   },
  *   "music": {
+ *     "bravura": {
+ *       "font": "https://example.com/music/Bravura.otf",
+ *       "js":   "#unilang/drawer/font/music-js/bravura.js"
+ *     }
  *     "leland": {
  *       "font": "https://example.com/music/Leland.otf",
  *       "js":   "#unilang/drawer/font/music-js/leland.js"
@@ -212,8 +221,8 @@ A full example:
 
 {
   "chord-letters": {
-    "gentium plus": "https://example.com/fonts/GentiumPlus-Regular.ttf",
-    "gothic a1":    "https://example.com/fonts/GothicA1-Regular.ttf"
+    "gentium plus": "https://cdn.example.com/fonts/GentiumPlus-Regular.ttf",
+    "gothic a1":    "https://cdn.example.com/fonts/GothicA1-Regular.ttf"
   },
 
   "text": {
@@ -229,11 +238,11 @@ A full example:
 
   "music": {
     "bravura": {
-      "font": "https://example.com/music-fonts/Bravura.otf",
+      "font": "https://cdn.example.com/music-fonts/Bravura.otf",
       "js":   "#unilang/drawer/font/music-js/bravura.js"
     },
     "leland": {
-      "font": "https://example.com/music-fonts/Leland.otf",
+      "font": "https://cdn.example.com/music-fonts/Leland.otf",
       "js":   "#unilang/drawer/font/music-js/leland.js"
     }
   }
@@ -391,7 +400,7 @@ Every path must be a valid URL, not a local filesystem path.
   --------------------------------------------------------------------------------------------------
   */
 
-  const supportedFontsSourcesConfig = {
+  const supportedFontSources = {
     'chord-letters': {},
     'music': {},
     'music-js': {},
@@ -406,33 +415,33 @@ Every path must be a valid URL, not a local filesystem path.
 
   // Assign chord-letter fonts
   for (let name of chordLetterFontNames) {
-    supportedFontsSourcesConfig['chord-letters'][name] =
+    supportedFontSources['chord-letters'][name] =
       fontSources[fontSourcesAssignCount++]
   }
 
   // Assign text regular
   for (let name of textFontNames) {
-    supportedFontsSourcesConfig['text']['regular'][name] =
+    supportedFontSources['text']['regular'][name] =
       fontSources[fontSourcesAssignCount++]
   }
 
   // Assign text bold
   for (let name of textFontNames) {
-    supportedFontsSourcesConfig['text']['bold'][name] =
+    supportedFontSources['text']['bold'][name] =
       fontSources[fontSourcesAssignCount++]
   }
 
   // Assign music fonts + JS schemas
   let jsIndex = 0
   for (let name of musicFontNames) {
-    supportedFontsSourcesConfig['music'][name] =
+    supportedFontSources['music'][name] =
       fontSources[fontSourcesAssignCount++]
 
-    supportedFontsSourcesConfig['music-js'][name] =
+    supportedFontSources['music-js'][name] =
       jsMusicFontSources[jsIndex++].default
   }
 
-  return supportedFontsSourcesConfig
+  return supportedFontSources
 }
 
 /**
@@ -640,7 +649,7 @@ export function generateIntermediateStructuresForSinglePage({
  *        - color overrides
  *        - engraving preferences
  *
- * @param {SupportedFonts} params.supportedFontsSourcesConfig
+ * @param {SupportedFonts} params.supportedFontSources
  *        Fully loaded font source tree returned by `setupFonts()`.
  *        Required structure:
  *        {
@@ -681,7 +690,7 @@ export function generateIntermediateStructuresForSinglePage({
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * })
  *
  * ----------------------------------------------------------------------------
@@ -711,7 +720,7 @@ export function generateIntermediateStructuresForSinglePage({
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * })
  *
  * ----------------------------------------------------------------------------
@@ -726,7 +735,7 @@ export function generateIntermediateStructuresForSinglePage({
  *
  *   1. **Font setup → `setupFonts()`**  
  *      Loads fonts and returns a fully resolved
- *      `supportedFontsSourcesConfig`.
+ *      `supportedFontSources`.
  *
  *   2. **Model generation → `generateIntermediateStructuresForSinglePage()`**  
  *      Parses Unilang text and produces:
@@ -739,7 +748,7 @@ export function generateIntermediateStructuresForSinglePage({
  *   3. **Style generation → `generateStylesForSinglePage()` (this function)**  
  *      Combines:
  *      - `customStyles` from Stage 2  
- *      - `supportedFontsSourcesConfig` from Stage 1  
+ *      - `supportedFontSources` from Stage 1  
  *      to produce the final engraving style object containing spacing rules,
  *      font assignments, stroke options, text sizes, offsets, and all
  *      rendering-related measurements.
@@ -767,11 +776,11 @@ export function generateIntermediateStructuresForSinglePage({
  */
 export function generateStylesForSinglePage({
   customStyles,
-  supportedFontsSourcesConfig
+  supportedFontSources
 }) {
   const cofiguratedStyles = generatedStyles({
     ...customStyles,
-    fontSources: supportedFontsSources
+    fontSources: supportedFontSources
   })
   return cofiguratedStyles
 }
@@ -836,7 +845,7 @@ export function generateStylesForSinglePage({
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * })
  *
  * const svgPage = generateSvgForSinglePage({
@@ -851,14 +860,14 @@ export function generateStylesForSinglePage({
 export function generateSvgForSinglePage({
   pageSchema,
   pageStyles,
-  top,
-  left
+  left,
+  top
 }) {
   return svgAsString(
     svg(
       page(
         pageSchema
-      )(pageStyles, top || 0, left || 0)
+      )(pageStyles, left || 0, top || 0)
     )
   )
 }
@@ -953,7 +962,7 @@ export function generateSvgForSinglePage({
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * });
  *
  * const svgPage = generateSvgForSinglePage({
@@ -1079,7 +1088,8 @@ export function generateMidiForSinglePage({
  * 1. Iterates over pre-split Unilang page texts.
  * 2. Normalizes each page’s text independently.
  * 3. Calls `generateIntermediateStructuresForSinglePage()` for every page.
- * 4. Collects results into page-aligned arrays.
+ * 4. Adds properties like pageIndex and measureIndexOnPage to each measure on page
+ * 5. Collects results into page-aligned arrays.
  *
  * ### What is *not* done here
  *  - No page splitting logic
@@ -1107,10 +1117,7 @@ export function generateIntermediateStructuresForMultiplePages({
   const midiSettingsForEachPage = []
 
   unilangMultiplePagesText.forEach((unilangTextForCurrentPage, pageIndex) => {
-    const thisIsLastPage = pageIndex === unilangTextSplittedInPages.length - 1
-    const unilangText = normalizeUnilangText(
-      unilangTextForCurrentPage
-    )
+    const thisIsLastPage = pageIndex === unilangMultiplePagesText.length - 1
 
     const {
       pageSchema,
@@ -1119,11 +1126,16 @@ export function generateIntermediateStructuresForMultiplePages({
       customStyles,
       midiSettings
     } = generateIntermediateStructuresForSinglePage({
-      unilangPageText: unilangText,
+      unilangPageText: unilangTextForCurrentPage,
       applyHighlighting,
       applyOnlyHighlightingWithoutRefIds,
       progressionOfCommandsFromScenarios,
       supportedFontNames
+    })
+
+    pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
+      measureParams.pageIndex = pageIndex
+      measureParams.measureIndexOnPage = measureIndex
     })
 
     pageSchemaForEachPage.push(pageSchema)
@@ -1145,7 +1157,7 @@ export function generateIntermediateStructuresForMultiplePages({
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
- *                  7. generateStylesForMultiplePage
+ *                  7. generateStylesForMultiplePages
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
@@ -1180,7 +1192,7 @@ export function generateIntermediateStructuresForMultiplePages({
  *
  *        The order of this array **must match page order**.
  *
- * @param {SupportedFonts} params.supportedFontsSourcesConfig
+ * @param {SupportedFonts} params.supportedFontSources
  *        Fully loaded font source tree returned by `setupFonts()`.
  *
  *        The same font source configuration is reused for all pages to ensure:
@@ -1217,7 +1229,7 @@ export function generateIntermediateStructuresForMultiplePages({
  *
  * const pagesStyles = generateStylesForMultiplePages({
  *   customStylesForEachPage,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * })
  *
  * ----------------------------------------------------------------------------
@@ -1251,14 +1263,14 @@ export function generateIntermediateStructuresForMultiplePages({
  *
  * ----------------------------------------------------------------------------
  */
-export function generateStylesForMultiplePage({
+export function generateStylesForMultiplePages({
   customStylesForEachPage,
-  supportedFontsSourcesConfig
+  supportedFontSources
 }) {
   return customStylesForEachPage.map(customStyles => {
     return generatedStyles({
       ...customStyles,
-      fontSources: supportedFontsSources
+      fontSources: supportedFontSources
     })
   })
 }
@@ -1350,7 +1362,7 @@ export function generateStylesForMultiplePage({
  *
  * const pageStylesForEachPage = generateStylesForMultiplePages({
  *   customStylesForEachPage,
- *   supportedFontsSourcesConfig: fonts
+ *   supportedFontSources: fonts
  * })
  *
  * const svgDocument = generateSvgForMultiplePages({
@@ -1366,22 +1378,22 @@ export function generateStylesForMultiplePage({
 export function generateSvgForMultiplePages({
   pageSchemaForEachPage,
   pageStylesForEachPage,
-  top,
   left,
+  top,
   intervalBetweenPages
 }) {
   const allSvgPages = []
-  let currentPageTopOffset = top || 0
   let currentPageLeftOffset = left || 0
+  let currentPageTopOffset = top || 0
   intervalBetweenPages = intervalBetweenPages || 15
 
-  pageSchemaForEachPage.forEach(pageSchema => {
-    allSvgPages.push(
-      page(
-        pageSchema
-      )(pageStyles, currentPageTopOffset, currentPageLeftOffset)
-    )
-    currentPageTopOffset += intervalBetweenPages
+  pageSchemaForEachPage.forEach((pageSchema, pageIndex) => {
+    const svgPage = page(
+      pageSchema
+    )(pageStylesForEachPage[pageIndex], currentPageLeftOffset, currentPageTopOffset)
+    svgPage.bottom
+    allSvgPages.push(svgPage)
+    currentPageTopOffset = svgPage.bottom + intervalBetweenPages
   })
   return svgAsString(
     svg(...allSvgPages)
@@ -1510,15 +1522,140 @@ export function generateMidiForMultiplePages({
   const measureParamsForAllPages = []
   pageSchemaForEachPage.forEach(pageSchema => {
     measureParamsForAllPages.push(
-      ...pageSchema.measureParams
+      ...pageSchema.measuresParams
     )
   })
   return midi(
     {
-      measureParams: measureParamsForAllPages
+      measuresParams: measureParamsForAllPages
     },
     midiSettingsForEachPage
   )
+}
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *                           10. isPageSchemaValid
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/**
+ * Optional structural consistency check for Unilang **Page Schema** objects.
+ *
+ * This function is primarily intended for **internal tooling and tests** as an
+ * additional safety layer to assert that a page schema is structurally valid.
+ *
+ * Under normal circumstances, page schemas produced by
+ * `generateIntermediateStructuresForSinglePage()` are expected to already be
+ * valid. This function does **not** replace that guarantee.
+ *
+ * Instead, it exists to let developers explicitly verify that assumption when:
+ *   - writing integration or regression tests
+ *   - asserting invariants across pipeline stages
+ *   - debugging schema transformations or refactors
+ *
+ * Calling this function is **explicitly opt-in**. It is up to the consumer to
+ * decide whether additional validation is necessary for their use case.
+ *
+ * ---------------------------------------------------------------------------
+ * @function isPageSchemaValid
+ *
+ * @param {unknown} pageSchema
+ *        A page schema object to be checked for structural validity.
+ *
+ * ---------------------------------------------------------------------------
+ * @returns {boolean}
+ *
+ *   - `true`  → the schema conforms to the canonical Unilang Page Schema contract
+ *   - `false` → one or more structural constraints are violated
+ *
+ * ---------------------------------------------------------------------------
+ * @description
+ *
+ * ### Why this exists
+ * This function provides a clear, explicit checkpoint for developers who want
+ * to **assert correctness rather than assume it**.
+ *
+ * It is intentionally lightweight, side-effect free, and non-invasive, making
+ * it suitable for:
+ *   - test suites
+ *   - CI assertions
+ *   - schema evolution safety checks
+ *
+ * It is **not** required for normal rendering or playback flows.
+ *
+ * ---------------------------------------------------------------------------
+ */
+export function isPageSchemaValid(pageSchema) {
+  return validatedPageSchema(pageSchema)
+}
+
+/**
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ *                       11. areAllPageSchemasValid
+ * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
+ */
+/**
+ * Optional structural consistency check for **multiple Unilang Page Schemas**.
+ *
+ * This function extends `isPageSchemaValid()` to operate on a collection of
+ * page schemas, allowing developers to assert that **every page** in a
+ * multi-page pipeline satisfies the canonical Unilang Page Schema contract.
+ *
+ * Like its single-page counterpart, this function is primarily intended for
+ * **internal tooling and test environments**, not for mandatory runtime
+ * validation.
+ *
+ * Under normal circumstances, page schemas produced by higher-level generation
+ * APIs (e.g. multi-page orchestration built on top of
+ * `generateIntermediateStructuresForSinglePage()`) are expected to already be
+ * valid.
+ *
+ * This function exists to explicitly verify that assumption when working with:
+ *   - multi-page rendering pipelines
+ *   - batch processing or transformations
+ *   - test fixtures covering multiple pages
+ *   - refactors affecting page schema aggregation
+ *
+ * Invocation is **explicitly opt-in** and left entirely to the consumer.
+ *
+ * ---------------------------------------------------------------------------
+ * @function areAllPageSchemasValid
+ *
+ * @param {unknown} pageSchemas
+ *        A collection (typically an array) of page schema objects to be checked
+ *        for structural validity.
+ *
+ * ---------------------------------------------------------------------------
+ * @returns {boolean}
+ *
+ *   - `true`  → all page schemas conform to the canonical Unilang Page Schema
+ *               contract
+ *   - `false` → at least one page schema violates structural constraints
+ *
+ * ---------------------------------------------------------------------------
+ * @description
+ *
+ * ### Why this exists
+ * This function provides a **single, explicit checkpoint** for asserting
+ * correctness across **multiple pages**, rather than validating them
+ * individually or relying on implicit guarantees.
+ *
+ * It is intentionally:
+ *   - lightweight
+ *   - side-effect free
+ *   - short-circuiting (fails fast on first invalid schema)
+ *
+ * Making it suitable for:
+ *   - test suites
+ *   - CI validation steps
+ *   - multi-page schema invariants
+ *
+ * It is **not required** for normal rendering, SVG generation, or MIDI flows.
+ *
+ * ---------------------------------------------------------------------------
+ */
+export function areAllPageSchemasValid(pageSchemas) {
+  return pageSchemas.every(pageSchema => validatedPageSchema(pageSchema))
 }
 
 // ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆

@@ -2,12 +2,15 @@ import fs from 'fs/promises'
 import path from 'path'
 import assert from 'assert'
 
-import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
-import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
-import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
-import generatedStyles from '#unilang/drawer/generatedStyles.js'
-import svg from '#unilang/drawer/elements/basic/svg.js'
-import page from '#unilang/drawer/elements/page/page.js'
+// API
+import {
+  setupFonts,
+  generateIntermediateStructuresForSinglePage,
+  areAllPageSchemasValid,
+  generateStylesForSinglePage,
+  generateMidiForSinglePage,
+  generateSvgForSinglePage,
+} from '#unilang/api.js'
 
 import opentype from '#unilang/drawer/lib/opentype/opentype.js'
 
