@@ -26,6 +26,14 @@ const audioTests = (
 
 await runAudioTest()
 
+function green(str) {
+  return `\x1b[32m${str}\x1b[0m`
+}
+
+function red(str) {
+  return `\x1b[31m${str}\x1b[0m`
+}
+
 async function runAudioTest() {
   const listOfUnilangInputFiles = await fs.readdir(`audio-tests/unilang`)
   const listOfFailedTests = []
@@ -104,30 +112,30 @@ async function runAudioTest() {
       assert.strictEqual(
         allSvgPages,
         expectedSvgAsString,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'html highlights'
       assert.strictEqual(
         htmlHighlightsForAllPages,
         expectedStringifiedHtmlHighlights,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'page schema'
       assert.strictEqual(
         stringifiedPageSchema,
         expectedStringifiedPageSchema,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'errors'
       assert.strictEqual(
         stringifiedErrors,
         expectedStringifiedErrors,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'midi'
       assert.strictEqual(
         Buffer.compare(
@@ -135,14 +143,14 @@ async function runAudioTest() {
           expectedMidiData
         ),
         0,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n\n`)
       listOfPassedTests.push({
         name: testName
       })
     } catch (error) {
-      process.stdout.write(`"${testName}" failed for ${testType}\n\n`)
+      process.stdout.write(`"${testName}" ${red('failed')} for ${testType}\n\n`)
       listOfFailedTests.push({
         name: testName
       })

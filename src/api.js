@@ -598,6 +598,8 @@ export function generateIntermediateStructuresForSinglePage({
     highlightsHtmlBuffer,
     errors,
     customStyles,
+    mapOfCharIndexesWithProgressionOfCommandsFromScenarios,
+    comments,
     midiSettings
   } = parsedUnilang(
     normalizeUnilangText(
@@ -617,6 +619,8 @@ export function generateIntermediateStructuresForSinglePage({
     highlightsHtmlBuffer,
     errors,
     customStyles,
+    mapOfCharIndexesWithProgressionOfCommandsFromScenarios,
+    comments,
     midiSettings
   }
 } 
@@ -1056,7 +1060,9 @@ export function generateMidiForSinglePage({
  *     htmlHighlightsForEachPage,
  *     errorsForEachPage,
  *     customStylesForEachPage,
- *     midiSettingsForEachPage
+ *     mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
+ *     commentsForEachPage,
+ *     midiSettingsForEachPage,
  *   }
  *
  * ---------------------------------------------------------------------------
@@ -1115,6 +1121,8 @@ export function generateIntermediateStructuresForMultiplePages({
   const errorsForEachPage = []
   const customStylesForEachPage = []
   const midiSettingsForEachPage = []
+  const mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage = []
+  const commentsForEachPage = []
 
   unilangMultiplePagesText.forEach((unilangTextForCurrentPage, pageIndex) => {
     const thisIsLastPage = pageIndex === unilangMultiplePagesText.length - 1
@@ -1124,6 +1132,8 @@ export function generateIntermediateStructuresForMultiplePages({
       highlightsHtmlBuffer,
       errors,
       customStyles,
+      mapOfCharIndexesWithProgressionOfCommandsFromScenarios,
+      comments,
       midiSettings
     } = generateIntermediateStructuresForSinglePage({
       unilangPageText: unilangTextForCurrentPage,
@@ -1133,16 +1143,20 @@ export function generateIntermediateStructuresForMultiplePages({
       supportedFontNames
     })
 
-    pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
-      measureParams.pageIndex = pageIndex
-      measureParams.measureIndexOnPage = measureIndex
-    })
+    if (pageSchema.measuresParams) {
+      pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
+        measureParams.pageIndex = pageIndex
+        measureParams.measureIndexOnPage = measureIndex
+      })
+    }
 
     pageSchemaForEachPage.push(pageSchema)
     htmlHighlightsForEachPage.push(highlightsHtmlBuffer)
     errorsForEachPage.push(errors)
     customStylesForEachPage.push(customStyles)
     midiSettingsForEachPage.push(midiSettings)
+    mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage.push(mapOfCharIndexesWithProgressionOfCommandsFromScenarios)
+    commentsForEachPage.push(comments)
   })
 
   return {
@@ -1150,6 +1164,8 @@ export function generateIntermediateStructuresForMultiplePages({
     htmlHighlightsForEachPage,
     errorsForEachPage,
     customStylesForEachPage,
+    mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
+    commentsForEachPage,
     midiSettingsForEachPage
   }
 }

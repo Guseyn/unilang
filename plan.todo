@@ -15,8 +15,8 @@
     - [x] Single Page
     - [x] Multi Page
 
-- [ ] Rewrite tests runners via API
-- [ ] Test coverage
+- [x] Rewrite tests runners via API
+- [x] Test coverage
 
 - [ ] Examples
   - [ ] CLI

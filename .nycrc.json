@@ -1,0 +1,21 @@
+{
+  "all": true,
+  "include": [
+    "src/**/*.js"
+  ],
+  "exclude": [
+    "node_modules/**",
+    "src/drawer/lib",
+    "src/language/lib",
+    "src/midi/lib",
+    "src/language/parser/scenarios/string/*",
+    "src/worker-for-producing-unilang-output/*",
+    "src/drawer/generateUnicodePoints.js",
+    "src/drawer/font-urls.js"
+  ],
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "temp-dir": "./.nyc_output"
+}

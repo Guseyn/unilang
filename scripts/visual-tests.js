@@ -5,27 +5,12 @@ import assert from 'assert'
 // API
 import {
   setupFonts,
-  generateIntermediateStructuresForSinglePage,
+  generateIntermediateStructuresForMultiplePages,
   areAllPageSchemasValid,
-  generateStylesForSinglePage,
-  generateMidiForSinglePage,
-  generateSvgForSinglePage,
+  generateStylesForMultiplePages,
+  generateMidiForMultiplePages,
+  generateSvgForMultiplePages,
 } from '#unilang/api.js'
-
-import opentype from '#unilang/drawer/lib/opentype/opentype.js'
-
-const NEW_LINE = '\n'
-
-function normalizeUnilangText(unilangText) {
-  if (unilangText[unilangText.length - 1] === NEW_LINE) {
-    unilangText += NEW_LINE
-  }
-  return unilangText
-}
-
-import bravuraJS from '#unilang/drawer/font/music-js/bravura.js'
-import lelandJS from '#unilang/drawer/font/music-js/leland.js'
-
 
 const visualTestsForEachFont = (
   await fs.readdir(
@@ -36,200 +21,193 @@ const visualTestsForEachFont = (
   return vt.isDirectory()
 }).map(vt => vt.name)
 
+const PAGE_DELIMITER = '====next page===='
+const EMPTY_STRING = ''
+
 for (const visualTestDirForFont of visualTestsForEachFont) {
   await runVisualTestForFont(visualTestDirForFont)
+}
+
+function green(str) {
+  return `\x1b[32m${str}\x1b[0m`
+}
+
+function red(str) {
+  return `\x1b[31m${str}\x1b[0m`
 }
 
 async function runVisualTestForFont(visualTestDirForFont) {
   const listOfUnilangInputFiles = await fs.readdir(`visual-tests/${visualTestDirForFont}/unilang`)
   const listOfFailedTests = []
   const listOfPassedTests = []
-  console.time(`Total time spent for ${visualTestDirForFont}`)
+  console.time('Total time spent for visual tests')
 
-  const supportedFonts = {
+  const supportedFontNames = {
     'chord-letters': ['gentium plus', 'gothic a1'],
     'music': ['bravura', 'leland'],
     'text': ['noto-sans', 'noto-serif']
   }
 
-  const [
-    bravura,
-    leland,
-    gentiumPlus,
-    gothicA1,
-    notoSansRegular,
-    notoSansBold,
-    notoSerifRegular,
-    notoSerifBold
-  ] = await Promise.all([
-    opentype.load('./src/drawer/font/music/Bravura.otf'),
-    opentype.load('./src/drawer/font/music/Leland.otf'),
-    opentype.load('./src/drawer/font/chord-letters/GentiumPlus-Regular.ttf'),
-    opentype.load('./src/drawer/font/chord-letters/GothicA1-Regular.ttf'),
-    opentype.load('./src/drawer/font/text/NotoSans-Regular.ttf'),
-    opentype.load('./src/drawer/font/text/NotoSans-Bold.ttf'),
-    opentype.load('./src/drawer/font/text/NotoSerif-Regular.ttf'),
-    opentype.load('./src/drawer/font/text/NotoSerif-Bold.ttf')
-  ])
-
-  const supportedFontsSources = {
+  const supportedFontSources = await setupFonts({
     'chord-letters': {
-      'gentium plus': gentiumPlus,
-      'gothic a1': gothicA1
-    },
-    'music': {
-      'bravura': bravura,
-      'leland': leland
-    },
-    'music-js': {
-      'bravura': bravuraJS,
-      'leland': lelandJS
+      'gentium plus': './src/drawer/font/chord-letters/GentiumPlus-Regular.ttf',
+      'gothic a1': './src/drawer/font/music/Leland.otf'
     },
     'text': {
-      'regular': {
-        'noto-serif': notoSerifRegular,
-        'noto-sans': notoSansRegular
+      'noto-serif': {
+        'regular': './src/drawer/font/text/NotoSerif-Regular.ttf',
+        'bold': './src/drawer/font/text/NotoSerif-Bold.ttf'
       },
-      'bold': {
-        'noto-serif': notoSerifBold,
-        'noto-sans': notoSansBold
+      'noto-sans': {
+        'regular': './src/drawer/font/text/NotoSans-Regular.ttf',
+        'bold': './src/drawer/font/text/NotoSans-Bold.ttf'
+      }
+    },
+    'music': {
+      'bravura': {
+        'font': './src/drawer/font/music/Bravura.otf',
+        'js': '#unilang/drawer/font/music-js/bravura.js'
+      },
+      'leland': {
+        'font': './src/drawer/font/music/Leland.otf',
+        'js': '#unilang/drawer/font/music-js/leland.js'
       }
     }
-  }
+  })
 
   for (const unilangInputFile of listOfUnilangInputFiles) {
     const testName = path.basename(unilangInputFile).split('.')[0]
     const unilangInputFileFullPath = `visual-tests/${visualTestDirForFont}/unilang/${unilangInputFile}`
-    const unilangText = normalizeUnilangText(
-      (await fs.readFile(unilangInputFileFullPath, 'utf-8'))
-    )
-    const {
-      pageSchema,
-      highlightsHtmlBuffer,
-      errors,
-      customStyles,
-      comments,
-      mapOfCharIndexesWithProgressionOfCommandsFromScenarios
-    } = parsedUnilang(
-      unilangText,
-      [],
-      true,
-      false,
-      supportedFonts
-    )
-    try {
-      assert.ok(
-        validatedPageSchema(pageSchema),
-        `Failed for ${unilangInputFileFullPath} test`
-      )
-    } catch (error) {
-      process.stdout.write('\n')
-      throw new Error(`page schema for "${unilangInputFileFullPath}" is not valid`)
-    }
-    const constructedSvgAsString = svgAsString(
-      svg(
-        page(pageSchema)(
-          generatedStyles(
-            {
-              ...customStyles,
-              fontSources: supportedFontsSources
-            }
-          ), 0, 0
-        )
-      )
-    )
-    const stringifiedPageSchema = JSON.stringify(pageSchema)
-    const stringifiedHtmlHighlights = highlightsHtmlBuffer.join('')
-    const stringifiedErrors = JSON.stringify(errors)
-    const stringifiedCustomStyles = JSON.stringify(customStyles)
-    const stringifiedComments = JSON.stringify(comments)
-    const stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios = JSON.stringify(mapOfCharIndexesWithProgressionOfCommandsFromScenarios)
 
-    const [
-      expectedSvgAsString,
-      expectedStringifiedPageSchema,
-      expectedStringifiedHtmlHighlights,
-      expectedStringifiedErrors,
-      expectedStringifiedCustomStyles,
-      expectedStringifiedComments,
-      expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios
-    ] = await Promise.all(
-      [
-        fs.readFile(`visual-tests/${visualTestDirForFont}/svg/expected/${testName}.svg`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/page-schema/expected/${testName}.json`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/html-highlights/expected/${testName}.html`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/errors/expected/${testName}.json`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/custom-styles/expected/${testName}.json`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/comments/expected/${testName}.json`, 'utf-8'),
-        fs.readFile(`visual-tests/${visualTestDirForFont}/char-progressions/expected/${testName}.json`, 'utf-8')
-      ]
-    )
+    const unilangText = (await fs.readFile(unilangInputFileFullPath, 'utf-8'))
+
+    const unilangMultiplePagesText = unilangText.split(PAGE_DELIMITER)
+    const {
+      pageSchemaForEachPage,
+      htmlHighlightsForEachPage,
+      errorsForEachPage,
+      customStylesForEachPage,
+      mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
+      commentsForEachPage
+    } = generateIntermediateStructuresForMultiplePages({
+      unilangMultiplePagesText,
+      supportedFontNames
+    })
+
+    if (!areAllPageSchemasValid(pageSchemaForEachPage)) {
+      throw new Error('Some of the page schemas are not valid')
+    }
+    const pageStylesForEachPage = generateStylesForMultiplePages({
+      customStylesForEachPage,
+      supportedFontSources
+    })
+    const allSvgPages = generateSvgForMultiplePages({
+      pageSchemaForEachPage,
+      pageStylesForEachPage
+    })
+    const htmlHighlightsForAllPages = htmlHighlightsForEachPage.map(
+      htmlHighlightsForSinglePage => htmlHighlightsForSinglePage.join(EMPTY_STRING)
+    ).join(PAGE_DELIMITER)
+
+    const stringifiedPageSchema = JSON.stringify(pageSchemaForEachPage)
+    const stringifiedErrors = JSON.stringify(errorsForEachPage)
+    const stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios = JSON.stringify(mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage.flat())
+    const stringifiedComments = JSON.stringify(commentsForEachPage)
+    const stringifiedCustomStyles = JSON.stringify(customStylesForEachPage)
+
+    let expectedSvgAsString
+    let expectedStringifiedPageSchema
+    let expectedStringifiedHtmlHighlights
+    let expectedStringifiedErrors
+    let expectedStringifiedCustomStyles
+    let expectedStringifiedComments
+    let expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios
 
     let testType
     try {
+      [
+        expectedSvgAsString,
+        expectedStringifiedPageSchema,
+        expectedStringifiedHtmlHighlights,
+        expectedStringifiedErrors,
+        expectedStringifiedCustomStyles,
+        expectedStringifiedComments,
+        expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios
+      ] = await Promise.all(
+        [
+          fs.readFile(`visual-tests/${visualTestDirForFont}/svg/expected/${testName}.svg`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/page-schema/expected/${testName}.json`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/html-highlights/expected/${testName}.html`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/errors/expected/${testName}.json`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/custom-styles/expected/${testName}.json`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/comments/expected/${testName}.json`, 'utf-8'),
+          fs.readFile(`visual-tests/${visualTestDirForFont}/char-progressions/expected/${testName}.json`, 'utf-8')
+        ]
+      )
+
       testType = 'svg'
       assert.strictEqual(
-        constructedSvgAsString,
+        allSvgPages,
         expectedSvgAsString,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'html highlights'
       assert.strictEqual(
-        stringifiedHtmlHighlights,
+        htmlHighlightsForAllPages,
         expectedStringifiedHtmlHighlights,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'page schema'
       assert.strictEqual(
         stringifiedPageSchema,
         expectedStringifiedPageSchema,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'errors'
       assert.strictEqual(
         stringifiedErrors,
         expectedStringifiedErrors,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
-      testType = 'custom styles'
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
+      testType = 'char-progressions'
+      assert.strictEqual(
+        stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
+        expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
+        `${red('Failed')} for "${testName}" test`
+      )
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
+      testType = 'custom-styles'
       assert.strictEqual(
         stringifiedCustomStyles,
         expectedStringifiedCustomStyles,
-        `Failed for "${testName}" test`
+        `${red('Failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n`)
       testType = 'comments'
       assert.strictEqual(
         stringifiedComments,
         expectedStringifiedComments,
-        `Failed for "${testName}" test`
+        `${red('failed')} for "${testName}" test`
       )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n`)
-      testType = 'map of char indexes with progression of commands from scenarios'
-      assert.strictEqual(
-        stringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
-        expectedStringifiedMapOfCharIndexesWithProgressionOfCommandsFromScenarios,
-        `Failed for "${testName}" test`
-      )
-      process.stdout.write(`"${testName}" passed for ${testType} in ${visualTestDirForFont}\n\n`)
+      process.stdout.write(`"${testName}" ${green('passed')} for ${testType}\n\n`)
       listOfPassedTests.push({
         name: testName
       })
     } catch (error) {
-      process.stdout.write(`"${testName}" failed for ${testType} in ${visualTestDirForFont}\n\n`)
+      process.stdout.write(`"${testName}" ${red('failed')} for ${testType}\n\n`)
       listOfFailedTests.push({
         name: testName
       })
     } finally {
       await Promise.race(
         [
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, constructedSvgAsString),
+          fs.writeFile(`visual-tests/${visualTestDirForFont}/svg/actual/${testName}.svg`, allSvgPages),
           fs.writeFile(`visual-tests/${visualTestDirForFont}/page-schema/actual/${testName}.json`, stringifiedPageSchema),
-          fs.writeFile(`visual-tests/${visualTestDirForFont}/html-highlights/actual/${testName}.html`, stringifiedHtmlHighlights),
+          fs.writeFile(`visual-tests/${visualTestDirForFont}/html-highlights/actual/${testName}.html`, htmlHighlightsForAllPages),
           fs.writeFile(`visual-tests/${visualTestDirForFont}/errors/actual/${testName}.json`, stringifiedErrors),
           fs.writeFile(`visual-tests/${visualTestDirForFont}/custom-styles/actual/${testName}.json`, stringifiedCustomStyles),
           fs.writeFile(`visual-tests/${visualTestDirForFont}/comments/actual/${testName}.json`, stringifiedComments),
@@ -237,21 +215,5 @@ async function runVisualTestForFont(visualTestDirForFont) {
         ]
       )
     }
-  }
-  console.timeEnd(`Total time spent for ${visualTestDirForFont}`)
-  await fs.writeFile(
-    `visual-tests/${visualTestDirForFont}/list-of-failed-tests.json`,
-    JSON.stringify(listOfFailedTests)
-  )
-  await fs.writeFile(
-    `visual-tests/${visualTestDirForFont}/list-of-passed-tests.json`,
-    JSON.stringify(listOfPassedTests)
-  )
-  if (listOfFailedTests.length > 0) {
-    throw new Error(
-      `There are (${listOfFailedTests.length}) failed visual tests for the ${visualTestDirForFont} font. Please check http://127.0.0.1:8000/visual-tests/${visualTestDirForFont}/all-visual-tests.html\n\n`
-    )
-  } else {
-    process.stdout.write(`All visual tests passed for the ${visualTestDirForFont} font. Please check http://127.0.0.1:8000/visual-tests/${visualTestDirForFont}/all-visual-tests.html\n\n`)
-  }
+  }  
 }

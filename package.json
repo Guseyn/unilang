@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "test:visual:all": "node scripts/visual-tests.js",
-    "test:audio:all": "node scripts/audio-tests.js"
+    "test:audio:all": "node scripts/audio-tests.js",
+    "test:all": "npm run test:visual:all && npm run test:audio:all",
+    "coverage": "c8 npm run test:all",
+    "coverage:report": "c8 report --reporter=html",
+    "coverage:check": "c8 check-coverage --statements 86 --branches 74 --functions 70 --lines 86"
   },
   "repository": {
     "type": "git",
@@ -23,5 +27,8 @@
     "#unilang/language/*": "./src/language/*",
     "#unilang/midi/*": "./src/midi/*",
     "#unilang/api.js": "./src/api.js"
+  },
+  "devDependencies": {
+    "c8": "^11.0.0"
   }
 }
