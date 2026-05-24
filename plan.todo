@@ -20,8 +20,15 @@
 
 - [ ] Examples
   - [ ] CLI
-    - [ ] Interactive
-    - [ ] Non Interactive
+    - [ ] one page
+      - [ ] (display errors)
+      - [ ] svg output flag
+      - [ ] midi output flag
+      - [ ] page schema flag
+      - [ ] html buffer flag
+      - [ ] fonts flag
+    - [ ] multiple pages
+    - [ ] folder
   - [ ] Node.js
     - [ ] Sync version
     - [ ] Worker

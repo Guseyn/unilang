@@ -51,7 +51,7 @@ async function runVisualTestForFont(visualTestDirForFont) {
   const supportedFontSources = await setupFonts({
     'chord-letters': {
       'gentium plus': './src/drawer/font/chord-letters/GentiumPlus-Regular.ttf',
-      'gothic a1': './src/drawer/font/music/Leland.otf'
+      'gothic a1': './src/drawer/font/chord-letters/GothicA1-Regular.ttf'
     },
     'text': {
       'noto-serif': {

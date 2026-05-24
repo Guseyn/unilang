@@ -20,9 +20,9 @@ const audioTests = (
     'audio-tests',
     { withFileTypes: true }
   )
-).filter(vt => {
-  return vt.isDirectory()
-}).map(vt => vt.name)
+).filter(at => {
+  return at.isDirectory()
+}).map(at => at.name)
 
 await runAudioTest()
 
