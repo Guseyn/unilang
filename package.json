@@ -10,7 +10,12 @@
     "test:all": "npm run test:visual:all && npm run test:audio:all",
     "coverage": "c8 npm run test:all",
     "coverage:report": "c8 report --reporter=html",
-    "coverage:check": "c8 check-coverage --statements 86 --branches 74 --functions 70 --lines 86"
+    "coverage:check": "c8 check-coverage --statements 86 --branches 74 --functions 70 --lines 86",
+
+    "ehtml:update": "yes | cp -rf ../../my-projects/EHTML/src/ examples/browser/static/js/ehtml",
+    "nodes:update": "yes | cp -rf ../../my-projects/nodes.js/nodes/ examples/browser/nodes/",
+
+    "examples:browser:run": "node examples/browser/web-app/main.js"
   },
   "repository": {
     "type": "git",
@@ -26,7 +31,12 @@
     "#unilang/drawer/*": "./src/drawer/*",
     "#unilang/language/*": "./src/language/*",
     "#unilang/midi/*": "./src/midi/*",
-    "#unilang/api.js": "./src/api.js"
+    "#unilang/api.js": "./src/api.js",
+
+    "#nodes/*": "./examples/browser/nodes/*"
+  },
+  "browser.importmap": {
+    "#ehtml/": "/js/ehtml/"
   },
   "devDependencies": {
     "c8": "^11.0.0"

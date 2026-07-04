@@ -215,5 +215,21 @@ async function runVisualTestForFont(visualTestDirForFont) {
         ]
       )
     }
-  }  
+  }
+  console.timeEnd('Total time spent for visual tests')
+  await fs.writeFile(
+    `visual-tests/${visualTestDirForFont}/list-of-failed-tests.json`,
+    JSON.stringify(listOfFailedTests)
+  )
+  await fs.writeFile(
+    `visual-tests/${visualTestDirForFont}/list-of-passed-tests.json`,
+    JSON.stringify(listOfPassedTests)
+  )
+  if (listOfFailedTests.length > 0) {
+    throw new Error(
+      `There are (${listOfFailedTests.length})  failed visual tests. Please check http://127.0.0.1:8000/visual-tests/all-visual-tests.html\n\n`
+    )
+  } else {
+    process.stdout.write(`All visual tests passed. Please check http://127.0.0.1:8000/visual-tests/all-visual-tests.html\n\n`)
+  }
 }
