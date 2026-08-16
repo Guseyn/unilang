@@ -1,6 +1,7 @@
 'use strict'
 
 import polyline from '#unilang/drawer/elements/basic/polyline.js'
+import formatNumber from '#unilang/drawer/elements/basic/formatNumber.js'
 
 const debugMode = true
 
@@ -29,30 +30,41 @@ const svgAsString = (element, boxesAsBuffers = [], isFirstCall = true) => {
     }
     buffer.push(`<${element.name}`)
     for (const propertyName in element.properties) {
-      buffer.push(` ${propertyName}="${escapeSVGPropertyValueChars(element.properties[propertyName])}"`)
+      let propertyValue = element.properties[propertyName]
+      // Format numeric properties and viewBox values
+      if (propertyName === 'viewBox' && typeof propertyValue === 'string') {
+        const viewBoxParts = propertyValue.split(' ').map(p => {
+          const num = parseFloat(p)
+          return isNaN(num) ? p : formatNumber(num)
+        })
+        propertyValue = viewBoxParts.join(' ')
+      } else if (typeof propertyValue === 'number') {
+        propertyValue = formatNumber(propertyValue)
+      }
+      buffer.push(` ${propertyName}="${escapeSVGPropertyValueChars(propertyValue)}"`)
       if (propertyName === 'ref-ids') {
         buffer.push(' pointer-events="painted"')
       }
     }
-    buffer.push(` data-left="${element.left}"`)
-    buffer.push(` data-right="${element.right}"`)
-    buffer.push(` data-top="${element.top}"`)
-    buffer.push(` data-bottom="${element.bottom}"`)
+    buffer.push(` data-left="${formatNumber(element.left)}"`)
+    buffer.push(` data-right="${formatNumber(element.right)}"`)
+    buffer.push(` data-top="${formatNumber(element.top)}"`)
+    buffer.push(` data-bottom="${formatNumber(element.bottom)}"`)
     if (element.transformations && element.transformations.length > 0) {
       buffer.push(' transform="')
       for (let transformIndex = element.transformations.length - 1; transformIndex >= 0; transformIndex--) {
         const transformation = element.transformations[transformIndex]
         switch (transformation.type) {
           case 'translate': {
-            buffer.push(`translate(${transformation.x}, ${transformation.y})`)
+            buffer.push(`translate(${formatNumber(transformation.x)}, ${formatNumber(transformation.y)})`)
             break
           }
           case 'rotate': {
-            buffer.push(`rotate(${transformation.angle}, ${transformation.cx || 0}, ${transformation.cy || 0})`)
+            buffer.push(`rotate(${formatNumber(transformation.angle)}, ${formatNumber(transformation.cx || 0)}, ${formatNumber(transformation.cy || 0)})`)
             break
           }
           case 'scale': {
-            buffer.push(`scale(${transformation.x}, ${transformation.y})`)
+            buffer.push(`scale(${formatNumber(transformation.x)}, ${formatNumber(transformation.y)})`)
             break
           }
         }

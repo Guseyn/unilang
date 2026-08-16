@@ -1,5 +1,7 @@
 'use strict'
 
+import formatNumber from '#unilang/drawer/elements/basic/formatNumber.js'
+
 export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   let minTop
   let maxRight
@@ -25,7 +27,9 @@ export default function (points, strokeOptions, fill = true, leftOffset = 0, top
     }
     isNextPointOdd = !isNextPointOdd
   }
-  const joinedPoints = points.join(' ')
+  // Format numbers in points to consistent precision
+  const formattedPoints = points.map(p => typeof p === 'number' ? formatNumber(p) : p)
+  const joinedPoints = formattedPoints.join(' ')
   if (joinedPoints.includes('NaN')) {
     throw new Error(`polyline includes NaN points: ${joinedPoints}`)
   }

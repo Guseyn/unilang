@@ -40,13 +40,18 @@ async function runAudioTest() {
   const listOfPassedTests = []
   console.time('Total time spent for audio tests')
 
-  const supportedFontNames = {
-    'chord-letters': ['gentium plus', 'gothic a1'],
-    'music': ['bravura', 'leland'],
-    'text': ['noto-sans', 'noto-serif']
-  }
-
   const supportedFontSources = await setupFonts()
+
+  const supportedFontNames = {
+    'chord-letters': Object.keys(supportedFontSources['chord-letters']),
+    'music': Object.keys(supportedFontSources['music']),
+    'text': [
+      ...new Set([
+        ...Object.keys(supportedFontSources['text']['regular']),
+        ...Object.keys(supportedFontSources['text']['bold'])
+      ])
+    ]
+  }
 
   for (const unilangInputFile of listOfUnilangInputFiles) {
     const testName = path.basename(unilangInputFile).split('.')[0]

@@ -42,12 +42,6 @@ async function runVisualTestForFont(visualTestDirForFont) {
   const listOfPassedTests = []
   console.time('Total time spent for visual tests')
 
-  const supportedFontNames = {
-    'chord-letters': ['gentium plus', 'gothic a1'],
-    'music': ['bravura', 'leland'],
-    'text': ['noto-sans', 'noto-serif']
-  }
-
   const supportedFontSources = await setupFonts({
     'chord-letters': {
       'gentium plus': './src/drawer/font/chord-letters/GentiumPlus-Regular.ttf',
@@ -74,6 +68,17 @@ async function runVisualTestForFont(visualTestDirForFont) {
       }
     }
   })
+
+  const supportedFontNames = {
+    'chord-letters': Object.keys(supportedFontSources['chord-letters']),
+    'music': Object.keys(supportedFontSources['music']),
+    'text': [
+      ...new Set([
+        ...Object.keys(supportedFontSources['text']['regular']),
+        ...Object.keys(supportedFontSources['text']['bold'])
+      ])
+    ]
+  }
 
   for (const unilangInputFile of listOfUnilangInputFiles) {
     const testName = path.basename(unilangInputFile).split('.')[0]

@@ -1,13 +1,16 @@
 'use strict'
 
 import bboxForPath from '#unilang/drawer/elements/basic/bboxForPath.js'
+import formatNumber from '#unilang/drawer/elements/basic/formatNumber.js'
 
 export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   const areAnyNaNPoints = points.some(point => isNaN(point) && typeof point !== 'string')
   if (areAnyNaNPoints) {
     throw new Error(`there are NaN points in path ${points}`)
   }
-  const path = points.join(' ')
+  // Format numbers in points to consistent precision
+  const formattedPoints = points.map(p => typeof p === 'number' ? formatNumber(p) : p)
+  const path = formattedPoints.join(' ')
   const { minTop, minLeft, maxRight, maxBottom } = bboxForPath(path)
   const top = minTop + topOffset
   const right = maxRight + leftOffset

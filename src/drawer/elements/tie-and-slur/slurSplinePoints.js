@@ -46,7 +46,7 @@ export default function (firstPoint, secondPoint, thirdPoint, fourthPoint, alpha
   }
   const secondPhantomPoint = {
     x: thirdPoint.x + epsilon * (thirdPoint.x - fourthPoint.x),
-    y: thirdPoint.y + epsilon * (thirdPoint.x - fourthPoint.x)
+    y: thirdPoint.y + epsilon * (thirdPoint.y - fourthPoint.y)
   }
 
   const curvePointsBetweenFirstAndSecondPoints = middleCurvePoints(firstPhantomPoint, firstPoint, secondPoint, thirdPoint, alpha, epsilon)

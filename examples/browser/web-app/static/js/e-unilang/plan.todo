@@ -1,0 +1,2 @@
+- [ ] Create a font loader (without await key word), rather using .then in Promise
+- [ ] Create different display elements
