@@ -139,6 +139,15 @@ export default function processAttributes(node) {
       continue
     }
 
+    if (name === 'data-click-on-enter') {
+      node.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault()
+          node.click()
+        }
+      })
+    }
+
     // not a template expression?
     if (!hasParams(rawValue)) {
       continue

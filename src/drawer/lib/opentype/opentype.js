@@ -359,8 +359,7 @@ function parseBuffer(buffer) {
  */
 async function load(url) {
   // eslint-disable-next-line no-undef
-  const isWebWorker = typeof self !== 'undefined' && self instanceof WorkerGlobalScope
-  const isNode = typeof window === 'undefined' && !isWebWorker
+  const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null
   const loadFn = isNode ? loadFromFile : loadFromUrl
   try {
     const arrayBuffer = await loadFn(url)
@@ -379,8 +378,7 @@ async function load(url) {
  */
 async function loadSyncIfOnlyItIsNodeJSEnv(path) {
   // eslint-disable-next-line no-undef
-  const isWebWorker = typeof self !== 'undefined' && self instanceof WorkerGlobalScope
-  const isNode = typeof window === 'undefined' && !isWebWorker
+  const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null
   if (isNode) {
     const fs = await import('fs')
     const buffer = fs.readFileSync(path)
@@ -390,9 +388,8 @@ async function loadSyncIfOnlyItIsNodeJSEnv(path) {
 }
 
 function accessPreloadedSourceInBrowser(path, cacheNameWithPreloadedSourcesInBrowser) {
-  const isBrowser = typeof window !== 'undefined'
-  // eslint-disable-next-line no-undef
-  const isWebWorker = typeof self !== 'undefined' && self instanceof WorkerGlobalScope
+  const isBrowser = typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  const isWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
   const pathParts = path.split('/')
   const fontKey = pathParts[pathParts.length - 1]
   if (isBrowser) {

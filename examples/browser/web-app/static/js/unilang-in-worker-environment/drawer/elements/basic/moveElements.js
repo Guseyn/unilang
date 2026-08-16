@@ -1,0 +1,15 @@
+'use strict'
+
+import moveElement from '/js/unilang-in-worker-environment/drawer/elements/basic/moveElement.js'
+
+export default function (elements, dx = 0, dy = 0) {
+  if (dx !== 0 || dy !== 0) {
+    if (elements) {
+      elements.forEach(element => {
+        if (element) {
+          moveElement(element, dx, dy)
+        }
+      })
+    }
+  }
+}

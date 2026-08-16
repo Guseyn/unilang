@@ -1283,6 +1283,6 @@ export default function (pageSchema, midiSettingsForEachPage = []) {
   }
 }
 
-if (itIsBrowserEnv && typeof window !== 'undefined') {
-  window.midiForAllPages = module.exports
-}
+// if (itIsBrowserEnv && typeof window !== 'undefined') {
+//   window.midiForAllPages = module.exports
+// }

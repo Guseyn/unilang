@@ -5,6 +5,11 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "postinstall": "node scripts/setup-symlinks.js",
+    "setup:symlinks": "node scripts/setup-symlinks.js",
+    "create:unilang:worker": "node scripts/create-unilang-in-worker-environment.js",
+    "watch:src": "node scripts/watch-unilang-src.js",
+
     "test:visual:all": "node scripts/visual-tests.js",
     "test:audio:all": "node scripts/audio-tests.js",
     "test:all": "npm run test:visual:all && npm run test:audio:all",
@@ -12,10 +17,11 @@
     "coverage:report": "c8 report --reporter=html",
     "coverage:check": "c8 check-coverage --statements 86 --branches 74 --functions 70 --lines 86",
 
-    "ehtml:update": "yes | cp -rf ../../my-projects/EHTML/src/ examples/browser/static/js/ehtml",
-    "nodes:update": "yes | cp -rf ../../my-projects/nodes.js/nodes/ examples/browser/nodes/",
+    "ehtml:update": "rsync -a --delete ../../my-projects/EHTML/src/ examples/browser/web-app/static/js/ehtml",
+    "nodes:update": "rsync -a --delete ../../my-projects/nodes.js/nodes/ examples/browser/nodes/",
+    "eui:update": "rsync -a --delete ../../my-projects/e-ui/static/js/e-ui/ examples/browser/web-app/static/js/e-ui/ && cp -rf ../../my-projects/e-ui/static/css/e-ui.css examples/browser/web-app/static/css/e-ui.css",
 
-    "examples:browser:run": "node examples/browser/web-app/main.js"
+    "examples:browser": "npm run setup:symlinks && npm run create:unilang:worker && node examples/browser/web-app/main.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +42,13 @@
     "#nodes/*": "./examples/browser/nodes/*"
   },
   "browser.importmap": {
-    "#ehtml/": "/js/ehtml/"
+    "#ehtml/": "/js/ehtml/",
+    "#e-ui/": "/js/e-ui",
+    "#unilang": "/js/unilang",
+    "#e-unilang": "/js/e-unilang"
+  },
+  "worker.importmap": {
+    "#unilang": "/js/unilang-in-worker-environment"
   },
   "devDependencies": {
     "c8": "^11.0.0"

@@ -8,7 +8,6 @@ import page from '#unilang/drawer/elements/page/page.js'
 import midi from '#unilang/midi/midi.js'
 
 const NEW_LINE = '\n'
-const EMPTY_STRING = ''
 
 /**
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
