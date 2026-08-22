@@ -77,7 +77,12 @@ class EUnilangFontLoader extends HTMLTemplateElement {
 
     worker.addEventListener('message', (event) => {
       const id = event.data.id
-      if (id !== this.id) {
+      const status = event.data.status
+      const error = event.data.error
+      if (status !== 'ok') {
+        console.error(error)
+      }
+      if (status === 'ok' && id !== this.id) {
         return
       }
       unwrappedChildrenOfParent(this)

@@ -48,7 +48,7 @@
     "#e-unilang": "/js/e-unilang"
   },
   "worker.importmap": {
-    "#unilang": "/js/unilang-worker"
+    "#unilang": "/js/e-unilang/unilang-worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"

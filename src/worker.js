@@ -24,7 +24,7 @@ const eventHandlers = {
     }
 
     try {
-      const supportedFontSources = await setupFonts(fontConfig)
+      const supportedFontSources = await setupFonts(fontConfig)      
       if (self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]) {
         self.postMessage({
           id,
@@ -32,8 +32,7 @@ const eventHandlers = {
         })
       }
       self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference] = supportedFontSources
-      console.log(self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference])
-      self.postMessage({ 'status': 'ok' })
+      self.postMessage({ id, 'status': 'ok' })
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : String(error)
       self.postMessage({

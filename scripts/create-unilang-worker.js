@@ -22,7 +22,7 @@ if (!workerImportMap) {
 const srcDir = path.join(projectRoot, 'src')
 const outDir = path.join(
   projectRoot,
-  'examples/browser/web-app/static/js/unilang-worker'
+  'examples/browser/web-app/static/js/e-unilang/unilang-worker'
 )
 
 // Create output directory

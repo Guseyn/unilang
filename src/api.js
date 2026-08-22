@@ -347,11 +347,14 @@ Every path must be a valid URL, not a local filesystem path.
 
   /*
   --------------------------------------------------------------------------------------------------
-  LOAD ALL FONT FILES WITH OPENTYPE.JS
+  LOAD ALL FONT FILES WITH OPENTYPE.JS +
+  LOAD MUSIC JS FONT SCHEMA MODULES
   --------------------------------------------------------------------------------------------------
   opentype.load(pathOrUrl) works in both:
     - Node.js (filesystem)
     - Browser (URLs)
+  jsMusicFonts modules contain the glyph definition tables used by Unilang's
+  engraving engine. They must align 1:1 with musicFontPaths.
 
   We load fonts exactly in the order defined above.
   --------------------------------------------------------------------------------------------------
@@ -362,21 +365,14 @@ Every path must be a valid URL, not a local filesystem path.
       ...chordLetterFontPaths,
       ...textRegularFontPaths,
       ...textBoldFontPaths,
-      ...musicFontPaths
-    ].map(p => opentype.load(p))
-  )
-
-  /*
-  --------------------------------------------------------------------------------------------------
-  LOAD MUSIC JS FONT SCHEMA MODULES
-  --------------------------------------------------------------------------------------------------
-  These modules contain the glyph definition tables used by Unilang's
-  engraving engine. They must align 1:1 with musicFontPaths.
-  --------------------------------------------------------------------------------------------------
-  */
-
-  const jsMusicFontSources = await Promise.all(
-    jsMusicFonts.map(f => import(f))
+      ...musicFontPaths,
+      ...jsMusicFonts
+    ].map(f => {
+      if (jsMusicFonts.indexOf(f) !== -1) {
+        return import(f)
+      }
+      return opentype.load(f)
+    })
   )
 
   /*
@@ -430,14 +426,14 @@ Every path must be a valid URL, not a local filesystem path.
       fontSources[fontSourcesAssignCount++]
   }
 
-  // Assign music fonts + JS schemas
-  let jsIndex = 0
   for (let name of musicFontNames) {
     supportedFontSources['music'][name] =
       fontSources[fontSourcesAssignCount++]
+  }
 
+  for (let name of musicFontNames) {
     supportedFontSources['music-js'][name] =
-      jsMusicFontSources[jsIndex++].default
+      fontSources[fontSourcesAssignCount++].default
   }
 
   return supportedFontSources
