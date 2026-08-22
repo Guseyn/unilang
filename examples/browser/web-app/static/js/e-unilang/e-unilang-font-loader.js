@@ -2,9 +2,12 @@ import evaluateActionsOnProgress from '#ehtml/evaluateActionsOnProgress.js'
 import unwrappedChildrenOfParent from '#ehtml/unwrappedChildrenOfParent.js'
 import scrollToHash from '#ehtml/actions/scrollToHash.js'
 
+import worker from '/js/unilang-worker/worker-connector.js'
+
 class EUnilangFontLoader extends HTMLTemplateElement {
   constructor() {
     super()
+    this.uuid = crypto.randomUUID()
     this.ehtmlActivated = false
   }
 
@@ -37,25 +40,27 @@ class EUnilangFontLoader extends HTMLTemplateElement {
       )
     }
 
-    const fontConfigSrc = this.getAttribute('data-font-config-src')
-    let fontConfig
-    if (this.hasAttribute('data-font-config')) {
-      if (fontConfigSrc) {
-        throw new Error('e-unilang-font-loader cannot have both "data-font-config-src" and "data-font-config" attributes to avoid confusion.')
-      }
-      fontConfig = JSON.parse(
-        this.getAttribute('data-font-config')
-      )
-    } else if (!fontConfigSrc) {
+    if (this.hasAttribute('data-font-config') && this.hasAttribute('data-font-config-src')) {
+      throw new Error('e-unilang-font-loader cannot have both "data-font-config-src" and "data-font-config" attributes to avoid confusion.')
+    }
+
+    if (!this.hasAttribute('data-font-config') && !this.hasAttribute('data-font-config-src')) {
       throw new Error('e-unilang-font-loader must have attribute "data-font-config-src" or "data-font-config"')
     }
 
-    if (!fontConfig) {
+    const fontConfigSrc = this.getAttribute('data-font-config-src')
+    let fontConfig
+
+    if (fontConfigSrc) {
       const fontConfigResponse = await fetch(fontConfigSrc)
       if (!fontConfigResponse.ok) {
         throw new Error(`Font config could not be loaded: ${fontConfigResponse.status}`);
       }
       fontConfig = await fontConfigResponse.json()
+    } else {
+      fontConfig = JSON.parse(
+        this.getAttribute('data-font-config')
+      )
     }
 
     const fontSourcesReference = this.getAttribute('data-font-sources-reference')
@@ -63,18 +68,18 @@ class EUnilangFontLoader extends HTMLTemplateElement {
       throw new Error(`e-unilang-font-loader must have "data-font-sources-reference" attribute, so that other unilang elements can use it`);
     }
 
-    const workerForLoadingAndSettingFonts = new Worker('/js/unilang-in-worker-environment/workerForLoadingAndSettingFonts.js', { type: 'module' })
+    worker.postMessage({
+      id: this.id,
+      name: 'fonts.setup',
+      fontConfig,
+      fontSourcesReference
+    })
 
-    workerForLoadingAndSettingFonts.postMessage({ fontConfig })
-
-    workerForLoadingAndSettingFonts.addEventListener('message', (event) => {
-      if (event.data.error) {
-        throw new Error(`Font loading failed: ${event.data.error}`)
+    worker.addEventListener('message', (event) => {
+      const id = event.data.id
+      if (id !== this.id) {
+        return
       }
-
-      const supportedFontSources = event.data.supportedFontSources
-      window['__UNILANG_STORAGE__'][fontSourcesReference] = supportedFontSources
-
       unwrappedChildrenOfParent(this)
 
       if (this.hasAttribute('data-actions-on-progress-end')) {
@@ -87,6 +92,12 @@ class EUnilangFontLoader extends HTMLTemplateElement {
 
       scrollToHash()
     }, { once: true })
+
+    worker.addEventListener('error', (event) => {
+      if (event.data.error) {
+        throw new Error(`Font loading failed: ${event.data.error}`)
+      }
+    })
   }
 }
 

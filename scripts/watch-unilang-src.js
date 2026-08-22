@@ -26,7 +26,7 @@ function runBuild() {
   console.log(`[watch-unilang-src] ${timestamp} - Rebuilding worker environment...`)
 
   const child = spawn('node', [
-    path.join(__dirname, 'create-unilang-in-worker-environment.js')
+    path.join(__dirname, 'create-unilang-worker.js')
   ], {
     stdio: 'inherit',
     cwd: projectRoot

@@ -7,7 +7,7 @@
   "scripts": {
     "postinstall": "node scripts/setup-symlinks.js",
     "setup:symlinks": "node scripts/setup-symlinks.js",
-    "create:unilang:worker": "node scripts/create-unilang-in-worker-environment.js",
+    "create:unilang:worker": "node scripts/create-unilang-worker.js",
     "watch:src": "node scripts/watch-unilang-src.js",
 
     "test:visual:all": "node scripts/visual-tests.js",
@@ -48,7 +48,7 @@
     "#e-unilang": "/js/e-unilang"
   },
   "worker.importmap": {
-    "#unilang": "/js/unilang-in-worker-environment"
+    "#unilang": "/js/unilang-worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"
