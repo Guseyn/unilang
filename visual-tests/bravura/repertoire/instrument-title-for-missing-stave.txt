@@ -1,0 +1,2 @@
+instrument "Piano" between first stave and second stave
+stave

@@ -1,0 +1,6 @@
+measure
+coda 1 up
+treble clef
+a b d
+
+comment: "Here we move coda up on one interval between stave lines"

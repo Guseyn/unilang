@@ -1,0 +1,3 @@
+a with lyrics "me,"
+a with lyrics "they,"
+a with lyrics "you"

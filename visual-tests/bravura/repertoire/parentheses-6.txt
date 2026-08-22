@@ -1,0 +1,2 @@
+chord
+c, e with flat key with parentheses, g

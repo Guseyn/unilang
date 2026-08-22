@@ -1,0 +1,4 @@
+music font is leland
+
+page border width is 1.1
+page border color is #454545

@@ -1,0 +1,8 @@
+measure
+instrument title is "guitar"
+c d e f
+
+====next page====
+
+instrument title is "piano"
+c d e f

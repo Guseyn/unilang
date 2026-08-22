@@ -1,0 +1,14 @@
+music font is leland
+
+voice
+a
+voice
+a
+voice
+a with stem up
+voice
+a
+
+side note: "
+  Further in the documentation, we will discuss more stem directions.
+"

@@ -1,0 +1,9 @@
+a sharp
+a flat
+a natural
+a double flat
+a double sharp
+a demisharp
+a demiflat
+a sesquisharp
+a sesquiflat

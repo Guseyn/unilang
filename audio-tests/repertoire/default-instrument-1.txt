@@ -1,0 +1,3 @@
+default instrument is guitar harmonics
+
+c d e f g a

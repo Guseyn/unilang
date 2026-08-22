@@ -1,0 +1,7 @@
+music font is leland
+
+interval between stave lines is 12
+interval between staves is 7
+
+stave
+stave

@@ -1,0 +1,10 @@
+stave
+a with pedal under second stave
+b
+c with pedal "P"
+d
+stave
+rest
+rest
+rest
+rest

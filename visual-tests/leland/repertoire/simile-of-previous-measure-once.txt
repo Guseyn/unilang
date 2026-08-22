@@ -1,0 +1,7 @@
+music font is leland
+
+measure
+c d e
+
+measure with simile of previous measure
+measure

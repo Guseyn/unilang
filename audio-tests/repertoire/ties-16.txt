@@ -1,0 +1,6 @@
+a is tied after
+measure
+a
+
+new line
+a

@@ -1,0 +1,8 @@
+instrument is "Violin"
+
+a
+b
+c5
+a with down bow
+b with down bow
+c5 with down bow

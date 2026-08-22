@@ -1,0 +1,19 @@
+instrument is "Sitar"
+
+a
+a sharp
+a with double sharp key
+b
+measure
+a
+a flat
+a with double flat key
+g
+measure
+a
+a with demisharp key
+a with sesquisharp key
+measure
+a
+a with demiflat key
+a with sesquiflat key

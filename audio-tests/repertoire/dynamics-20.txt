@@ -1,0 +1,9 @@
+stretch units by 5 times
+
+a with dynamic "f"
+a with dynamic "ff"
+a with dynamic "fff"
+a with dynamic "ffff"
+a with dynamic "ffff"
+a with dynamic "fffff"
+a with dynamic "ffffff"

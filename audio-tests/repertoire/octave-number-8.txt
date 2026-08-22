@@ -1,0 +1,7 @@
+stretch units by 2 times
+c
+c octave up
+c two octaves up
+c
+c octave down
+c two octaves down

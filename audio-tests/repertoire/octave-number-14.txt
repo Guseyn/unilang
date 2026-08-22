@@ -1,0 +1,8 @@
+measure
+a a a a
+
+octave up from note 1
+
+new line
+measure
+a a a a

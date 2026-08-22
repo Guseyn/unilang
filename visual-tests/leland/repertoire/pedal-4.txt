@@ -1,0 +1,17 @@
+music font is leland
+
+new line
+measure
+stave
+a with pedal
+b
+a
+c with release
+stave
+a
+b
+a
+c
+measure
+stave
+stave

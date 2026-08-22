@@ -1,0 +1,5 @@
+measure
+time signature is c for each line
+
+new line
+new line

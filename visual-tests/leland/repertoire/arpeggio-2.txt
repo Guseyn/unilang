@@ -1,0 +1,7 @@
+music font is leland
+
+chord is arpeggiated with arrow up
+c e g b
+
+chord is arpeggiated with arrow down
+c e g b

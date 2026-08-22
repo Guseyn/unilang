@@ -1,0 +1,4 @@
+measure
+repetition note "Start" at the start of the measure
+measure
+repetition note "End" at the end of the measure
