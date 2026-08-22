@@ -2,7 +2,7 @@ import evaluateActionsOnProgress from '#ehtml/evaluateActionsOnProgress.js'
 import unwrappedChildrenOfParent from '#ehtml/unwrappedChildrenOfParent.js'
 import scrollToHash from '#ehtml/actions/scrollToHash.js'
 
-import worker from '/js/unilang-worker/worker-connector.js'
+import worker from '#e-unilang/worker.js'
 
 class EUnilangFontLoader extends HTMLTemplateElement {
   constructor() {
