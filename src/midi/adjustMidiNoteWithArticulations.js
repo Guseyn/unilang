@@ -73,11 +73,11 @@ const articulationAdjustments = {
   }
 }
 
-export default function (unilangNote, midiNote, trackForNote) {
-  const isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit = unilangNote.noteIndex === 0
-  if (unilangNote.articulationParams && isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit) {
-    for (let articulationIndex = 0; articulationIndex < unilangNote.articulationParams.length; articulationIndex++) {
-      const adjustment = articulationAdjustments[unilangNote.articulationParams[articulationIndex].name]
+export default function (repertoireNote, midiNote, trackForNote) {
+  const isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit = repertoireNote.noteIndex === 0
+  if (repertoireNote.articulationParams && isThisFirstNoteInUnitSinceWeNeedToApplyAnyArticulationOnclyOncePerUnit) {
+    for (let articulationIndex = 0; articulationIndex < repertoireNote.articulationParams.length; articulationIndex++) {
+      const adjustment = articulationAdjustments[repertoireNote.articulationParams[articulationIndex].name]
       if (adjustment) {
         adjustment(midiNote, trackForNote)
       }

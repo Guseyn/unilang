@@ -1,8 +1,8 @@
 'use strict'
 
-import path from '#unilang/drawer/elements/basic/path.js'
-import ellipse from '#unilang/drawer/elements/basic/ellipse.js'
-import group from '#unilang/drawer/elements/basic/group.js'
+import path from '#repertoire/drawer/elements/basic/path.js'
+import ellipse from '#repertoire/drawer/elements/basic/ellipse.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
 
 export default function (restPositionNumber) {
   return (styles, leftOffset, topOffset) => {

@@ -1,10 +1,10 @@
 'use strict'
 
-import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from '#unilang/drawer/elements/measure/minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
-import text from '#unilang/drawer/elements/basic/text.js'
-import line from '#unilang/drawer/elements/basic/line.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex from '#repertoire/drawer/elements/measure/minTopAndMaxBottomOfCrossVoiceUnitsOnStaveWithSpecifiedIndex.js'
+import text from '#repertoire/drawer/elements/basic/text.js'
+import line from '#repertoire/drawer/elements/basic/line.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 const lyricsUnderscoreLine = (width, xStartPosition, yPosition, strokeOptions) => {
   return line(xStartPosition, yPosition, xStartPosition + width, yPosition, strokeOptions, 0, 0, 'lyricUnderscore')

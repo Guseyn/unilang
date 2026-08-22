@@ -1,11 +1,11 @@
 'use strict'
 
-import isDirection from '#unilang/language/parser/scenarios/token/isDirection.js'
-import direction from '#unilang/language/parser/scenarios/token/direction.js'
-import isAboveBelowOverUnder from '#unilang/language/parser/scenarios/token/isAboveBelowOverUnder.js'
-import directionByAboveBelowOverUnder from '#unilang/language/parser/scenarios/token/directionByAboveBelowOverUnder.js'
-import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
-import applicationOfMeasureNumbers from '#unilang/language/parser/scenarios/static-objects/applicationOfMeasureNumbers.js'
+import isDirection from '#repertoire/language/parser/scenarios/token/isDirection.js'
+import direction from '#repertoire/language/parser/scenarios/token/direction.js'
+import isAboveBelowOverUnder from '#repertoire/language/parser/scenarios/token/isAboveBelowOverUnder.js'
+import directionByAboveBelowOverUnder from '#repertoire/language/parser/scenarios/token/directionByAboveBelowOverUnder.js'
+import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
+import applicationOfMeasureNumbers from '#repertoire/language/parser/scenarios/static-objects/applicationOfMeasureNumbers.js'
 
 export default function (scenarios) {
   scenarios['measure numbers'] = {

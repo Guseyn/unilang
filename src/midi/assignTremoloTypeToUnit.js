@@ -1,6 +1,6 @@
 'use strict'
 
-import untieUnitWithNotes from '#unilang/midi/untieUnitWithNotes.js'
+import untieUnitWithNotes from '#repertoire/midi/untieUnitWithNotes.js'
 
 export default function (unitParams, measuresParams, measureParams, measureIndex, staveIndex, voiceIndex, unitIndex) {
   if (unitParams.tremoloParams) {

@@ -1,14 +1,14 @@
 {
-  "name": "unilang",
+  "name": "repertoire",
   "version": "1.0.0",
-  "description": "Unilang",
+  "description": "Repertoire",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "postinstall": "node scripts/setup-symlinks.js",
     "setup:symlinks": "node scripts/setup-symlinks.js",
-    "create:unilang:worker": "node scripts/create-unilang-worker.js",
-    "watch:src": "node scripts/watch-unilang-src.js",
+    "create:repertoire:worker": "node scripts/create-repertoire-worker.js",
+    "watch:src": "node scripts/watch-repertoire-src.js",
 
     "test:visual:all": "node scripts/visual-tests.js",
     "test:audio:all": "node scripts/audio-tests.js",
@@ -21,34 +21,34 @@
     "nodes:update": "rsync -a --delete ../../my-projects/nodes.js/nodes/ examples/browser/nodes/",
     "eui:update": "rsync -a --delete ../../my-projects/e-ui/static/js/e-ui/ examples/browser/web-app/static/js/e-ui/ && cp -rf ../../my-projects/e-ui/static/css/e-ui.css examples/browser/web-app/static/css/e-ui.css",
 
-    "examples:browser": "npm run setup:symlinks && npm run create:unilang:worker && node examples/browser/web-app/main.js"
+    "examples:browser": "npm run setup:symlinks && npm run create:repertoire:worker && node examples/browser/web-app/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Guseyn/unilang.git"
+    "url": "git+https://github.com/Guseyn/repertoire.git"
   },
   "author": "guseyn",
   "license": "Credited Source License (CSL) v1.0",
   "bugs": {
-    "url": "https://github.com/Guseyn/unilang/issues"
+    "url": "https://github.com/Guseyn/repertoire/issues"
   },
-  "homepage": "https://github.com/Guseyn/unilang#readme",
+  "homepage": "https://github.com/Guseyn/repertoire#readme",
   "imports": {
-    "#unilang/drawer/*": "./src/drawer/*",
-    "#unilang/language/*": "./src/language/*",
-    "#unilang/midi/*": "./src/midi/*",
-    "#unilang/api.js": "./src/api.js",
+    "#repertoire/drawer/*": "./src/drawer/*",
+    "#repertoire/language/*": "./src/language/*",
+    "#repertoire/midi/*": "./src/midi/*",
+    "#repertoire/api.js": "./src/api.js",
 
     "#nodes/*": "./examples/browser/nodes/*"
   },
   "browser.importmap": {
     "#ehtml/": "/js/ehtml/",
     "#e-ui/": "/js/e-ui",
-    "#unilang": "/js/unilang",
-    "#e-unilang": "/js/e-unilang"
+    "#repertoire": "/js/repertoire",
+    "#e-repertoire": "/js/e-repertoire"
   },
   "worker.importmap": {
-    "#unilang": "/js/e-unilang/unilang-worker"
+    "#repertoire": "/js/e-repertoire/repertoire-worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"

@@ -2,15 +2,15 @@
 
 const MIDI_CC_FACTOR = 127
 
-export default function (unilangNote, midiNote, trackForNote, slurMarksMappedWithTracks, midiNoteShouldBeAdjustedWithStartSlur, midiNoteShouldBeAdjustedWithFinishSlur) {
-  if (unilangNote.noteIndex !== 0) {
+export default function (repertoireNote, midiNote, trackForNote, slurMarksMappedWithTracks, midiNoteShouldBeAdjustedWithStartSlur, midiNoteShouldBeAdjustedWithFinishSlur) {
+  if (repertoireNote.noteIndex !== 0) {
     return
   }
-  if (!unilangNote.slurMarks) {
+  if (!repertoireNote.slurMarks) {
     return
   }
-  for (let slurMarkIndex = 0; slurMarkIndex < unilangNote.slurMarks.length; slurMarkIndex++) {
-    const slurMark = unilangNote.slurMarks[slurMarkIndex]
+  for (let slurMarkIndex = 0; slurMarkIndex < repertoireNote.slurMarks.length; slurMarkIndex++) {
+    const slurMark = repertoireNote.slurMarks[slurMarkIndex]
     if (!slurMarksMappedWithTracks[slurMark.key] && midiNoteShouldBeAdjustedWithStartSlur) {
       trackForNote.addCC({
         number: 65,

@@ -1,14 +1,14 @@
 'use strict'
 
-import octaveSignText from '#unilang/drawer/elements/octave-sign/octaveSignText.js'
-import line from '#unilang/drawer/elements/basic/line.js'
-import articulationShouldBeAboveOrUnderStemLine from '#unilang/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import octaveSignText from '#repertoire/drawer/elements/octave-sign/octaveSignText.js'
+import line from '#repertoire/drawer/elements/basic/line.js'
+import articulationShouldBeAboveOrUnderStemLine from '#repertoire/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (octaveSignParams, styles) {
   const { intervalBetweenStaveLines, octaveSignYOffset, octaveSignXCorrection, twoOctavesSignXCorrection, octaveSignHorizontalLineStrokeOptions, octaveSignVerticalLineStrokeOptions, octaveSignHorizontalLineLeftOffset, octaveSignHorizontalLineRightOffset } = styles

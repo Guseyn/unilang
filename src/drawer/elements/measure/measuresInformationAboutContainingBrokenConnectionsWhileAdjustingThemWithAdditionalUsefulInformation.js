@@ -1,10 +1,10 @@
 'use strict'
 
-import singleUnitParamsContainBrokenConnectionsThatStartBefore from '#unilang/drawer/elements/unit/singleUnitParamsContainBrokenConnectionsThatStartBefore.js'
-import singleUnitParamsContainBrokenConnectionsThatFinishAfter from '#unilang/drawer/elements/unit/singleUnitParamsContainBrokenConnectionsThatFinishAfter.js'
-import pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter from '#unilang/drawer/elements/unit/pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter.js'
-import tremoloDurationFactor from '#unilang/drawer/elements/voice/tremoloDurationFactor.js'
-import actualDurationConsideringDotsAndTupletsAndTremolos from '#unilang/drawer/elements/voice/actualDurationConsideringDotsAndTupletsAndTremolos.js'
+import singleUnitParamsContainBrokenConnectionsThatStartBefore from '#repertoire/drawer/elements/unit/singleUnitParamsContainBrokenConnectionsThatStartBefore.js'
+import singleUnitParamsContainBrokenConnectionsThatFinishAfter from '#repertoire/drawer/elements/unit/singleUnitParamsContainBrokenConnectionsThatFinishAfter.js'
+import pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter from '#repertoire/drawer/elements/unit/pushedMeasureIndexesThatSomeBrokenConnectionsStartBeforeOrFinishAfter.js'
+import tremoloDurationFactor from '#repertoire/drawer/elements/voice/tremoloDurationFactor.js'
+import actualDurationConsideringDotsAndTupletsAndTremolos from '#repertoire/drawer/elements/voice/actualDurationConsideringDotsAndTupletsAndTremolos.js'
 
 const noDuplicateNotes = (notes) => {
   return notes.filter((note, index) => {

@@ -1,6 +1,6 @@
 'use strict'
 
-import * as helpers from '#unilang/language/lib/helpers.js'
+import * as helpers from '#repertoire/language/lib/helpers.js'
 
 /** @type ValidatorResult */
 const ValidatorResult = helpers.ValidatorResult

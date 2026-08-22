@@ -1,5 +1,5 @@
-import { DrumKitByPatchID, instrumentByPatchID, InstrumentFamilyByID } from '#unilang/midi/lib/@tonejs/InstrumentMaps.js'
-import { Track } from '#unilang/midi/lib/@tonejs/Track.js';
+import { DrumKitByPatchID, instrumentByPatchID, InstrumentFamilyByID } from '#repertoire/midi/lib/@tonejs/InstrumentMaps.js'
+import { Track } from '#repertoire/midi/lib/@tonejs/Track.js';
 
 /**
  * @hidden

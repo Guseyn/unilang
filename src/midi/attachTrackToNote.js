@@ -1,9 +1,9 @@
 'use strict'
 
-import instrumentForCurrentStaveInMidiFormat from '#unilang/midi/instrumentForCurrentStaveInMidiFormat.js'
-import instrumentTitleInMidiFormatByInstrumentOriginalName from '#unilang/midi/instrumentTitleInMidiFormatByInstrumentOriginalName.js'
-import isChannelOccupied from '#unilang/midi/isChannelOccupied.js'
-import noteHasSomeArticulations from '#unilang/midi/noteHasSomeArticulations.js'
+import instrumentForCurrentStaveInMidiFormat from '#repertoire/midi/instrumentForCurrentStaveInMidiFormat.js'
+import instrumentTitleInMidiFormatByInstrumentOriginalName from '#repertoire/midi/instrumentTitleInMidiFormatByInstrumentOriginalName.js'
+import isChannelOccupied from '#repertoire/midi/isChannelOccupied.js'
+import noteHasSomeArticulations from '#repertoire/midi/noteHasSomeArticulations.js'
 
 const PIZZICATO_ARTICULATIONS = [ 'leftHandPizzicato', 'snapPizzicato', 'naturalHarmonic' ]
 

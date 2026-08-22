@@ -1,11 +1,11 @@
 'use strict'
 
-import text from '#unilang/drawer/elements/basic/text.js'
-import path from '#unilang/drawer/elements/basic/path.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import text from '#repertoire/drawer/elements/basic/text.js'
+import path from '#repertoire/drawer/elements/basic/path.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 const drawnTempoElementsByTheirTextValue = (tempoTextValueParts, measureIndex) => {
   return (styles, leftOffset, topOffset) => {

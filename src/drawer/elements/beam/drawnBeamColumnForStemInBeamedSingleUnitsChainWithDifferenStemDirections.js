@@ -1,6 +1,6 @@
 'use strict'
 
-import line from '#unilang/drawer/elements/basic/line.js'
+import line from '#repertoire/drawer/elements/basic/line.js'
 
 export default function (styles, stem) {
   const { noteBeamColumnStrokeOptions, graceElementsScaleFactor } = styles

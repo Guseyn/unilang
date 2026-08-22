@@ -1,7 +1,7 @@
 'use strict'
 
-import chordLetterText from '#unilang/drawer/elements/chord-letter/chordLetterText.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import chordLetterText from '#repertoire/drawer/elements/chord-letter/chordLetterText.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { intervalBetweenStaveLines } = styles

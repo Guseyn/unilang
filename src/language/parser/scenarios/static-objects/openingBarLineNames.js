@@ -1,5 +1,5 @@
 'use strict'
 
-import module from '#unilang/language/parser/scenarios/static-objects/openingBarLines.js'
+import module from '#repertoire/language/parser/scenarios/static-objects/openingBarLines.js'
 
 export default Object.keys(module)

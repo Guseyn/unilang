@@ -1,7 +1,7 @@
-import { parseMidi } from '#unilang/midi/lib/midi-file/index.js'
-import { Header } from '#unilang/midi/lib/@tonejs/Header.js'
-import { Track } from '#unilang/midi/lib/@tonejs/Track.js'
-import { encode } from '#unilang/midi/lib/@tonejs/Encode.js'
+import { parseMidi } from '#repertoire/midi/lib/midi-file/index.js'
+import { Header } from '#repertoire/midi/lib/@tonejs/Header.js'
+import { Track } from '#repertoire/midi/lib/@tonejs/Track.js'
+import { encode } from '#repertoire/midi/lib/@tonejs/Encode.js'
 
 /**
  * The main midi parsing class.
@@ -105,8 +105,8 @@ export class Midi {
 	}
 }
 
-export { Track } from '#unilang/midi/lib/@tonejs/Track.js'
-export { Header } from '#unilang/midi/lib/@tonejs/Header.js'
+export { Track } from '#repertoire/midi/lib/@tonejs/Track.js'
+export { Header } from '#repertoire/midi/lib/@tonejs/Header.js'
 
 /**
  * Given a list of MIDI tracks, make sure that each channel corresponds to at

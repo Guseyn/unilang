@@ -1,10 +1,10 @@
 // The `GPOS` table contains kerning pairs, among other things.
 // https://www.microsoft.com/typography/OTSPEC/gpos.htm
 
-import check from '#unilang/drawer/lib/opentype/check.js'
-import {  decode  } from '#unilang/drawer/lib/opentype/types.js'
-import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
-import table from '#unilang/drawer/lib/opentype/table.js'
+import check from '#repertoire/drawer/lib/opentype/check.js'
+import {  decode  } from '#repertoire/drawer/lib/opentype/types.js'
+import { Parser } from '#repertoire/drawer/lib/opentype/parse.js'
+import table from '#repertoire/drawer/lib/opentype/table.js'
 
 // Parse the metadata `meta` table.
 // https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6meta.html

@@ -1,7 +1,7 @@
 // The Position object provides utility methods to manipulate
 // the GPOS position table.
 
-import Layout from '#unilang/drawer/lib/opentype/layout.js'
+import Layout from '#repertoire/drawer/lib/opentype/layout.js'
 
 /**
  * @exports opentype.Position

@@ -1,6 +1,6 @@
 'use strict'
 
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
 
 export default function (element, yPoint, interval) {
   moveElement(

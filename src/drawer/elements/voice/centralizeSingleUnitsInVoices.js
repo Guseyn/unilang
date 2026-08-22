@@ -1,9 +1,9 @@
 'use strict'
 
-import moveCrossStaveElementsThatAttachedToCrossStaveUnit from '#unilang/drawer/elements/voice/moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
-import updateSingleUnitPartsCoordinates from '#unilang/drawer/elements/unit/updateSingleUnitPartsCoordinates.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import moveVoicesBodyHorizontally from '#unilang/drawer/elements/voice/moveVoicesBodyHorizontally.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from '#repertoire/drawer/elements/voice/moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
+import updateSingleUnitPartsCoordinates from '#repertoire/drawer/elements/unit/updateSingleUnitPartsCoordinates.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveVoicesBodyHorizontally from '#repertoire/drawer/elements/voice/moveVoicesBodyHorizontally.js'
 
 export default function (drawnVoices, drawnStavesPiece, containsAtLeastOneVoiceWithMoreThanOneUnit) {
   const {

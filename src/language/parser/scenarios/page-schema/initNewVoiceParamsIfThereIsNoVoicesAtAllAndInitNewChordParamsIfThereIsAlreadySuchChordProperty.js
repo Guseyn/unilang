@@ -1,6 +1,6 @@
 'use strict'
 
-import lastNonSimileChordParams from '#unilang/language/parser/scenarios/page-schema/lastNonSimileChordParams.js'
+import lastNonSimileChordParams from '#repertoire/language/parser/scenarios/page-schema/lastNonSimileChordParams.js'
 
 export default function (lastStaveParams, componentName, parserState) {
   if (!lastStaveParams.voicesParams) {

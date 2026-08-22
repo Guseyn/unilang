@@ -1,5 +1,5 @@
-import { controlChangeIds } from '#unilang/midi/lib/@tonejs/ControlChange.js';
-import { ControlChange } from '#unilang/midi/lib/@tonejs/ControlChange.js';
+import { controlChangeIds } from '#repertoire/midi/lib/@tonejs/ControlChange.js';
+import { ControlChange } from '#repertoire/midi/lib/@tonejs/ControlChange.js';
 
 /**
  * Automatically creates an alias for named control values using Proxies

@@ -1,8 +1,8 @@
 'use strict'
 
-import staveIndexOfNoteConsideringItsStave from '#unilang/drawer/elements/voice/staveIndexOfNoteConsideringItsStave.js'
-import firstTwoSortedNotesInSingleUnitAreInWholeTone from '#unilang/drawer/elements/voice/firstTwoSortedNotesInSingleUnitAreInWholeTone.js'
-import lastTwoSortedNotesInSingleUnitAreInWholeTone from '#unilang/drawer/elements/voice/lastTwoSortedNotesInSingleUnitAreInWholeTone.js'
+import staveIndexOfNoteConsideringItsStave from '#repertoire/drawer/elements/voice/staveIndexOfNoteConsideringItsStave.js'
+import firstTwoSortedNotesInSingleUnitAreInWholeTone from '#repertoire/drawer/elements/voice/firstTwoSortedNotesInSingleUnitAreInWholeTone.js'
+import lastTwoSortedNotesInSingleUnitAreInWholeTone from '#repertoire/drawer/elements/voice/lastTwoSortedNotesInSingleUnitAreInWholeTone.js'
 
 const twoUnitsHaveSuchDurationsThatTheyCanPotentiallyBeOverlapped = (firstSingleUnit, secondSingleUnit) => {
   if (

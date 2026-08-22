@@ -1,12 +1,12 @@
 'use strict'
 
-import path from '#unilang/drawer/elements/basic/path.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import scaleElementAroundPoint from '#unilang/drawer/elements/basic/scaleElementAroundPoint.js'
-import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import path from '#repertoire/drawer/elements/basic/path.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
+import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 const sharpKeyShape = () => {
   return (styles, leftOffset, topOffset) => {

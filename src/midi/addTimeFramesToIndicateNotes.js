@@ -1,6 +1,6 @@
 'use strict'
 
-import splitNoteInTremoloNotes from '#unilang/midi/splitNoteInTremoloNotes.js'
+import splitNoteInTremoloNotes from '#repertoire/midi/splitNoteInTremoloNotes.js'
 
 export default function (unitParams, notesSplittedInTimeFrames, unitActualDuration, unitDurationInSeconds, calculatedOctaveAdjustmentForUnitParams, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveVoiceKey) {
   if (unitParams.notes) {

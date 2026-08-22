@@ -1,14 +1,14 @@
 'use strict'
 
-import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
-import isVerticalCorrection from '#unilang/language/parser/scenarios/token/isVerticalCorrection.js'
-import verticalCorrection from '#unilang/language/parser/scenarios/token/verticalCorrection.js'
-import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
-import measureParamsByLastMentionedMeasurePosition from '#unilang/language/parser/scenarios/page-schema/measureParamsByLastMentionedMeasurePosition.js'
-import undefineAllMentionedPositions from '#unilang/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
-import undefineOnlyLastMentionedMeasurePosition from '#unilang/language/parser/scenarios/page-schema/undefineOnlyLastMentionedMeasurePosition.js'
-import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#unilang/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
-import addLineMeasureStaveVoicePositionScenarios from '#unilang/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
+import isVerticalCorrection from '#repertoire/language/parser/scenarios/token/isVerticalCorrection.js'
+import verticalCorrection from '#repertoire/language/parser/scenarios/token/verticalCorrection.js'
+import foundNextTokenValueOnTheLine from '#repertoire/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import measureParamsByLastMentionedMeasurePosition from '#repertoire/language/parser/scenarios/page-schema/measureParamsByLastMentionedMeasurePosition.js'
+import undefineAllMentionedPositions from '#repertoire/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedMeasurePosition from '#repertoire/language/parser/scenarios/page-schema/undefineOnlyLastMentionedMeasurePosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#repertoire/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addLineMeasureStaveVoicePositionScenarios from '#repertoire/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios) {
   scenarios['volta'] = {

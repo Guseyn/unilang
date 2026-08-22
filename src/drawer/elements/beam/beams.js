@@ -1,9 +1,9 @@
 'use strict'
 
-import calculatedNumberOfBeamLinesByDuration from '#unilang/drawer/elements/beam/calculatedNumberOfBeamLinesByDuration.js'
-import drawnBeamColumn from '#unilang/drawer/elements/beam/drawnBeamColumn.js'
-import drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections from '#unilang/drawer/elements/beam/drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections.js'
-import drawnBeamLinesPiece from '#unilang/drawer/elements/beam/drawnBeamLinesPiece.js'
+import calculatedNumberOfBeamLinesByDuration from '#repertoire/drawer/elements/beam/calculatedNumberOfBeamLinesByDuration.js'
+import drawnBeamColumn from '#repertoire/drawer/elements/beam/drawnBeamColumn.js'
+import drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections from '#repertoire/drawer/elements/beam/drawnBeamColumnForStemInBeamedSingleUnitsChainWithDifferenStemDirections.js'
+import drawnBeamLinesPiece from '#repertoire/drawer/elements/beam/drawnBeamLinesPiece.js'
 
 export default function (styles, drawnStems, minNumberOfBeamLines, beamLineHeightNormal, allBeamsHeightNormalWhereAllStemsWithSameDirection, beamLineCoefficients, anyStemDirectionChangesInBeamedSingleUnits) {
   const beamColumns = []

@@ -1,25 +1,25 @@
 'use strict'
 
-import allConnectedTracks from '#unilang/midi/allConnectedTracks.js'
+import allConnectedTracks from '#repertoire/midi/allConnectedTracks.js'
 
 const MIDI_CC_FACTOR = 127
 
-export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachStaveInEachVoice, midiNoteShouldBeAdjustedWithPedalSustain, midiNoteShouldBeAdjustedWithPedalRelease) {
-  if (unilangNote.noteIndex !== 0) {
+export default function (repertoireNote, midiNote, tracksForEachInstrumentOnEachStaveInEachVoice, midiNoteShouldBeAdjustedWithPedalSustain, midiNoteShouldBeAdjustedWithPedalRelease) {
+  if (repertoireNote.noteIndex !== 0) {
     return
   }
-  if (!unilangNote.pedalMark) {
+  if (!repertoireNote.pedalMark) {
     return
   }
-  const allConnectedTracksWithNote = allConnectedTracks(unilangNote, tracksForEachInstrumentOnEachStaveInEachVoice)
+  const allConnectedTracksWithNote = allConnectedTracks(repertoireNote, tracksForEachInstrumentOnEachStaveInEachVoice)
 
   for (let trackIndex = 0; trackIndex < allConnectedTracksWithNote.length; trackIndex++) {
     if (
-      unilangNote.pedalMark.start &&
-      unilangNote.pedalMark.textValue !== 'U.C.' &&
-      unilangNote.pedalMark.textValue !== 'T.C.' &&
+      repertoireNote.pedalMark.start &&
+      repertoireNote.pedalMark.textValue !== 'U.C.' &&
+      repertoireNote.pedalMark.textValue !== 'T.C.' &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
-      !unilangNote.pedalMark.afterChord
+      !repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -28,11 +28,11 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      unilangNote.pedalMark.start &&
-      unilangNote.pedalMark.textValue !== 'U.C.' &&
-      unilangNote.pedalMark.textValue !== 'T.C.' &&
+      repertoireNote.pedalMark.start &&
+      repertoireNote.pedalMark.textValue !== 'U.C.' &&
+      repertoireNote.pedalMark.textValue !== 'T.C.' &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
-      unilangNote.pedalMark.afterChord
+      repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -41,12 +41,12 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.finish || unilangNote.pedalMark.release) &&
+      (repertoireNote.pedalMark.finish || repertoireNote.pedalMark.release) &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      !unilangNote.pedalMark.start &&
-      !unilangNote.pedalMark.afterChord &&
-      !unilangNote.pedalMark.tillEndOfMeasure &&
-      !unilangNote.pedalMark.atTheEndOfTheMeasure
+      !repertoireNote.pedalMark.start &&
+      !repertoireNote.pedalMark.afterChord &&
+      !repertoireNote.pedalMark.tillEndOfMeasure &&
+      !repertoireNote.pedalMark.atTheEndOfTheMeasure
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -55,13 +55,13 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.finish || unilangNote.pedalMark.release) &&
+      (repertoireNote.pedalMark.finish || repertoireNote.pedalMark.release) &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      !unilangNote.pedalMark.start &&
+      !repertoireNote.pedalMark.start &&
       (
-        unilangNote.pedalMark.afterChord ||
-        unilangNote.pedalMark.tillEndOfMeasure ||
-        unilangNote.pedalMark.atTheEndOfTheMeasure
+        repertoireNote.pedalMark.afterChord ||
+        repertoireNote.pedalMark.tillEndOfMeasure ||
+        repertoireNote.pedalMark.atTheEndOfTheMeasure
       )
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
@@ -71,11 +71,11 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.variablePeak) &&
+      (repertoireNote.pedalMark.variablePeak) &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      !unilangNote.pedalMark.beforeChord &&
-      !unilangNote.pedalMark.afterChord
+      !repertoireNote.pedalMark.beforeChord &&
+      !repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -89,10 +89,10 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.variablePeak) &&
+      (repertoireNote.pedalMark.variablePeak) &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      unilangNote.pedalMark.afterChord
+      repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -106,10 +106,10 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.variablePeak) &&
+      (repertoireNote.pedalMark.variablePeak) &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      unilangNote.pedalMark.beforeChord
+      repertoireNote.pedalMark.beforeChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 64,
@@ -123,10 +123,10 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'U.C.') &&
+      (repertoireNote.pedalMark.textValue === 'U.C.') &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
-      !unilangNote.pedalMark.beforeChord &&
-      !unilangNote.pedalMark.afterChord
+      !repertoireNote.pedalMark.beforeChord &&
+      !repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,
@@ -135,9 +135,9 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'U.C.') &&
+      (repertoireNote.pedalMark.textValue === 'U.C.') &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
-      unilangNote.pedalMark.afterChord
+      repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,
@@ -146,9 +146,9 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'U.C.') &&
+      (repertoireNote.pedalMark.textValue === 'U.C.') &&
       midiNoteShouldBeAdjustedWithPedalSustain &&
-      unilangNote.pedalMark.beforeChord
+      repertoireNote.pedalMark.beforeChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,
@@ -157,10 +157,10 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'T.C.') &&
+      (repertoireNote.pedalMark.textValue === 'T.C.') &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      !unilangNote.pedalMark.beforeChord &&
-      !unilangNote.pedalMark.afterChord
+      !repertoireNote.pedalMark.beforeChord &&
+      !repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,
@@ -169,9 +169,9 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'T.C.') &&
+      (repertoireNote.pedalMark.textValue === 'T.C.') &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      unilangNote.pedalMark.afterChord
+      repertoireNote.pedalMark.afterChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,
@@ -180,9 +180,9 @@ export default function (unilangNote, midiNote, tracksForEachInstrumentOnEachSta
       })
     }
     if (
-      (unilangNote.pedalMark.textValue === 'T.C.') &&
+      (repertoireNote.pedalMark.textValue === 'T.C.') &&
       midiNoteShouldBeAdjustedWithPedalRelease &&
-      unilangNote.pedalMark.beforeChord
+      repertoireNote.pedalMark.beforeChord
     ) {
       allConnectedTracksWithNote[trackIndex].addCC({
         number: 67,

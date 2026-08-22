@@ -1,7 +1,7 @@
 'use strict'
 
-import line from '#unilang/drawer/elements/basic/line.js'
-import elementWithAdditionalInformation from '#unilang/drawer/elements/basic/elementWithAdditionalInformation.js'
+import line from '#repertoire/drawer/elements/basic/line.js'
+import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 export default function (styles, stemPlaceholderLeft, stemPlaceholderYStart, stemPlaceholderYEnd, isGrace) {
   const { noteSquareStemStrokeOptions, graceElementsScaleFactor } = styles

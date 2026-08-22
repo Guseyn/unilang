@@ -1,8 +1,8 @@
 'use strict'
 
-import noteTopFlag from '#unilang/drawer/elements/note/noteTopFlag.js'
-import noteBottomFlag from '#unilang/drawer/elements/note/noteBottomFlag.js'
-import calculatedNumberOfFlagsBySingleUnitDuration from '#unilang/drawer/elements/unit/calculatedNumberOfFlagsBySingleUnitDuration.js'
+import noteTopFlag from '#repertoire/drawer/elements/note/noteTopFlag.js'
+import noteBottomFlag from '#repertoire/drawer/elements/note/noteBottomFlag.js'
+import calculatedNumberOfFlagsBySingleUnitDuration from '#repertoire/drawer/elements/unit/calculatedNumberOfFlagsBySingleUnitDuration.js'
 
 export default function (styles, unitDuration, stemWithCoordinates, stemDirection, isGrace) {
   const { stemWidth, graceElementsScaleFactor } = styles

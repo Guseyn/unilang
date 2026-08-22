@@ -1,12 +1,12 @@
-import { Validator } from '#unilang/language/lib/validator.js'
+import { Validator } from '#repertoire/language/lib/validator.js'
 import {
   ValidatorResult,
   ValidatorResultError,
   ValidationError,
   SchemaError
-} from '#unilang/language/lib/helpers.js'
+} from '#repertoire/language/lib/helpers.js'
 
-import { SchemaScanResult, scan } from '#unilang/language/lib/scan.js'
+import { SchemaScanResult, scan } from '#repertoire/language/lib/scan.js'
 
 export default {
   Validator,

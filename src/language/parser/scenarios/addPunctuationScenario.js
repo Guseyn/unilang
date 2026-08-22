@@ -1,6 +1,6 @@
 'use strict'
 
-import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
+import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (scenarios) {
   scenarios['punctuation'] = {

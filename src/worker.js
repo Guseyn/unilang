@@ -2,7 +2,7 @@ self['__UNILANG_FONT_SOURCES_STORAGE__'] = {}
 
 const eventHandlers = {
   'fonts.setup': async (event) => {
-    const { setupFonts } = await import('#unilang/api.js')
+    const { setupFonts } = await import('#repertoire/api.js')
     const id = event.data.id
     const fontConfig = event.data.fontConfig
     const fontSourcesReference = event.data.fontSourcesReference

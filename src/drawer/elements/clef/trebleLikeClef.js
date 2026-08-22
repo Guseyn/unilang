@@ -1,9 +1,9 @@
 'use strict'
 
-import stavePiece from '#unilang/drawer/elements/stave/stavePiece.js'
-import clefShape from '#unilang/drawer/elements/clef/clefShape.js'
-import moveElementInTheCenterBetweenPoints from '#unilang/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import group from '#unilang/drawer/elements/basic/group.js'
+import stavePiece from '#repertoire/drawer/elements/stave/stavePiece.js'
+import clefShape from '#repertoire/drawer/elements/clef/clefShape.js'
+import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
 
 export default function (trebleStyleKey) {
   return (styles, leftOffset, topOffset) => {

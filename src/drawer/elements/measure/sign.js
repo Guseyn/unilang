@@ -1,9 +1,9 @@
 'use strict'
 
-import path from '#unilang/drawer/elements/basic/path.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import path from '#repertoire/drawer/elements/basic/path.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
 
 export default function (measure, styles) {
   const { intervalBetweenStaveLines, sign, fontColor } = styles

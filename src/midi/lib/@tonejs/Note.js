@@ -1,4 +1,4 @@
-import { Header } from '#unilang/midi/lib/@tonejs/Header.js'
+import { Header } from '#repertoire/midi/lib/@tonejs/Header.js'
 
 /**
  * Convert a MIDI note into a pitch.

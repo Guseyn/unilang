@@ -1,13 +1,13 @@
 'use strict'
 
-import simile from '#unilang/drawer/elements/simile/simile.js'
-import text from '#unilang/drawer/elements/basic/text.js'
-import polyline from '#unilang/drawer/elements/basic/polyline.js'
-import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
-import stavesPiece from '#unilang/drawer/elements/stave/stavesPiece.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import simile from '#repertoire/drawer/elements/simile/simile.js'
+import text from '#repertoire/drawer/elements/basic/text.js'
+import polyline from '#repertoire/drawer/elements/basic/polyline.js'
+import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
+import stavesPiece from '#repertoire/drawer/elements/stave/stavesPiece.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaves, numberOfStaveLines, simileYCorrection, numberOfMeasures, stavesPieceWidthOfLastMeasureToCompletePageLine, measureIndexInGeneral, previousMeasure, measureBeforePreviousMeasure) {
   return (styles, leftOffset, topOffset) => {

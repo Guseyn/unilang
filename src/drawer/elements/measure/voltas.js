@@ -1,7 +1,7 @@
 'use strict'
 
-import volta from '#unilang/drawer/elements/measure/volta.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import volta from '#repertoire/drawer/elements/measure/volta.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { yOffsetOfVolta } = styles

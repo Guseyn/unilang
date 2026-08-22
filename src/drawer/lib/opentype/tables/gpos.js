@@ -1,9 +1,9 @@
 // The `GPOS` table contains kerning pairs, among other things.
 // https://docs.microsoft.com/en-us/typography/opentype/spec/gpos
 
-import check from '#unilang/drawer/lib/opentype/check.js'
-import { Parser } from '#unilang/drawer/lib/opentype/parse.js'
-import table from '#unilang/drawer/lib/opentype/table.js'
+import check from '#repertoire/drawer/lib/opentype/check.js'
+import { Parser } from '#repertoire/drawer/lib/opentype/parse.js'
+import table from '#repertoire/drawer/lib/opentype/table.js'
 
 const subtableParsers = new Array(10)         // subtableParsers[0] is unused
 

@@ -10,7 +10,7 @@ import {
   generateStylesForMultiplePages,
   generateMidiForMultiplePages,
   generateSvgForMultiplePages,
-} from '#unilang/api.js'
+} from '#repertoire/api.js'
 
 const PAGE_DELIMITER = '====next page===='
 const EMPTY_STRING = ''
@@ -35,7 +35,7 @@ function red(str) {
 }
 
 async function runAudioTest() {
-  const listOfUnilangInputFiles = await fs.readdir(`audio-tests/unilang`)
+  const listOfRepertoireInputFiles = await fs.readdir(`audio-tests/repertoire`)
   const listOfFailedTests = []
   const listOfPassedTests = []
   console.time('Total time spent for audio tests')
@@ -53,12 +53,12 @@ async function runAudioTest() {
     ]
   }
 
-  for (const unilangInputFile of listOfUnilangInputFiles) {
-    const testName = path.basename(unilangInputFile).split('.')[0]
-    const unilangInputFileFullPath = `audio-tests/unilang/${unilangInputFile}`
-    const unilangText = (await fs.readFile(unilangInputFileFullPath, 'utf-8'))
+  for (const repertoireInputFile of listOfRepertoireInputFiles) {
+    const testName = path.basename(repertoireInputFile).split('.')[0]
+    const repertoireInputFileFullPath = `audio-tests/repertoire/${repertoireInputFile}`
+    const repertoireText = (await fs.readFile(repertoireInputFileFullPath, 'utf-8'))
 
-    const unilangMultiplePagesText = unilangText.split(PAGE_DELIMITER)
+    const repertoireMultiplePagesText = repertoireText.split(PAGE_DELIMITER)
 
     const {
       pageSchemaForEachPage,
@@ -67,7 +67,7 @@ async function runAudioTest() {
       customStylesForEachPage,
       midiSettingsForEachPage
     } = generateIntermediateStructuresForMultiplePages({
-      unilangMultiplePagesText,
+      repertoireMultiplePagesText,
       supportedFontNames
     })
 

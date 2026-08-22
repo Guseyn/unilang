@@ -1,13 +1,13 @@
 'use strict'
 
-import group from '#unilang/drawer/elements/basic/group.js'
-import rect from '#unilang/drawer/elements/basic/rect.js'
-import text from '#unilang/drawer/elements/basic/text.js'
-import moveElement from '#unilang/drawer/elements/basic/moveElement.js'
-import moveElementAbovePointWithInterval from '#unilang/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#unilang/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
-import measures from '#unilang/drawer/elements/measure/measures.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import rect from '#repertoire/drawer/elements/basic/rect.js'
+import text from '#repertoire/drawer/elements/basic/text.js'
+import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import measures from '#repertoire/drawer/elements/measure/measures.js'
 
 const pageFormats = {
   'c4': [ 9, 12.8 ],

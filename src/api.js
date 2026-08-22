@@ -1,11 +1,11 @@
-import opentype from '#unilang/drawer/lib/opentype/opentype.js'
-import parsedUnilang from '#unilang/language/parser/parsedUnilang.js'
-import validatedPageSchema from '#unilang/language/schema/validatedPageSchema.js'
-import generatedStyles from '#unilang/drawer/generatedStyles.js'
-import svgAsString from '#unilang/drawer/elements/basic/svgAsString.js'
-import svg from '#unilang/drawer/elements/basic/svg.js'
-import page from '#unilang/drawer/elements/page/page.js'
-import midi from '#unilang/midi/midi.js'
+import opentype from '#repertoire/drawer/lib/opentype/opentype.js'
+import parsedLanguage from '#repertoire/language/parser/parsedLanguage.js'
+import validatedPageSchema from '#repertoire/language/schema/validatedPageSchema.js'
+import generatedStyles from '#repertoire/drawer/generatedStyles.js'
+import svgAsString from '#repertoire/drawer/elements/basic/svgAsString.js'
+import svg from '#repertoire/drawer/elements/basic/svg.js'
+import page from '#repertoire/drawer/elements/page/page.js'
+import midi from '#repertoire/midi/midi.js'
 
 const NEW_LINE = '\n'
 
@@ -16,7 +16,7 @@ const NEW_LINE = '\n'
  * /
 /**
  *
- * Load and initialize fonts for Unilang (music, text, and chord-letter fonts),
+ * Load and initialize fonts for Repertoire (music, text, and chord-letter fonts),
  * suitable both for **Node.js** and **browser** environments.
  *
  * This function guarantees:
@@ -81,11 +81,11 @@ const NEW_LINE = '\n'
  *   "music": {
  *     "bravura": {
  *       "font": "./src/drawer/font/music/Bravura.otf",
- *       "js":   "#unilang/drawer/font/music-js/bravura.js"
+ *       "js":   "#repertoire/drawer/font/music-js/bravura.js"
  *     },
  *     "leland": {
  *       "font": "./src/drawer/font/music/Leland.otf",
- *       "js":   "#unilang/drawer/font/music-js/leland.js"
+ *       "js":   "#repertoire/drawer/font/music-js/leland.js"
  *     }
  *   }
  * }
@@ -105,18 +105,18 @@ const NEW_LINE = '\n'
  *   "music": {
  *     "bravura": {
  *       "font": "https://example.com/music/Bravura.otf",
- *       "js":   "#unilang/drawer/font/music-js/bravura.js"
+ *       "js":   "#repertoire/drawer/font/music-js/bravura.js"
  *     }
  *     "leland": {
  *       "font": "https://example.com/music/Leland.otf",
- *       "js":   "#unilang/drawer/font/music-js/leland.js"
+ *       "js":   "#repertoire/drawer/font/music-js/leland.js"
  *     }
  *   }
  * }
  *
  * -----------------------------------------------------------------------------------------------
  * @returns {Promise<SupportedFonts>}
- * A fully resolved, deterministic font structure used by the Unilang renderer.
+ * A fully resolved, deterministic font structure used by the Repertoire renderer.
  *
  * -----------------------------------------------------------------------------------------------
  * @typedef {Object} SupportedFonts
@@ -184,11 +184,11 @@ export async function setupFonts(fontConfig) {
     'music': {
       'bravura': {
         'font': './src/drawer/font/music/Bravura.otf',
-        'js': '#unilang/drawer/font/music-js/bravura.js'
+        'js': '#repertoire/drawer/font/music-js/bravura.js'
       },
       'leland': {
         'font': './src/drawer/font/music/Leland.otf',
-        'js': '#unilang/drawer/font/music-js/leland.js'
+        'js': '#repertoire/drawer/font/music-js/leland.js'
       }
     }
   }
@@ -238,11 +238,11 @@ A full example:
   "music": {
     "bravura": {
       "font": "https://cdn.example.com/music-fonts/Bravura.otf",
-      "js":   "#unilang/drawer/font/music-js/bravura.js"
+      "js":   "#repertoire/drawer/font/music-js/bravura.js"
     },
     "leland": {
       "font": "https://cdn.example.com/music-fonts/Leland.otf",
-      "js":   "#unilang/drawer/font/music-js/leland.js"
+      "js":   "#repertoire/drawer/font/music-js/leland.js"
     }
   }
 }
@@ -353,7 +353,7 @@ Every path must be a valid URL, not a local filesystem path.
   opentype.load(pathOrUrl) works in both:
     - Node.js (filesystem)
     - Browser (URLs)
-  jsMusicFonts modules contain the glyph definition tables used by Unilang's
+  jsMusicFonts modules contain the glyph definition tables used by Repertoire's
   engraving engine. They must align 1:1 with musicFontPaths.
 
   We load fonts exactly in the order defined above.
@@ -391,7 +391,7 @@ Every path must be a valid URL, not a local filesystem path.
     "music-js": { fontName: glyphSchemaObject }
   }
 
-  This structure is what the Unilang drawer/renderer consumes.
+  This structure is what the Repertoire drawer/renderer consumes.
   --------------------------------------------------------------------------------------------------
   */
 
@@ -445,8 +445,8 @@ Every path must be a valid URL, not a local filesystem path.
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  * /
 /**
- * High-level convenience wrapper around the low-level `parsedUnilang()` engine.
- * It prepares the Unilang text, invokes the parser with correct defaults, and
+ * High-level convenience wrapper around the low-level `parsedLanguage()` engine.
+ * It prepares the Repertoire text, invokes the parser with correct defaults, and
  * extracts only the per-page rendering-related intermediate structures needed
  * by the drawer (SVG renderer), highlighting engine, and MIDI generator.
  *
@@ -459,8 +459,8 @@ Every path must be a valid URL, not a local filesystem path.
  * @function generateIntermediateStructuresForSinglePage
  *
  * @param {Object} params
- * @param {string} params.unilangPageText
- *        Unilang text for a single page. Multi-page inputs must already be
+ * @param {string} params.repertoirePageText
+ *        Repertoire text for a single page. Multi-page inputs must already be
  *        split before calling this function.
  *
  * @param {boolean} [params.applyHighlighting=true]
@@ -471,7 +471,7 @@ Every path must be a valid URL, not a local filesystem path.
  *                   as a single highlight block
  *
  * @param {boolean} [params.applyOnlyHighlightingWithoutRefIds=false]
- *        Enables “highlight-only mode” from inside `parsedUnilang()`:
+ *        Enables “highlight-only mode” from inside `parsedLanguage()`:
  *
  *        - only `actionOnlyForHighlightingWithoutRefIds` of scenarios are run
  *        - NO reference IDs
@@ -490,7 +490,7 @@ Every path must be a valid URL, not a local filesystem path.
  *          - very advanced internal tooling
  *
  * @param {Object} [params.supportedFontNames]
- *        A stable list of supported font family names that `parsedUnilang()`
+ *        A stable list of supported font family names that `parsedLanguage()`
  *        attaches to `parserState.pageSchema.fonts`.
  *
  *        These are *names*, not loaded font sources.
@@ -510,21 +510,21 @@ Every path must be a valid URL, not a local filesystem path.
  * @returns {GeneratePageModelsResult}
  *
  * Returns an object containing the **intermediate representation (IR)** for
- * a fully parsed Unilang page:
+ * a fully parsed Repertoire page:
  *
  *   {
  *     pageSchema,           // engraving layout model
  *     highlightsHtmlBuffer, // highlighting fragments
  *     errors,               // parser/semantic errors
  *     customStyles,         // page-level style overrides
- *     midiSettings          // Unilang musical semantics
+ *     midiSettings          // Repertoire musical semantics
  *   }
  *
  * ---------------------------------------------------------------------------
  * @typedef {Object} GeneratePageModelsResult
  *
  * @property {Object} pageSchema
- *          The rendering/engraving model built by parsedUnilang:
+ *          The rendering/engraving model built by parsedLanguage:
  *            - measure & stave geometry
  *            - symbols, durations, directions
  *            - key/time signatures
@@ -542,12 +542,12 @@ Every path must be a valid URL, not a local filesystem path.
  *          The pipeline is fault-tolerant: errors do not abort parsing.
  *
  * @property {Object} customStyles
- *          Any inline styling commands encountered in Unilang that override
+ *          Any inline styling commands encountered in Repertoire that override
  *          engraving parameters, spacing, fonts, color, etc. These feed into
  *          generatedStyles().
  *
  * @property {Object} midiSettings
- *          All musical-performance metadata extracted from Unilang commands:
+ *          All musical-performance metadata extracted from Repertoire commands:
  *            - tempo, pedal, dynamics
  *            - slurs, tuplets
  *            - staccato, accents
@@ -559,7 +559,7 @@ Every path must be a valid URL, not a local filesystem path.
  *
  * ### What generateIntermediateStructuresForSinglePage() actually does
  * 1. Normalizes trailing newline behavior (required by parser mechanics).
- * 2. Passes configuration flags directly into parsedUnilang().
+ * 2. Passes configuration flags directly into parsedLanguage().
  * 3. Returns only the subset of the parsed output needed for:
  *      - SVG generation
  *      - highlight overlays
@@ -575,14 +575,14 @@ Every path must be a valid URL, not a local filesystem path.
  * ### Why this exists
  * It provides a clean public API that hides the dozens of parser state fields,
  * command-progression internals, tokenizer behavior, and scenario engine
- * complexity inside parsedUnilang().
+ * complexity inside parsedLanguage().
  *
  * What you get is the **stable, simplified IR** for one page.
  *
  * ---------------------------------------------------------------------------
  */
 export function generateIntermediateStructuresForSinglePage({
-  unilangPageText,
+  repertoirePageText,
   applyHighlighting,
   applyOnlyHighlightingWithoutRefIds,
   progressionOfCommandsFromScenarios,
@@ -596,9 +596,9 @@ export function generateIntermediateStructuresForSinglePage({
     mapOfCharIndexesWithProgressionOfCommandsFromScenarios,
     comments,
     midiSettings
-  } = parsedUnilang(
-    normalizeUnilangText(
-      unilangPageText
+  } = parsedLanguage(
+    normalizeRepertoireText(
+      repertoirePageText
     ),
     progressionOfCommandsFromScenarios || [],
     applyHighlighting || true,
@@ -626,7 +626,7 @@ export function generateIntermediateStructuresForSinglePage({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  * /
 /**
- * Build the complete engraving style environment for a Unilang page.
+ * Build the complete engraving style environment for a Repertoire page.
  *
  * This function is **synchronous**.
  *
@@ -684,7 +684,7 @@ export function generateIntermediateStructuresForSinglePage({
  * const fonts = await setupFonts()
  *
  * const { customStyles } = await generateIntermediateStructuresForSinglePage({
- *   unilangPageText
+ *   repertoirePageText
  * })
  *
  * const pageStyles = generateStylesForSinglePage({
@@ -699,7 +699,7 @@ export function generateIntermediateStructuresForSinglePage({
  *   music: {
  *     leland: {
  *       font: "https://cdn/fonts/Leland.otf",
- *       js:   "#unilang/drawer/font/music-js/leland.js"
+ *       js:   "#repertoire/drawer/font/music-js/leland.js"
  *     }
  *   },
  *   text: {
@@ -714,7 +714,7 @@ export function generateIntermediateStructuresForSinglePage({
  * })
  *
  * const { customStyles } = await generateIntermediateStructuresForSinglePage({
- *   unilangPageText
+ *   repertoirePageText
  * })
  *
  * const pageStyles = generateStylesForSinglePage({
@@ -725,7 +725,7 @@ export function generateIntermediateStructuresForSinglePage({
  * ----------------------------------------------------------------------------
  * @description
  *
- * `generateStylesForSinglePage()` is **Stage 3** of the high-level Unilang API.
+ * `generateStylesForSinglePage()` is **Stage 3** of the high-level Repertoire API.
  * It transforms the `customStyles` produced by `generateIntermediateStructuresForSinglePage()`
  * into the complete engraving style environment using the font sources
  * loaded by `setupFonts()`.
@@ -737,7 +737,7 @@ export function generateIntermediateStructuresForSinglePage({
  *      `supportedFontSources`.
  *
  *   2. **Model generation → `generateIntermediateStructuresForSinglePage()`**  
- *      Parses Unilang text and produces:
+ *      Parses Repertoire text and produces:
  *      - `pageSchema`
  *      - `customStyles`
  *      - `midiSettings`
@@ -793,12 +793,12 @@ export function generateStylesForSinglePage({
  * @function generateSvgForSinglePage
  *
  * @description
- * `generateSvgForSinglePage()` is **Stage 4** of the high-level Unilang API.
+ * `generateSvgForSinglePage()` is **Stage 4** of the high-level Repertoire API.
  * It takes the logical page structure from `generateIntermediateStructuresForSinglePage()` (Stage 2)
  * and the engraving styles from `generateStylesForSinglePage()` (Stage 3), and
  * produces a **fully rendered SVG page**.
  *
- * This is the main entry point for turning Unilang page data
+ * This is the main entry point for turning Repertoire page data
  * into a final, display-ready SVG string.
  *
  * Pipeline context:
@@ -840,7 +840,7 @@ export function generateStylesForSinglePage({
  * const {
  *   pageSchema,
  *   customStyles
- * } = generateIntermediateStructuresForSinglePage({ unilangPageText, supportedFontNames: fonts })
+ * } = generateIntermediateStructuresForSinglePage({ repertoirePageText, supportedFontNames: fonts })
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
@@ -880,12 +880,12 @@ export function generateSvgForSinglePage({
  * @function generateMidiForSinglePage
  *
  * @description
- * `generateMidiForSinglePage()` is **Stage 5** of the high-level Unilang rendering API.
+ * `generateMidiForSinglePage()` is **Stage 5** of the high-level Repertoire rendering API.
  * It receives the musical structure (`pageSchema`) created by
  * `generateIntermediateStructuresForSinglePage()` along with per-page MIDI configuration
  * (`midiSettings`) and converts them into a **MIDI playback object**.
  *
- * This is the final step in the Unilang pipeline that produces
+ * This is the final step in the Repertoire pipeline that produces
  * machine-readable audio data suitable for playback, exporting, syncing with
  * notation, or feeding into other applications.
  *
@@ -926,7 +926,7 @@ export function generateSvgForSinglePage({
  *          - **timeStampsMappedWithRefsOn**  
  *            A forward-lookup map:  
  *            `{ [timestampInSeconds]: string[] }`  
- *            For each playback timestamp, lists all Unilang reference IDs
+ *            For each playback timestamp, lists all Repertoire reference IDs
  *            (note heads) that *become active* at that
  *            moment.  
  *            Used for:
@@ -957,7 +957,7 @@ export function generateSvgForSinglePage({
  *   pageSchema,
  *   midiSettings,
  *   customStyles
- * } = generateIntermediateStructuresForSinglePage({ unilangPageText, supportedFontNames: fonts });
+ * } = generateIntermediateStructuresForSinglePage({ repertoirePageText, supportedFontNames: fonts });
  *
  * const pageStyles = generateStylesForSinglePage({
  *   customStyles,
@@ -994,9 +994,9 @@ export function generateMidiForSinglePage({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * High-level wrapper for **multi-page Unilang inputs**.
+ * High-level wrapper for **multi-page Repertoire inputs**.
  *
- * This function iterates over already-split Unilang page texts and delegates
+ * This function iterates over already-split Repertoire page texts and delegates
  * the actual parsing work to `generateIntermediateStructuresForSinglePage()` for each page, while
  * collecting and grouping results **per page**.
  *
@@ -1013,8 +1013,8 @@ export function generateMidiForSinglePage({
  *
  * @param {Object} params
  *
- * @param {Array<string>} params.unilangMultiplePagesText
- *        An array of Unilang page texts.
+ * @param {Array<string>} params.repertoireMultiplePagesText
+ *        An array of Repertoire page texts.
  *
  *        Important:
  *        - Page splitting must be done **before** calling this function.
@@ -1086,7 +1086,7 @@ export function generateMidiForSinglePage({
  * @description
  *
  * ### What generateIntermediateStructuresForMultiplePages() actually does
- * 1. Iterates over pre-split Unilang page texts.
+ * 1. Iterates over pre-split Repertoire page texts.
  * 2. Normalizes each page’s text independently.
  * 3. Calls `generateIntermediateStructuresForSinglePage()` for every page.
  * 4. Adds properties like pageIndex and measureIndexOnPage to each measure on page
@@ -1105,7 +1105,7 @@ export function generateMidiForSinglePage({
  * ---------------------------------------------------------------------------
  */
 export function generateIntermediateStructuresForMultiplePages({
-  unilangMultiplePagesText,
+  repertoireMultiplePagesText,
   applyHighlighting,
   applyOnlyHighlightingWithoutRefIds,
   progressionOfCommandsFromScenarios,
@@ -1119,8 +1119,8 @@ export function generateIntermediateStructuresForMultiplePages({
   const mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage = []
   const commentsForEachPage = []
 
-  unilangMultiplePagesText.forEach((unilangTextForCurrentPage, pageIndex) => {
-    const thisIsLastPage = pageIndex === unilangMultiplePagesText.length - 1
+  repertoireMultiplePagesText.forEach((repertoireTextForCurrentPage, pageIndex) => {
+    const thisIsLastPage = pageIndex === repertoireMultiplePagesText.length - 1
 
     const {
       pageSchema,
@@ -1131,7 +1131,7 @@ export function generateIntermediateStructuresForMultiplePages({
       comments,
       midiSettings
     } = generateIntermediateStructuresForSinglePage({
-      unilangPageText: unilangTextForCurrentPage,
+      repertoirePageText: repertoireTextForCurrentPage,
       applyHighlighting,
       applyOnlyHighlightingWithoutRefIds,
       progressionOfCommandsFromScenarios,
@@ -1172,7 +1172,7 @@ export function generateIntermediateStructuresForMultiplePages({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Build the complete engraving style environments for a **multi-page Unilang document**.
+ * Build the complete engraving style environments for a **multi-page Repertoire document**.
  *
  * This function is **synchronous**.
  *
@@ -1235,7 +1235,7 @@ export function generateIntermediateStructuresForMultiplePages({
  *
  * const { customStylesForEachPage } =
  *   await generateIntermediateStructuresForMultiplePages({
- *     unilangMultiplePagesText
+ *     repertoireMultiplePagesText
  *   })
  *
  * const pagesStyles = generateStylesForMultiplePages({
@@ -1249,7 +1249,7 @@ export function generateIntermediateStructuresForMultiplePages({
  * `generateStylesForMultiplePages()` is the **multi-page equivalent** of
  * `generateStylesForSinglePage()`.
  *
- * It represents Unilang document pipeline and
+ * It represents Repertoire document pipeline and
  * performs a pure transformation:
  *
  *   - input: page-level `customStyles`
@@ -1296,7 +1296,7 @@ export function generateStylesForMultiplePages({
  *
  * @description
  * `generateSvgForMultiplePages()` is the **multi-page counterpart** of
- * `generateSvgForSinglePage()` in high-level Unilang document API.
+ * `generateSvgForSinglePage()` in high-level Repertoire document API.
  *
  * It takes **page-aligned schemas and styles** produced earlier in the pipeline
  * and renders **all pages into a single SVG document**, positioning them
@@ -1309,7 +1309,7 @@ export function generateStylesForMultiplePages({
  *   - rendering order matches logical page order
  *
  * This function is the main entry point for producing **paginated SVG scores**
- * from multi-page Unilang input.
+ * from multi-page Repertoire input.
  *
  * Pipeline context:
  *
@@ -1368,7 +1368,7 @@ export function generateStylesForMultiplePages({
  *   pageSchemaForEachPage,
  *   customStylesForEachPage
  * } = generateIntermediateStructuresForMultiplePages({
- *   unilangMultiplePagesText
+ *   repertoireMultiplePagesText
  * })
  *
  * const pageStylesForEachPage = generateStylesForMultiplePages({
@@ -1421,7 +1421,7 @@ export function generateSvgForMultiplePages({
  *
  * @description
  * `generateMidiForMultiplePages()` is the **multi-page counterpart** of
- * `generateMidiForSinglePage()` of the high-level Unilang rendering API.
+ * `generateMidiForSinglePage()` of the high-level Repertoire rendering API.
  *
  * It converts a **multi-page musical document** into a **single, continuous MIDI
  * playback stream**, preserving correct temporal order across page boundaries.
@@ -1507,7 +1507,7 @@ export function generateSvgForMultiplePages({
  *   pageSchemaForEachPage,
  *   midiSettingsForEachPage
  * } = generateIntermediateStructuresForMultiplePages({
- *   unilangMultiplePagesText
+ *   repertoireMultiplePagesText
  * })
  *
  * const midiDocument = generateMidiForMultiplePages({
@@ -1523,7 +1523,7 @@ export function generateSvgForMultiplePages({
  * @notes
  * - Page boundaries are ignored in the MIDI output — playback is continuous.
  * - No silence or padding is inserted between pages unless explicitly encoded
- *   in the Unilang input.
+ *   in the Repertoire input.
  * - Visual pagination and audio sequencing are intentionally decoupled.
  */
 export function generateMidiForMultiplePages({
@@ -1550,7 +1550,7 @@ export function generateMidiForMultiplePages({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Optional structural consistency check for Unilang **Page Schema** objects.
+ * Optional structural consistency check for Repertoire **Page Schema** objects.
  *
  * This function is primarily intended for **internal tooling and tests** as an
  * additional safety layer to assert that a page schema is structurally valid.
@@ -1576,7 +1576,7 @@ export function generateMidiForMultiplePages({
  * ---------------------------------------------------------------------------
  * @returns {boolean}
  *
- *   - `true`  → the schema conforms to the canonical Unilang Page Schema contract
+ *   - `true`  → the schema conforms to the canonical Repertoire Page Schema contract
  *   - `false` → one or more structural constraints are violated
  *
  * ---------------------------------------------------------------------------
@@ -1606,11 +1606,11 @@ export function isPageSchemaValid(pageSchema) {
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Optional structural consistency check for **multiple Unilang Page Schemas**.
+ * Optional structural consistency check for **multiple Repertoire Page Schemas**.
  *
  * This function extends `isPageSchemaValid()` to operate on a collection of
  * page schemas, allowing developers to assert that **every page** in a
- * multi-page pipeline satisfies the canonical Unilang Page Schema contract.
+ * multi-page pipeline satisfies the canonical Repertoire Page Schema contract.
  *
  * Like its single-page counterpart, this function is primarily intended for
  * **internal tooling and test environments**, not for mandatory runtime
@@ -1639,7 +1639,7 @@ export function isPageSchemaValid(pageSchema) {
  * ---------------------------------------------------------------------------
  * @returns {boolean}
  *
- *   - `true`  → all page schemas conform to the canonical Unilang Page Schema
+ *   - `true`  → all page schemas conform to the canonical Repertoire Page Schema
  *               contract
  *   - `false` → at least one page schema violates structural constraints
  *
@@ -1681,9 +1681,9 @@ function assert(condition, message) {
   if (!condition) throw new Error(message || "Assertion failed")
 }
 
-function normalizeUnilangText(unilangText) {
-  if (unilangText[unilangText.length - 1] === NEW_LINE) {
-    unilangText += NEW_LINE
+function normalizeRepertoireText(repertoireText) {
+  if (repertoireText[repertoireText.length - 1] === NEW_LINE) {
+    repertoireText += NEW_LINE
   }
-  return unilangText
+  return repertoireText
 }

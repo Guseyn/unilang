@@ -1,7 +1,7 @@
 // Table metadata
 
-import check from '#unilang/drawer/lib/opentype/check.js'
-import {  encode, sizeOf  } from '#unilang/drawer/lib/opentype/types.js'
+import check from '#repertoire/drawer/lib/opentype/check.js'
+import {  encode, sizeOf  } from '#repertoire/drawer/lib/opentype/types.js'
 
 /**
  * @exports opentype.Table

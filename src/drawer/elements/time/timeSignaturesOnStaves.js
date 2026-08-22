@@ -1,9 +1,9 @@
 'use strict'
 
-import topOffsetForCurrentStave from '#unilang/drawer/elements/stave/topOffsetForCurrentStave.js'
-import timeSignature from '#unilang/drawer/elements/time/timeSignature.js'
-import group from '#unilang/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#unilang/drawer/elements/basic/addPropertiesToElement.js'
+import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
+import timeSignature from '#repertoire/drawer/elements/time/timeSignature.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaves, numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore, isFirstMeasureOnPageLine, measureIndexInGeneral, timeSignatureForEachLineId) {
   return (styles, leftOffset, topOffset) => {

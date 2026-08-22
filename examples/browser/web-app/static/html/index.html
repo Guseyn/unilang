@@ -10,19 +10,19 @@
           "#ehtml/": "/js/ehtml/",
           "#ehtml/main": "/js/ehtml/main.js?v=b5879b13",
           "#e-ui/": "/js/e-ui/",
-          "#e-unilang/": "/js/e-unilang/"
+          "#e-repertoire/": "/js/e-repertoire/"
         }
       }
     </script>
     <script type="module">
       import '#ehtml/main'
-      import '#e-unilang/e-unilang-font-loader.js'
+      import '#e-repertoire/e-repertoire-font-loader.js'
     </script>
   </head>
   <body>
     <template
-      is="e-unilang-font-loader"
-      data-font-sources-reference="unilangFontSources"
+      is="e-repertoire-font-loader"
+      data-font-sources-reference="repertoireFontSources"
       data-font-config='
         {
           "chord-letters": {
@@ -37,11 +37,11 @@
           "music": {
             "bravura": {
               "font": "/font/music/Bravura.otf",
-              "js":   "/js/e-unilang/unilang-worker/drawer/font/music-js/bravura.js"
+              "js":   "/js/e-repertoire/repertoire-worker/drawer/font/music-js/bravura.js"
             },
             "leland": {
               "font": "/font/music/Leland.otf",
-              "js":   "/js/e-unilang/unilang-worker/drawer/font/music-js/leland.js"
+              "js":   "/js/e-repertoire/repertoire-worker/drawer/font/music-js/leland.js"
             }
           }
         }

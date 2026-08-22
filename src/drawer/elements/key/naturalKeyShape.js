@@ -1,7 +1,7 @@
 'use strict'
 
-import path from '#unilang/drawer/elements/basic/path.js'
-import group from '#unilang/drawer/elements/basic/group.js'
+import path from '#repertoire/drawer/elements/basic/path.js'
+import group from '#repertoire/drawer/elements/basic/group.js'
 
 export default function (positionNumber) {
   return (styles, leftOffset, topOffset) => {

@@ -1,15 +1,15 @@
 'use strict'
 
-import regexps from '#unilang/language/parser/scenarios/static-objects/regexps.js'
-import isDirection from '#unilang/language/parser/scenarios/token/isDirection.js'
-import direction from '#unilang/language/parser/scenarios/token/direction.js'
-import foundNextTokenValueOnTheLine from '#unilang/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
-import chordParamsByLastMentionedUnitPositions from '#unilang/language/parser/scenarios/page-schema/chordParamsByLastMentionedUnitPositions.js'
-import undefineAllMentionedPositions from '#unilang/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
-import undefineOnlyLastMentionedUnitPosition from '#unilang/language/parser/scenarios/page-schema/undefineOnlyLastMentionedUnitPosition.js'
-import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#unilang/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
-import addUnitPositionScenarios from '#unilang/language/parser/scenarios/addUnitPositionScenarios.js'
-import addLineMeasureStaveVoicePositionScenarios from '#unilang/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
+import isDirection from '#repertoire/language/parser/scenarios/token/isDirection.js'
+import direction from '#repertoire/language/parser/scenarios/token/direction.js'
+import foundNextTokenValueOnTheLine from '#repertoire/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import chordParamsByLastMentionedUnitPositions from '#repertoire/language/parser/scenarios/page-schema/chordParamsByLastMentionedUnitPositions.js'
+import undefineAllMentionedPositions from '#repertoire/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedUnitPosition from '#repertoire/language/parser/scenarios/page-schema/undefineOnlyLastMentionedUnitPosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#repertoire/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addUnitPositionScenarios from '#repertoire/language/parser/scenarios/addUnitPositionScenarios.js'
+import addLineMeasureStaveVoicePositionScenarios from '#repertoire/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios) {
   scenarios['glissando'] = {

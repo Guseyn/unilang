@@ -1,7 +1,7 @@
 'use strict'
 
-import slurJunctionPointForSingleUnit from '#unilang/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
-import timeInSlurSplinePointsBySomeXPointThere from '#unilang/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
+import slurJunctionPointForSingleUnit from '#repertoire/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
+import timeInSlurSplinePointsBySomeXPointThere from '#repertoire/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
 
 export default function (singleUnit, slurSplinePoints, slurDirection, styles) {
   const slurStartX = slurSplinePoints[1]

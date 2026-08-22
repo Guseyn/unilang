@@ -10,7 +10,7 @@ import {
   generateStylesForMultiplePages,
   generateMidiForMultiplePages,
   generateSvgForMultiplePages,
-} from '#unilang/api.js'
+} from '#repertoire/api.js'
 
 const visualTestsForEachFont = (
   await fs.readdir(
@@ -37,7 +37,7 @@ function red(str) {
 }
 
 async function runVisualTestForFont(visualTestDirForFont) {
-  const listOfUnilangInputFiles = await fs.readdir(`visual-tests/${visualTestDirForFont}/unilang`)
+  const listOfRepertoireInputFiles = await fs.readdir(`visual-tests/${visualTestDirForFont}/repertoire`)
   const listOfFailedTests = []
   const listOfPassedTests = []
   console.time('Total time spent for visual tests')
@@ -60,11 +60,11 @@ async function runVisualTestForFont(visualTestDirForFont) {
     'music': {
       'bravura': {
         'font': './src/drawer/font/music/Bravura.otf',
-        'js': '#unilang/drawer/font/music-js/bravura.js'
+        'js': '#repertoire/drawer/font/music-js/bravura.js'
       },
       'leland': {
         'font': './src/drawer/font/music/Leland.otf',
-        'js': '#unilang/drawer/font/music-js/leland.js'
+        'js': '#repertoire/drawer/font/music-js/leland.js'
       }
     }
   })
@@ -80,13 +80,13 @@ async function runVisualTestForFont(visualTestDirForFont) {
     ]
   }
 
-  for (const unilangInputFile of listOfUnilangInputFiles) {
-    const testName = path.basename(unilangInputFile).split('.')[0]
-    const unilangInputFileFullPath = `visual-tests/${visualTestDirForFont}/unilang/${unilangInputFile}`
+  for (const repertoireInputFile of listOfRepertoireInputFiles) {
+    const testName = path.basename(repertoireInputFile).split('.')[0]
+    const repertoireInputFileFullPath = `visual-tests/${visualTestDirForFont}/repertoire/${repertoireInputFile}`
 
-    const unilangText = (await fs.readFile(unilangInputFileFullPath, 'utf-8'))
+    const repertoireText = (await fs.readFile(repertoireInputFileFullPath, 'utf-8'))
 
-    const unilangMultiplePagesText = unilangText.split(PAGE_DELIMITER)
+    const repertoireMultiplePagesText = repertoireText.split(PAGE_DELIMITER)
     const {
       pageSchemaForEachPage,
       htmlHighlightsForEachPage,
@@ -95,7 +95,7 @@ async function runVisualTestForFont(visualTestDirForFont) {
       mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
       commentsForEachPage
     } = generateIntermediateStructuresForMultiplePages({
-      unilangMultiplePagesText,
+      repertoireMultiplePagesText,
       supportedFontNames
     })
 

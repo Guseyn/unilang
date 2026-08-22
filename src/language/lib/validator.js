@@ -1,8 +1,8 @@
 'use strict'
 
-import attribute from '#unilang/language/lib/attribute.js'
-import * as helpers from '#unilang/language/lib/helpers.js'
-import { scan as scanSchema } from '#unilang/language/lib/scan.js'
+import attribute from '#repertoire/language/lib/attribute.js'
+import * as helpers from '#repertoire/language/lib/helpers.js'
+import { scan as scanSchema } from '#repertoire/language/lib/scan.js'
 
 const ValidatorResult = helpers.ValidatorResult
 const ValidatorResultError = helpers.ValidatorResultError

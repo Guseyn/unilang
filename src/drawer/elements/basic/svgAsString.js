@@ -1,7 +1,7 @@
 'use strict'
 
-import polyline from '#unilang/drawer/elements/basic/polyline.js'
-import formatNumber from '#unilang/drawer/elements/basic/formatNumber.js'
+import polyline from '#repertoire/drawer/elements/basic/polyline.js'
+import formatNumber from '#repertoire/drawer/elements/basic/formatNumber.js'
 
 const debugMode = true
 

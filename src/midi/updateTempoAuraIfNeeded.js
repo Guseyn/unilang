@@ -1,7 +1,7 @@
 'use strict'
 
-import durationsValuesInTempoExpressedInQuarters from '#unilang/midi/durationsValuesInTempoExpressedInQuarters.js'
-import tempoNamesMappedWitTempoAuraUpdaters from '#unilang/midi/tempoNamesMappedWitTempoAuraUpdaters.js'
+import durationsValuesInTempoExpressedInQuarters from '#repertoire/midi/durationsValuesInTempoExpressedInQuarters.js'
+import tempoNamesMappedWitTempoAuraUpdaters from '#repertoire/midi/tempoNamesMappedWitTempoAuraUpdaters.js'
 
 const REGEXPS_WITH_GROUPED_LIST_OF_TEMPO_NAMES = new RegExp(`(${Object.keys(tempoNamesMappedWitTempoAuraUpdaters).join('|')})`)
 const REGXEPS_WITH_TEMPO_NUMBER = /= {0,}(\d+)/

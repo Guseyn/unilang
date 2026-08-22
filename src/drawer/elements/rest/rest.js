@@ -1,16 +1,16 @@
 'use strict'
 
-import quadrupleWholeRest from '#unilang/drawer/elements/rest/quadrupleWholeRest.js'
-import doubleWholeRest from '#unilang/drawer/elements/rest/doubleWholeRest.js'
-import wholeRest from '#unilang/drawer/elements/rest/wholeRest.js'
-import halfRest from '#unilang/drawer/elements/rest/halfRest.js'
-import quarterRest from '#unilang/drawer/elements/rest/quarterRest.js'
-import eighthRest from '#unilang/drawer/elements/rest/eighthRest.js'
-import sixteenthRest from '#unilang/drawer/elements/rest/sixteenthRest.js'
-import thirtySecondRest from '#unilang/drawer/elements/rest/thirtySecondRest.js'
-import sixtyFourthRest from '#unilang/drawer/elements/rest/sixtyFourthRest.js'
-import hundredTwentyEighthRest from '#unilang/drawer/elements/rest/hundredTwentyEighthRest.js'
-import twoHundredFiftySixthRest from '#unilang/drawer/elements/rest/twoHundredFiftySixthRest.js'
+import quadrupleWholeRest from '#repertoire/drawer/elements/rest/quadrupleWholeRest.js'
+import doubleWholeRest from '#repertoire/drawer/elements/rest/doubleWholeRest.js'
+import wholeRest from '#repertoire/drawer/elements/rest/wholeRest.js'
+import halfRest from '#repertoire/drawer/elements/rest/halfRest.js'
+import quarterRest from '#repertoire/drawer/elements/rest/quarterRest.js'
+import eighthRest from '#repertoire/drawer/elements/rest/eighthRest.js'
+import sixteenthRest from '#repertoire/drawer/elements/rest/sixteenthRest.js'
+import thirtySecondRest from '#repertoire/drawer/elements/rest/thirtySecondRest.js'
+import sixtyFourthRest from '#repertoire/drawer/elements/rest/sixtyFourthRest.js'
+import hundredTwentyEighthRest from '#repertoire/drawer/elements/rest/hundredTwentyEighthRest.js'
+import twoHundredFiftySixthRest from '#repertoire/drawer/elements/rest/twoHundredFiftySixthRest.js'
 
 const rests = {
   '4': quadrupleWholeRest,
