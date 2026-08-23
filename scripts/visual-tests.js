@@ -8,7 +8,6 @@ import {
   generateIntermediateStructuresForMultiplePages,
   areAllPageSchemasValid,
   generateStylesForMultiplePages,
-  generateMidiForMultiplePages,
   generateSvgForMultiplePages,
 } from '#repertoire/api.js'
 

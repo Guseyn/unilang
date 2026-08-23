@@ -59,11 +59,4 @@ createSymlink(
   'static/font/text → src/drawer/font/text'
 )
 
-// Create js/repertoire symlink
-createSymlink(
-  join(staticDir, 'js/repertoire'),
-  srcDir,
-  'static/js/repertoire → src'
-)
-
 console.log('\n✓ All symlinks created successfully!')
