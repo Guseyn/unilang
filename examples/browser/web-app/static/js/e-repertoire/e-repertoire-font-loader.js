@@ -1,5 +1,4 @@
 import evaluateActionsOnProgress from '#ehtml/evaluateActionsOnProgress.js'
-import unwrappedChildrenOfParent from '#ehtml/unwrappedChildrenOfParent.js'
 import scrollToHash from '#ehtml/actions/scrollToHash.js'
 
 import worker from '#e-repertoire/worker.js'
@@ -7,7 +6,7 @@ import worker from '#e-repertoire/worker.js'
 class ERepertoireFontLoader extends HTMLTemplateElement {
   constructor() {
     super()
-    this.uuid = crypto.randomUUID()
+    this.id = crypto.randomUUID()
     this.ehtmlActivated = false
   }
 
@@ -28,8 +27,6 @@ class ERepertoireFontLoader extends HTMLTemplateElement {
   }
 
   async #run() {
-    window['__UNILANG_STORAGE__'] = window['__UNILANG_STORAGE__'] || {}
-
     const progressState = {}
 
     if (this.hasAttribute('data-actions-on-progress-start')) {
@@ -85,7 +82,9 @@ class ERepertoireFontLoader extends HTMLTemplateElement {
       if (status === 'ok' && id !== this.id) {
         return
       }
-      unwrappedChildrenOfParent(this)
+      const contentNode = document.importNode(this.content, true)
+      const parentNode = this.parentNode
+      parentNode.replaceChild(contentNode, this)
 
       if (this.hasAttribute('data-actions-on-progress-end')) {
         evaluateActionsOnProgress(
@@ -97,12 +96,6 @@ class ERepertoireFontLoader extends HTMLTemplateElement {
 
       scrollToHash()
     }, { once: true })
-
-    worker.addEventListener('error', (event) => {
-      if (event.data.error) {
-        throw new Error(`Font loading failed: ${event.data.error}`)
-      }
-    })
   }
 }
 

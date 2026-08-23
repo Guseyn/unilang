@@ -17,6 +17,7 @@
     <script type="module">
       import '#ehtml/main'
       import '#e-repertoire/e-repertoire-font-loader.js'
+      import '#e-repertoire/e-repertoire-svg.js'
     </script>
   </head>
   <body>
@@ -47,7 +48,13 @@
         }
       '
     >
-      
+      <template
+        is="e-repertoire-svg"
+        data-font-sources="repertoireFontSources"
+      >
+        bass clef
+        a b c with accent below d e
+      </template> 
     </template>
   </body>
 </html>
