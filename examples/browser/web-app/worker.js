@@ -10,7 +10,7 @@ server(
   app({
     indexFile: './examples/browser/web-app/static/html/index.html',
     static: [
-      src(/^\/((html\/static-templates\/)|css|js|images|docs|font|md)/, {
+      src(/^\/((html\/static-templates\/)|css|js|images|docs|font|md|midi)/, {
         baseFolder,
         useGzip: true,
         useCors: true,

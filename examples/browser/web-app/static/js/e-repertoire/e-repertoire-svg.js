@@ -8,7 +8,6 @@ class ERepertoireSVG extends HTMLTemplateElement {
     super()
     this.id = crypto.randomUUID()
     this.ehtmlActivated = false
-    console.log('ok')
   }
 
   connectedCallback() {

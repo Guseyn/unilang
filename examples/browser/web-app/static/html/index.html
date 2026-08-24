@@ -18,6 +18,7 @@
       import '#ehtml/main'
       import '#e-repertoire/e-repertoire-font-loader.js'
       import '#e-repertoire/e-repertoire-svg.js'
+      import '#e-repertoire/lib/html-midi-player/player.js'
     </script>
   </head>
   <body>
@@ -51,10 +52,18 @@
       <template
         is="e-repertoire-svg"
         data-font-sources="repertoireFontSources"
+        data-input-text="a b c with accent below d e"
       >
-        bass clef
-        a b c with accent below d e
-      </template> 
+      </template>
     </template>
+
+    <!--
+      Omit sound-font to use the built-in oscillator synth instead of samples.
+      Add loop to restart automatically at the end.
+    -->
+    <midi-player
+      data-src="/midi/accent-1.mid"
+      data-sound-font
+    ></midi-player>
   </body>
 </html>
