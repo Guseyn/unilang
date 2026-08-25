@@ -1,14 +1,14 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import isVerticalCorrection from '#repertoire/language/parser/scenarios/token/isVerticalCorrection.js'
-import verticalCorrection from '#repertoire/language/parser/scenarios/token/verticalCorrection.js'
-import foundNextTokenValueOnTheLine from '#repertoire/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
-import measureParamsByLastMentionedMeasurePosition from '#repertoire/language/parser/scenarios/page-schema/measureParamsByLastMentionedMeasurePosition.js'
-import undefineAllMentionedPositions from '#repertoire/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
-import undefineOnlyLastMentionedMeasurePosition from '#repertoire/language/parser/scenarios/page-schema/undefineOnlyLastMentionedMeasurePosition.js'
-import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#repertoire/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
-import addLineMeasureStaveVoicePositionScenarios from '#repertoire/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import isVerticalCorrection from '#msq/language/parser/scenarios/token/isVerticalCorrection.js'
+import verticalCorrection from '#msq/language/parser/scenarios/token/verticalCorrection.js'
+import foundNextTokenValueOnTheLine from '#msq/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import measureParamsByLastMentionedMeasurePosition from '#msq/language/parser/scenarios/page-schema/measureParamsByLastMentionedMeasurePosition.js'
+import undefineAllMentionedPositions from '#msq/language/parser/scenarios/page-schema/undefineAllMentionedPositions.js'
+import undefineOnlyLastMentionedMeasurePosition from '#msq/language/parser/scenarios/page-schema/undefineOnlyLastMentionedMeasurePosition.js'
+import fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded from '#msq/language/parser/scenarios/highlights-html-buffer/fillAllPlaceholdersInHighlightsHtmlBufferWithMentionedPositionsWhereItsNeeded.js'
+import addLineMeasureStaveVoicePositionScenarios from '#msq/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios) {
   scenarios['volta'] = {

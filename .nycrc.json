@@ -9,7 +9,7 @@
     "src/language/lib",
     "src/midi/lib",
     "src/language/parser/scenarios/string/*",
-    "src/worker-for-producing-repertoire-output/*",
+    "src/worker.js/*",
     "src/drawer/generateUnicodePoints.js",
     "src/drawer/font-urls.js"
   ],

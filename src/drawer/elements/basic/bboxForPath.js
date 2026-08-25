@@ -1,6 +1,6 @@
 'use strict'
 
-import svgPath from '#repertoire/drawer/lib/svgpath/index.js'
+import svgPath from '#msq/drawer/lib/svgpath/index.js'
 
 // Precision for consider cubic polynom as quadratic one
 const CBEZIER_MINMAX_EPSILON = 0.00000001

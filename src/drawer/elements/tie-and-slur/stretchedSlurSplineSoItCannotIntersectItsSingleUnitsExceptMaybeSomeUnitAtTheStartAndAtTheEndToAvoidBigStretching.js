@@ -1,6 +1,6 @@
 'use strict'
 
-import timeInSlurSplinePointsBySomeXPointThere from '#repertoire/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
+import timeInSlurSplinePointsBySomeXPointThere from '#msq/drawer/elements/tie-and-slur/timeInSlurSplinePointsBySomeXPointThere.js'
 
 const yDeltasToAddToFirstAndSecondCentralControlPointsInSlurSoItCannotIntersectItsSingleUnits = (slurSplinePoints, slurDirection, twoIntersectionPointsInFirstAndSecondHalfsOfSlurWhereSlurCreatesBiggestGapsWithSingleUnitTopOrBottomPositionsInEachHalfRespectivelyDependingOnSlurDirection, styles) => {
   const slurStartX = slurSplinePoints[1]

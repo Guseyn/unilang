@@ -1,8 +1,8 @@
 'use strict'
 
-import chordLetterText from '#repertoire/drawer/elements/chord-letter/chordLetterText.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import moveCrossStaveElementsThatAttachedToCrossStaveUnit from '#repertoire/drawer/elements/voice/moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
+import chordLetterText from '#msq/drawer/elements/chord-letter/chordLetterText.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import moveCrossStaveElementsThatAttachedToCrossStaveUnit from '#msq/drawer/elements/voice/moveCrossStaveElementsThatAttachedToCrossStaveUnit.js'
 
 export default function (
   chordLetterElementsOnPageLineToPrepareSpaceBeforeDrawingThem,

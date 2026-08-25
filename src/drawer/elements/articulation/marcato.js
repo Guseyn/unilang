@@ -1,10 +1,10 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import articulationShouldBeAboveOrUnderStemLine from '#repertoire/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
-import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from '#msq/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementInTheCenterBetweenPoints from '#msq/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from '#msq/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#msq/drawer/elements/basic/moveElementBelowPointWithInterval.js'
 
 export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { marcato, fontColor } = styles

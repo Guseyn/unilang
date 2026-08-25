@@ -1,9 +1,9 @@
 'use strict'
 
 const supportedBreathMarkTypes = ['comma', 'double slash']
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, drawnMidMeasureKeySignaturesForCrossStaveUnits, numberOfStaves, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { intervalBetweenStaveLines, spaceAfterMidMeasureClefs, spaceAfterMidMeasureKeySignaturesForBreathMark, breathMarkAsComma, breathMarkAsDoubleSlash, fontColor } = styles

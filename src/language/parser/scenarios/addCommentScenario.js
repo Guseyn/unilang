@@ -1,7 +1,7 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import theSameScenarioButWithDifferentRequiredCommandProgression from '#repertoire/language/parser/scenarios/theSameScenarioButWithDifferentRequiredCommandProgression.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from '#msq/language/parser/scenarios/theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
 const lastComment = parserState => parserState.comments[parserState.comments.length - 1]
 const NEW_LINE = '\n'

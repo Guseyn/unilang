@@ -1,10 +1,10 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import topOffsetForCurrentStave from '#msq/drawer/elements/stave/topOffsetForCurrentStave.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (instrumentTitlesParams, numberOfStaveLines, isFirstMeasureOnPageLine, measureIndexInGeneral) {
   return (styles, leftOffset, topOffset) => {

@@ -3,11 +3,11 @@
 // http://download.microsoft.com/download/8/0/1/801a191c-029d-4af3-9642-555f6fe514ee/cff.pdf
 // http://download.microsoft.com/download/8/0/1/801a191c-029d-4af3-9642-555f6fe514ee/type2.pdf
 
-import {  CffEncoding, cffStandardEncoding, cffExpertEncoding, cffStandardStrings  } from '#repertoire/drawer/lib/opentype/encoding.js'
-import glyphset from '#repertoire/drawer/lib/opentype/glyphset.js'
-import { getByte, getBytes, getOffset, getCard8, Parser, bytesToString, getCard16 } from '#repertoire/drawer/lib/opentype/parse.js'
-import Path from '#repertoire/drawer/lib/opentype/path.js'
-import table from '#repertoire/drawer/lib/opentype/table.js'
+import {  CffEncoding, cffStandardEncoding, cffExpertEncoding, cffStandardStrings  } from '#msq/drawer/lib/opentype/encoding.js'
+import glyphset from '#msq/drawer/lib/opentype/glyphset.js'
+import { getByte, getBytes, getOffset, getCard8, Parser, bytesToString, getCard16 } from '#msq/drawer/lib/opentype/parse.js'
+import Path from '#msq/drawer/lib/opentype/path.js'
+import table from '#msq/drawer/lib/opentype/table.js'
 
 // Custom equals function that can also check lists.
 function equals(a, b) {

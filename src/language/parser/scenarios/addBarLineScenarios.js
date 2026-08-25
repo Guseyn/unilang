@@ -1,10 +1,10 @@
 'use strict'
 
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#repertoire/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import lastMeasureParams from '#repertoire/language/parser/scenarios/page-schema/lastMeasureParams.js'
-import openingBarLines from '#repertoire/language/parser/scenarios/static-objects/openingBarLines.js'
-import closingBarLines from '#repertoire/language/parser/scenarios/static-objects/closingBarLines.js'
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#msq/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from '#msq/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import openingBarLines from '#msq/language/parser/scenarios/static-objects/openingBarLines.js'
+import closingBarLines from '#msq/language/parser/scenarios/static-objects/closingBarLines.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
 
 export default function (scenarios) {
   scenarios['no start bar line'] = {

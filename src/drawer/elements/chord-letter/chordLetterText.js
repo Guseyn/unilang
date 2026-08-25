@@ -1,7 +1,7 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import group from '#msq/drawer/elements/basic/group.js'
 // C♯♭oøΔ
 const chordLetterSigns = {
   'sharp': '♯',

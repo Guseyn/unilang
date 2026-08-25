@@ -1,6 +1,6 @@
 'use strict'
 
-import pitchAdjustmentForNoteTimeFrame from '#repertoire/midi/pitchAdjustmentForNoteTimeFrame.js'
+import pitchAdjustmentForNoteTimeFrame from '#msq/midi/pitchAdjustmentForNoteTimeFrame.js'
 
 const MIDI_PITCHES_MAPPED_WITH_ORNAMENT_BOTTOM_ALTERNATE_PITCH_ADJUSTMENTS = {
   'C': -1,
@@ -32,9 +32,9 @@ const MIDI_PITCHES_MAPPED_WITH_ORNAMENT_BOTTOM_ALTERNATE_PITCH = {
   'B': 'A'
 }
 
-import NORMALIZED_PITCHES from '#repertoire/midi/normalizedPitches.js'
+import NORMALIZED_PITCHES from '#msq/midi/normalizedPitches.js'
 const NUMBER_OF_NORMALIZED_PITCHES = NORMALIZED_PITCHES.length
-import PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME from '#repertoire/midi/pitchAdjustmentsBySimpleKeyName.js'
+import PITCH_ADJUSTEMENTS_BY_SIMPLE_KEY_NAME from '#msq/midi/pitchAdjustmentsBySimpleKeyName.js'
 
 export default function (note, ornamentOfNote, pitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForAllStavesSplittedInTimeFrames, pitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, orderedTimeFramesFromPitchAdjustmentsAuraForEachStaveThatLastOneMeasureSplittedInTimeFrames, graceMaxCountForCurrentTime, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, staveVoiceKey) {
   const ornamentBottomAlternateNote = Object.assign({}, note)  

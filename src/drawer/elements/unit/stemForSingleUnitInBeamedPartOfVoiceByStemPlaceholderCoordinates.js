@@ -1,7 +1,7 @@
 'use strict'
 
-import line from '#repertoire/drawer/elements/basic/line.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
+import line from '#msq/drawer/elements/basic/line.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 export default function (styles, stemPlaceholderLeft, stemPlaceholderYStart, stemPlaceholderYEnd, isGrace) {
   const { noteSquareStemStrokeOptions, graceElementsScaleFactor } = styles

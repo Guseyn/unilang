@@ -1,22 +1,22 @@
 'use strict'
 
-import staccato from '#repertoire/drawer/elements/articulation/staccato.js'
-import spiccato from '#repertoire/drawer/elements/articulation/spiccato.js'
-import accent from '#repertoire/drawer/elements/articulation/accent.js'
-import tenuto from '#repertoire/drawer/elements/articulation/tenuto.js'
-import marcato from '#repertoire/drawer/elements/articulation/marcato.js'
-import fermata from '#repertoire/drawer/elements/articulation/fermata.js'
-import leftHandPizzicato from '#repertoire/drawer/elements/articulation/leftHandPizzicato.js'
-import snapPizzicato from '#repertoire/drawer/elements/articulation/snapPizzicato.js'
-import naturalHarmonic from '#repertoire/drawer/elements/articulation/naturalHarmonic.js'
-import upBow from '#repertoire/drawer/elements/articulation/upBow.js'
-import downBow from '#repertoire/drawer/elements/articulation/downBow.js'
-import turn from '#repertoire/drawer/elements/articulation/turn.js'
-import trill from '#repertoire/drawer/elements/articulation/trill.js'
-import mordent from '#repertoire/drawer/elements/articulation/mordent.js'
-import noteLetter from '#repertoire/drawer/elements/articulation/noteLetter.js'
-import dynamicMark from '#repertoire/drawer/elements/articulation/dynamicMark.js'
-import octaveSign from '#repertoire/drawer/elements/articulation/octaveSign.js'
+import staccato from '#msq/drawer/elements/articulation/staccato.js'
+import spiccato from '#msq/drawer/elements/articulation/spiccato.js'
+import accent from '#msq/drawer/elements/articulation/accent.js'
+import tenuto from '#msq/drawer/elements/articulation/tenuto.js'
+import marcato from '#msq/drawer/elements/articulation/marcato.js'
+import fermata from '#msq/drawer/elements/articulation/fermata.js'
+import leftHandPizzicato from '#msq/drawer/elements/articulation/leftHandPizzicato.js'
+import snapPizzicato from '#msq/drawer/elements/articulation/snapPizzicato.js'
+import naturalHarmonic from '#msq/drawer/elements/articulation/naturalHarmonic.js'
+import upBow from '#msq/drawer/elements/articulation/upBow.js'
+import downBow from '#msq/drawer/elements/articulation/downBow.js'
+import turn from '#msq/drawer/elements/articulation/turn.js'
+import trill from '#msq/drawer/elements/articulation/trill.js'
+import mordent from '#msq/drawer/elements/articulation/mordent.js'
+import noteLetter from '#msq/drawer/elements/articulation/noteLetter.js'
+import dynamicMark from '#msq/drawer/elements/articulation/dynamicMark.js'
+import octaveSign from '#msq/drawer/elements/articulation/octaveSign.js'
 
 const articulations = {
   staccato,
@@ -40,14 +40,14 @@ const articulations = {
 
 const articulationsThatNeedOutline = [ 'staccato', 'tenuto', 'naturalHarmonic', 'snapPizzicato', 'leftHandPizzicato', 'spiccato' ]
 
-import group from '#repertoire/drawer/elements/basic/group.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
-import topOfStaveForFirstNoteInCurrentSingleUnit from '#repertoire/drawer/elements/stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
-import topOfStaveForLastNoteInCurrentSingleUnit from '#repertoire/drawer/elements/stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
-import articulationIsAttachedToUnit from '#repertoire/drawer/elements/articulation/articulationIsAttachedToUnit.js'
-import outlineForArticulation from '#repertoire/drawer/elements/articulation/outlineForArticulation.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import scaleElementAroundPoint from '#msq/drawer/elements/basic/scaleElementAroundPoint.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
+import topOfStaveForFirstNoteInCurrentSingleUnit from '#msq/drawer/elements/stave/topOfStaveForFirstNoteInCurrentSingleUnit.js'
+import topOfStaveForLastNoteInCurrentSingleUnit from '#msq/drawer/elements/stave/topOfStaveForLastNoteInCurrentSingleUnit.js'
+import articulationIsAttachedToUnit from '#msq/drawer/elements/articulation/articulationIsAttachedToUnit.js'
+import outlineForArticulation from '#msq/drawer/elements/articulation/outlineForArticulation.js'
 
 export default function (drawnVoicesOnPageLine, drawOnlyArticulationsAttachedToUnit, drawnOnlyArticulationsBelowOrAboveStave, dontDrawDynamics, drawOnlyDynamics, styles) {
   const { intervalBetweenStaveLines, graceElementsScaleFactor } = styles

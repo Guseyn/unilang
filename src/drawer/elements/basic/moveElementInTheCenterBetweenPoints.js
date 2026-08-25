@@ -1,6 +1,6 @@
 'use strict'
 
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
 
 export default function (element, leftPoint, rightPoint) {
   const elementCenter = (element.right + element.left) / 2

@@ -1,10 +1,10 @@
 'use strict'
 
-import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
-import stavePiece from '#repertoire/drawer/elements/stave/stavePiece.js'
-import keySignature from '#repertoire/drawer/elements/key/keySignature.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import topOffsetForCurrentStave from '#msq/drawer/elements/stave/topOffsetForCurrentStave.js'
+import stavePiece from '#msq/drawer/elements/stave/stavePiece.js'
+import keySignature from '#msq/drawer/elements/key/keySignature.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (numberOfStaveLines, clefsNames, keySignatureName, keySignatureNameForEachLineId, measureIndexInGeneralOfRefId, staveIndexOfRefId, voiceIndexOfRefId, singleUnitIndexOfRefId) {
   return (styles, leftOffset, topOffset) => {

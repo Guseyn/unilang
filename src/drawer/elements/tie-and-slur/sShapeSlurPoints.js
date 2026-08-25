@@ -1,14 +1,14 @@
 'use strict'
 
-import nextSlurDirectionBySingleUnit from '#repertoire/drawer/elements/tie-and-slur/nextSlurDirectionBySingleUnit.js'
-import slurJunctionPointForSingleUnit from '#repertoire/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
-import slurJunctionPhantomPoint from '#repertoire/drawer/elements/tie-and-slur/slurJunctionPhantomPoint.js'
-import slurSplinePoints from '#repertoire/drawer/elements/tie-and-slur/slurSplinePoints.js'
-import intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits from '#repertoire/drawer/elements/tie-and-slur/intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits.js'
-import yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes from '#repertoire/drawer/elements/tie-and-slur/yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes.js'
-import sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from '#repertoire/drawer/elements/tie-and-slur/sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
-import gluedSlurParts from '#repertoire/drawer/elements/tie-and-slur/gluedSlurParts.js'
-import slurRoundCoefficientByXRangeOfSShapeSlur from '#repertoire/drawer/elements/tie-and-slur/slurRoundCoefficientByXRangeOfSShapeSlur.js'
+import nextSlurDirectionBySingleUnit from '#msq/drawer/elements/tie-and-slur/nextSlurDirectionBySingleUnit.js'
+import slurJunctionPointForSingleUnit from '#msq/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
+import slurJunctionPhantomPoint from '#msq/drawer/elements/tie-and-slur/slurJunctionPhantomPoint.js'
+import slurSplinePoints from '#msq/drawer/elements/tie-and-slur/slurSplinePoints.js'
+import intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits from '#msq/drawer/elements/tie-and-slur/intersectionPointsForOnOnePartOfSShapeSlurWithItsSingleUnits.js'
+import yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes from '#msq/drawer/elements/tie-and-slur/yOffsetForSShapeSlurSoThatItCanBeAboveOrUnderAllNotes.js'
+import sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits from '#msq/drawer/elements/tie-and-slur/sShapeSlurSplinePointsWithAdjustedYOffsetSoItCannotIntersectUnits.js'
+import gluedSlurParts from '#msq/drawer/elements/tie-and-slur/gluedSlurParts.js'
+import slurRoundCoefficientByXRangeOfSShapeSlur from '#msq/drawer/elements/tie-and-slur/slurRoundCoefficientByXRangeOfSShapeSlur.js'
 
 export default function (markedSlur, slurLeftPoint, slurRightPoint, slurDirection, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const { leftMarginForConnectionsThatStartBefore, sShapeSlurYOffsetForItsSidesWhenItBreakingForNextLine, sShapeSlurPartMiddleJunctionPointXOffset, sShapeSlurPartMiddleJunctionPointYOffset } = styles

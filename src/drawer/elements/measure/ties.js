@@ -1,13 +1,13 @@
 'use strict'
 
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
-import tieShape from '#repertoire/drawer/elements/tie-and-slur/tieShape.js'
-import tieDirection from '#repertoire/drawer/elements/tie-and-slur/tieDirection.js'
-import tieJunctionPoint from '#repertoire/drawer/elements/tie-and-slur/tieJunctionPoint.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
+import tieShape from '#msq/drawer/elements/tie-and-slur/tieShape.js'
+import tieDirection from '#msq/drawer/elements/tie-and-slur/tieDirection.js'
+import tieJunctionPoint from '#msq/drawer/elements/tie-and-slur/tieJunctionPoint.js'
 const keyForTie = (staveIndex, voiceIndex) => {
   return `${staveIndex}-${voiceIndex}`
 }
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
 
 export default function (drawnVoicesOnPageLine, voicesBodiesOnPageLine, styles) {
   const drawndTies = []

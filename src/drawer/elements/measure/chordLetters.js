@@ -1,7 +1,7 @@
 'use strict'
 
-import chordLetterText from '#repertoire/drawer/elements/chord-letter/chordLetterText.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import chordLetterText from '#msq/drawer/elements/chord-letter/chordLetterText.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnVoicesOnPageLine, drawnMeasuresOnPageLine, voicesBodiesOnPageLine, styles) {
   const { intervalBetweenStaveLines } = styles

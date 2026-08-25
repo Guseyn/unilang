@@ -1,9 +1,9 @@
 'use strict'
 
-import stavesPiece from '#repertoire/drawer/elements/stave/stavesPiece.js'
-import polyline from '#repertoire/drawer/elements/basic/polyline.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
+import stavesPiece from '#msq/drawer/elements/stave/stavesPiece.js'
+import polyline from '#msq/drawer/elements/basic/polyline.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 export default function (numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {

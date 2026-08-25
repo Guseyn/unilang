@@ -1,7 +1,7 @@
 'use strict'
 
-import measureFermata from '#repertoire/drawer/elements/measure/measureFermata.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import measureFermata from '#msq/drawer/elements/measure/measureFermata.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnMeasureFermatas = []

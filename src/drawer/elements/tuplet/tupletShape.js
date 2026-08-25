@@ -1,11 +1,11 @@
 'use strict'
 
-import group from '#repertoire/drawer/elements/basic/group.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import moveElementInTheCenterBetweenPointsAboveAndBelow from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import moveElementInTheCenterBetweenPoints from '#msq/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementInTheCenterBetweenPointsAboveAndBelow from '#msq/drawer/elements/basic/moveElementInTheCenterBetweenPointsAboveAndBelow.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (lastLeftTupletPoint, voicesBody, belongsToComplexTuplet, extendedFromLeftSide, extendedToRightSide, styles) {
   const tupletElements = []

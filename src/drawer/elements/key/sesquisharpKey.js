@@ -1,8 +1,8 @@
 'use strict'
 
-import stavePiece from '#repertoire/drawer/elements/stave/stavePiece.js'
-import sesquisharpKeyShape from '#repertoire/drawer/elements/key/sesquisharpKeyShape.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import stavePiece from '#msq/drawer/elements/stave/stavePiece.js'
+import sesquisharpKeyShape from '#msq/drawer/elements/key/sesquisharpKeyShape.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (numberOfStaveLines, positionNumber) {
   return (styles, leftOffset, topOffset) => {

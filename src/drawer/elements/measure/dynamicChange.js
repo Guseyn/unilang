@@ -1,15 +1,15 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import articulationShouldBeAboveOrUnderStemLine from '#repertoire/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import articulationShouldBeAboveOrUnderStemLine from '#msq/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import moveElementAbovePointWithInterval from '#msq/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#msq/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import moveElementInTheCenterBetweenPoints from '#msq/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (dynamicChangeParams, styles) {
   const components = []

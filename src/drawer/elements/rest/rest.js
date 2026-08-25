@@ -1,16 +1,16 @@
 'use strict'
 
-import quadrupleWholeRest from '#repertoire/drawer/elements/rest/quadrupleWholeRest.js'
-import doubleWholeRest from '#repertoire/drawer/elements/rest/doubleWholeRest.js'
-import wholeRest from '#repertoire/drawer/elements/rest/wholeRest.js'
-import halfRest from '#repertoire/drawer/elements/rest/halfRest.js'
-import quarterRest from '#repertoire/drawer/elements/rest/quarterRest.js'
-import eighthRest from '#repertoire/drawer/elements/rest/eighthRest.js'
-import sixteenthRest from '#repertoire/drawer/elements/rest/sixteenthRest.js'
-import thirtySecondRest from '#repertoire/drawer/elements/rest/thirtySecondRest.js'
-import sixtyFourthRest from '#repertoire/drawer/elements/rest/sixtyFourthRest.js'
-import hundredTwentyEighthRest from '#repertoire/drawer/elements/rest/hundredTwentyEighthRest.js'
-import twoHundredFiftySixthRest from '#repertoire/drawer/elements/rest/twoHundredFiftySixthRest.js'
+import quadrupleWholeRest from '#msq/drawer/elements/rest/quadrupleWholeRest.js'
+import doubleWholeRest from '#msq/drawer/elements/rest/doubleWholeRest.js'
+import wholeRest from '#msq/drawer/elements/rest/wholeRest.js'
+import halfRest from '#msq/drawer/elements/rest/halfRest.js'
+import quarterRest from '#msq/drawer/elements/rest/quarterRest.js'
+import eighthRest from '#msq/drawer/elements/rest/eighthRest.js'
+import sixteenthRest from '#msq/drawer/elements/rest/sixteenthRest.js'
+import thirtySecondRest from '#msq/drawer/elements/rest/thirtySecondRest.js'
+import sixtyFourthRest from '#msq/drawer/elements/rest/sixtyFourthRest.js'
+import hundredTwentyEighthRest from '#msq/drawer/elements/rest/hundredTwentyEighthRest.js'
+import twoHundredFiftySixthRest from '#msq/drawer/elements/rest/twoHundredFiftySixthRest.js'
 
 const rests = {
   '4': quadrupleWholeRest,

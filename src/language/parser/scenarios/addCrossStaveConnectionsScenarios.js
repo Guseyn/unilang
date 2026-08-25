@@ -1,13 +1,13 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#repertoire/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import lastMeasureParams from '#repertoire/language/parser/scenarios/page-schema/lastMeasureParams.js'
-import lastCrossStaveConnectionParam from '#repertoire/language/parser/scenarios/page-schema/lastCrossStaveConnectionParam.js'
-import staveIndexByTokens from '#repertoire/language/parser/scenarios/token/staveIndexByTokens.js'
-import isStaveIndex from '#repertoire/language/parser/scenarios/token/isStaveIndex.js'
-import foundNextTokenValueOnTheLine from '#repertoire/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
-import theSameScenarioButWithDifferentRequiredCommandProgression from '#repertoire/language/parser/scenarios/theSameScenarioButWithDifferentRequiredCommandProgression.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#msq/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from '#msq/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import lastCrossStaveConnectionParam from '#msq/language/parser/scenarios/page-schema/lastCrossStaveConnectionParam.js'
+import staveIndexByTokens from '#msq/language/parser/scenarios/token/staveIndexByTokens.js'
+import isStaveIndex from '#msq/language/parser/scenarios/token/isStaveIndex.js'
+import foundNextTokenValueOnTheLine from '#msq/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import theSameScenarioButWithDifferentRequiredCommandProgression from '#msq/language/parser/scenarios/theSameScenarioButWithDifferentRequiredCommandProgression.js'
 
 export default function (scenarios) {
   scenarios['bracket or brace'] = {

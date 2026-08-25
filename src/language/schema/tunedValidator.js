@@ -1,6 +1,6 @@
 'use strict'
 
-import jsonschema from '#repertoire/language/lib/index.js'
+import jsonschema from '#msq/language/lib/index.js'
 const validator = new jsonschema.Validator()
 
 validator.attributes.possibleValues = (instance, schema, options, ctx) => {

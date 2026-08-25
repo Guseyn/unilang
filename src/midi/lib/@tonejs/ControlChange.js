@@ -1,4 +1,4 @@
-import { Header } from '#repertoire/midi/lib/@tonejs/Header.js';
+import { Header } from '#msq/midi/lib/@tonejs/Header.js';
 
 /**
  * A map of values to control change names

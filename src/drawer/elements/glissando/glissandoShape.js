@@ -1,9 +1,9 @@
 'use strict'
 
-import wave from '#repertoire/drawer/elements/basic/wave.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import line from '#repertoire/drawer/elements/basic/line.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import wave from '#msq/drawer/elements/basic/wave.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import line from '#msq/drawer/elements/basic/line.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (markedGlissando, glissandoMarkKey, voicesBody, voicesBodiesOnPageLine, drawnMeasuresOnPageLine, extendedFromLeftSide, extendedToRightSide, numberOfStaveLines, styles) {
   const glissandoShapeComponents = []

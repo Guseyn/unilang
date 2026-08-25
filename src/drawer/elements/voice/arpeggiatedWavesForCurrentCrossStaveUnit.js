@@ -1,12 +1,12 @@
 'use strict'
 
-import sortedNotesForSingleUnitConsideringStaves from '#repertoire/drawer/elements/unit/sortedNotesForSingleUnitConsideringStaves.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import wave from '#repertoire/drawer/elements/basic/wave.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import sortedNotesForSingleUnitConsideringStaves from '#msq/drawer/elements/unit/sortedNotesForSingleUnitConsideringStaves.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import wave from '#msq/drawer/elements/basic/wave.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import scaleElementAroundPoint from '#msq/drawer/elements/basic/scaleElementAroundPoint.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnOnlyNoteLettersBeforeApreggiatedWavesForCrossStaveUnits, styles, leftOffset, topOffsetsForEachStave, numberOfStaveLines, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { fontColor, intervalBetweenStaveLines, arpeggioWavePeriod, arpeggioWaveWithArrowPeriod, spaceAfterBreathMark, spaceAfterOnlyLettersForArpeggiatedWaves, graceElementsScaleFactor } = styles

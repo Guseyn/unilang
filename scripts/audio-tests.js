@@ -10,7 +10,7 @@ import {
   generateStylesForMultiplePages,
   generateMidiForMultiplePages,
   generateSvgForMultiplePages,
-} from '#repertoire/api.js'
+} from '#msq/api.js'
 
 const PAGE_DELIMITER = '====next page===='
 const EMPTY_STRING = ''
@@ -35,7 +35,7 @@ function red(str) {
 }
 
 async function runAudioTest() {
-  const listOfRepertoireInputFiles = await fs.readdir(`audio-tests/repertoire`)
+  const listOfMSQInputFiles = await fs.readdir(`audio-tests/msq`)
   const listOfFailedTests = []
   const listOfPassedTests = []
   console.time('Total time spent for audio tests')
@@ -53,10 +53,10 @@ async function runAudioTest() {
     ]
   }
 
-  for (const repertoireInputFile of listOfRepertoireInputFiles) {
-    const testName = path.basename(repertoireInputFile).split('.')[0]
-    const repertoireInputFileFullPath = `audio-tests/repertoire/${repertoireInputFile}`
-    const repertoireText = (await fs.readFile(repertoireInputFileFullPath, 'utf-8'))
+  for (const msqInputFile of listOfMSQInputFiles) {
+    const testName = path.basename(msqInputFile).split('.')[0]
+    const msqInputFileFullPath = `audio-tests/repertoire/${msqInputFile}`
+    const repertoireText = (await fs.readFile(msqInputFileFullPath, 'utf-8'))
 
     const repertoireMultiplePagesText = repertoireText.split(PAGE_DELIMITER)
 

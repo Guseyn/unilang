@@ -1,7 +1,7 @@
 'use strict'
 
-import sign from '#repertoire/drawer/elements/measure/sign.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import sign from '#msq/drawer/elements/measure/sign.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnSigns = []

@@ -1,9 +1,9 @@
 // The `cmap` table stores the mappings from characters to glyphs.
 // https://www.microsoft.com/typography/OTSPEC/cmap.htm
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
-import { Parser, getUShort, getULong } from '#repertoire/drawer/lib/opentype/parse.js'
-import table from '#repertoire/drawer/lib/opentype/table.js'
+import check from '#msq/drawer/lib/opentype/check.js'
+import { Parser, getUShort, getULong } from '#msq/drawer/lib/opentype/parse.js'
+import table from '#msq/drawer/lib/opentype/table.js'
 
 function parseCmapTableFormat12(cmap, p) {
   //Skip reserved.

@@ -1,6 +1,6 @@
 'use strict'
 
-import lastStaveParams from '#repertoire/language/parser/scenarios/page-schema/lastStaveParams.js'
+import lastStaveParams from '#msq/language/parser/scenarios/page-schema/lastStaveParams.js'
 
 export default function (lastMeasureParams, componentName, parserState) {
   if (!lastMeasureParams.stavesParams) {

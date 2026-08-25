@@ -1,6 +1,6 @@
 'use strict'
 
-import formatNumber from '#repertoire/drawer/elements/basic/formatNumber.js'
+import formatNumber from '#msq/drawer/elements/basic/formatNumber.js'
 
 export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   let minTop

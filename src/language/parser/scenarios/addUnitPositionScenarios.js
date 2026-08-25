@@ -1,8 +1,8 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import withNumbersInsteadOfWords from '#repertoire/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
-import addLineMeasureStaveVoicePositionScenarios from '#repertoire/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import withNumbersInsteadOfWords from '#msq/language/parser/scenarios/token/withNumbersInsteadOfWords.js'
+import addLineMeasureStaveVoicePositionScenarios from '#msq/language/parser/scenarios/addLineMeasureStaveVoicePositionScenarios.js'
 
 export default function (scenarios, requiredCommandProgression, commandProgressionLevel = 2, allowedCoordinates) {
   scenarios[`unit position (${requiredCommandProgression})`] = {

@@ -1,8 +1,8 @@
 // The Glyph object
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
-import draw from '#repertoire/drawer/lib/opentype/draw.js'
-import Path from '#repertoire/drawer/lib/opentype/path.js'
+import check from '#msq/drawer/lib/opentype/check.js'
+import draw from '#msq/drawer/lib/opentype/draw.js'
+import Path from '#msq/drawer/lib/opentype/path.js'
 // import glyf from './tables/glyf.js' Can't be imported here, because it's a circular dependency
 
 function getPathDefinition(glyph, path) {

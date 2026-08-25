@@ -1,7 +1,7 @@
 'use strict'
 
-import bboxForPath from '#repertoire/drawer/elements/basic/bboxForPath.js'
-import formatNumber from '#repertoire/drawer/elements/basic/formatNumber.js'
+import bboxForPath from '#msq/drawer/elements/basic/bboxForPath.js'
+import formatNumber from '#msq/drawer/elements/basic/formatNumber.js'
 
 export default function (points, strokeOptions, fill = true, leftOffset = 0, topOffset = 0) {
   const areAnyNaNPoints = points.some(point => isNaN(point) && typeof point !== 'string')

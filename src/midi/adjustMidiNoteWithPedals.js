@@ -1,6 +1,6 @@
 'use strict'
 
-import allConnectedTracks from '#repertoire/midi/allConnectedTracks.js'
+import allConnectedTracks from '#msq/midi/allConnectedTracks.js'
 
 const MIDI_CC_FACTOR = 127
 

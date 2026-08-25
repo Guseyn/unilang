@@ -1,5 +1,5 @@
 'use strict'
 
-import module from '#repertoire/language/parser/scenarios/static-objects/noteDurations.js'
+import module from '#msq/language/parser/scenarios/static-objects/noteDurations.js'
 
 export default Object.keys(module)

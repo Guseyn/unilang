@@ -1,13 +1,13 @@
 'use strict'
 
-import parserScenarios from '#repertoire/language/parser/scenarios/parserScenarios.js'
-import mapWithScenariosAndScenariosWhereItIsRequired from '#repertoire/language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
+import parserScenarios from '#msq/language/parser/scenarios/parserScenarios.js'
+import mapWithScenariosAndScenariosWhereItIsRequired from '#msq/language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired.js'
 const constructedParserScenarios = parserScenarios()
 const constructedMapWithScenariosAndScenariosWhereItIsRequired = mapWithScenariosAndScenariosWhereItIsRequired(constructedParserScenarios)
 
-import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from '#repertoire/language/parser/scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
-import tokenValuesFromTokens from '#repertoire/language/parser/scenarios/token/tokenValuesFromTokens.js'
-import joinedTokensWithRealDelimiters from '#repertoire/language/parser/scenarios/token/joinedTokensWithRealDelimiters.js'
+import withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem from '#msq/language/parser/scenarios/token/withoutCommandDelimitersAsPartOfTokensAndConjunctionsBetweenThem.js'
+import tokenValuesFromTokens from '#msq/language/parser/scenarios/token/tokenValuesFromTokens.js'
+import joinedTokensWithRealDelimiters from '#msq/language/parser/scenarios/token/joinedTokensWithRealDelimiters.js'
 
 const NEW_LINE_REGEXP = /[\r\n|\r|\n]/
 const SPACE_REGEXP = /[\s]/

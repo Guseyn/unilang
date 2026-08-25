@@ -1,11 +1,11 @@
 'use strict'
 
-import flatKey from '#repertoire/drawer/elements/key/flatKey.js'
-import sharpKey from '#repertoire/drawer/elements/key/sharpKey.js'
-import naturalKey from '#repertoire/drawer/elements/key/naturalKey.js'
-import keySignaturesStructures from '#repertoire/drawer/elements/key/keySignaturesStructures.js'
-import stavePiece from '#repertoire/drawer/elements/stave/stavePiece.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import flatKey from '#msq/drawer/elements/key/flatKey.js'
+import sharpKey from '#msq/drawer/elements/key/sharpKey.js'
+import naturalKey from '#msq/drawer/elements/key/naturalKey.js'
+import keySignaturesStructures from '#msq/drawer/elements/key/keySignaturesStructures.js'
+import stavePiece from '#msq/drawer/elements/stave/stavePiece.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (numberOfStaveLines, clefName, keySignatureName) {
   if (clefName === 'octaveEightUp' || clefName === 'octaveEightDown' || clefName === 'octaveFifteenUp' || clefName === 'octaveFifteenDown') {

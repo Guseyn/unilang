@@ -1,6 +1,6 @@
 'use strict'
 
-import sortByGraceCount from '#repertoire/midi/sortByGraceCount.js'
+import sortByGraceCount from '#msq/midi/sortByGraceCount.js'
 
 const VELOCITY_FACTOR = 127
 const DEFAULT_VELOCITY = 100 / VELOCITY_FACTOR

@@ -1,7 +1,7 @@
 'use strict'
 
-import actualDurationConsideringDotsAndTremolos from '#repertoire/drawer/elements/voice/actualDurationConsideringDotsAndTremolos.js'
-import actualDurationConsideringDotsAndTupletsAndTremolos from '#repertoire/drawer/elements/voice/actualDurationConsideringDotsAndTupletsAndTremolos.js'
+import actualDurationConsideringDotsAndTremolos from '#msq/drawer/elements/voice/actualDurationConsideringDotsAndTremolos.js'
+import actualDurationConsideringDotsAndTupletsAndTremolos from '#msq/drawer/elements/voice/actualDurationConsideringDotsAndTupletsAndTremolos.js'
 
 export default function (selectedSingleUnitParams, affectingTupletValuesByStaveAndVoiceIndexes, similesInformationByStaveAndVoiceIndexes, generatedSimileKey, staveIndex, voiceIndex) {
   if (selectedSingleUnitParams.isGrace) {

@@ -1,4 +1,4 @@
-# Repertoire
+# MuSemantiQ
 
 The Semantic Music Engine
 

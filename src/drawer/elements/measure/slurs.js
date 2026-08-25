@@ -1,7 +1,7 @@
 'use strict'
 
-import slurShape from '#repertoire/drawer/elements/tie-and-slur/slurShape.js'
-import phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave from '#repertoire/drawer/elements/tie-and-slur/phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave.js'
+import slurShape from '#msq/drawer/elements/tie-and-slur/slurShape.js'
+import phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave from '#msq/drawer/elements/tie-and-slur/phantomSingleUnitThatIsInSlurThatFinishesInTheMomentItChangesItsStave.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const drawnSlurs = []

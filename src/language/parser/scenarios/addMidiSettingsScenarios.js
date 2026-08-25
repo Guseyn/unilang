@@ -1,7 +1,7 @@
 'use strict'
 
-import midiSettings from '#repertoire/language/parser/scenarios/static-objects/midiSettings.js'
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
+import midiSettings from '#msq/language/parser/scenarios/static-objects/midiSettings.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
 
 const NEW_LINE = '\n'
 

@@ -1,10 +1,10 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#repertoire/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import lastMeasureParams from '#repertoire/language/parser/scenarios/page-schema/lastMeasureParams.js'
-import isVerticalCorrection from '#repertoire/language/parser/scenarios/token/isVerticalCorrection.js'
-import verticalCorrection from '#repertoire/language/parser/scenarios/token/verticalCorrection.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#msq/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import lastMeasureParams from '#msq/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import isVerticalCorrection from '#msq/language/parser/scenarios/token/isVerticalCorrection.js'
+import verticalCorrection from '#msq/language/parser/scenarios/token/verticalCorrection.js'
 
 export default function (scenarios) {
   scenarios['coda'] = {

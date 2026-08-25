@@ -1,6 +1,6 @@
 'use strict'
 
-import articulations from '#repertoire/drawer/elements/measure/articulations.js'
+import articulations from '#msq/drawer/elements/measure/articulations.js'
 
 export default function (drawnVoicesOnPageLine, dontDrawDynamics, drawOnlyDynamics, styles) {
   return articulations(drawnVoicesOnPageLine, true, false, dontDrawDynamics, drawOnlyDynamics, styles)

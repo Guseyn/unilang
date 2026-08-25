@@ -9,7 +9,7 @@ import {
   areAllPageSchemasValid,
   generateStylesForMultiplePages,
   generateSvgForMultiplePages,
-} from '#repertoire/api.js'
+} from '#msq/api.js'
 
 const visualTestsForEachFont = (
   await fs.readdir(
@@ -36,7 +36,7 @@ function red(str) {
 }
 
 async function runVisualTestForFont(visualTestDirForFont) {
-  const listOfRepertoireInputFiles = await fs.readdir(`visual-tests/${visualTestDirForFont}/repertoire`)
+  const listOfMSQInputFiles = await fs.readdir(`visual-tests/${visualTestDirForFont}/msq`)
   const listOfFailedTests = []
   const listOfPassedTests = []
   console.time('Total time spent for visual tests')
@@ -59,11 +59,11 @@ async function runVisualTestForFont(visualTestDirForFont) {
     'music': {
       'bravura': {
         'font': './src/drawer/font/music/Bravura.otf',
-        'js': '#repertoire/drawer/font/music-js/bravura.js'
+        'js': '#msq/drawer/font/music-js/bravura.js'
       },
       'leland': {
         'font': './src/drawer/font/music/Leland.otf',
-        'js': '#repertoire/drawer/font/music-js/leland.js'
+        'js': '#msq/drawer/font/music-js/leland.js'
       }
     }
   })
@@ -79,13 +79,13 @@ async function runVisualTestForFont(visualTestDirForFont) {
     ]
   }
 
-  for (const repertoireInputFile of listOfRepertoireInputFiles) {
-    const testName = path.basename(repertoireInputFile).split('.')[0]
-    const repertoireInputFileFullPath = `visual-tests/${visualTestDirForFont}/repertoire/${repertoireInputFile}`
+  for (const msqInputFile of listOfMSQInputFiles) {
+    const testName = path.basename(msqInputFile).split('.')[0]
+    const msqInputFileFullPath = `visual-tests/${visualTestDirForFont}/msq/${msqInputFile}`
 
-    const repertoireText = (await fs.readFile(repertoireInputFileFullPath, 'utf-8'))
+    const msqText = (await fs.readFile(msqInputFileFullPath, 'utf-8'))
 
-    const repertoireMultiplePagesText = repertoireText.split(PAGE_DELIMITER)
+    const msqMultiplePagesText = msqText.split(PAGE_DELIMITER)
     const {
       pageSchemaForEachPage,
       htmlHighlightsForEachPage,
@@ -94,7 +94,7 @@ async function runVisualTestForFont(visualTestDirForFont) {
       mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
       commentsForEachPage
     } = generateIntermediateStructuresForMultiplePages({
-      repertoireMultiplePagesText,
+      msqMultiplePagesText,
       supportedFontNames
     })
 

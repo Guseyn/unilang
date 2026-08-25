@@ -1,7 +1,7 @@
 'use strict'
 
-import line from '#repertoire/drawer/elements/basic/line.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import line from '#msq/drawer/elements/basic/line.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const { crushGraceLineXPaddingForUnitwithFlagsAndStemUp, crushGraceLineXPaddingForUnitwithFlagsAndStemDown, crushGraceLineXPaddingForUnitWithoutWaves, crushGraceLineXPaddingForBeamedUnit, crushGraceLineStemUpHeightForUnitWithFlags, crushGraceLineStemUpHeightForUnitWithoutWaves, crushGraceLineStemUpHeightForBeamedUnit, crushGraceLineStemDownHeightForUnitWithFlags, crushGraceLineStemDownHeightForUnitWithoutWaves, crushGraceLineStemDownHeightForBeamedUnit, crushGraceYMarginForStemUp, crushGraceYMarginForStemUpWithoutFlags, crushGraceYMarginForStemDown, crushGraceYMarginForStemDownWithoutFlags, crushGraceYMarginForBeamedStemUp, crushGraceYMarginForBeamedStemDown, crushGraceLineStrokeOptions } = styles

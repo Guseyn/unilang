@@ -1,7 +1,7 @@
 'use strict'
 
-import singleTremolo from '#repertoire/drawer/elements/tremolo/singleTremolo.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import singleTremolo from '#msq/drawer/elements/tremolo/singleTremolo.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const drawnSingleTremolos = []

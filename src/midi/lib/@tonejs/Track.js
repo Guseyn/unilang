@@ -1,10 +1,10 @@
-import { insert } from '#repertoire/midi/lib/@tonejs/BinarySearch.js'
-import { ControlChange } from '#repertoire/midi/lib/@tonejs/ControlChange.js'
-import { createControlChanges } from '#repertoire/midi/lib/@tonejs/ControlChanges.js'
-import { PitchBend } from '#repertoire/midi/lib/@tonejs/PitchBend.js'
-import { Header } from '#repertoire/midi/lib/@tonejs/Header.js'
-import { Instrument } from '#repertoire/midi/lib/@tonejs/Instrument.js'
-import { Note } from '#repertoire/midi/lib/@tonejs/Note.js'
+import { insert } from '#msq/midi/lib/@tonejs/BinarySearch.js'
+import { ControlChange } from '#msq/midi/lib/@tonejs/ControlChange.js'
+import { createControlChanges } from '#msq/midi/lib/@tonejs/ControlChanges.js'
+import { PitchBend } from '#msq/midi/lib/@tonejs/PitchBend.js'
+import { Header } from '#msq/midi/lib/@tonejs/Header.js'
+import { Instrument } from '#msq/midi/lib/@tonejs/Instrument.js'
+import { Note } from '#msq/midi/lib/@tonejs/Note.js'
 
 const privateHeaderMap = new WeakMap()
 

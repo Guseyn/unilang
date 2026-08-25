@@ -1,6 +1,6 @@
 'use strict'
 
-import articulationIsAttachedToUnit from '#repertoire/drawer/elements/articulation/articulationIsAttachedToUnit.js'
+import articulationIsAttachedToUnit from '#msq/drawer/elements/articulation/articulationIsAttachedToUnit.js'
 
 export default function (singleUnit, slurDirection, slurSide, rightPointPlacement, styles) {
   let hasAttributesAbove = false

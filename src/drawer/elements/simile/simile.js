@@ -1,8 +1,8 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
 
 export default function (numberOfSimileStrokes, simileYCorrection) {
   return (styles, leftOffset, topOffset) => {

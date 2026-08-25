@@ -1,6 +1,6 @@
 'use strict'
 
-import calculatedCoordinatesOfElements from '#repertoire/drawer/elements/basic/calculatedCoordinatesOfElements.js'
+import calculatedCoordinatesOfElements from '#msq/drawer/elements/basic/calculatedCoordinatesOfElements.js'
 
 export default function (dataName, elements = [], wrapWithBox = false) {
   const { top, right, bottom, left } = calculatedCoordinatesOfElements(elements)

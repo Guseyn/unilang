@@ -1,8 +1,8 @@
 'use strict'
 
-import foundNextTokenValueOnTheLine from '#repertoire/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import lastMeasureParams from '#repertoire/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import foundNextTokenValueOnTheLine from '#msq/language/parser/scenarios/token/foundNextTokenValueOnTheLine.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import lastMeasureParams from '#msq/language/parser/scenarios/page-schema/lastMeasureParams.js'
 
 export default function (scenarios) {
   scenarios['new'] = {

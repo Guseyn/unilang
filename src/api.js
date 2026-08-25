@@ -1,11 +1,11 @@
-import opentype from '#repertoire/drawer/lib/opentype/opentype.js'
-import parsedLanguage from '#repertoire/language/parser/parsedLanguage.js'
-import validatedPageSchema from '#repertoire/language/schema/validatedPageSchema.js'
-import generatedStyles from '#repertoire/drawer/generatedStyles.js'
-import svgAsString from '#repertoire/drawer/elements/basic/svgAsString.js'
-import svg from '#repertoire/drawer/elements/basic/svg.js'
-import page from '#repertoire/drawer/elements/page/page.js'
-import midi from '#repertoire/midi/midi.js'
+import opentype from '#msq/drawer/lib/opentype/opentype.js'
+import parsedLanguage from '#msq/language/parser/parsedLanguage.js'
+import validatedPageSchema from '#msq/language/schema/validatedPageSchema.js'
+import generatedStyles from '#msq/drawer/generatedStyles.js'
+import svgAsString from '#msq/drawer/elements/basic/svgAsString.js'
+import svg from '#msq/drawer/elements/basic/svg.js'
+import page from '#msq/drawer/elements/page/page.js'
+import midi from '#msq/midi/midi.js'
 
 const NEW_LINE = '\n'
 
@@ -16,7 +16,7 @@ const NEW_LINE = '\n'
  * /
 /**
  *
- * Load and initialize fonts for Repertoire (music, text, and chord-letter fonts),
+ * Load and initialize fonts for MuSemantiQ (music, text, and chord-letter fonts),
  * suitable both for **Node.js** and **browser** environments.
  *
  * This function guarantees:
@@ -81,11 +81,11 @@ const NEW_LINE = '\n'
  *   "music": {
  *     "bravura": {
  *       "font": "./src/drawer/font/music/Bravura.otf",
- *       "js":   "#repertoire/drawer/font/music-js/bravura.js"
+ *       "js":   "#msq/drawer/font/music-js/bravura.js"
  *     },
  *     "leland": {
  *       "font": "./src/drawer/font/music/Leland.otf",
- *       "js":   "#repertoire/drawer/font/music-js/leland.js"
+ *       "js":   "#msq/drawer/font/music-js/leland.js"
  *     }
  *   }
  * }
@@ -105,18 +105,18 @@ const NEW_LINE = '\n'
  *   "music": {
  *     "bravura": {
  *       "font": "https://example.com/music/Bravura.otf",
- *       "js":   "#repertoire/drawer/font/music-js/bravura.js"
+ *       "js":   "#msq/drawer/font/music-js/bravura.js"
  *     }
  *     "leland": {
  *       "font": "https://example.com/music/Leland.otf",
- *       "js":   "#repertoire/drawer/font/music-js/leland.js"
+ *       "js":   "#msq/drawer/font/music-js/leland.js"
  *     }
  *   }
  * }
  *
  * -----------------------------------------------------------------------------------------------
  * @returns {Promise<SupportedFonts>}
- * A fully resolved, deterministic font structure used by the Repertoire renderer.
+ * A fully resolved, deterministic font structure used by the MuSemantiQ renderer.
  *
  * -----------------------------------------------------------------------------------------------
  * @typedef {Object} SupportedFonts
@@ -184,11 +184,11 @@ export async function setupFonts(fontConfig) {
     'music': {
       'bravura': {
         'font': './src/drawer/font/music/Bravura.otf',
-        'js': '#repertoire/drawer/font/music-js/bravura.js'
+        'js': '#msq/drawer/font/music-js/bravura.js'
       },
       'leland': {
         'font': './src/drawer/font/music/Leland.otf',
-        'js': '#repertoire/drawer/font/music-js/leland.js'
+        'js': '#msq/drawer/font/music-js/leland.js'
       }
     }
   }
@@ -238,11 +238,11 @@ A full example:
   "music": {
     "bravura": {
       "font": "https://cdn.example.com/music-fonts/Bravura.otf",
-      "js":   "#repertoire/drawer/font/music-js/bravura.js"
+      "js":   "#msq/drawer/font/music-js/bravura.js"
     },
     "leland": {
       "font": "https://cdn.example.com/music-fonts/Leland.otf",
-      "js":   "#repertoire/drawer/font/music-js/leland.js"
+      "js":   "#msq/drawer/font/music-js/leland.js"
     }
   }
 }
@@ -353,7 +353,7 @@ Every path must be a valid URL, not a local filesystem path.
   opentype.load(pathOrUrl) works in both:
     - Node.js (filesystem)
     - Browser (URLs)
-  jsMusicFonts modules contain the glyph definition tables used by Repertoire's
+  jsMusicFonts modules contain the glyph definition tables used by MuSemantiQ's
   engraving engine. They must align 1:1 with musicFontPaths.
 
   We load fonts exactly in the order defined above.
@@ -391,7 +391,7 @@ Every path must be a valid URL, not a local filesystem path.
     "music-js": { fontName: glyphSchemaObject }
   }
 
-  This structure is what the Repertoire drawer/renderer consumes.
+  This structure is what the MuSemantiQ drawer/renderer consumes.
   --------------------------------------------------------------------------------------------------
   */
 
@@ -446,7 +446,7 @@ Every path must be a valid URL, not a local filesystem path.
  * /
 /**
  * High-level convenience wrapper around the low-level `parsedLanguage()` engine.
- * It prepares the Repertoire text, invokes the parser with correct defaults, and
+ * It prepares the MuSemantiQ text, invokes the parser with correct defaults, and
  * extracts only the per-page rendering-related intermediate structures needed
  * by the drawer (SVG renderer), highlighting engine, and MIDI generator.
  *
@@ -460,7 +460,7 @@ Every path must be a valid URL, not a local filesystem path.
  *
  * @param {Object} params
  * @param {string} params.repertoirePageText
- *        Repertoire text for a single page. Multi-page inputs must already be
+ *        MuSemantiQ text for a single page. Multi-page inputs must already be
  *        split before calling this function.
  *
  * @param {boolean} [params.applyHighlighting=true]
@@ -510,14 +510,14 @@ Every path must be a valid URL, not a local filesystem path.
  * @returns {GeneratePageModelsResult}
  *
  * Returns an object containing the **intermediate representation (IR)** for
- * a fully parsed Repertoire page:
+ * a fully parsed MuSemantiQ page:
  *
  *   {
  *     pageSchema,           // engraving layout model
  *     highlightsHtmlBuffer, // highlighting fragments
  *     errors,               // parser/semantic errors
  *     customStyles,         // page-level style overrides
- *     midiSettings          // Repertoire musical semantics
+ *     midiSettings          // MuSemantiQ musical semantics
  *   }
  *
  * ---------------------------------------------------------------------------
@@ -542,12 +542,12 @@ Every path must be a valid URL, not a local filesystem path.
  *          The pipeline is fault-tolerant: errors do not abort parsing.
  *
  * @property {Object} customStyles
- *          Any inline styling commands encountered in Repertoire that override
+ *          Any inline styling commands encountered in MuSemantiQ that override
  *          engraving parameters, spacing, fonts, color, etc. These feed into
  *          generatedStyles().
  *
  * @property {Object} midiSettings
- *          All musical-performance metadata extracted from Repertoire commands:
+ *          All musical-performance metadata extracted from MuSemantiQ commands:
  *            - tempo, pedal, dynamics
  *            - slurs, tuplets
  *            - staccato, accents
@@ -597,7 +597,7 @@ export function generateIntermediateStructuresForSinglePage({
     comments,
     midiSettings
   } = parsedLanguage(
-    normalizeRepertoireText(
+    normalizeMuSemantiQText(
       repertoirePageText
     ),
     progressionOfCommandsFromScenarios || [],
@@ -626,7 +626,7 @@ export function generateIntermediateStructuresForSinglePage({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  * /
 /**
- * Build the complete engraving style environment for a Repertoire page.
+ * Build the complete engraving style environment for a MuSemantiQ page.
  *
  * This function is **synchronous**.
  *
@@ -699,7 +699,7 @@ export function generateIntermediateStructuresForSinglePage({
  *   music: {
  *     leland: {
  *       font: "https://cdn/fonts/Leland.otf",
- *       js:   "#repertoire/drawer/font/music-js/leland.js"
+ *       js:   "#msq/drawer/font/music-js/leland.js"
  *     }
  *   },
  *   text: {
@@ -725,7 +725,7 @@ export function generateIntermediateStructuresForSinglePage({
  * ----------------------------------------------------------------------------
  * @description
  *
- * `generateStylesForSinglePage()` is **Stage 3** of the high-level Repertoire API.
+ * `generateStylesForSinglePage()` is **Stage 3** of the high-level MuSemantiQ API.
  * It transforms the `customStyles` produced by `generateIntermediateStructuresForSinglePage()`
  * into the complete engraving style environment using the font sources
  * loaded by `setupFonts()`.
@@ -737,7 +737,7 @@ export function generateIntermediateStructuresForSinglePage({
  *      `supportedFontSources`.
  *
  *   2. **Model generation → `generateIntermediateStructuresForSinglePage()`**  
- *      Parses Repertoire text and produces:
+ *      Parses MuSemantiQ text and produces:
  *      - `pageSchema`
  *      - `customStyles`
  *      - `midiSettings`
@@ -793,12 +793,12 @@ export function generateStylesForSinglePage({
  * @function generateSvgForSinglePage
  *
  * @description
- * `generateSvgForSinglePage()` is **Stage 4** of the high-level Repertoire API.
+ * `generateSvgForSinglePage()` is **Stage 4** of the high-level MuSemantiQ API.
  * It takes the logical page structure from `generateIntermediateStructuresForSinglePage()` (Stage 2)
  * and the engraving styles from `generateStylesForSinglePage()` (Stage 3), and
  * produces a **fully rendered SVG page**.
  *
- * This is the main entry point for turning Repertoire page data
+ * This is the main entry point for turning MuSemantiQ page data
  * into a final, display-ready SVG string.
  *
  * Pipeline context:
@@ -880,12 +880,12 @@ export function generateSvgForSinglePage({
  * @function generateMidiForSinglePage
  *
  * @description
- * `generateMidiForSinglePage()` is **Stage 5** of the high-level Repertoire rendering API.
+ * `generateMidiForSinglePage()` is **Stage 5** of the high-level MuSemantiQ rendering API.
  * It receives the musical structure (`pageSchema`) created by
  * `generateIntermediateStructuresForSinglePage()` along with per-page MIDI configuration
  * (`midiSettings`) and converts them into a **MIDI playback object**.
  *
- * This is the final step in the Repertoire pipeline that produces
+ * This is the final step in the MuSemantiQ pipeline that produces
  * machine-readable audio data suitable for playback, exporting, syncing with
  * notation, or feeding into other applications.
  *
@@ -926,7 +926,7 @@ export function generateSvgForSinglePage({
  *          - **timeStampsMappedWithRefsOn**  
  *            A forward-lookup map:  
  *            `{ [timestampInSeconds]: string[] }`  
- *            For each playback timestamp, lists all Repertoire reference IDs
+ *            For each playback timestamp, lists all MuSemantiQ reference IDs
  *            (note heads) that *become active* at that
  *            moment.  
  *            Used for:
@@ -994,9 +994,9 @@ export function generateMidiForSinglePage({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * High-level wrapper for **multi-page Repertoire inputs**.
+ * High-level wrapper for **multi-page MuSemantiQ inputs**.
  *
- * This function iterates over already-split Repertoire page texts and delegates
+ * This function iterates over already-split MuSemantiQ page texts and delegates
  * the actual parsing work to `generateIntermediateStructuresForSinglePage()` for each page, while
  * collecting and grouping results **per page**.
  *
@@ -1014,7 +1014,7 @@ export function generateMidiForSinglePage({
  * @param {Object} params
  *
  * @param {Array<string>} params.repertoireMultiplePagesText
- *        An array of Repertoire page texts.
+ *        An array of MuSemantiQ page texts.
  *
  *        Important:
  *        - Page splitting must be done **before** calling this function.
@@ -1086,7 +1086,7 @@ export function generateMidiForSinglePage({
  * @description
  *
  * ### What generateIntermediateStructuresForMultiplePages() actually does
- * 1. Iterates over pre-split Repertoire page texts.
+ * 1. Iterates over pre-split MuSemantiQ page texts.
  * 2. Normalizes each page’s text independently.
  * 3. Calls `generateIntermediateStructuresForSinglePage()` for every page.
  * 4. Adds properties like pageIndex and measureIndexOnPage to each measure on page
@@ -1172,7 +1172,7 @@ export function generateIntermediateStructuresForMultiplePages({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Build the complete engraving style environments for a **multi-page Repertoire document**.
+ * Build the complete engraving style environments for a **multi-page MuSemantiQ document**.
  *
  * This function is **synchronous**.
  *
@@ -1249,7 +1249,7 @@ export function generateIntermediateStructuresForMultiplePages({
  * `generateStylesForMultiplePages()` is the **multi-page equivalent** of
  * `generateStylesForSinglePage()`.
  *
- * It represents Repertoire document pipeline and
+ * It represents MuSemantiQ document pipeline and
  * performs a pure transformation:
  *
  *   - input: page-level `customStyles`
@@ -1296,7 +1296,7 @@ export function generateStylesForMultiplePages({
  *
  * @description
  * `generateSvgForMultiplePages()` is the **multi-page counterpart** of
- * `generateSvgForSinglePage()` in high-level Repertoire document API.
+ * `generateSvgForSinglePage()` in high-level MuSemantiQ document API.
  *
  * It takes **page-aligned schemas and styles** produced earlier in the pipeline
  * and renders **all pages into a single SVG document**, positioning them
@@ -1309,7 +1309,7 @@ export function generateStylesForMultiplePages({
  *   - rendering order matches logical page order
  *
  * This function is the main entry point for producing **paginated SVG scores**
- * from multi-page Repertoire input.
+ * from multi-page MuSemantiQ input.
  *
  * Pipeline context:
  *
@@ -1421,7 +1421,7 @@ export function generateSvgForMultiplePages({
  *
  * @description
  * `generateMidiForMultiplePages()` is the **multi-page counterpart** of
- * `generateMidiForSinglePage()` of the high-level Repertoire rendering API.
+ * `generateMidiForSinglePage()` of the high-level MuSemantiQ rendering API.
  *
  * It converts a **multi-page musical document** into a **single, continuous MIDI
  * playback stream**, preserving correct temporal order across page boundaries.
@@ -1523,7 +1523,7 @@ export function generateSvgForMultiplePages({
  * @notes
  * - Page boundaries are ignored in the MIDI output — playback is continuous.
  * - No silence or padding is inserted between pages unless explicitly encoded
- *   in the Repertoire input.
+ *   in the MuSemantiQ input.
  * - Visual pagination and audio sequencing are intentionally decoupled.
  */
 export function generateMidiForMultiplePages({
@@ -1550,7 +1550,7 @@ export function generateMidiForMultiplePages({
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Optional structural consistency check for Repertoire **Page Schema** objects.
+ * Optional structural consistency check for MuSemantiQ **Page Schema** objects.
  *
  * This function is primarily intended for **internal tooling and tests** as an
  * additional safety layer to assert that a page schema is structurally valid.
@@ -1576,7 +1576,7 @@ export function generateMidiForMultiplePages({
  * ---------------------------------------------------------------------------
  * @returns {boolean}
  *
- *   - `true`  → the schema conforms to the canonical Repertoire Page Schema contract
+ *   - `true`  → the schema conforms to the canonical MuSemantiQ Page Schema contract
  *   - `false` → one or more structural constraints are violated
  *
  * ---------------------------------------------------------------------------
@@ -1606,11 +1606,11 @@ export function isPageSchemaValid(pageSchema) {
  * ⟅━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━⟆
  */
 /**
- * Optional structural consistency check for **multiple Repertoire Page Schemas**.
+ * Optional structural consistency check for **multiple MuSemantiQ Page Schemas**.
  *
  * This function extends `isPageSchemaValid()` to operate on a collection of
  * page schemas, allowing developers to assert that **every page** in a
- * multi-page pipeline satisfies the canonical Repertoire Page Schema contract.
+ * multi-page pipeline satisfies the canonical MuSemantiQ Page Schema contract.
  *
  * Like its single-page counterpart, this function is primarily intended for
  * **internal tooling and test environments**, not for mandatory runtime
@@ -1639,7 +1639,7 @@ export function isPageSchemaValid(pageSchema) {
  * ---------------------------------------------------------------------------
  * @returns {boolean}
  *
- *   - `true`  → all page schemas conform to the canonical Repertoire Page Schema
+ *   - `true`  → all page schemas conform to the canonical MuSemantiQ Page Schema
  *               contract
  *   - `false` → at least one page schema violates structural constraints
  *
@@ -1681,7 +1681,7 @@ function assert(condition, message) {
   if (!condition) throw new Error(message || "Assertion failed")
 }
 
-function normalizeRepertoireText(repertoireText) {
+function normalizeMuSemantiQText(repertoireText) {
   if (repertoireText[repertoireText.length - 1] === NEW_LINE) {
     repertoireText += NEW_LINE
   }

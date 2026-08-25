@@ -1,6 +1,6 @@
 'use strict'
 
-import staveIndexOfNoteConsideringItsStave from '#repertoire/drawer/elements/voice/staveIndexOfNoteConsideringItsStave.js'
+import staveIndexOfNoteConsideringItsStave from '#msq/drawer/elements/voice/staveIndexOfNoteConsideringItsStave.js'
 
 export default function (singleUnit) {
   const wholeToneDelta = 0.5

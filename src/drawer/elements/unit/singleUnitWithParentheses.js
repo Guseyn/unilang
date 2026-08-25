@@ -1,11 +1,11 @@
 'use strict'
 
-import topOffsetOfElementConsideringItsStave from '#repertoire/drawer/elements/stave/topOffsetOfElementConsideringItsStave.js'
-import parenthesesSpline from '#repertoire/drawer/elements/bracket/parenthesesSpline.js'
-import moveSingleUnit from '#repertoire/drawer/elements/unit/moveSingleUnit.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import topOffsetOfElementConsideringItsStave from '#msq/drawer/elements/stave/topOffsetOfElementConsideringItsStave.js'
+import parenthesesSpline from '#msq/drawer/elements/bracket/parenthesesSpline.js'
+import moveSingleUnit from '#msq/drawer/elements/unit/moveSingleUnit.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (singleUnit, additionalInformation, numberOfStaveLines, parentheses, topOffset, styles) {
   const { intervalBetweenStaveLines, offsetForNoteParenthesesFromBothSides, offsetForNoteParenthesesFromRightSideOfWave, offsetForNoteParenthesesThatAreOnAdditionalLinesFromBothSides, parenthesesYCorrection } = styles

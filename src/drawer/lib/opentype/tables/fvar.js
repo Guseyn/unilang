@@ -1,9 +1,9 @@
 // The `fvar` table stores font variation axes and instances.
 // https://developer.apple.com/fonts/TrueType-Reference-Manual/RM06/Chap6fvar.html
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
-import { Parser } from '#repertoire/drawer/lib/opentype/parse.js'
-import table from '#repertoire/drawer/lib/opentype/table.js'
+import check from '#msq/drawer/lib/opentype/check.js'
+import { Parser } from '#msq/drawer/lib/opentype/parse.js'
+import table from '#msq/drawer/lib/opentype/table.js'
 
 function addName(name, names) {
   const nameString = JSON.stringify(name)

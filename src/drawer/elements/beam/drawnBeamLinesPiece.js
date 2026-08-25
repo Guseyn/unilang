@@ -1,9 +1,9 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
-import elementWithAdditionalInformation from '#repertoire/drawer/elements/basic/elementWithAdditionalInformation.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
+import elementWithAdditionalInformation from '#msq/drawer/elements/basic/elementWithAdditionalInformation.js'
 
 const correctStemEndCoordinates = (stem, newStemEndCoordinate) => {
   if (stem.direction === 'up' && (stem.topCorrectedByBeamLines === undefined || newStemEndCoordinate < stem.topCorrectedByBeamLines)) {

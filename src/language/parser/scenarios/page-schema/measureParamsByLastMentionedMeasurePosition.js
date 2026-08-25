@@ -1,6 +1,6 @@
 'use strict'
 
-import currentPageLineIndex from '#repertoire/language/parser/scenarios/page-schema/currentPageLineIndex.js'
+import currentPageLineIndex from '#msq/language/parser/scenarios/page-schema/currentPageLineIndex.js'
 
 export default function (parserState) {
   const pageSchema = parserState.pageSchema

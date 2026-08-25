@@ -1,8 +1,8 @@
 'use strict'
 
-import allNotesInSingleUnitParamsAreOnNextStave from '#repertoire/drawer/elements/voice/allNotesInSingleUnitParamsAreOnNextStave.js'
-import allNotesInSingleUnitParamsAreOnPrevStave from '#repertoire/drawer/elements/voice/allNotesInSingleUnitParamsAreOnPrevStave.js'
-import keySignaturesOnStaves from '#repertoire/drawer/elements/key/keySignaturesOnStaves.js'
+import allNotesInSingleUnitParamsAreOnNextStave from '#msq/drawer/elements/voice/allNotesInSingleUnitParamsAreOnNextStave.js'
+import allNotesInSingleUnitParamsAreOnPrevStave from '#msq/drawer/elements/voice/allNotesInSingleUnitParamsAreOnPrevStave.js'
+import keySignaturesOnStaves from '#msq/drawer/elements/key/keySignaturesOnStaves.js'
 
 export default function (selectedSingleUnitsParamsToBeIncludedInNextCrossStaveUnit, drawnMidMeasureClefsForCrossStaveUnits, numberOfStaves, numberOfStaveLines, clefNamesAuraByStaveIndexes, styles, leftOffset, topOffsetsForEachStave, containsDrawnCrossStaveElementsBesideCrossStaveUnits) {
   const { spaceAfterMidMeasureClefsForMidMeasureKeySignatures } = styles

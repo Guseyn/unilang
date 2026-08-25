@@ -1,7 +1,7 @@
 // The Layout object is the prototype of Substitution objects, and provides
 // utility methods to manipulate common layout tables (GPOS, GSUB, GDEF...)
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
+import check from '#msq/drawer/lib/opentype/check.js'
 
 function searchTag(arr, tag) {
   /* jshint bitwise: false */

@@ -1,13 +1,13 @@
 'use strict'
 
-import spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit from '#repertoire/drawer/elements/voice/spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit.js'
-import allNotesInSingleUnitParamsAreOnNextStave from '#repertoire/drawer/elements/voice/allNotesInSingleUnitParamsAreOnNextStave.js'
-import allNotesInSingleUnitParamsAreOnPrevStave from '#repertoire/drawer/elements/voice/allNotesInSingleUnitParamsAreOnPrevStave.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
-import clefShape from '#repertoire/drawer/elements/clef/clefShape.js'
+import spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit from '#msq/drawer/elements/voice/spaceAfterCrossStaveUnitByMinUnitDurationOnPageLineAndItsMinDurationAmongAccumulatorsForEachVoiceCondideringCasesWhenItIsGraceCrossStaveUnit.js'
+import allNotesInSingleUnitParamsAreOnNextStave from '#msq/drawer/elements/voice/allNotesInSingleUnitParamsAreOnNextStave.js'
+import allNotesInSingleUnitParamsAreOnPrevStave from '#msq/drawer/elements/voice/allNotesInSingleUnitParamsAreOnPrevStave.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import scaleElementAroundPoint from '#msq/drawer/elements/basic/scaleElementAroundPoint.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
+import clefShape from '#msq/drawer/elements/clef/clefShape.js'
 
 const MID_MEASURE_CLEF_SCALE = 2 / 3
 

@@ -1,7 +1,7 @@
 'use strict'
 
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import updateSingleUnitPartsCoordinates from '#repertoire/drawer/elements/unit/updateSingleUnitPartsCoordinates.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import updateSingleUnitPartsCoordinates from '#msq/drawer/elements/unit/updateSingleUnitPartsCoordinates.js'
 
 export default function (
   drawnMidMeasureClefsForCrossStaveUnit,

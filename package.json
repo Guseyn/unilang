@@ -1,14 +1,14 @@
 {
-  "name": "repertoire",
+  "name": "MuSemantiQ",
   "version": "1.0.0",
-  "description": "Repertoire",
+  "description": "MuSemantiQ",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "postinstall": "node scripts/setup-symlinks.js",
     "setup:symlinks": "node scripts/setup-symlinks.js",
-    "create:repertoire:worker": "node scripts/create-repertoire-worker.js",
-    "watch:src": "node scripts/watch-repertoire-src.js",
+    "create:msq:worker": "node scripts/create-msq-worker.js",
+    "watch:src": "node scripts/watch-msq-src.js",
 
     "test:visual:all": "node scripts/visual-tests.js",
     "test:audio:all": "node scripts/audio-tests.js",
@@ -21,34 +21,34 @@
     "nodes:update": "rsync -a --delete ../../my-projects/nodes.js/nodes/ examples/browser/nodes/",
     "eui:update": "rsync -a --delete ../../my-projects/e-ui/static/js/e-ui/ examples/browser/web-app/static/js/e-ui/ && cp -rf ../../my-projects/e-ui/static/css/e-ui.css examples/browser/web-app/static/css/e-ui.css",
 
-    "examples:browser": "npm run setup:symlinks && npm run create:repertoire:worker && node examples/browser/web-app/main.js"
+    "examples:browser": "npm run setup:symlinks && npm run create:msq:worker && node examples/browser/web-app/main.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Guseyn/repertoire.git"
+    "url": "git+https://github.com/Guseyn/MuSemantiQ.git"
   },
   "author": "guseyn",
   "license": "Credited Source License (CSL) v1.0",
   "bugs": {
-    "url": "https://github.com/Guseyn/repertoire/issues"
+    "url": "https://github.com/Guseyn/MuSemantiQ/issues"
   },
-  "homepage": "https://github.com/Guseyn/repertoire#readme",
+  "homepage": "https://github.com/Guseyn/MuSemantiQ#readme",
   "imports": {
-    "#repertoire/drawer/*": "./src/drawer/*",
-    "#repertoire/language/*": "./src/language/*",
-    "#repertoire/midi/*": "./src/midi/*",
-    "#repertoire/api.js": "./src/api.js",
+    "#msq/drawer/*": "./src/drawer/*",
+    "#msq/language/*": "./src/language/*",
+    "#msq/midi/*": "./src/midi/*",
+    "#msq/api.js": "./src/api.js",
 
     "#nodes/*": "./examples/browser/nodes/*"
   },
   "browser.importmap": {
     "#ehtml/": "/js/ehtml/",
     "#e-ui/": "/js/e-ui",
-    "#repertoire": "/js/repertoire",
-    "#e-repertoire": "/js/e-repertoire"
+    "#msq": "/js/msq",
+    "#e-msq": "/js/e-msq"
   },
   "worker.importmap": {
-    "#repertoire": "/js/e-repertoire/repertoire-worker"
+    "#msq": "/js/e-msq/msq-worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"

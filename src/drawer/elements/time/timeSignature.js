@@ -1,9 +1,9 @@
 'use strict'
 
-import stavePiece from '#repertoire/drawer/elements/stave/stavePiece.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
+import stavePiece from '#msq/drawer/elements/stave/stavePiece.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
 
 export default function (numberOfStaveLines, numerator, denominator, cMode, isClefBefore, isKeySignatureBefore) {
   return (styles, leftOffset, topOffset) => {

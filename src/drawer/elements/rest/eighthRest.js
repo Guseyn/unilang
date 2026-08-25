@@ -1,8 +1,8 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import ellipse from '#repertoire/drawer/elements/basic/ellipse.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import ellipse from '#msq/drawer/elements/basic/ellipse.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (restPositionNumber) {
   return (styles, leftOffset, topOffset) => {

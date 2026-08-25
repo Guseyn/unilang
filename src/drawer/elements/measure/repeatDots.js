@@ -1,9 +1,9 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import stavesPiece from '#repertoire/drawer/elements/stave/stavesPiece.js'
-import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import stavesPiece from '#msq/drawer/elements/stave/stavesPiece.js'
+import topOffsetForCurrentStave from '#msq/drawer/elements/stave/topOffsetForCurrentStave.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {

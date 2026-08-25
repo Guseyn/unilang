@@ -1,23 +1,23 @@
 'use strict'
 
-import configurableStyleNames from '#repertoire/language/parser/scenarios/static-objects/configurableStyleNames.js'
-import pageMetaNames from '#repertoire/language/parser/scenarios/static-objects/pageMetaNames.js'
-import openingBarLineNames from '#repertoire/language/parser/scenarios/static-objects/openingBarLineNames.js'
-import closingBarLineNames from '#repertoire/language/parser/scenarios/static-objects/closingBarLineNames.js'
-import applicationOfMeasureNumbersNames from '#repertoire/language/parser/scenarios/static-objects/applicationOfMeasureNumbersNames.js'
-import keySignatureNames from '#repertoire/language/parser/scenarios/static-objects/keySignatureNames.js'
-import tempoDurationPartNames from '#repertoire/language/parser/scenarios/static-objects/tempoDurationPartNames.js'
-import clefNames from '#repertoire/language/parser/scenarios/static-objects/clefNames.js'
-import noteDurationNames from '#repertoire/language/parser/scenarios/static-objects/noteDurationNames.js'
-import noteNames from '#repertoire/language/parser/scenarios/static-objects/noteNames.js'
-import stavePositionNames from '#repertoire/language/parser/scenarios/static-objects/stavePositionNames.js'
-import noteKeyNames from '#repertoire/language/parser/scenarios/static-objects/noteKeyNames.js'
-import breathMarkNames from '#repertoire/language/parser/scenarios/static-objects/breathMarkNames.js'
-import articulationNames from '#repertoire/language/parser/scenarios/static-objects/articulationNames.js'
-import ornamentKeyNames from '#repertoire/language/parser/scenarios/static-objects/ornamentKeyNames.js'
-import midiSettingNames from '#repertoire/language/parser/scenarios/static-objects/midiSettingNames.js'
-import instrumentNames from '#repertoire/language/parser/scenarios/static-objects/instrumentNames.js'
-import withoutDoubleSpacesAndTrimmed from '#repertoire/language/parser/scenarios/token/withoutDoubleSpacesAndTrimmed.js'
+import configurableStyleNames from '#msq/language/parser/scenarios/static-objects/configurableStyleNames.js'
+import pageMetaNames from '#msq/language/parser/scenarios/static-objects/pageMetaNames.js'
+import openingBarLineNames from '#msq/language/parser/scenarios/static-objects/openingBarLineNames.js'
+import closingBarLineNames from '#msq/language/parser/scenarios/static-objects/closingBarLineNames.js'
+import applicationOfMeasureNumbersNames from '#msq/language/parser/scenarios/static-objects/applicationOfMeasureNumbersNames.js'
+import keySignatureNames from '#msq/language/parser/scenarios/static-objects/keySignatureNames.js'
+import tempoDurationPartNames from '#msq/language/parser/scenarios/static-objects/tempoDurationPartNames.js'
+import clefNames from '#msq/language/parser/scenarios/static-objects/clefNames.js'
+import noteDurationNames from '#msq/language/parser/scenarios/static-objects/noteDurationNames.js'
+import noteNames from '#msq/language/parser/scenarios/static-objects/noteNames.js'
+import stavePositionNames from '#msq/language/parser/scenarios/static-objects/stavePositionNames.js'
+import noteKeyNames from '#msq/language/parser/scenarios/static-objects/noteKeyNames.js'
+import breathMarkNames from '#msq/language/parser/scenarios/static-objects/breathMarkNames.js'
+import articulationNames from '#msq/language/parser/scenarios/static-objects/articulationNames.js'
+import ornamentKeyNames from '#msq/language/parser/scenarios/static-objects/ornamentKeyNames.js'
+import midiSettingNames from '#msq/language/parser/scenarios/static-objects/midiSettingNames.js'
+import instrumentNames from '#msq/language/parser/scenarios/static-objects/instrumentNames.js'
+import withoutDoubleSpacesAndTrimmed from '#msq/language/parser/scenarios/token/withoutDoubleSpacesAndTrimmed.js'
 
 const VERTICAL_LINE = '|'
 const SLASH = '/'
@@ -471,7 +471,7 @@ const breathMarkNamesAsTokens = [
 const articulationNamesAsTokens = articulationNames.map(name => name.split(SPACE))
 const ornamentKeyNamesAsTokens = ornamentKeyNames.map(name => name.split(SPACE))
 
-import cssColors from '#repertoire/language/parser/scenarios/static-objects/cssColors.js'
+import cssColors from '#msq/language/parser/scenarios/static-objects/cssColors.js'
 
 const isColor = (tokenValues) => {
   const joinedTokenValues = tokenValues.join(SPACE)

@@ -4,21 +4,21 @@
 // Recommendations for creating OpenType Fonts:
 // http://www.microsoft.com/typography/otspec140/recom.htm
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
-import table from '#repertoire/drawer/lib/opentype/table.js'
+import check from '#msq/drawer/lib/opentype/check.js'
+import table from '#msq/drawer/lib/opentype/table.js'
 
-import cmap from '#repertoire/drawer/lib/opentype/tables/cmap.js'
-import cff from '#repertoire/drawer/lib/opentype/tables/cff.js'
-import head from '#repertoire/drawer/lib/opentype/tables/head.js'
-import hhea from '#repertoire/drawer/lib/opentype/tables/hhea.js'
-import hmtx from '#repertoire/drawer/lib/opentype/tables/hmtx.js'
-import ltag from '#repertoire/drawer/lib/opentype/tables/ltag.js'
-import maxp from '#repertoire/drawer/lib/opentype/tables/maxp.js'
-import _name from '#repertoire/drawer/lib/opentype/tables/name.js'
-import os2 from '#repertoire/drawer/lib/opentype/tables/os2.js'
-import post from '#repertoire/drawer/lib/opentype/tables/post.js'
-import gsub from '#repertoire/drawer/lib/opentype/tables/gsub.js'
-import meta from '#repertoire/drawer/lib/opentype/tables/meta.js'
+import cmap from '#msq/drawer/lib/opentype/tables/cmap.js'
+import cff from '#msq/drawer/lib/opentype/tables/cff.js'
+import head from '#msq/drawer/lib/opentype/tables/head.js'
+import hhea from '#msq/drawer/lib/opentype/tables/hhea.js'
+import hmtx from '#msq/drawer/lib/opentype/tables/hmtx.js'
+import ltag from '#msq/drawer/lib/opentype/tables/ltag.js'
+import maxp from '#msq/drawer/lib/opentype/tables/maxp.js'
+import _name from '#msq/drawer/lib/opentype/tables/name.js'
+import os2 from '#msq/drawer/lib/opentype/tables/os2.js'
+import post from '#msq/drawer/lib/opentype/tables/post.js'
+import gsub from '#msq/drawer/lib/opentype/tables/gsub.js'
+import meta from '#msq/drawer/lib/opentype/tables/meta.js'
 
 function log2(v) {
   return Math.log(v) / Math.log(2) | 0

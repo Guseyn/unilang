@@ -1,12 +1,12 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import pathWithOutline from '#repertoire/drawer/elements/basic/pathWithOutline.js'
-import articulationShouldBeAboveOrUnderStemLine from '#repertoire/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
-import moveElementInTheCenterBetweenPoints from '#repertoire/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
-import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import pathWithOutline from '#msq/drawer/elements/basic/pathWithOutline.js'
+import articulationShouldBeAboveOrUnderStemLine from '#msq/drawer/elements/articulation/articulationShouldBeAboveOrUnderStemLine.js'
+import moveElementInTheCenterBetweenPoints from '#msq/drawer/elements/basic/moveElementInTheCenterBetweenPoints.js'
+import moveElementAbovePointWithInterval from '#msq/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#msq/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (drawnSingleUnit, articulationIndex, currentArticulationParams, topOfCurrentStave, bottomOfCurrentStave, styles) {
   const { noteLetterArticulationFontOptions, noteLetterArticulationOffsetY, noteLetters } = styles

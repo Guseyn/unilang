@@ -1,6 +1,6 @@
 'use strict'
 
-import line from '#repertoire/drawer/elements/basic/line.js'
+import line from '#msq/drawer/elements/basic/line.js'
 
 export default function (drawnVoicesOnPageLine, styles) {
   const { intervalBetweenStaveLines, additionalStaveLinesStrokeOptions, additionalStaveLinesRadiusFromNoteBody, graceElementsScaleFactor } = styles

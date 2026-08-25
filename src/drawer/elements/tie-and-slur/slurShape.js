@@ -1,11 +1,11 @@
 'use strict'
 
-import slurPoints from '#repertoire/drawer/elements/tie-and-slur/slurPoints.js'
-import sShapeSlurPoints from '#repertoire/drawer/elements/tie-and-slur/sShapeSlurPoints.js'
-import slurJunctionPointForSingleUnit from '#repertoire/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import slurPoints from '#msq/drawer/elements/tie-and-slur/slurPoints.js'
+import sShapeSlurPoints from '#msq/drawer/elements/tie-and-slur/sShapeSlurPoints.js'
+import slurJunctionPointForSingleUnit from '#msq/drawer/elements/tie-and-slur/slurJunctionPointForSingleUnit.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (markedSlur, slurMarkKey, voicesBody, extendedFromLeftSide, extendedToRightSide, styles) {
   const defaultSlurDirection = markedSlur.defaultSlurDirection

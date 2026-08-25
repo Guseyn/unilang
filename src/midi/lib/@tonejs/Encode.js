@@ -1,11 +1,11 @@
-import { writeMidi } from '#repertoire/midi/lib/midi-file/index.js'
+import { writeMidi } from '#msq/midi/lib/midi-file/index.js'
 
-import { keySignatureKeys } from '#repertoire/midi/lib/@tonejs/Header.js'
-import { ControlChange } from '#repertoire/midi/lib/@tonejs/ControlChange.js'
-import { PitchBend } from '#repertoire/midi/lib/@tonejs/PitchBend.js'
-import { Midi } from '#repertoire/midi/lib/@tonejs/Midi.js'
-import { Note } from '#repertoire/midi/lib/@tonejs/Note.js'
-import { Track } from '#repertoire/midi/lib/@tonejs/Track.js'
+import { keySignatureKeys } from '#msq/midi/lib/@tonejs/Header.js'
+import { ControlChange } from '#msq/midi/lib/@tonejs/ControlChange.js'
+import { PitchBend } from '#msq/midi/lib/@tonejs/PitchBend.js'
+import { Midi } from '#msq/midi/lib/@tonejs/Midi.js'
+import { Note } from '#msq/midi/lib/@tonejs/Note.js'
+import { Track } from '#msq/midi/lib/@tonejs/Track.js'
 
 /**
  * Flatten an array indefinitely.

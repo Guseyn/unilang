@@ -1,8 +1,8 @@
 'use strict'
 
-import calculatedNumberOfBeamLinesByDuration from '#repertoire/drawer/elements/beam/calculatedNumberOfBeamLinesByDuration.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import calculatedNumberOfBeamLinesByDuration from '#msq/drawer/elements/beam/calculatedNumberOfBeamLinesByDuration.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (singleUnit, styles) {
   const pointsOfTremoloStrokes = []

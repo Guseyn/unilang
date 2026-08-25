@@ -1,6 +1,6 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
+import path from '#msq/drawer/elements/basic/path.js'
 
 export default function (octaveSignNumber, octaveSignPostfix, direction) {
   return (styles, leftOffset, topOffset) => {

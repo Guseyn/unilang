@@ -1,10 +1,10 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import stavesPiece from '#repertoire/drawer/elements/stave/stavesPiece.js'
-import moveElement from '#repertoire/drawer/elements/basic/moveElement.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import stavesPiece from '#msq/drawer/elements/stave/stavesPiece.js'
+import moveElement from '#msq/drawer/elements/basic/moveElement.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (measureIndex, directionOfMeasureNumber, numberOfStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffsetOfFirstStaveLine) => {

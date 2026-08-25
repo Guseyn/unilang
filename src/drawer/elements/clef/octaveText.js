@@ -1,7 +1,7 @@
 'use strict'
 
-import text from '#repertoire/drawer/elements/basic/text.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import text from '#msq/drawer/elements/basic/text.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (octaveNumber, direction) {
   return (styles, leftOffset, topOffset) => {

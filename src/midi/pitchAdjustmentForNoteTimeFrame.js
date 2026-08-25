@@ -1,6 +1,6 @@
 'use strict'
 
-import sortByGraceCount from '#repertoire/midi/sortByGraceCount.js'
+import sortByGraceCount from '#msq/midi/sortByGraceCount.js'
 
 const PITCHES_BY_NOTE_NAMES = {
   'c': 0,

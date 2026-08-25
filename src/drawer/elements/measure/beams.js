@@ -1,6 +1,6 @@
 'use strict'
 
-import beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave from '#repertoire/drawer/elements/beam/beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave.js'
+import beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave from '#msq/drawer/elements/beam/beamsWithStemsForDrawnSingleUnitsInVoiceOnOneStave.js'
 
 const keyForBeam = (staveIndex, voiceIndex, isGrace) => {
   return `${staveIndex}-${voiceIndex}-${isGrace}`

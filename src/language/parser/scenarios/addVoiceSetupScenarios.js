@@ -1,10 +1,10 @@
 'use strict'
 
-import regexps from '#repertoire/language/parser/scenarios/static-objects/regexps.js'
-import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#repertoire/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
-import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from '#repertoire/language/parser/scenarios/page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
-import lastMeasureParams from '#repertoire/language/parser/scenarios/page-schema/lastMeasureParams.js'
-import lastStaveParams from '#repertoire/language/parser/scenarios/page-schema/lastStaveParams.js'
+import regexps from '#msq/language/parser/scenarios/static-objects/regexps.js'
+import initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll from '#msq/language/parser/scenarios/page-schema/initNewMeasureParamsIfThereIsAlreadySuchMeasurePropertyOrNoMeasuresAtAll.js'
+import initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll from '#msq/language/parser/scenarios/page-schema/initNewStaveParamsIfThereIsAlreadySuchStavePropertyOrNoStavesAtAll.js'
+import lastMeasureParams from '#msq/language/parser/scenarios/page-schema/lastMeasureParams.js'
+import lastStaveParams from '#msq/language/parser/scenarios/page-schema/lastStaveParams.js'
 
 export default function (scenarios) {
   scenarios['voice'] = {

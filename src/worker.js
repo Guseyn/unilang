@@ -6,7 +6,7 @@ import {
   generateIntermediateStructuresForSinglePage,
   generateStylesForSinglePage,
   generateSvgForSinglePage
-} from '#repertoire/api.js'
+} from '#msq/api.js'
 
 const eventHandlers = {
   'fonts.setup': async (event) => {
@@ -60,7 +60,7 @@ const eventHandlers = {
     if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
       self.postMessage({
         id,
-        error: 'Fonts are not configured, please declare <template is="e-repertoire-font-loader"> first'
+        error: 'Fonts are not configured, please declare <template is="e-msq-font-loader"> first'
       })
       return
     }

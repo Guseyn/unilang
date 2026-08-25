@@ -1,6 +1,6 @@
 'use strict'
 
-import correctedStaveIndexOfNoteOrKey from '#repertoire/drawer/elements/unit/correctedStaveIndexOfNoteOrKey.js'
+import correctedStaveIndexOfNoteOrKey from '#msq/drawer/elements/unit/correctedStaveIndexOfNoteOrKey.js'
 
 const compareTwoNotes = (note1, note2) => {
   const staveIndex1 = correctedStaveIndexOfNoteOrKey(note1)

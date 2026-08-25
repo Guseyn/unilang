@@ -1,6 +1,6 @@
 'use strict'
 
-import line from '#repertoire/drawer/elements/basic/line.js'
+import line from '#msq/drawer/elements/basic/line.js'
 
 export default function (styles, stem) {
   const { noteBeamColumnStrokeOptions, graceElementsScaleFactor } = styles

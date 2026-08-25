@@ -1,12 +1,12 @@
-import { Validator } from '#repertoire/language/lib/validator.js'
+import { Validator } from '#msq/language/lib/validator.js'
 import {
   ValidatorResult,
   ValidatorResultError,
   ValidationError,
   SchemaError
-} from '#repertoire/language/lib/helpers.js'
+} from '#msq/language/lib/helpers.js'
 
-import { SchemaScanResult, scan } from '#repertoire/language/lib/scan.js'
+import { SchemaScanResult, scan } from '#msq/language/lib/scan.js'
 
 export default {
   Validator,

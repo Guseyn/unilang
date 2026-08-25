@@ -13,11 +13,11 @@
 'use strict'
 
 
-import pathParse      from '#repertoire/drawer/lib/svgpath/path_parse.js'
-import transformParse from '#repertoire/drawer/lib/svgpath/transform_parse.js'
-import matrix         from '#repertoire/drawer/lib/svgpath/matrix.js'
-import a2c            from '#repertoire/drawer/lib/svgpath/a2c.js'
-import ellipse        from '#repertoire/drawer/lib/svgpath/ellipse.js'
+import pathParse      from '#msq/drawer/lib/svgpath/path_parse.js'
+import transformParse from '#msq/drawer/lib/svgpath/transform_parse.js'
+import matrix         from '#msq/drawer/lib/svgpath/matrix.js'
+import a2c            from '#msq/drawer/lib/svgpath/a2c.js'
+import ellipse        from '#msq/drawer/lib/svgpath/ellipse.js'
 
 
 // Class constructor

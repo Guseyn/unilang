@@ -1,6 +1,6 @@
 // The GlyphSet object
 
-import Glyph from '#repertoire/drawer/lib/opentype/glyph.js'
+import Glyph from '#msq/drawer/lib/opentype/glyph.js'
 
 // Define a property on the glyph that depends on the path being loaded.
 function defineDependentProperty(glyph, externalName, internalName) {

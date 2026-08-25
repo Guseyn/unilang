@@ -1,6 +1,6 @@
 'use strict'
 
-import bboxForPath from '#repertoire/drawer/elements/basic/bboxForPath.js'
+import bboxForPath from '#msq/drawer/elements/basic/bboxForPath.js'
 
 export default function (points, strokeOptions, fill = true, outlinePadding, outlineColor, outlineRadius, leftOffset = 0, topOffset = 0) {
   const areAnyNaNPoints = points.some(point => isNaN(point) && typeof point !== 'string')

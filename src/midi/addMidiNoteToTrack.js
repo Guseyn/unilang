@@ -1,10 +1,10 @@
 'use strict'
 
-import adjustMidiNoteWithArticulations from '#repertoire/midi/adjustMidiNoteWithArticulations.js'
-import adjustMidiNoteWithSlur from '#repertoire/midi/adjustMidiNoteWithSlur.js'
-import adjustMidiNoteWithPedals from '#repertoire/midi/adjustMidiNoteWithPedals.js'
-import adjustArpeggiatedNotes from '#repertoire/midi/adjustArpeggiatedNotes.js'
-import fillTimeStampsMappedWithRefs from '#repertoire/midi/fillTimeStampsMappedWithRefs.js'
+import adjustMidiNoteWithArticulations from '#msq/midi/adjustMidiNoteWithArticulations.js'
+import adjustMidiNoteWithSlur from '#msq/midi/adjustMidiNoteWithSlur.js'
+import adjustMidiNoteWithPedals from '#msq/midi/adjustMidiNoteWithPedals.js'
+import adjustArpeggiatedNotes from '#msq/midi/adjustArpeggiatedNotes.js'
+import fillTimeStampsMappedWithRefs from '#msq/midi/fillTimeStampsMappedWithRefs.js'
 
 const addMidiNoteToTrackInCommonCase = (note, duration, time, slurMarksMappedWithTracks, tracksForEachInstrumentOnEachStaveInEachVoice, midNoteIsAtTheStartOfOrnament, midNoteIsAtTheEndOfOrnament, timeStampsMappedWithRefsOn, refsOnMappedWithTimeStamps) => {
   const midiNote = {

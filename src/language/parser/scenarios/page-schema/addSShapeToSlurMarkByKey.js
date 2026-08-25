@@ -1,6 +1,6 @@
 'use strict'
 
-import slurMarkWithSpecifiedKey from '#repertoire/language/parser/scenarios/page-schema/slurMarkWithSpecifiedKey.js'
+import slurMarkWithSpecifiedKey from '#msq/language/parser/scenarios/page-schema/slurMarkWithSpecifiedKey.js'
 
 export default function (parserState, slurMarkKey) {
   const foundSlurMarkWithSpecifiedKey = slurMarkWithSpecifiedKey(parserState, slurMarkKey)

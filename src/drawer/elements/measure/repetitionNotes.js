@@ -1,7 +1,7 @@
 'use strict'
 
-import repetitionNoteText from '#repertoire/drawer/elements/measure/repetitionNoteText.js'
-import addPropertiesToElement from '#repertoire/drawer/elements/basic/addPropertiesToElement.js'
+import repetitionNoteText from '#msq/drawer/elements/measure/repetitionNoteText.js'
+import addPropertiesToElement from '#msq/drawer/elements/basic/addPropertiesToElement.js'
 
 export default function (drawnMeasuresOnPageLine, styles) {
   const drawnRepetitionNotes = []

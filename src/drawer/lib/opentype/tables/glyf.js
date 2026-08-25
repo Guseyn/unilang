@@ -1,10 +1,10 @@
 // The `glyf` table describes the glyphs in TrueType outline format.
 // http://www.microsoft.com/typography/otspec/glyf.htm
 
-import check from '#repertoire/drawer/lib/opentype/check.js'
-import glyphset from '#repertoire/drawer/lib/opentype/glyphset.js'
-import { Parser } from '#repertoire/drawer/lib/opentype/parse.js'
-import Path from '#repertoire/drawer/lib/opentype/path.js'
+import check from '#msq/drawer/lib/opentype/check.js'
+import glyphset from '#msq/drawer/lib/opentype/glyphset.js'
+import { Parser } from '#msq/drawer/lib/opentype/parse.js'
+import Path from '#msq/drawer/lib/opentype/path.js'
 
 // Parse the coordinate data for a glyph.
 function parseGlyphCoordinate(p, flag, previousValue, shortVectorBitMask, sameBitMask) {

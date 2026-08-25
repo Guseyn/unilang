@@ -1,6 +1,6 @@
 'use strict'
 
-import keySignatureNames from '#repertoire/language/parser/scenarios/static-objects/keySignatureNames.js'
+import keySignatureNames from '#msq/language/parser/scenarios/static-objects/keySignatureNames.js'
 
 export default function (keySignatureNameFromUnitext) {
   return keySignatureNames.find(

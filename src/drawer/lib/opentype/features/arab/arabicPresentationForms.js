@@ -2,8 +2,8 @@
  * Apply Arabic presentation forms to a range of tokens
  */
 
-import tokenizer from '#repertoire/drawer/lib/opentype/tokenizer.js'
-import char from '#repertoire/drawer/lib/opentype/char.js'
+import tokenizer from '#msq/drawer/lib/opentype/tokenizer.js'
+import char from '#msq/drawer/lib/opentype/char.js'
 
 const { ContextParams } = tokenizer
 const {  isIsolatedArabicChar, isTashkeelArabicChar  } = char

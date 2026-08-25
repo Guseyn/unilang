@@ -1,10 +1,10 @@
 'use strict'
 
-import topOffsetForCurrentStave from '#repertoire/drawer/elements/stave/topOffsetForCurrentStave.js'
-import path from '#repertoire/drawer/elements/basic/path.js'
-import moveElementAbovePointWithInterval from '#repertoire/drawer/elements/basic/moveElementAbovePointWithInterval.js'
-import moveElementBelowPointWithInterval from '#repertoire/drawer/elements/basic/moveElementBelowPointWithInterval.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
+import topOffsetForCurrentStave from '#msq/drawer/elements/stave/topOffsetForCurrentStave.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import moveElementAbovePointWithInterval from '#msq/drawer/elements/basic/moveElementAbovePointWithInterval.js'
+import moveElementBelowPointWithInterval from '#msq/drawer/elements/basic/moveElementBelowPointWithInterval.js'
+import group from '#msq/drawer/elements/basic/group.js'
 
 export default function (staveStartNumber, staveEndNumber, numberOfAllStaves, numberOfStaveLines) {
   return (styles, leftOffset, topOffset) => {

@@ -1,8 +1,8 @@
 'use strict'
 
-import attribute from '#repertoire/language/lib/attribute.js'
-import * as helpers from '#repertoire/language/lib/helpers.js'
-import { scan as scanSchema } from '#repertoire/language/lib/scan.js'
+import attribute from '#msq/language/lib/attribute.js'
+import * as helpers from '#msq/language/lib/helpers.js'
+import { scan as scanSchema } from '#msq/language/lib/scan.js'
 
 const ValidatorResult = helpers.ValidatorResult
 const ValidatorResultError = helpers.ValidatorResultError

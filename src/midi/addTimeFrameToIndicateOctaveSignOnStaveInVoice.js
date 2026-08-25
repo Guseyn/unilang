@@ -1,6 +1,6 @@
 'use strict'
 
-import octaveAdjustmentForUnitParamsByOctaveSignMark from '#repertoire/midi/octaveAdjustmentForUnitParamsByOctaveSignMark.js'
+import octaveAdjustmentForUnitParamsByOctaveSignMark from '#msq/midi/octaveAdjustmentForUnitParamsByOctaveSignMark.js'
 
 export default function (octaveSignMark, octaveSignAuraForEachVoiceOnEachStaveSplittedInTimeFrames, indicatorsOfOctaveSignEndingsByStaveAndVoice, unitIsGrace, graceCountersForEachVoiceInEachStaveSplittedInTimeFrames, time, staveIndexesOccupiedByUnit, voiceIndex, staveVoiceKey) {
   if (octaveSignMark && !octaveSignMark.finish) {

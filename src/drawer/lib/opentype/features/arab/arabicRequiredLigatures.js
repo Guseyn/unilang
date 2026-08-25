@@ -2,7 +2,7 @@
  * Apply Arabic required ligatures feature to a range of tokens
  */
 
-import tokenizer from '#repertoire/drawer/lib/opentype/tokenizer.js'
+import tokenizer from '#msq/drawer/lib/opentype/tokenizer.js'
 
 const {  ContextParams  } = tokenizer
 

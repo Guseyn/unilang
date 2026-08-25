@@ -1,9 +1,9 @@
 'use strict'
 
-import path from '#repertoire/drawer/elements/basic/path.js'
-import group from '#repertoire/drawer/elements/basic/group.js'
-import rotateElementAroundPoint from '#repertoire/drawer/elements/basic/rotateElementAroundPoint.js'
-import scaleElementAroundPoint from '#repertoire/drawer/elements/basic/scaleElementAroundPoint.js'
+import path from '#msq/drawer/elements/basic/path.js'
+import group from '#msq/drawer/elements/basic/group.js'
+import rotateElementAroundPoint from '#msq/drawer/elements/basic/rotateElementAroundPoint.js'
+import scaleElementAroundPoint from '#msq/drawer/elements/basic/scaleElementAroundPoint.js'
 
 export default function (startPoint, endPoint, wavePeriodSymbol, fontColor, graceElementsScaleFactor, isGrace, minNumberOfWavePeriods = 2, lastWavePeriodSymbol = null) {
   const waveXLength = endPoint.x - startPoint.x
