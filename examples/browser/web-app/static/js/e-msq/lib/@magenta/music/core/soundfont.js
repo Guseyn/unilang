@@ -20,10 +20,10 @@
  * handle that by cancelling its own scheduled events.
  */
 
-import { getAudioContext } from '#e-msq/lib/magenta/music/core/audio.js'
+import { getAudioContext } from '#e-msq/lib/@magenta/music/core/audio.js'
 
-import * as constants from '#e-msq/lib/magenta/music/core/constants.js'
-import * as logging from '#e-msq/lib/magenta/music/core/logging.js'
+import * as constants from '#e-msq/lib/@magenta/music/core/constants.js'
+import * as logging from '#e-msq/lib/@magenta/music/core/logging.js'
 
 /**
  * A sample playing through its own gain node, with fade-in/fade-out support.

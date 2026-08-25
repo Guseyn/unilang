@@ -55,10 +55,10 @@ async function runAudioTest() {
 
   for (const msqInputFile of listOfMSQInputFiles) {
     const testName = path.basename(msqInputFile).split('.')[0]
-    const msqInputFileFullPath = `audio-tests/repertoire/${msqInputFile}`
-    const repertoireText = (await fs.readFile(msqInputFileFullPath, 'utf-8'))
+    const msqInputFileFullPath = `audio-tests/msq/${msqInputFile}`
+    const text = (await fs.readFile(msqInputFileFullPath, 'utf-8'))
 
-    const repertoireMultiplePagesText = repertoireText.split(PAGE_DELIMITER)
+    const multiplePagesText = text.split(PAGE_DELIMITER)
 
     const {
       pageSchemaForEachPage,
@@ -67,7 +67,7 @@ async function runAudioTest() {
       customStylesForEachPage,
       midiSettingsForEachPage
     } = generateIntermediateStructuresForMultiplePages({
-      repertoireMultiplePagesText,
+      multiplePagesText,
       supportedFontNames
     })
 

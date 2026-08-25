@@ -85,7 +85,7 @@ async function runVisualTestForFont(visualTestDirForFont) {
 
     const msqText = (await fs.readFile(msqInputFileFullPath, 'utf-8'))
 
-    const msqMultiplePagesText = msqText.split(PAGE_DELIMITER)
+    const multiplePagesText = msqText.split(PAGE_DELIMITER)
     const {
       pageSchemaForEachPage,
       htmlHighlightsForEachPage,
@@ -94,7 +94,7 @@ async function runVisualTestForFont(visualTestDirForFont) {
       mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage,
       commentsForEachPage
     } = generateIntermediateStructuresForMultiplePages({
-      msqMultiplePagesText,
+      multiplePagesText,
       supportedFontNames
     })
 

@@ -1013,7 +1013,7 @@ export function generateMidiForSinglePage({
  *
  * @param {Object} params
  *
- * @param {Array<string>} params.repertoireMultiplePagesText
+ * @param {Array<string>} params.multiplePagesText
  *        An array of MuSemantiQ page texts.
  *
  *        Important:
@@ -1105,7 +1105,7 @@ export function generateMidiForSinglePage({
  * ---------------------------------------------------------------------------
  */
 export function generateIntermediateStructuresForMultiplePages({
-  repertoireMultiplePagesText,
+  multiplePagesText,
   applyHighlighting,
   applyOnlyHighlightingWithoutRefIds,
   progressionOfCommandsFromScenarios,
@@ -1119,8 +1119,8 @@ export function generateIntermediateStructuresForMultiplePages({
   const mapOfCharIndexesWithProgressionOfCommandsFromScenariosForEachPage = []
   const commentsForEachPage = []
 
-  repertoireMultiplePagesText.forEach((repertoireTextForCurrentPage, pageIndex) => {
-    const thisIsLastPage = pageIndex === repertoireMultiplePagesText.length - 1
+  multiplePagesText.forEach((textForCurrentPage, pageIndex) => {
+    const thisIsLastPage = pageIndex === multiplePagesText.length - 1
 
     const {
       pageSchema,
@@ -1131,7 +1131,7 @@ export function generateIntermediateStructuresForMultiplePages({
       comments,
       midiSettings
     } = generateIntermediateStructuresForSinglePage({
-      repertoirePageText: repertoireTextForCurrentPage,
+      repertoirePageText: textForCurrentPage,
       applyHighlighting,
       applyOnlyHighlightingWithoutRefIds,
       progressionOfCommandsFromScenarios,
@@ -1235,7 +1235,7 @@ export function generateIntermediateStructuresForMultiplePages({
  *
  * const { customStylesForEachPage } =
  *   await generateIntermediateStructuresForMultiplePages({
- *     repertoireMultiplePagesText
+ *     multiplePagesText
  *   })
  *
  * const pagesStyles = generateStylesForMultiplePages({
@@ -1368,7 +1368,7 @@ export function generateStylesForMultiplePages({
  *   pageSchemaForEachPage,
  *   customStylesForEachPage
  * } = generateIntermediateStructuresForMultiplePages({
- *   repertoireMultiplePagesText
+ *   multiplePagesText
  * })
  *
  * const pageStylesForEachPage = generateStylesForMultiplePages({
@@ -1507,7 +1507,7 @@ export function generateSvgForMultiplePages({
  *   pageSchemaForEachPage,
  *   midiSettingsForEachPage
  * } = generateIntermediateStructuresForMultiplePages({
- *   repertoireMultiplePagesText
+ *   multiplePagesText
  * })
  *
  * const midiDocument = generateMidiForMultiplePages({

@@ -1,5 +1,3 @@
-import { Header } from '/js/e-msq/msq-worker/midi/lib/@tonejs/Header.js'
-
 /**
  * Convert a MIDI note into a pitch.
  */

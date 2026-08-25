@@ -33,12 +33,12 @@
  * Tone module.
  */
 
-import { NoteSequence } from '#e-msq/lib/magenta/music/protobuf.js'
+import { NoteSequence } from '#e-msq/lib/@magenta/music/protobuf.js'
 
-import { getAudioContext, midiToFrequency, transport } from '#e-msq/lib/magenta/music/core/audio.js'
-import * as constants from '#e-msq/lib/magenta/music/core/constants.js'
-import * as sequences from '#e-msq/lib/magenta/music/core/sequences.js'
-import * as soundfont from '#e-msq/lib/magenta/music/core/soundfont.js'
+import { getAudioContext, midiToFrequency, transport } from '#e-msq/lib/@magenta/music/core/audio.js'
+import * as constants from '#e-msq/lib/@magenta/music/core/constants.js'
+import * as sequences from '#e-msq/lib/@magenta/music/core/sequences.js'
+import * as soundfont from '#e-msq/lib/@magenta/music/core/soundfont.js'
 
 function compareQuantizedNotes(a, b) {
   if (a.quantizedStartStep < b.quantizedStartStep) {

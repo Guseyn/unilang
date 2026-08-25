@@ -2,7 +2,7 @@ import {
 	DrumKitByPatchID,
 	instrumentByPatchID,
 	InstrumentFamilyByID
-} from '#msq/midi/lib/@tonejs/InstrumentMaps.js'
+} from '#e-msq/lib/@tonejs/InstrumentMaps.js'
 
 /**
  * @hidden

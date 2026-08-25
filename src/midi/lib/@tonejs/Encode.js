@@ -1,11 +1,6 @@
 import { writeMidi } from '#msq/midi/lib/midi-file/index.js'
 
 import { keySignatureKeys } from '#msq/midi/lib/@tonejs/Header.js'
-import { ControlChange } from '#msq/midi/lib/@tonejs/ControlChange.js'
-import { PitchBend } from '#msq/midi/lib/@tonejs/PitchBend.js'
-import { Midi } from '#msq/midi/lib/@tonejs/Midi.js'
-import { Note } from '#msq/midi/lib/@tonejs/Note.js'
-import { Track } from '#msq/midi/lib/@tonejs/Track.js'
 
 /**
  * Flatten an array indefinitely.

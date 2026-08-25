@@ -2,7 +2,6 @@ import { insert } from '/js/e-msq/msq-worker/midi/lib/@tonejs/BinarySearch.js'
 import { ControlChange } from '/js/e-msq/msq-worker/midi/lib/@tonejs/ControlChange.js'
 import { createControlChanges } from '/js/e-msq/msq-worker/midi/lib/@tonejs/ControlChanges.js'
 import { PitchBend } from '/js/e-msq/msq-worker/midi/lib/@tonejs/PitchBend.js'
-import { Header } from '/js/e-msq/msq-worker/midi/lib/@tonejs/Header.js'
 import { Instrument } from '/js/e-msq/msq-worker/midi/lib/@tonejs/Instrument.js'
 import { Note } from '/js/e-msq/msq-worker/midi/lib/@tonejs/Note.js'
 

@@ -9,12 +9,12 @@
  * vanilla-JS port of it under `msq-worker/midi/lib/@tonejs/`.
  */
 
-import { Midi } from '#e-msq/msq-worker/midi/lib/@tonejs/Midi.js'
+import { Midi } from '#e-msq/lib/@tonejs/Midi.js'
 
-import { NoteSequence } from '#e-msq/lib/magenta/music/protobuf.js'
+import { NoteSequence } from '#e-msq/lib/@magenta/music/protobuf.js'
 
-import * as constants from '#e-msq/lib/magenta/music/core/constants.js'
-import * as sequences from '#e-msq/lib/magenta/music/core/sequences.js'
+import * as constants from '#e-msq/lib/@magenta/music/core/constants.js'
+import * as sequences from '#e-msq/lib/@magenta/music/core/sequences.js'
 
 export class MidiConversionError extends Error {
   constructor(message) {

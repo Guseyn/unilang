@@ -1,5 +1,8 @@
-import { DrumKitByPatchID, instrumentByPatchID, InstrumentFamilyByID } from '/js/e-msq/msq-worker/midi/lib/@tonejs/InstrumentMaps.js'
-import { Track } from '/js/e-msq/msq-worker/midi/lib/@tonejs/Track.js';
+import {
+	DrumKitByPatchID,
+	instrumentByPatchID,
+	InstrumentFamilyByID
+} from '/js/e-msq/msq-worker/midi/lib/@tonejs/InstrumentMaps.js'
 
 /**
  * @hidden

@@ -1,4 +1,4 @@
-import { controlChangeIds } from '#msq/midi/lib/@tonejs/ControlChange.js';
+import { controlChangeIds } from '#e-msq/lib/@tonejs/ControlChange.js';
 
 /**
  * Automatically creates an alias for named control values using Proxies

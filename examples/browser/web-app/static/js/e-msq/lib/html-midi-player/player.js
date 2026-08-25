@@ -24,7 +24,7 @@
  * `clearActiveNotes()` works.
  */
 
-import * as mm from '#e-msq/lib/magenta/music/core.js'
+import * as mm from '#e-msq/lib/@magenta/music/core.js'
 
 import { controlsTemplate } from '#e-msq/lib/html-midi-player/assets/controls-template.js'
 import { formatTime } from '#e-msq/lib/html-midi-player/utils.js'
