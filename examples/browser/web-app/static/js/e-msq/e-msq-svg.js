@@ -69,12 +69,7 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
       }
 
       const svgString = event.data.svg
-      const domParser = new DOMParser()
-      const svg = domParser.parseFromString(svgString, 'image/svg+xml').documentElement
-      svg.setAttribute('title', inputText)
-      this.parentNode.replaceChild(
-        svg, this
-      )
+      this.#render(contentNode, svgString, inputText)
 
       if (this.hasAttribute('data-actions-on-progress-end')) {
         evaluateActionsOnProgress(
@@ -86,6 +81,21 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
 
       scrollToHash()
     }, { once: true })
+  }
+
+  #render(svgString, inputText) {
+    const wrapperTemplate = document.createElement('template')
+    wrapperTemplate.innerHTML = /*html*/`
+      <style>
+      </style>
+      <div>
+        ${svgString}
+      </div>
+    `
+    this.parentElement.replaceChild(
+      document.importNode(wrapperTemplate.content, true),
+      this
+    )
   }
 }
 

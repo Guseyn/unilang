@@ -92,7 +92,7 @@ export class BasePlayer {
    * Makes a single note sound at the given `AudioContext` time. Subclasses must
    * implement this.
    */
-  playNote(time, note) {
+  playNote(_time, _note) {
     throw new Error('playNote() must be implemented by a BasePlayer subclass.')
   }
 
