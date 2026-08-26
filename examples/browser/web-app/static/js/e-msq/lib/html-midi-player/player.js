@@ -17,11 +17,6 @@
  * panel's visual state is a `data-state` attribute in {stopped, playing,
  * loading, error} plus a boolean `data-frozen`, replacing upstream's five
  * classes on `.controls`.
- *
- * `midi-visualizer` is not part of this port, so bound visualizers are
- * duck-typed rather than checked against a `VisualizerElement` class. Any
- * element exposing `noteSequence`, `redraw()`, `reload()` and
- * `clearActiveNotes()` works.
  */
 
 import * as mm from '#e-msq/lib/@magenta/music/core.js'
@@ -29,21 +24,9 @@ import * as mm from '#e-msq/lib/@magenta/music/core.js'
 import { controlsTemplate } from '#e-msq/lib/html-midi-player/assets/controls-template.js'
 import { formatTime } from '#e-msq/lib/html-midi-player/utils.js'
 
-const VISUALIZER_EVENTS = ['start', 'stop', 'note']
 const DEFAULT_SOUNDFONT = 'https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus'
 
 let playingPlayer = null
-
-/**
- * True if `element` looks like something `addVisualizer` can drive.
- */
-function isVisualizer(element) {
-  return element !== null &&
-    typeof element === 'object' &&
-    typeof element.redraw === 'function' &&
-    typeof element.reload === 'function' &&
-    typeof element.clearActiveNotes === 'function'
-}
 
 /**
  * MIDI player element.
@@ -64,7 +47,6 @@ function isVisualizer(element) {
  * @prop currentTime - Current playback position in seconds
  * @prop duration - Content duration in seconds
  * @prop playing - Indicates whether the player is currently playing
- * @attr visualizer - A selector matching visualizer elements to bind to this player
  *
  * @fires load - The content is loaded and ready to play
  * @fires start - The player has started playing
@@ -99,7 +81,6 @@ export class PlayerElement extends HTMLElement {
     this.currentTimeLabel = this.controlPanel.querySelector('[data-current-time]')
     this.totalTimeLabel = this.controlPanel.querySelector('[data-total-time]')
     this.seekBar = this.controlPanel.querySelector('[data-seek-bar]')
-    this.visualizerListeners = new Map()
 
     this.ns = null
     this._playing = false
@@ -250,14 +231,6 @@ export class PlayerElement extends HTMLElement {
           this.controlPanel.dataset.state = 'playing'
           this.playButton.setAttribute('aria-label', 'Stop')
           try {
-            // Force reload visualizers to prevent stuttering at playback start
-            for (const visualizer of this.visualizerListeners.keys()) {
-              if (visualizer.noteSequence !== this.ns) {
-                visualizer.noteSequence = this.ns
-                visualizer.reload()
-              }
-            }
-
             const promise = this.player.start(this.ns, undefined, offset)
             if (!looped) {
               this.dispatchEvent(new CustomEvent('start'))
@@ -283,26 +256,6 @@ export class PlayerElement extends HTMLElement {
       this.player.stop()
     }
     this.handleStop(false)
-  }
-
-  addVisualizer(visualizer) {
-    const listeners = {
-      start: () => { visualizer.noteSequence = this.noteSequence },
-      stop: () => { visualizer.clearActiveNotes() },
-      note: (event) => { visualizer.redraw(event.detail.note) }
-    }
-    for (const name of VISUALIZER_EVENTS) {
-      this.addEventListener(name, listeners[name])
-    }
-    this.visualizerListeners.set(visualizer, listeners)
-  }
-
-  removeVisualizer(visualizer) {
-    const listeners = this.visualizerListeners.get(visualizer)
-    for (const name of VISUALIZER_EVENTS) {
-      this.removeEventListener(name, listeners[name])
-    }
-    this.visualizerListeners.delete(visualizer)
   }
 
   noteCallback(note) {
