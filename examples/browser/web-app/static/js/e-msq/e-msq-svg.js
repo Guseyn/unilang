@@ -69,7 +69,7 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
       }
 
       const svgString = event.data.svg
-      this.#render(contentNode, svgString, inputText)
+      this.#render(svgString, inputText)
 
       if (this.hasAttribute('data-actions-on-progress-end')) {
         evaluateActionsOnProgress(
@@ -84,16 +84,76 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
   }
 
   #render(svgString, inputText) {
-    const wrapperTemplate = document.createElement('template')
-    wrapperTemplate.innerHTML = /*html*/`
+    const svgWrapper = document.createElement('div')
+    svgWrapper.attachShadow({ mode: 'open' })
+    svgWrapper.setAttribute('title', inputText)
+    svgWrapper.setAttribute('data-rendered-by', 'template[is="e-msq-svg"]')
+    svgWrapper.shadowRoot.innerHTML = /*html*/`
       <style>
+        div[data-wrapper] {
+          position: relative;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 1rem;
+          border: 1px solid #222;
+          width: max-content;
+          height: max-content;
+          padding: 0;
+          box-sizing: border-box;
+          max-width: 100%;
+          overflow: hidden;
+        }
+        div[data-scroll] {
+          border-radius: 1rem;
+          overflow: auto;
+          scrollbar-width: none;
+        }
+        div[data-scroll]::-webkit-scrollbar {
+          display: none;
+        }
+        div[data-wrapper] svg {
+          border-radius: 1rem;
+          display: block;
+        }
+        div[data-utils] {
+          position: absolute;
+          top: 0.4rem;
+          right: 0.4rem;
+          z-index: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          gap: 0.2rem;
+          font-family: sans-serif;
+        }
+        div[data-wrapper]:not(:hover) div[data-utils] {
+          display: none;
+        }
+        div[data-utils] span {
+          background: #eee;
+          padding: 0.2rem;
+          border-radius: 0.4rem;
+          cursor: pointer;
+          font-size: 0.9rem;
+          border: 1px solid #222;
+        }
+        div[data-utils] span:hover {
+          background: #ddd;
+        }
       </style>
-      <div>
-        ${svgString}
+      <div data-wrapper>
+        <div data-utils>
+          <span>Copy SVG</span>
+          <span>Copy MSQ</span>
+        </div>
+        <div data-scroll>
+          ${svgString}
+        </div>
       </div>
     `
     this.parentElement.replaceChild(
-      document.importNode(wrapperTemplate.content, true),
+      svgWrapper,
       this
     )
   }
