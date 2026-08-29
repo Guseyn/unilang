@@ -24,8 +24,7 @@
 export const controlsCSS = /*css*/`
   :host {
     display: inline-block;
-    width: 300px;
-    margin: 3px;
+    width: 100%;
     vertical-align: bottom;
     font-family: sans-serif;
     font-size: 14px;

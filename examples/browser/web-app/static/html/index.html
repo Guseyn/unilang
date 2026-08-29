@@ -18,7 +18,7 @@
       import '#ehtml/main'
       import '#e-msq/e-msq-font-loader.js'
       import '#e-msq/e-msq-svg.js'
-      import '#e-msq/lib/html-midi-player/player.js'
+      import '#e-msq/e-msq-midi.js'
     </script>
   </head>
   <body>
@@ -60,15 +60,16 @@
         a with accent
         a
       </template>
+      <template
+        is="e-msq-midi"
+      >
+        a with accent
+        b
+        a with accent
+        b
+        a with accent
+        b
+      </template>
     </template>
-
-    <!--
-      Omit sound-font to use the built-in oscillator synth instead of samples.
-      Add loop to restart automatically at the end.
-    -->
-    <midi-player
-      data-src="/midi/accent-1.mid"
-      data-sound-font
-    ></midi-player>
   </body>
 </html>

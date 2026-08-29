@@ -5,8 +5,11 @@ import {
   isPageSchemaValid,
   generateIntermediateStructuresForSinglePage,
   generateStylesForSinglePage,
-  generateSvgForSinglePage
+  generateSvgForSinglePage,
+  generateMidiForSinglePage
 } from '#msq/api.js'
+
+import { base64FromUint8 } from '#msq/utils.js'
 
 const eventHandlers = {
   'fonts.setup': async (event) => {
@@ -121,6 +124,7 @@ const eventHandlers = {
         id,
         error: 'Page schema is not valid'
       })
+      return
     }
     const pageStyles = generateStylesForSinglePage({
       customStyles,
@@ -134,6 +138,52 @@ const eventHandlers = {
       status: 'ok',
       id,
       svg,
+      errors
+    })
+    return
+  },
+  'midi.generate': async (event) => {
+    const id = event.data.id
+    if (!id) {
+      self.postMessage({
+        id,
+        error: 'No id provided'
+      })
+      return
+    }
+    const inputText = event.data.inputText
+    if (!inputText) {
+      self.postMessage({
+        id,
+        error: 'No inputText provided'
+      })
+      return
+    }
+    const {
+      pageSchema,
+      errors,
+      midiSettings
+    } = generateIntermediateStructuresForSinglePage({
+      repertoirePageText: inputText,
+      applyHighlighting: false,
+      applyOnlyHighlightingWithoutRefIds: false
+    })
+    if (!isPageSchemaValid(pageSchema)) {
+      self.postMessage({
+        id,
+        error: 'Page schema is not valid'
+      })
+      return
+    }
+    const midi = generateMidiForSinglePage({
+      pageSchema,
+      midiSettings
+    })
+    const midiDataSrc = `data:audio/mpeg;base64,${base64FromUint8(midi.data)}`
+    self.postMessage({
+      status: 'ok',
+      id,
+      midiDataSrc,
       errors
     })
     return

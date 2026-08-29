@@ -3,8 +3,9 @@ import scrollToHash from '#ehtml/actions/scrollToHash.js'
 
 import worker from '#e-msq/worker.js'
 import { copyText, trimMultilineText } from '#e-msq/utils.js'
+import '#e-msq/lib/html-midi-player/player.js'
 
-class EMuSemantiQSVG extends HTMLTemplateElement {
+class EMuSemantiQMIDI extends HTMLTemplateElement {
   constructor() {
     super()
     this.id = crypto.randomUUID()
@@ -38,18 +39,12 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
       )
     }
 
-    const fontSourcesReference = this.getAttribute('data-font-sources')
-    if (!fontSourcesReference) {
-      throw new Error(`e-msq-svg must have "data-font-sources" attribute that's must be initialized as reference in e-msq-font-loader`);
-    }
-
     const contentNode = document.importNode(this.content, true)
     const inputText = trimMultilineText(this.innerState || contentNode.textContent)
 
     worker.postMessage({
       id: this.id,
-      name: 'svg.generate',
-      fontSourcesReference,
+      name: 'midi.generate',
       inputText
     })
 
@@ -64,9 +59,8 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
         return
       }
 
-      const svgString = event.data.svg
-
-      this.#render(svgString, inputText)
+      const midiDataSrc = event.data.midiDataSrc
+      this.#render(midiDataSrc, inputText)
 
       if (this.hasAttribute('data-actions-on-progress-end')) {
         evaluateActionsOnProgress(
@@ -84,11 +78,13 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
     worker.addEventListener('message', messageHandler)
   }
 
-  #render(svgString, inputText) {
+  #render(midiDataSrc, inputText) {
     const elm = document.createElement('div')
     elm.attachShadow({ mode: 'open' })
     elm.setAttribute('title', inputText)
-    elm.setAttribute('data-rendered-by', 'template[is="e-msq-svg"]')
+    elm.setAttribute('data-rendered-by', 'template[is="e-msq-midi"]')
+    const soundFont = this.getAttribute('data-sound-font')
+
     elm.shadowRoot.innerHTML = /*html*/`
       <style>
         :host {
@@ -120,54 +116,37 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
         div[data-scroll]::-webkit-scrollbar {
           display: none;
         }
-        div[data-inner-wrapper] svg {
-          border-radius: 1em;
-          display: block;
-        }
-        div[data-utils] {
-          position: absolute;
-          top: 0.4em;
-          right: 0.4em;
-          z-index: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 0.2em;
-          font-family: sans-serif;
-        }
-        div[data-inner-wrapper]:not(:hover) div[data-utils] {
-          display: none;
-        }
-        div[data-utils] button {
-          background: var(--surface-bg);
-          border: 1px solid var(--border-color);
-          padding: 0.2em;
-          border-radius: 0.4em;
-          cursor: pointer;
-          font-size: 0.7em;
-        }
-        div[data-utils] button:hover {
-          background: var(--surface-bg-hovered);
-        }
       </style>
       <div data-inner-wrapper>
-        <div data-utils>
+<!--         <div data-utils>
           <button data-copy-svg>Copy SVG</button>
           <button data-copy-msq>Copy MSQ</button>
-        </div>
+        </div> -->
         <div data-scroll>
-          ${svgString}
+          <midi-player
+            data-sound-font="${soundFont || ''}"
+            data-src="${midiDataSrc}"
+          ></midi-player>
         </div>
       </div>
     `
-    const copySVGButton = elm.shadowRoot.querySelector('button[data-copy-svg]')
-    const copyMSQButton = elm.shadowRoot.querySelector('button[data-copy-msq]')
-    copySVGButton.addEventListener('click', (event) => {
-      copyText(event, svgString)
-    })
-    copyMSQButton.addEventListener('click', (event) => {
-      copyText(event, inputText)
-    })
+    // const copySVGButton = svgWrapper.shadowRoot.querySelector('button[data-copy-svg]')
+    // const copyMSQButton = svgWrapper.shadowRoot.querySelector('button[data-copy-msq]')
+    // copySVGButton.addEventListener('click', (event) => {
+    //   copyText(event, svgString)
+    // })
+    // copyMSQButton.addEventListener('click', (event) => {
+    //   copyText(event, inputText)
+    // })
+    const midiPlayer = elm.shadowRoot.querySelector('midi-player')
+    const midiPlayerOverrideStyle = document.createElement('style')
+    midiPlayerOverrideStyle.textContent = /*css*/`
+      [data-control-panel] {
+        border-radius: 1em;
+        box-sizing: border-box;
+      }
+    `
+    midiPlayer.shadowRoot.appendChild(midiPlayerOverrideStyle)
     this.parentElement.replaceChild(
       elm,
       this
@@ -175,4 +154,4 @@ class EMuSemantiQSVG extends HTMLTemplateElement {
   }
 }
 
-customElements.define('e-msq-svg', EMuSemantiQSVG, { extends: 'template' })
+customElements.define('e-msq-midi', EMuSemantiQMIDI, { extends: 'template' })
