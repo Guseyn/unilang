@@ -2,8 +2,12 @@ import evaluateActionsOnProgress from '#ehtml/evaluateActionsOnProgress.js'
 import scrollToHash from '#ehtml/actions/scrollToHash.js'
 
 import worker from '#e-msq/worker.js'
-import { copyText, trimMultilineText } from '#e-msq/utils.js'
+import { copyText, downloadContent, trimMultilineText } from '#e-msq/utils.js'
 import '#e-msq/lib/html-midi-player/player.js'
+
+import downloadIcon from '#e-msq/icons/downloadIcon.js'
+import copyIcon from '#e-msq/icons/copyIcon.js'
+import doneIcon from '#e-msq/icons/doneIcon.js'
 
 class EMuSemantiQMIDI extends HTMLTemplateElement {
   constructor() {
@@ -118,10 +122,6 @@ class EMuSemantiQMIDI extends HTMLTemplateElement {
         }
       </style>
       <div data-inner-wrapper>
-<!--         <div data-utils>
-          <button data-copy-svg>Copy SVG</button>
-          <button data-copy-msq>Copy MSQ</button>
-        </div> -->
         <div data-scroll>
           <midi-player
             data-sound-font="${soundFont || ''}"
@@ -130,14 +130,6 @@ class EMuSemantiQMIDI extends HTMLTemplateElement {
         </div>
       </div>
     `
-    // const copySVGButton = svgWrapper.shadowRoot.querySelector('button[data-copy-svg]')
-    // const copyMSQButton = svgWrapper.shadowRoot.querySelector('button[data-copy-msq]')
-    // copySVGButton.addEventListener('click', (event) => {
-    //   copyText(event, svgString)
-    // })
-    // copyMSQButton.addEventListener('click', (event) => {
-    //   copyText(event, inputText)
-    // })
     const midiPlayer = elm.shadowRoot.querySelector('midi-player')
     const midiPlayerOverrideStyle = document.createElement('style')
     midiPlayerOverrideStyle.textContent = /*css*/`
@@ -147,6 +139,23 @@ class EMuSemantiQMIDI extends HTMLTemplateElement {
       }
     `
     midiPlayer.shadowRoot.appendChild(midiPlayerOverrideStyle)
+    const controlPanel = midiPlayer.shadowRoot.querySelector('[data-control-panel]')
+    const downloadContentButton = document.createElement('button')
+    downloadContentButton.innerHTML = downloadIcon
+    downloadContentButton.addEventListener('click', () => {
+      downloadContent({
+        fileName: this.getAttribute('data-file-name') || this.id,
+        dataSrc: midiDataSrc,
+        extenstion: 'midi'
+      })
+    })    
+    controlPanel.appendChild(downloadContentButton)
+    const copyMSQButton = document.createElement('button')
+    copyMSQButton.innerHTML = copyIcon
+    copyMSQButton.addEventListener('click', (event) => {
+      copyText(event, inputText, doneIcon)
+    })
+    controlPanel.appendChild(copyMSQButton)
     this.parentElement.replaceChild(
       elm,
       this

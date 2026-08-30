@@ -1,4 +1,4 @@
-export function copyText(event, text) {
+export function copyText(event, text, onCopyInnerHTML) {
   const textarea = document.createElement('textarea')
   textarea.value = text
   textarea.setAttribute('readonly', '')
@@ -8,9 +8,9 @@ export function copyText(event, text) {
   textarea.select()
   document.execCommand('copy')
   document.body.removeChild(textarea)
-  const target = event.target
+  const target = event.currentTarget
   const initialText = target.innerHTML
-  target.innerHTML = 'Copied &#10003;'
+  target.innerHTML = onCopyInnerHTML || 'Copied &#10003;'
   setTimeout(() => {
     target.innerHTML = initialText
   }, 1500)
@@ -21,4 +21,14 @@ export function trimMultilineText(text) {
     .split('\n')
     .map(line => line.trim())
     .join('\n')
+}
+
+export function downloadContent({ fileName, dataSrc, extenstion }) {
+  // const fileURL = window.URL.createObjectURL(content)
+  const anchor = document.createElement('a')
+  anchor.href = dataSrc
+  anchor.download = `${fileName}.${extenstion}`
+  document.body.appendChild(anchor)
+  anchor.click()
+  anchor.remove()
 }
