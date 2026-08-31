@@ -22,7 +22,7 @@ if (!workerImportMap) {
 const srcDir = path.join(projectRoot, 'src')
 const outDir = path.join(
   projectRoot,
-  'examples/browser/web-app/static/js/e-msq/msq-worker'
+  'examples/browser/web-app/static/js/msq/msq-worker'
 )
 
 // Create output directory

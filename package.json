@@ -44,11 +44,10 @@
   "browser.importmap": {
     "#ehtml/": "/js/ehtml/",
     "#e-ui/": "/js/e-ui",
-    "#msq": "/js/msq",
-    "#e-msq": "/js/e-msq"
+    "#msq": "/js/msq"
   },
   "worker.importmap": {
-    "#msq": "/js/e-msq/msq-worker"
+    "#msq": "/js/msq/msq-worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"

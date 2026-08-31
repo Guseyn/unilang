@@ -7,23 +7,19 @@
     <script type="importmap">
       {
         "imports": {
-          "#ehtml/": "/js/ehtml/",
-          "#ehtml/main": "/js/ehtml/main.js?v=b5879b13",
-          "#e-ui/": "/js/e-ui/",
-          "#e-msq/": "/js/e-msq/"
+          "#msq/": "/js/msq/"
         }
       }
     </script>
     <script type="module">
-      import '#ehtml/main'
-      import '#e-msq/e-msq-font-loader.js'
-      import '#e-msq/e-msq-svg.js'
-      import '#e-msq/e-msq-midi.js'
+      import '#msq/msq-font-loader.js'
+      import '#msq/msq-svg.js'
+      import '#msq/msq-midi.js'
     </script>
   </head>
   <body>
     <template
-      is="e-msq-font-loader"
+      is="msq-font-loader"
       data-font-sources-reference="msqFontSources"
       data-font-config='
         {
@@ -39,18 +35,18 @@
           "music": {
             "bravura": {
               "font": "/font/music/Bravura.otf",
-              "js":   "/js/e-msq/msq-worker/drawer/font/music-js/bravura.js"
+              "js":   "/js/msq/msq-worker/drawer/font/music-js/bravura.js"
             },
             "leland": {
               "font": "/font/music/Leland.otf",
-              "js":   "/js/e-msq/msq-worker/drawer/font/music-js/leland.js"
+              "js":   "/js/msq/msq-worker/drawer/font/music-js/leland.js"
             }
           }
         }
       '
     >
       <template
-        is="e-msq-svg"
+        is="msq-svg"
         data-font-sources="msqFontSources"
       >
         a with accent
@@ -62,7 +58,7 @@
       </template>
       <hr>
       <template
-        is="e-msq-midi"
+        is="msq-midi"
       >
         a with accent
         a
