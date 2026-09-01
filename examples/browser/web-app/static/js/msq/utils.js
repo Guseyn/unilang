@@ -1,4 +1,4 @@
-export function copyText(event, text, onCopyInnerHTML) {
+export function copyText({ event, text, onCopyInnerHTML }) {
   const textarea = document.createElement('textarea')
   textarea.value = text
   textarea.setAttribute('readonly', '')
@@ -31,4 +31,15 @@ export function downloadContent({ fileName, dataSrc, extenstion }) {
   document.body.appendChild(anchor)
   anchor.click()
   anchor.remove()
+}
+
+export async function openContent({ dataSrc }) {
+  try {
+    const response = await fetch(dataSrc);
+    const blob = await response.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    window.open(blobUrl, '_blank');
+  } catch (error) {
+    console.error('Error opening SVG:', error);
+  }
 }

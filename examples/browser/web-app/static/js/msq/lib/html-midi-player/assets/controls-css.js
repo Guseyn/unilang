@@ -40,14 +40,14 @@ export const controlsCSS = /*css*/`
     overflow: hidden;
 
     align-items: center;
-    border-radius: 100px;
+    border-radius: 1em;
     background: #f2f5f6;
-    padding: 0 0.25em;
     user-select: none;
   }
 
   [data-control-panel] > * {
     margin: 0.8em 0.45em;
+    box-sizing: border-box;
   }
 
   [data-control-panel] input,
@@ -64,8 +64,8 @@ export const controlsCSS = /*css*/`
     text-align: center;
     background: rgba(204, 204, 204, 0);
     border: none;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 100%;
     transition: background-color 0.25s ease 0s;
     padding: 0;

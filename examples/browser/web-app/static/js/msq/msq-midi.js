@@ -88,6 +88,10 @@ class MuSemantiQMIDI extends HTMLTemplateElement {
         div[data-scroll]::-webkit-scrollbar {
           display: none;
         }
+        div[data-utils] {
+          display: flex;
+          flex-direction: row;
+        }
       </style>
       <div data-inner-wrapper>
         <div data-scroll>
@@ -108,6 +112,8 @@ class MuSemantiQMIDI extends HTMLTemplateElement {
     `
     midiPlayer.shadowRoot.appendChild(midiPlayerOverrideStyle)
     const controlPanel = midiPlayer.shadowRoot.querySelector('[data-control-panel]')
+    const utilsPanel = document.createElement('div')
+    utilsPanel.setAttribute('data-utils', '')
     const downloadContentButton = document.createElement('button')
     downloadContentButton.innerHTML = downloadIcon
     downloadContentButton.addEventListener('click', () => {
@@ -117,13 +123,18 @@ class MuSemantiQMIDI extends HTMLTemplateElement {
         extenstion: 'midi'
       })
     })    
-    controlPanel.appendChild(downloadContentButton)
+    utilsPanel.appendChild(downloadContentButton)
     const copyMSQButton = document.createElement('button')
     copyMSQButton.innerHTML = copyIcon
     copyMSQButton.addEventListener('click', (event) => {
-      copyText(event, inputText, doneIcon)
+      copyText({
+        event,
+        text: inputText,
+        onCopyInnerHTML: doneIcon
+      })
     })
-    controlPanel.appendChild(copyMSQButton)
+    utilsPanel.appendChild(copyMSQButton)
+    controlPanel.appendChild(utilsPanel)
     this.parentElement.replaceChild(
       elm,
       this

@@ -134,10 +134,12 @@ const eventHandlers = {
       pageSchema,
       pageStyles
     })
+    const svgDataSrc = `data:image/svg+xml;base64,${base64FromUint8(new TextEncoder().encode(svg))}`
     self.postMessage({
       status: 'ok',
       id,
       svg,
+      svgDataSrc,
       errors
     })
     return
