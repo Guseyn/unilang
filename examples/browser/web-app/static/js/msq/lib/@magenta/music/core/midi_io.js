@@ -6,7 +6,7 @@
  *
  * Changes: types stripped, the `compat/global` indirection dropped (`fetch` is
  * a browser global here), and `@tonejs/midi` resolved to this repo's existing
- * vanilla-JS port of it under `msq-worker/midi/lib/@tonejs/`.
+ * vanilla-JS port of it under `worker/midi/lib/@tonejs/`.
  */
 
 import { Midi } from '#msq/lib/@tonejs/Midi.js'

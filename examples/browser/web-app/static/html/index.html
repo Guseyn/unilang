@@ -12,10 +12,11 @@
       }
     </script>
     <script type="module">
-      import '#msq/msq-font-loader.js'
-      import '#msq/msq-svg.js'
-      import '#msq/msq-midi.js'
-      import '#msq/msq-svg-midi.js'
+      import '#msq/msq-font-loader-template.js'
+      import '#msq/msq-svg-template.js'
+      import '#msq/msq-midi-template.js'
+      import '#msq/msq-svg-midi-template.js'
+      import '#msq/msq-editor-template.js'
     </script>
   </head>
   <body>
@@ -36,11 +37,11 @@
           "music": {
             "bravura": {
               "font": "/font/music/Bravura.otf",
-              "js":   "/js/msq/msq-worker/drawer/font/music-js/bravura.js"
+              "js":   "/js/msq/worker/drawer/font/music-js/bravura.js"
             },
             "leland": {
               "font": "/font/music/Leland.otf",
-              "js":   "/js/msq/msq-worker/drawer/font/music-js/leland.js"
+              "js":   "/js/msq/worker/drawer/font/music-js/leland.js"
             }
           }
         }
@@ -73,6 +74,19 @@
         is="msq-svg-midi"
         data-font-sources="msqFontSources"
       >
+        a with accent
+        a
+        a with accent
+        a
+        a with accent
+        a
+      </template>
+      <hr>
+      <template
+        is="msq-editor"
+        data-font-sources="msqFontSources"
+      >
+        music font is leland
         a with accent
         a
         a with accent

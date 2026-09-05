@@ -47,7 +47,7 @@
     "#msq": "/js/msq"
   },
   "worker.importmap": {
-    "#msq": "/js/msq/msq-worker"
+    "#msq": "/js/msq/worker"
   },
   "devDependencies": {
     "c8": "^11.0.0"

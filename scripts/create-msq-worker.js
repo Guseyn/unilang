@@ -22,7 +22,7 @@ if (!workerImportMap) {
 const srcDir = path.join(projectRoot, 'src')
 const outDir = path.join(
   projectRoot,
-  'examples/browser/web-app/static/js/msq/msq-worker'
+  'examples/browser/web-app/static/js/msq/worker'
 )
 
 // Create output directory
@@ -33,8 +33,8 @@ fs.mkdirSync(outDir, { recursive: true })
 
 /**
  * Build import map for resolution
- * From: { "#msq": "/js/msq-worker" }
- * To: { "#msq/": "/js/msq-worker/" }
+ * From: { "#msq": "/js/msq/worker" }
+ * To: { "#msq/": "/js/msq/worker/" }
  */
 function buildResolutionMap(importMapConfig) {
   const map = {}

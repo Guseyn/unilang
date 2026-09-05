@@ -10,7 +10,6 @@ import {
 } from '#msq/api.js'
 
 import { base64FromUint8 } from '#msq/utils.js'
-import mapWithScenariosAndScenariosWhereItIsRequired from './language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired'
 
 const eventHandlers = {
   'fonts.setup': async (event) => {
@@ -43,12 +42,13 @@ const eventHandlers = {
     }
 
     try {
-      const supportedFontSources = await setupFonts(fontConfig)      
+      const supportedFontSources = await setupFonts(fontConfig)
       if (self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]) {
         self.postMessage({
           id,
-          error: 'No fontSourcesReference provided'
+          error: `Font sources are already registered under reference (${fontSourcesReference})`
         })
+        return
       }
       self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference] = supportedFontSources
       self.postMessage({ id, 'status': 'ok' })
@@ -61,6 +61,7 @@ const eventHandlers = {
     }
   },
   'svg.generate': async (event) => {
+    const id = event.data.id
     if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
       self.postMessage({
         id,
@@ -68,7 +69,6 @@ const eventHandlers = {
       })
       return
     }
-    const id = event.data.id
     if (!id) {
       self.postMessage({
         id,
@@ -192,6 +192,7 @@ const eventHandlers = {
     return
   },
   'svg.midi.generate': (event) => {
+    const id = event.data.id
     if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
       self.postMessage({
         id,
@@ -199,7 +200,6 @@ const eventHandlers = {
       })
       return
     }
-    const id = event.data.id
     if (!id) {
       self.postMessage({
         id,
@@ -297,6 +297,7 @@ const eventHandlers = {
     return
   },
   'svg.midi.text.generate': (event) => {
+    const id = event.data.id
     if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
       self.postMessage({
         id,
@@ -304,7 +305,6 @@ const eventHandlers = {
       })
       return
     }
-    const id = event.data.id
     if (!id) {
       self.postMessage({
         id,
@@ -351,8 +351,7 @@ const eventHandlers = {
       errors,
       customStyles,
       midiSettings,
-      highlightsHtmlBuffer,
-      mapWithScenariosAndScenariosWhereItIsRequired
+      highlightsHtmlBuffer
     } = generateIntermediateStructuresForSinglePage({
       repertoirePageText: inputText,
       applyHighlighting: true,
@@ -400,11 +399,10 @@ const eventHandlers = {
       refsOnMappedWithTimeStamps,
       customStyles,
       highlightsHtmlBuffer,
-      mapWithScenariosAndScenariosWhereItIsRequired,
       errors
     })
     return
-  } 
+  }
 }
 
 self.onmessage = async (event) => {
