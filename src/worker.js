@@ -10,6 +10,7 @@ import {
 } from '#msq/api.js'
 
 import { base64FromUint8 } from '#msq/utils.js'
+import mapWithScenariosAndScenariosWhereItIsRequired from './language/parser/scenarios/mapWithScenariosAndScenariosWhereItIsRequired'
 
 const eventHandlers = {
   'fonts.setup': async (event) => {
@@ -63,7 +64,7 @@ const eventHandlers = {
     if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
       self.postMessage({
         id,
-        error: 'Fonts are not configured, please declare <template is="e-msq-font-loader"> first'
+        error: 'Fonts are not configured, please declare <template is="msq-font-loader"> first'
       })
       return
     }
@@ -112,7 +113,7 @@ const eventHandlers = {
     const {
       pageSchema,
       errors,
-      customStyles,
+      customStyles
     } = generateIntermediateStructuresForSinglePage({
       repertoirePageText: inputText,
       applyHighlighting: false,
@@ -134,10 +135,12 @@ const eventHandlers = {
       pageSchema,
       pageStyles
     })
+    const svgDataSrc = `data:image/svg+xml;base64,${base64FromUint8(new TextEncoder().encode(svg))}`
     self.postMessage({
       status: 'ok',
       id,
       svg,
+      svgDataSrc,
       errors
     })
     return
@@ -187,7 +190,221 @@ const eventHandlers = {
       errors
     })
     return
-  }
+  },
+  'svg.midi.generate': (event) => {
+    if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
+      self.postMessage({
+        id,
+        error: 'Fonts are not configured, please declare <template is="msq-font-loader"> first'
+      })
+      return
+    }
+    const id = event.data.id
+    if (!id) {
+      self.postMessage({
+        id,
+        error: 'No id provided'
+      })
+      return
+    }
+    const fontSourcesReference = event.data.fontSourcesReference
+    if (!fontSourcesReference) {
+      self.postMessage({
+        id,
+        error: 'No fontSourcesReference provided'
+      })
+      return
+    }
+    if (!self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]) {
+      self.postMessage({
+        id,
+        error: `Font sources cannot be found by reference (${fontSourcesReference})`
+      })
+      return
+    }
+    const supportedFontSources = self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]
+    const supportedFontNames = {
+      'chord-letters': Object.keys(supportedFontSources['chord-letters']),
+      'music': Object.keys(supportedFontSources['music']),
+      'text': [
+        ...new Set([
+          ...Object.keys(supportedFontSources['text']['regular']),
+          ...Object.keys(supportedFontSources['text']['bold'])
+        ])
+      ]
+    }
+    const inputText = event.data.inputText
+    if (!inputText) {
+      self.postMessage({
+        id,
+        error: 'No inputText provided'
+      })
+      return
+    }
+    const {
+      pageSchema,
+      errors,
+      customStyles,
+      midiSettings
+    } = generateIntermediateStructuresForSinglePage({
+      repertoirePageText: inputText,
+      applyHighlighting: true,
+      applyOnlyHighlightingWithoutRefIds: false,
+      supportedFontNames
+    })
+    if (!isPageSchemaValid(pageSchema)) {
+      self.postMessage({
+        id,
+        error: 'Page schema is not valid'
+      })
+      return
+    }
+    const pageStyles = generateStylesForSinglePage({
+      customStyles,
+      supportedFontSources
+    })
+    const svg = generateSvgForSinglePage({
+      pageSchema,
+      pageStyles
+    })
+    const svgDataSrc = `data:image/svg+xml;base64,${base64FromUint8(new TextEncoder().encode(svg))}`
+
+    // TODO: this should be already in page schema somehow already
+    if (pageSchema && pageSchema.measuresParams) {
+      pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
+        measureParams.pageIndex = 0
+        measureParams.measureIndexOnPage = measureIndex
+      })
+    }
+    const midi = generateMidiForSinglePage({
+      pageSchema,
+      midiSettings
+    })
+    const midiDataSrc = `data:audio/mpeg;base64,${base64FromUint8(midi.data)}`
+    const timeStampsMappedWithRefsOn = midi.timeStampsMappedWithRefsOn
+    const refsOnMappedWithTimeStamps = midi.refsOnMappedWithTimeStamps
+    self.postMessage({
+      status: 'ok',
+      id,
+      svg,
+      svgDataSrc,
+      midiDataSrc,
+      timeStampsMappedWithRefsOn,
+      refsOnMappedWithTimeStamps,
+      customStyles,
+      errors
+    })
+    return
+  },
+  'svg.midi.text.generate': (event) => {
+    if (!self['__UNILANG_FONT_SOURCES_STORAGE__']) {
+      self.postMessage({
+        id,
+        error: 'Fonts are not configured, please declare <template is="msq-font-loader"> first'
+      })
+      return
+    }
+    const id = event.data.id
+    if (!id) {
+      self.postMessage({
+        id,
+        error: 'No id provided'
+      })
+      return
+    }
+    const fontSourcesReference = event.data.fontSourcesReference
+    if (!fontSourcesReference) {
+      self.postMessage({
+        id,
+        error: 'No fontSourcesReference provided'
+      })
+      return
+    }
+    if (!self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]) {
+      self.postMessage({
+        id,
+        error: `Font sources cannot be found by reference (${fontSourcesReference})`
+      })
+      return
+    }
+    const supportedFontSources = self['__UNILANG_FONT_SOURCES_STORAGE__'][fontSourcesReference]
+    const supportedFontNames = {
+      'chord-letters': Object.keys(supportedFontSources['chord-letters']),
+      'music': Object.keys(supportedFontSources['music']),
+      'text': [
+        ...new Set([
+          ...Object.keys(supportedFontSources['text']['regular']),
+          ...Object.keys(supportedFontSources['text']['bold'])
+        ])
+      ]
+    }
+    const inputText = event.data.inputText
+    if (!inputText) {
+      self.postMessage({
+        id,
+        error: 'No inputText provided'
+      })
+      return
+    }
+    const {
+      pageSchema,
+      errors,
+      customStyles,
+      midiSettings,
+      highlightsHtmlBuffer,
+      mapWithScenariosAndScenariosWhereItIsRequired
+    } = generateIntermediateStructuresForSinglePage({
+      repertoirePageText: inputText,
+      applyHighlighting: true,
+      applyOnlyHighlightingWithoutRefIds: false,
+      supportedFontNames
+    })
+    if (!isPageSchemaValid(pageSchema)) {
+      self.postMessage({
+        id,
+        error: 'Page schema is not valid'
+      })
+      return
+    }
+    const pageStyles = generateStylesForSinglePage({
+      customStyles,
+      supportedFontSources
+    })
+    const svg = generateSvgForSinglePage({
+      pageSchema,
+      pageStyles
+    })
+    const svgDataSrc = `data:image/svg+xml;base64,${base64FromUint8(new TextEncoder().encode(svg))}`
+
+    // TODO: this should be already in page schema somehow already
+    if (pageSchema && pageSchema.measuresParams) {
+      pageSchema.measuresParams.forEach((measureParams, measureIndex) => {
+        measureParams.pageIndex = 0
+        measureParams.measureIndexOnPage = measureIndex
+      })
+    }
+    const midi = generateMidiForSinglePage({
+      pageSchema,
+      midiSettings
+    })
+    const midiDataSrc = `data:audio/mpeg;base64,${base64FromUint8(midi.data)}`
+    const timeStampsMappedWithRefsOn = midi.timeStampsMappedWithRefsOn
+    const refsOnMappedWithTimeStamps = midi.refsOnMappedWithTimeStamps
+    self.postMessage({
+      status: 'ok',
+      id,
+      svg,
+      svgDataSrc,
+      midiDataSrc,
+      timeStampsMappedWithRefsOn,
+      refsOnMappedWithTimeStamps,
+      customStyles,
+      highlightsHtmlBuffer,
+      mapWithScenariosAndScenariosWhereItIsRequired,
+      errors
+    })
+    return
+  } 
 }
 
 self.onmessage = async (event) => {

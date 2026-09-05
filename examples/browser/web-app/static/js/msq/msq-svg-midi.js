@@ -1,11 +1,19 @@
 import worker from '#msq/worker.js'
-import { openContent, copyText, trimMultilineText } from '#msq/utils.js'
+import {
+  openContent,
+  downloadContent,
+  copyText,
+  trimMultilineText,
+  attachHighliterToMidiPlayer
+} from '#msq/utils.js'
+import '#msq/lib/html-midi-player/player.js'
 
 import previewIcon from '#msq/icons/previewIcon.js'
 import copyIcon from '#msq/icons/copyIcon.js'
 import doneIcon from '#msq/icons/doneIcon.js'
+import downloadIcon from '#msq/icons/downloadIcon.js'
 
-class MuSemantiQSVG extends HTMLTemplateElement {
+class MuSemantiQSVGMIDI extends HTMLTemplateElement {
   constructor() {
     super()
     this.id = crypto.randomUUID()
@@ -23,7 +31,7 @@ class MuSemantiQSVG extends HTMLTemplateElement {
   async #render() {
     const fontSourcesReference = this.getAttribute('data-font-sources')
     if (!fontSourcesReference) {
-      throw new Error(`msq-svg must have "data-font-sources" attribute that's must be initialized as reference in msq-font-loader`);
+      throw new Error(`msq-svg-midi must have "data-font-sources" attribute that's must be initialized as reference in msq-font-loader`);
     }
 
     const contentNode = document.importNode(this.content, true)
@@ -31,7 +39,7 @@ class MuSemantiQSVG extends HTMLTemplateElement {
 
     worker.postMessage({
       id: this.id,
-      name: 'svg.generate',
+      name: 'svg.midi.generate',
       fontSourcesReference,
       inputText
     })
@@ -49,19 +57,41 @@ class MuSemantiQSVG extends HTMLTemplateElement {
 
       const svgString = event.data.svg
       const svgDataSrc = event.data.svgDataSrc
+      const midiDataSrc = event.data.midiDataSrc
+      const timeStampsMappedWithRefsOn = event.data.timeStampsMappedWithRefsOn
+      const refsOnMappedWithTimeStamps = event.data.refsOnMappedWithTimeStamps
+      const customStyles = event.data.customStyles
 
-      this.#buildView({ svgString, svgDataSrc, inputText })
+      this.#buildView({
+        svgString,
+        svgDataSrc,
+        midiDataSrc,
+        timeStampsMappedWithRefsOn,
+        refsOnMappedWithTimeStamps,
+        customStyles,
+        inputText
+      })
       worker.removeEventListener('message', messageHandler)
     }
 
     worker.addEventListener('message', messageHandler)
   }
 
-  #buildView({ svgString, svgDataSrc, inputText }) {
+  #buildView({
+    svgString,
+    svgDataSrc,
+    midiDataSrc,
+    timeStampsMappedWithRefsOn,
+    refsOnMappedWithTimeStamps,
+    customStyles,
+    inputText
+  }) {
     const elm = document.createElement('div')
     elm.attachShadow({ mode: 'open' })
     elm.setAttribute('title', inputText)
-    elm.setAttribute('data-rendered-by', 'template[is="msq-svg"]')
+    elm.setAttribute('data-rendered-by', 'template[is="msq-svg-midi"]')
+    const soundFont = this.getAttribute('data-sound-font')
+
     elm.shadowRoot.innerHTML = /*html*/`
       <style>
         :host {
@@ -93,8 +123,11 @@ class MuSemantiQSVG extends HTMLTemplateElement {
         div[data-scroll]::-webkit-scrollbar {
           display: none;
         }
-        div[data-inner-wrapper] svg {
-          border-radius: 1em;
+        div[data-svg-container] svg {
+          border-top-left-radius: 1em;
+          border-top-right-radius: 1em;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
           display: block;
         }
         div[data-utils] {
@@ -136,16 +169,29 @@ class MuSemantiQSVG extends HTMLTemplateElement {
       </style>
       <div data-inner-wrapper>
         <div data-utils>
+          <button data-download-svg>${downloadIcon}</button>
           <button data-view-svg>${previewIcon}</button>
           <button data-copy-msq>${copyIcon}</button>
         </div>
-        <div data-scroll>
+        <div data-svg-container data-scroll>
           ${svgString}
         </div>
+        <midi-player
+          data-sound-font="${soundFont || ''}"
+          data-src="${midiDataSrc}"
+        ></midi-player>
       </div>
     `
+    const downloadSVGButton = elm.shadowRoot.querySelector('button[data-download-svg]')
     const viewSVGButton = elm.shadowRoot.querySelector('button[data-view-svg]')
     const copyMSQButton = elm.shadowRoot.querySelector('button[data-copy-msq]')
+    downloadSVGButton.addEventListener('click', () => {
+      downloadContent({
+        fileName: this.getAttribute('data-file-name') || this.id,
+        dataSrc: svgDataSrc,
+        extenstion: 'svg'
+      })
+    })
     viewSVGButton.addEventListener('click', (_event) => {
       openContent({
         dataSrc: svgDataSrc
@@ -158,11 +204,63 @@ class MuSemantiQSVG extends HTMLTemplateElement {
         onCopyInnerHTML: doneIcon
       })
     })
+
+    const midiPlayer = elm.shadowRoot.querySelector('midi-player')
+    const midiPlayerOverrideStyle = document.createElement('style')
+    midiPlayerOverrideStyle.textContent = /*css*/`
+      [data-control-panel] {
+        border-bottom-left-radius: 1em;
+        border-bottom-right-radius: 1em;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        box-sizing: border-box;
+        border-top: 1px solid var(--border-color);
+      }
+    `
+    midiPlayer.shadowRoot.appendChild(midiPlayerOverrideStyle)
+    const controlPanel = midiPlayer.shadowRoot.querySelector('[data-control-panel]')
+    const utilsPanel = document.createElement('div')
+    utilsPanel.setAttribute('data-utils', '')
+    const downloadContentButton = document.createElement('button')
+    downloadContentButton.innerHTML = downloadIcon
+    downloadContentButton.addEventListener('click', () => {
+      downloadContent({
+        fileName: this.getAttribute('data-file-name') || this.id,
+        dataSrc: midiDataSrc,
+        extenstion: 'midi'
+      })
+    })    
+    utilsPanel.appendChild(downloadContentButton)
+    const copyMSQButtonInMidiPlayer = document.createElement('button')
+    copyMSQButtonInMidiPlayer.innerHTML = copyIcon
+    copyMSQButtonInMidiPlayer.addEventListener('click', (event) => {
+      copyText({
+        event,
+        text: inputText,
+        onCopyInnerHTML: doneIcon
+      })
+    })
+    utilsPanel.appendChild(copyMSQButtonInMidiPlayer)
+    controlPanel.appendChild(utilsPanel)
+    midiPlayer.timeStampsMappedWithRefsOn = timeStampsMappedWithRefsOn
+    midiPlayer.refsOnMappedWithTimeStamps = refsOnMappedWithTimeStamps
     this.parentElement.replaceChild(
       elm,
       this
     )
+    const svgElm = elm.shadowRoot.querySelector('[data-svg-container] > svg')
+    const svgParent = svgElm.parentNode
+    let customHighlightColor
+    if (this.hasAttribute('data-highlight-color')) {
+      customHighlightColor = this.getAttribute('data-highlight-color')
+    }
+    attachHighliterToMidiPlayer({
+      midiPlayer,
+      svgParent,
+      customStyles,
+      customHighlightColor
+    })
   }
 }
 
-customElements.define('msq-svg', MuSemantiQSVG, { extends: 'template' })
+customElements.define('msq-svg-midi', MuSemantiQSVGMIDI, { extends: 'template' })
